@@ -201,7 +201,21 @@ class UserController extends AdminController {
     }
 
     public function add($username = '', $password = '', $repassword = '', $email = ''){
+    	
+    	//显示所属部门信息
+    	$department=M('department')->select();
+    	$this->assign('department',$department);
+    	
+    	//显示项目信息
+    	$department=M('department')->select();
+    	$this->assign('project',$department);
+    	
+    	//显示岗位信息
+    	$station=M('station')->select();
+    	$this->assign('station',$station);
+    	
         if(IS_POST){
+        	$arr=I('post.');
             /* 检测密码 */
             if($password != $repassword){
                 $this->error('密码和重复密码不一致！');
@@ -211,8 +225,23 @@ class UserController extends AdminController {
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
             if(0 < $uid){ //注册成功
-                $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1);
-                if(!M('Member')->add($user)){
+            	$arr['realname']=$arr['username'];
+            	$arr['uid']=$uid;
+            	$arr['nickname']=$username;
+            	$arr['status']=1;
+                $user = $arr;
+                $sa['projectid']='';
+                $sa['projectsalary']='';
+                $sa['salarytotal']=0;
+                foreach($arr as $k=>$v){
+                	if($k%2===0){//查询键值为数字的被2整除的值
+                		$sa['projectsalary'] .= $v.',';
+                		$sa['salarytotal'] += $v;
+                	}elseif($k%2===1){
+                		$sa['prejectid'] .= $k.',';
+                	}
+                }
+                if(!M('Member')->add($user) || M('salarydetail')->add($sa)){
                     $this->error('用户添加失败！');
                 } else {
                     $this->success('用户添加成功！',U('index'));
@@ -221,9 +250,22 @@ class UserController extends AdminController {
                 $this->error($this->showRegError($uid));
             }
         } else {
-            $this->meta_title = '新增用户';
-            $this->display();
+            $this->meta_title = '新增用户';           
         }
+        
+        //如果是查询详情
+        $id=I('get.id');
+        if($id){
+        	$find=M('Member')->where('uid='.$id)->find();
+        	if($find['sex']==1){
+        		$find['nan']=true;
+        	}else{
+        		$find['nv']=false;
+        	}
+        	$this->assign('find',$find);
+        }        
+        
+        $this->display();
     }
 
     /**

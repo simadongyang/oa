@@ -3,11 +3,11 @@
 <block name="body">
 	<!-- 标题栏 -->
 	<div class="main-title">
-		<h2>用户列表</h2>
+		<h2>部门列表</h2>
 	</div>
 	<div class="cf">
 		<div class="fl">
-            <a class="btn" href="{:U('User/add')}">新 增</a>
+            <a class="btn" href="{:U('Organize/addstation')}">新 增</a>
             <button class="btn ajax-post" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
             <button class="btn ajax-post" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
             <button class="btn ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
@@ -27,65 +27,30 @@
     <thead>
         <tr>
 		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
-		<th class="">UID</th>		
-		<th class="">姓名</th>
-		<th class="">性别</th>
-		<th class="">出生年月</th>
-		<th class="">电话</th>
-		<th class="">入职时间</th>
-		<th class="">政治面貌</th>
-		<th class="">最高学历</th>
-		<th class="">专业</th>
-		<th class="">QQ号</th>
-		<th class="">民族</th>
-		<th class="">身份证号</th>
-		<th class="">婚姻状况</th>
-		<th class="">紧急联系</th>
-		<th class="">籍贯</th>
-		<th class="">特长爱好</th>
-		<th class="">现住</th>
-		<th class="">参加工作时间</th>
-		<th class="">试用薪资</th>
+		<th class="">岗位id</th>
+		<th class="">岗位名称</th>		
 		<th class="">操作</th>
 		</tr>
     </thead>
     <tbody>
-		<notempty name="_list">
-		<volist name="_list" id="vo">
-		<tr>
-            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
-			<td>{$vo.uid} </td>
-			<td>{$vo.realname}</td>
-			<td>{$vo.sex}</td>
-			<td>{$vo.birthday}</td>
-			<td>{$vo.phone}</td>
-			<td>{$vo.entrytime}</td>
-			<td>{$vo.political} </td>
-			<td>{$vo.topeducation}</td>
-			<td>{$vo.major}</td>
-			<td>{$vo.qq}</td>			
-			<td>{$vo.nation}</td>
-			<td>{$vo.IDnumber}</td>
-			<td>{$vo.matrimonial}</td>
-			<td>{$vo.criticalname}：{$vo.criticalphone}</td>
-			<td>{$vo.nativeplace}</td>
-			<td>{$vo.hobbies}</td>
-			<td>{$vo.nowliveplace}</td>
-			<td>{$vo.worktime}</td>
-			<td>{$vo.trysalary}</td>
+		<notempty name="station">
+		<volist name="station" id="vo">
 			
-			<!-- <td><span>{$vo.last_login_time|time_format}</span></td>
-			<td><span>{:long2ip($vo['last_login_ip'])}</span></td>
-			<td>{$vo.status_text}</td> -->
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.did}" /></td>
+			<td>{$vo.sid} </td>
+			<td>
+			{$vo.stationname}							
+			</td>			
 			<td><eq name="vo.status" value="1">
-				<a href="{:U('User/add?id='.$vo['uid'])}">查看详情</a>
 				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 				<else/>
 				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
 				</eq>
 				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
-                </td>
+             </td>
 		</tr>
+			
 		</volist>
 		<else/>
 		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
