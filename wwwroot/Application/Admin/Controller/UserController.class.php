@@ -262,7 +262,12 @@ class UserController extends AdminController {
         	}else{
         		$find['nv']=false;
         	}
+
         	$this->assign('find',$find);
+            //根据员工的信息查询所属部门及岗位和薪资信息
+            $department=M('department')->where('sid='.$find['did'])->find();
+            $station=M('station')->where('sid='.$find['sid'])->find();
+            
         }        
         
         $this->display();
