@@ -1,7 +1,0 @@
-/**
- * 全局单位换算
- * function
- */
-@function em($px) {
-  @return 1 / $global-size-fn * $px + em;
-}

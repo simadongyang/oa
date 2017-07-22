@@ -6,7 +6,7 @@ var reload = browserSync.reload;//自动刷新
 
 gulp.task('watch', function(){
     browserSync.init({
-        proxy: "http://www:w1.com"
+        proxy: "http://www.w1.com"
     });
 
     watch(config.sass.all, function(){  //监听所有sass
