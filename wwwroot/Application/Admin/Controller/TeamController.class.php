@@ -14,7 +14,7 @@ use User\Api\UserApi;
  * 后台用户控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
-class ApproController extends AdminController {
+class TeamController extends AdminController {
 
     /**
      * 用户管理首页
