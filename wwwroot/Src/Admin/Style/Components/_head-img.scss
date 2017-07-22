@@ -1,0 +1,29 @@
+.head-img{
+    &.min{
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+    }
+    &.medium{
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 4px;
+        background: $head-img-medium-bg;
+        margin: 0px auto;
+        vertical-align: middle;
+        .icons.default{
+            font-size: 30px;
+            vertical-align: middle;
+            color: $head-img-medium-default-color;
+        }
+    }
+    &.max{
+        width: 150px;
+        height: 150px;
+        border-radius: 4px;
+    }
+    &.list{
+        font-size: 50px;
+    }
+}

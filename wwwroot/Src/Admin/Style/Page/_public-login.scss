@@ -1,0 +1,67 @@
+#publicLogin{
+    background: #4f4ab6;
+    .login{
+        width: 440px;
+        height: 550px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -275px;
+        margin-left: -220px;
+        box-sizing: border-box;
+        h2{
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+        }
+        .container{
+            width: 440px;
+            height: 480px;
+            padding: 47px 40px;
+            background: #fff;
+            border-radius: 10px;
+            position: relative;
+            .input{
+                margin-bottom: 16px;
+                width: 100%;
+                input{
+                    width: 100%;
+                    line-height: 48px;
+                    height: 48px;
+                    font-size: 16px;
+                    color: #ccc;
+                    background: #fff;
+                    border-radius: 6px;
+                    border-color: #d0d7dd;
+                }
+            }
+            .vcode{
+                margin-bottom: 34px;
+                img{
+                    width: 100%;
+                    height: 98px;
+                    border: 1px solid #fafdfd;
+                }
+            }
+            .button{
+                height: 50px;
+                line-height: 50px;
+                width: 100%;
+                border-radius: 25px;
+                background: #35a4eb;
+                color: #fff;
+                text-align: center;
+                border: none;
+                outline: inherit;
+                font-size: 18px;
+            }
+            .error{
+                position: absolute;
+                bottom: 15px;
+                left: 40px;
+                color: #e5628f;
+                font-size: 14px;
+            }
+        }
+    }
+}

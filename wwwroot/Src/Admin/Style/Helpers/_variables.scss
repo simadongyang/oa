@@ -1,0 +1,140 @@
+//字体颜色，边框颜色，背景颜色
+
+//全局字体，颜色
+$global-color:#666666 !default;
+$global-a-color:#4f4ab6 !default;
+$global-a-color-hovers:#8a8ad9 !default;
+$global-size:14px !default;
+$global-size-fn:14 !default; //数值同上，用于function em方法计算
+$global-border-color:#d5d7d9; //控件边框色值，如输入框
+
+//header样式
+$header-bg:#5f5ac7;
+$header-color:#fff;
+$header-logo-bg:#4f4ab6;
+$header-user-bg:#4f4ab7;
+
+//侧边栏开始
+$sidebar-bg:#f3f4f9; //背景
+$sidebar-inco-color:#9da7c1; //图标颜色
+$sidebar-inco-color-active:#35a4eb; //激活状态颜色
+$sidebar-name-color:#000000; //大标题颜色
+$sidebar-name-color-active:#35a4eb; //大标题颜色
+$sidebar-text-bg-active:#ffffff;
+$sidebar-text-border-left:#35a4eb;
+$sidebar-text-border:#e1e5f7;
+$sidebar-li-bg-hover:#e0e5f9; //二级标题hover背景颜色
+$sidebar-li-color:#666666; //二级标题字体颜色
+
+/**
+ * 头像样式
+*/
+$head-img-medium-bg:#e5e5e5;
+$head-img-medium-default-color:#ffffff;
+
+/**
+ * main-title
+ *
+*/
+$main-title-h2-color:#35a4eb; //h2标题颜色
+$main-border-bottom-color:#f8f8f8;//底部线条
+
+
+/**
+ * 按钮元素
+*/
+$btn-default-bg:#35a4eb; //默认
+$btn-default-border:#35a4eb;
+$btn-default-color:#ffffff;
+$btn-default--transparent-color:#35a4eb;
+
+$btn-red-bg:#e5628f; //红色
+$btn-red-border:#e5628f;
+$btn-red-color:#ffffff;
+$btn-red--transparent-color:#e5628f;
+
+$btn-purple-bg:#5f5ac7; //紫色
+$btn-purple-border:#5f5ac7;
+$btn-purple-color:#ffffff;
+$btn-purple--transparent-color:#5f5ac7;
+
+$btn-disabled-bg:#dedede;//禁用
+$btn-disabled-border:#dedede;
+$btn-disabled-color:#999999;
+
+/**
+ * 输入框元素
+*/
+$input-border-color:#d5d7d9;
+$input-border-radius:em(4);
+$input-bg:#f7f8fa;
+$input-color:#999999;
+$input-border-color-hover:#999999;
+$input-disabled-color:#cccccc;
+$input-search-color:#cccccc;
+$input-search-icon-color:#999999;
+$input-w-border-hover:#635acc; //表格下100%宽 input border颜色
+$input-w-color:#999999;
+$input-w-color-hover:#333333;
+
+
+/**
+ * 下拉组件默认设置
+ *
+*/
+$dropdown-color:#666;
+$dropdown-bg:#ffffff; //背景色
+$dropdown-border-radius:em(4); //圆角
+$dropdown-border-color:#d5d7d9; //边框颜色
+$dropdown-border-hover:#999999; //hover背景色
+$dropdown-menu-border-color:#999999; //menu下拉内容的边框颜色
+$dropdown-menu-bg:#ffffff; //menu下拉内容的边框颜色
+$dropdown-item-bg-hover:#edf0fc; //下拉菜单hover背景色
+$dropdown-multiple-item-bg:#e8e8e8; //多选内容背景色
+$dropdown-multiple-item-radius:em(4); //多选内容背景色
+$dropdown-multiple-item-color:#666666; //多选内容颜色
+
+/**
+ * 表格样式
+*/
+$table-color:#666666;
+$table-border-color:#d5d7d9;
+$table-thead-color:#333333;
+$table-thead-bg:#f7f8fa;
+
+/**
+ * form表单组样式
+*/
+$formg-label-color:#333333;
+
+/**
+ * 信息提示框样式
+*/
+$hint-alert-bg:#84c9f5;
+$hint-alert-color:#ffffff;
+$hint-alert-error-border:#ebeced;
+$hint-alert-error-bg:#ffffff;
+$hint-alert-error-title-color:#333333;
+$hint-alert-error-p-color:#666666;
+
+/**
+ * 分页样式
+*/
+$page-color:#333333;
+$page-active-color:#8a8ad9;
+$page-border:#d5d7d9;
+$page-border-left:#eeeeee;
+$page-border-bottom-active:#8a8ad9;
+
+/**
+ * 日历样式
+*/
+$timeWidget-border-color:#d5d7d9;
+$timeWidget-bg:#fff;
+$timeWidget-tbody:#333;
+$timeWidget-thead:#000;
+$timeWidget-thead-today-bg:#5f5ac7;
+$timeWidget-thead-today:#fff;
+$timeWidget-tbody-active-bg:#5f5ac7;
+$timeWidget-tbody-active:#fff;
+$timeWidget-tbody-link-border:#5f5ac7;

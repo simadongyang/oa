@@ -1,0 +1,10 @@
+#doctorIndex{
+    .toolbar{
+        .ui.dropdown.selection{
+            width: 178px;
+            &:nth-child(5){
+                width: 260px;
+            }
+        }
+    }
+}

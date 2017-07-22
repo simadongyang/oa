@@ -1,0 +1,77 @@
+#publicDiet{
+
+}
+.publicDiet{
+    .scheme-form-info{
+        display: inline-block;
+        margin-bottom: 30px;
+        &:nth-child(2){
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        label{
+            width: auto;
+        }
+        .input{
+            input{
+                width: 230px;
+            }
+        }
+    }
+    .scheme-info{
+        font-size: 14px;
+        th,td{
+            &:nth-child(1){
+                width: 170px;
+            }
+            &:nth-child(2){
+                width: 200px;
+            }
+        }
+        .tables-td{
+            padding: 0px;
+            position: relative;
+        }
+        .diet-frequency-select{
+            width: 80px;
+        }
+        .diet{
+            border: none;
+            tr:first-of-type{
+                td{
+                    border-top: none;
+                }
+            }
+            td{
+                &:last-of-type{
+                    border-right: none;
+                }
+                &:nth-child(1){
+                    width: 199px;
+                }
+                &:nth-child(2){
+                    width: auto;
+                }
+                &.td-p0{
+                    padding: 0px;
+                    textarea{
+                        height: 80px;
+                    }
+                }
+                .diet-start-time-select,.diet-end-time-select{
+                    width: 45%;
+                }
+            }
+        }
+    }
+    .buttom-btn{
+        padding-top: 20px;
+        &::after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    }
+}

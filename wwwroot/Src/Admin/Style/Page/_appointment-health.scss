@@ -1,0 +1,121 @@
+#appointmentHealth{
+    h3{
+        font-size: 18px;
+        color: #000;
+        margin: 20px 0px;
+    }
+    .form-group{
+        label{
+            width: 100px;
+        }
+        .input{
+            input{
+                width: 790px;
+            }
+        }
+        .city{
+            width: 300px;
+        }
+        .site{
+            width:485px;
+        }
+        .start-time,.end-time{
+            width: 389px;
+        }
+        .check{
+            width: 790px;
+        }
+    }
+    .submit{
+        width: 890px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .img-list{
+        padding: 20px 20px 10px 100px;
+        &:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        li{
+            float: left;
+            margin-left: 10px;
+            position: relative;
+            height: 88px;
+            &:first-of-type{
+                margin-left: 0px;
+            }
+            &.li{
+                .dicom{
+                    width: 88px;
+                    height: 88px;
+                    line-height: 88px;
+                    text-align: center;
+                    background-color: #dfe2e2;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .img{
+                    img{
+                        width: 88px;
+                        height: 88px;
+                        border-radius: 5px;
+                    }
+                }
+                .delete{
+                    position: absolute;
+                    top: 5px;
+                    right: 8px;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+            &.add-img{
+                width: 36px;
+                div{
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 5px;
+                    text-align: center;
+                    background-color: #dfe2e2;
+                    line-height: 36px;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -18px;
+                    cursor: pointer;
+                    span{
+                        font-size: 20px;
+                        margin-left: -5px;
+                    }
+                }
+            }
+            &.add-dicom{
+                span{
+                    padding: 0px 14px;
+                    height: 36px;
+                    border-radius: 5px;
+                    text-align: center;
+                    background-color: #dfe2e2;
+                    line-height: 36px;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -18px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .indicators{
+        width: 893px;
+        .yichang{
+            color: red;
+        }
+        .zhengchang{
+            color: #5f4fca;
+            font-style: normal;
+        }
+    }
+}

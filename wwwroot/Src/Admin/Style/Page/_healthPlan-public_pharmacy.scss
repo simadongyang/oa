@@ -1,0 +1,134 @@
+#publicPharmacy{
+}
+.publicPharmacy{
+    .scheme-form-info{
+        display: inline-block;
+        &:nth-child(2){
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        &:nth-child(4){
+            margin-top: 25px;
+            margin-bottom: 30px;
+            .dropdown{
+                width: 230px;
+            }
+        }
+        label{
+            width: auto;
+        }
+        .input{
+            input{
+                width: 230px;
+            }
+        }
+    }
+    .scheme-info{
+        width:902px;
+        font-size: 14px;
+        th,td{
+            &:nth-child(1){
+                width: 210px;
+            }
+            &:nth-child(2){
+                width: 180px;
+            }
+            &:nth-child(3){
+                width: 145px;
+            }
+            &:nth-child(4){
+                width: 165px;
+            }
+            &:nth-child(5){
+                width: 200px;
+            }
+        }
+        .tables-td{
+            padding: 0px;
+            position: relative;
+            .delete-drug{
+                position: absolute;
+                right: -40px;
+                top: 16px;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                background: #dfe2e2;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        }
+        .drug{
+            border: none;
+            tr:first-of-type{
+                td{
+                    border-top: none;
+                }
+            }
+            td{
+                &.td-p0{
+                    padding: 0px;
+                    textarea{
+                        height: 50px;
+                    }
+                }
+                &:last-of-type{
+                    border-right: none;
+                }
+            }
+            .drug-name-select{
+                width: 90%;
+            }
+            .drug-day-select,.drug-frequency-select{
+                width: 35%;
+            }
+            .drug-way-select{
+                width: 90%;
+            }
+            .drug-measure-select,.drug-unit-select{
+                width: 40%;
+                input{
+                    width: 100%;
+                    margin-top: -2px;
+                }
+            }
+            .drug-start-time-select,.drug-end-time-select{
+                width: 45%;
+            }
+            .drug-time{
+                border: none;
+                tr:first-of-type{
+                    td{
+                        border-top: none;
+                    }
+                }
+                td{
+                    border-right: none;
+                    &:nth-child(1){
+                        width: 165px;
+                        border-top: 1px solid #d5d7d9;
+                    }
+                    &:nth-child(2){
+                        width: 200px;
+                        border-top: 1px solid #d5d7d9;
+                    }
+                }
+            }
+        }
+        .dropdown{
+            width: auto;
+        }
+    }
+    .buttom-btn{
+        padding-right: 40px;
+        padding-top: 20px;
+        &::after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    }
+}

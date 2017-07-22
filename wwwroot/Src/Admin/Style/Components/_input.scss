@@ -1,0 +1,130 @@
+.input{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    input{
+        height: 36px;
+        width: 260px;
+        vertical-align: middle;
+        border: 1px solid $input-border-color;
+        border-radius: $input-border-radius;
+        background: $input-bg;
+        color: $input-color;
+        padding: 0px 10px;
+        &:focus,&:active {
+            border-color: $input-border-color-hover;
+            box-shadow:none;
+            outline:none;
+        }
+    }
+    textarea{
+        height: 70px;
+        width: 260px;
+        vertical-align: middle;
+        border: 1px solid $input-border-color;
+        border-radius: $input-border-radius;
+        background: $input-bg;
+        color: $input-color;
+        padding: 5px 10px;
+        resize: none;
+        &:focus,&:active {
+            border-color: $input-border-color-hover;
+            box-shadow:none;
+            outline:none;
+        }
+    }
+    .textarea{
+        min-height: 70px;
+        width: 260px;
+        vertical-align: middle;
+        border: 1px solid $input-border-color;
+        border-radius: $input-border-radius;
+        background: $input-bg;
+        color: $input-color;
+        padding: 5px 10px;
+        resize: none;
+        &:focus,&:active {
+            border-color: $input-border-color-hover;
+            box-shadow:none;
+            outline:none;
+        }
+    }
+    .text-unit{
+        color: #333333;
+        margin-left: 4px;
+    }
+    &.w{
+        width: 100%;
+        input{
+            width: calc(100% + 2px);
+            height: 40px;
+            border-radius: 0px;
+            margin: -1px;
+            background: none;
+            text-align: center;
+            color: $input-w-color;
+            &:focus,&:active {
+                position: relative;
+                z-index: 1;
+                color: $input-w-color-hover;
+                border-color: $input-w-border-hover;
+                box-shadow:none;
+                outline:none;
+            }
+        }
+        textarea{
+            width: calc(100% + 2px);
+            height: 40px;
+            border-radius: 0px;
+            margin: -1px;
+            background: none;
+            color: $input-w-color;
+            &:focus,&:active {
+                position: relative;
+                z-index: 1;
+                color: $input-w-color-hover;
+                border-color: $input-w-border-hover;
+                box-shadow:none;
+                outline:none;
+            }
+        }
+        .textarea{
+            width: calc(100% + 2px);
+            min-height: 40px;
+            border-radius: 0px;
+            margin: -1px;
+            background: none;
+            color: $input-w-color;
+            &:focus,&:active {
+                position: relative;
+                z-index: 1;
+                color: $input-w-color-hover;
+                border-color: $input-w-border-hover;
+                box-shadow:none;
+                outline:none;
+            }
+        }
+    }
+    &.right{
+        float: right;
+    }
+    &.disabled{
+        pointer-events:none;
+        color: $input-disabled-color;
+    }
+    &.icons{
+        input{
+            padding-right: 35px;
+        }
+    }
+
+    //日历
+    .calendar{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -8px;
+        font-size: 20px;
+        pointer-events:none;
+    }
+}

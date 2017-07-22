@@ -1,0 +1,129 @@
+.sidebar{
+    width: 188px;
+    background: $sidebar-bg;
+    position: fixed;
+    top: 66px;
+    left: 0px;
+    bottom: 0px;
+    overflow-y: scroll;
+    .nav{
+        .text{
+            height: 60px;
+            line-height: 60px;
+            padding: 0px 15px;
+            cursor: pointer;
+            display: block;
+            .nav-icon{
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                .iconfont{
+                    font-size: 20px;
+                    color: $sidebar-inco-color;
+                    margin-top: -20px;
+                    &.icon-huiyuan{
+                        margin-left: 3px;
+                    }
+                    &.icon-yuyueshijian{
+                        margin-left: 4px;
+                    }
+                    &.icon-wodeyisheng{
+                        margin-left: 4px;
+                    }
+                    &.icon-kehuguanli{
+                        margin-left: 3px;
+                    }
+                    &.icon-kucunguanli{
+                        font-size: 18px;
+                        margin-left: 3px;
+                        margin-top: -22px;
+                    }
+                    &.icon-yonghu{
+                        font-size: 38px;
+                        margin-left: -7px;
+                        margin-top: -22px;
+                    }
+                    &.icon-cshy-orders{
+                        font-size: 26px;
+                    }
+                    &.icon-xitong{
+                        font-size: 18px;
+                        margin-left: 6px;
+                    }
+                    &.icon-iconzhimafenjieduxiajiang{
+                        font-size: 19px;
+                        margin-left: 6px;
+                    }
+                }
+            }
+            .name{
+                margin-left: 5px;
+                font-size: 16px;
+                color: $sidebar-name-color;
+            }
+            .jiantou{
+                display: none;
+            }
+            &.active{
+                border: 1px solid $sidebar-text-border;
+                border-left: 3px solid $sidebar-text-border-left;
+                background: $sidebar-text-bg-active;
+                padding-left: 12px;
+                span{
+                    color: $sidebar-name-color-active;
+                    .iconfont{
+                        color:$sidebar-name-color-active;
+                    }
+                }
+                .jiantou{
+                    display: inline-block;
+                    font-size: 25px;
+                    float: right;
+                    vertical-align: middle;
+                    transform:rotate(180deg);
+                    margin-top: 22px;
+                    color: $sidebar-name-color-active;
+                }
+            }
+        }
+        ul{
+            display: none;
+            &.active{
+                display: block;
+            }
+            li{
+                line-height: 36px;
+                a{
+                    display: block;
+                    padding-left: 50px;
+                    font-size: 12px;
+                    color: $sidebar-li-color;
+                    &:hover{
+                        background: $sidebar-li-bg-hover;
+                    }
+                    .yuandian{
+                        background: red;
+                        border-radius: 100px;
+                        color: #fff;
+                        font-size: 12px;
+                        display: inline-block;
+                        -webkit-transform: scale(0.8);
+                        transform: scale(0.8);
+                        font-style: normal;
+                        margin-left: 2px;
+                        margin-top: 9px;
+                        position: absolute;
+                        min-width: 18px;
+                        height: 18px;
+                        line-height: 18px;
+                        text-align: center;
+                    }
+                }
+                &.active{
+                    background: $sidebar-li-bg-hover;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+@mixin button-variant($color, $background, $border , $transparent-color) {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+    &:hover {
+        color: $color;
+        background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+    }
+    &:active,
+    &.active {
+        color: $color;
+        background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+    }
+    &.transparent{
+        color: $transparent-color;
+        background-color: transparent;
+        &:hover {
+            color: $color;
+            background-color: darken($background, 10%);
+            border-color: darken($border, 12%);
+        }
+        &:active,
+        &.active {
+            color: $color;
+            background-color: darken($background, 10%);
+            border-color: darken($border, 12%);
+        }
+    }
+    &.dis{
+        color: $btn-disabled-color;
+        background-color: $btn-disabled-bg;
+        border-color:$btn-disabled-border;
+        &:hover {
+            color: $btn-disabled-color;
+            background-color: $btn-disabled-bg;
+            border-color:$btn-disabled-border;
+        }
+        &:active,
+        &.active {
+            color: $btn-disabled-color;
+            background-color: $btn-disabled-bg;
+            border-color:$btn-disabled-border;
+        }
+    }
+    // &.disabled{
+    //     color: $btn-disabled-color;
+    //     background-color: $btn-disabled-bg;
+    //     border-color:$btn-disabled-border;
+    //     pointer-events:none;
+    // }
+    &.w{
+        width: 140px;
+        padding: 0px;
+    }
+    &.min{
+        width: auto;
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 20px;
+    }
+}
+
+.btn{
+    display: inline-block;
+    height: 36px;
+    padding: 0px 30px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 14px;
+    color: $btn-default-color;
+    border-radius: 18px;
+    background: $btn-default-bg;
+    border: 1px solid $btn-default-bg;
+    cursor: pointer;
+    outline:none;
+    &.right{
+        float: right;
+    }
+    &.default{
+        @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border , $btn-default--transparent-color);
+    }
+    &.red{
+        @include button-variant($btn-red-color, $btn-red-bg, $btn-red-border , $btn-red--transparent-color);
+    }
+    &.purple{
+        @include button-variant($btn-purple-color, $btn-purple-bg, $btn-purple-border , $btn-purple--transparent-color);
+    }
+}

@@ -1,0 +1,73 @@
+#appointmentOutpatient{
+    h3{
+        font-size: 18px;
+        color: #000;
+        margin: 20px 0px;
+    }
+    .form-group{
+        label{
+            width: 100px;
+        }
+        .input{
+            input{
+                width: 790px;
+            }
+        }
+        .city{
+            width: 300px;
+        }
+        .site{
+            width:485px;
+        }
+        .start-time,.end-time{
+            width: 389px;
+        }
+        .department,.doctor{
+            width: 790px;
+        }
+    }
+    .submit{
+        width: 890px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .form-group-table{
+        display: flex;
+        width: 900px;
+        .label{
+            line-height: 40px;
+            width: 105px;
+            padding-right: 7px;
+            text-align: right;
+            flex-shrink:0;
+        }
+        .tables{
+            width: 790px;
+            display: inline-table;
+            thead th{
+                text-align: left;
+                font-size: 14px;
+            }
+        }
+        .table-drug{
+            td{
+                &:nth-child(1){
+                    width: 300px;
+                }
+                &:nth-child(2){
+                    width: 100px;
+                }
+                &:nth-child(3){
+                    width: 150px;
+                }
+                &:nth-child(4){
+                    width: 100px;
+                }
+                &:nth-child(5){
+                    width: 140px;
+                }
+            }
+        }
+
+    }
+}

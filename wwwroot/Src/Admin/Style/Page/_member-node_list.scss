@@ -1,0 +1,61 @@
+#nodeList{
+    .form-group{
+        width: 600px;
+    }
+    .textarea1{
+        width: 600px;
+        height: 135px;
+    }
+    h3{
+        font-size: 18px;
+        color: #3682f7;
+        margin-left: -30px;
+        border-bottom: 1px solid #d5d7d9;
+        padding-left: 30px;
+        padding-bottom: 15px;
+        width: 630px;
+        font-weight: inherit;
+    }
+    .node-list{
+        width: 600px;
+        .list{
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #d5d7d9;
+            .text{
+                .time{
+                    font-size: 14px;
+                    color: #4c4c4c;
+                    margin-bottom: 20px;
+                }
+                p{
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #333333;
+                    margin-bottom: 8px;
+                }
+                small{
+                    color: #4b4b4b;
+                    height: 36px;
+                    line-height: 36px;
+                    display: block;
+                }
+            }   
+        }
+        .edit{
+            .time{
+                margin-bottom: 20px;
+                small{
+                    float: right;
+                    line-height: 36px;
+                }
+            }
+            .submit{
+                margin-top: 20px;
+                .btn{
+                    margin-left: 20px;
+                }
+            }   
+        }
+    }
+}

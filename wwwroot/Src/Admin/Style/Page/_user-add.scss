@@ -1,0 +1,38 @@
+#userAdd{
+    .form-group{
+        label{
+            width: em(75);
+            margin-right: em(5);
+        }
+    }
+    .img-up-activate{
+        position: absolute;
+        top: 80px;
+        left: 400px;
+    }
+    .submit{
+        width: em(345);
+        margin-top: em(40);
+        text-align: right;
+    }
+    .client-list{
+        width: em(260);
+        border: 1px solid #d5d7d9;
+        padding: 3px;
+        display: inline-block;
+        border-radius: 4px;
+        min-height: 36px;
+        vertical-align: middle;
+        span{
+            display: inline-block;
+            padding: 3px 5px;
+            margin: 2px 3px;
+            border-radius: 4px;
+            background: #e8e8e8;
+            &:last-of-type{
+                background-color: inherit;
+                color: #e56287;
+            }
+        }
+    }
+}
