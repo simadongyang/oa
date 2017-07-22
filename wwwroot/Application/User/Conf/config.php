@@ -15,5 +15,5 @@
 define('UC_APP_ID', 1); //应用ID
 define('UC_API_TYPE', 'Model'); //可选值 Model / Service
 define('UC_AUTH_KEY', '&^0UfMQou_q[pK<G%({|>6xD#ZNwRJ.9"stk5Ov@'); //加密KEY
-define('UC_DB_DSN', 'mysqli://root:@127.0.0.1:3306/oa'); // 数据库连接，使用Model方式调用API必须配置此项
+define('UC_DB_DSN', 'mysqli://root:jp@)!&@47.94.43.168:3306/oa'); // 数据库连接，使用Model方式调用API必须配置此项
 define('UC_TABLE_PREFIX', 'onethink_'); // 数据表前缀，使用Model方式调用API必须配置此项
