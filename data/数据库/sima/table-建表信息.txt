@@ -1,0 +1,42 @@
+create table if not exists onethink_project(
+
+id int primary key auto_increment ,
+
+name varchar(255) not null comment '项目名称',
+
+city  varchar(255) not null comment '所属地区',
+
+h_name varchar(255) not null comment '医院名称',
+
+depar  varchar(255) not null comment '科室',
+
+charge varchar(255) not null comment '项目主管',
+
+is_delete   tinyint(1) default 0 comment '0正常1删除'
+
+)engine myisam default charset utf8 comment '项目信息表';
+
+create table if not exists onethink_appro(
+
+id int primary key auto_increment,
+
+uid  int  not null comment '发起人id',
+
+aid  int not null comment '审批人id',
+
+name varchar(255) not null comment '审批名称',
+
+reason varchar(255) not null comment '审批原因',
+
+time int not null comment '发起时间',
+
+atime int not null comment '通过时间',
+
+status tinyint(1) default 0 comment '0待审批1通过-1拒绝',
+
+instr text comment '批示',
+
+is_delete tinyint(1) default 0 comment '0正常1删除'
+
+)engine myisam default charset utf8 comment '审批表';
+
