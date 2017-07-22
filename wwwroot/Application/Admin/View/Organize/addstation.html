@@ -13,17 +13,17 @@
             	<option class="child" value="{$vo.did}">{$vo.dname}</option>
             	</volist>
             </select>
-            <select name='did'>            	
-            	<volist name="department" id="vo">
-            	<option value="{$vo.did}">{$vo.dname}</option>
-            	</volist>
-            </select>
+            
         </div>   
         <div class="form-item">
             <label class="item-label">岗位名称</label>
             <div class="controls">
                 <input type="text" class="text input-large" name="stationname" value="">
             </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">是否为普通员工岗位</label>
+            <input type="radio"  name="isstaff" value="0" >是 　　<input type="radio"  name="isstaff" value="1">否    
         </div>
         
         <div class="form-item">
@@ -37,11 +37,6 @@
     <script type="text/javascript">
         //导航高亮
         highlight_subnav('{:U('User/index')}');
-        $(function(){
-        	$('.child').click(function(){
-        		var dpid=$(this).val();
-        		alert(dpid);
-        		})
-        })
+        
     </script>
 </block>

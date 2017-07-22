@@ -11,8 +11,8 @@
         <div class="form-item">
         	<div>
 	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}">
-	        	<label></label><input type="hidden" class="text input-large" name="password" value="123456">
-	            <label></label><input type="hidden" class="text input-large" name="repassword" value="123456">
+	        	<input type="hidden" class="text input-large" name="password" value="123456">
+	            <input type="hidden" class="text input-large" name="repassword" value="123456">
 	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}">
             </div>
             <div>
@@ -34,7 +34,7 @@
             <div>
 	            <label>身份证号：</label><input type="text" class="text" name="IDnumber" value="{$find.IDnumber}">
 	            <label>专业：</label><input type="text" class="text" name="major" value="{$find.major}">
-            </div>
+            </div>=
             <div>
 	            <label>最高学历：</label><input type="text" class="text" name="topeducation" value="{$find.topeducation}">
 	            <label>民族：</label><input type="text" class="text" name="nation" value="{$find.nation}">
@@ -71,29 +71,36 @@
 	            	</volist>
             	</select>
              <label>所属岗位：</label>
-            	<select name="sid">
+            	<select name="sid" >
 	            	<volist name="station" id="vo">
-	            		<option value="{$vo.sid}">{$vo.stationname}</option>
+	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</option>
 	            	</volist>
             	</select>
-            <div>
-	            <label>所属项目：</label>
-	            	<select name="p1">
-	            	<volist name="project" id="vo"> 
-	            		<option value="{$vo.did}">{$vo.dname}</option>
-	            	</volist>
-	            	</select>
-	             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
+            <div class="project hidd" >
+            	<div val='1'>
+		            <label>所属项目：</label>
+		            	<select name="p0">
+		            	<volist name="project" id="vo"> 
+		            		<option value="{$vo.did}">{$vo.dname}</option>
+		            	</volist>
+		            	</select>
+		             <label>分摊工资：</label><input type="text" class="text" name="ps0"/>
+		             <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>
+	             </div>	             	             
             </div>
+         
+
         </div>
-        <h1>薪资信息</h1><hr>
-        <div class="form-item">             
-            <div>
-	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$find.trysalary}">	            	
-	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$find.completionsalary}"/>
-            </div>
-            <div>
-            	<label>绩效考核：</label><textarea></textarea>
+        <div class="hidd" >
+            <h1>薪资信息</h1><hr>
+            <div class="form-item">             
+                <div>
+    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$find.trysalary}">	            	
+    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$find.completionsalary}"/>
+                </div>
+                <div>
+                	<label>绩效考核：</label><textarea></textarea>
+                </div>
             </div>
         </div>
         
@@ -113,6 +120,47 @@
 <block name="script">
     <script type="text/javascript">
         //导航高亮
-        highlight_subnav('{:U('User/index')}');
-    </script>
+        highlight_subnav('{:U('User/index')}');  
+
+
+                $(function(){
+                    //增减项目
+                    var a;
+                    var html;
+                    var clicknum=0;
+                    var first;
+                    $('.jia').click(function(){
+                        a=$(this).attr('val');
+                        if(a=='+'){
+                            clicknum += 1;                          
+                            html="<div><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
+                                "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
+                             " <label>分摊工资：</label><input type='text' class='text' name='ps1'/>";
+                          
+                            $(this).parents('div').find('.project').append(html);
+                        }
+                        if(a=='-'){
+                            
+                            first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
+                           
+                            if(first!=1){
+                                $(this).parents('div').find('.project').children('div:last-child').remove();    
+                            }                   
+                            
+                        }
+                    })
+                    //如果是非普通员工岗位，人事将无权查看                   
+                   var isst;
+                    $('select[name=sid]').change(function(){
+                        isst=$(this).find("option:selected").attr('isstaff');
+                        if(isst==1){
+                            $('.hidd').hide();
+                        }else{
+                            $('.hidd').show();
+                        }
+                    });
+                    
+
+                })
+  </script>
 </block>

@@ -28,7 +28,8 @@
         <tr>
 		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 		<th class="">岗位id</th>
-		<th class="">岗位名称</th>		
+		<th class="">岗位名称</th>
+		<th class="">是否普通岗</th>		
 		<th class="">操作</th>
 		</tr>
     </thead>
@@ -41,6 +42,9 @@
 			<td>{$vo.sid} </td>
 			<td>
 			{$vo.stationname}							
+			</td>
+			<td>
+			{$vo.isstaff}							
 			</td>			
 			<td><eq name="vo.status" value="1">
 				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
