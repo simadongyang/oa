@@ -779,3 +779,1812 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
+[ 2017-07-22T19:11:44+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.016000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-07-22T19:11:45+08:00 ] 127.0.0.1 /index.php?s=/Admin/Article/mydocument.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Article/mydocument%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 2 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 2 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '内容' ) AND ( `pid` = 2 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_auth_group_access` [ RunTime:0.011000s ]
+SQL: SELECT `extend_id` FROM onethink_auth_group_access g INNER JOIN onethink_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY pid,sort  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.011000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` IN ('0','1','2') ) AND ( `uid` = 1 ) AND ( `pid` = 0 ) ORDER BY update_time desc LIMIT 0,10   [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.017000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_document` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `title` FROM `onethink_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.012000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.067000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:11:51+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.009000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:11:56+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_config` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `onethink_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:11:58+08:00 ] 127.0.0.1 /index.php?s=/Admin/Menu/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Menu/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=75 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`title` FROM `onethink_menu`  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev` FROM `onethink_menu` WHERE ( `pid` = 0 ) ORDER BY sort asc,id asc  [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:17+08:00 ] 127.0.0.1 /index.php?s=/Admin/Menu/del/id/2.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.014000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Menu/del%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: DELETE FROM `onethink_menu` WHERE ( `id` IN ('2') ) [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_action` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_action` WHERE ( `name` = 'update_menu' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_action_log` [ RunTime:0.014000s ]
+SQL: INSERT INTO `onethink_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`create_time`,`remark`) VALUES (10,1,2130706433,'Menu',1500721937,'操作url：/index.php?s=/Admin/Menu/del/id/2.html') [ RunTime:0.014000s ]
+
+[ 2017-07-22T19:12:19+08:00 ] 127.0.0.1 /index.php?s=/Admin/Menu/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Menu/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=75 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`title` FROM `onethink_menu`  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev` FROM `onethink_menu` WHERE ( `pid` = 0 ) ORDER BY sort asc,id asc  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:22+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:23+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_config` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `onethink_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:24+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:25+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.014000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:12:30+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.021000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.015000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:32+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_config` [ RunTime:0.018000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `onethink_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.017000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:12:33+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.014000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.013000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:12:34+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.019000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.015000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:13:34+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=141 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.014000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: aid D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 128 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 129 行.
+NOTIC: [8] Undefined index: time D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 130 行.
+NOTIC: [8] Undefined index: atime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 131 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:13:36+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/wait.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/wait%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=142 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: meta_title D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\b6707fcb29060a05d617055ff2367269.php 第 5 行.
+NOTIC: [8] Undefined variable: _page D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\b6707fcb29060a05d617055ff2367269.php 第 147 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:13:37+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/add.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/add%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=154 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\a54a8eda63e2f542a5fcbb12de89174e.php 第 89 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:13:39+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/index%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=141 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.016000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: aid D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 128 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 129 行.
+NOTIC: [8] Undefined index: time D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 130 行.
+NOTIC: [8] Undefined index: atime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 131 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:13:47+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:13:48+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/add.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.020000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/add%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=146 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.021000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.018000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.014000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: id D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 89 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 97 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 102 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 107 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 112 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 117 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:13:50+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/list.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/list%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=147 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.022000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: meta_title D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\a48b53773e2f919fc97a5c29bd441acd.php 第 5 行.
+NOTIC: [8] Undefined variable: _page D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\a48b53773e2f919fc97a5c29bd441acd.php 第 149 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:13:51+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/add.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/add%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=146 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.017000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: id D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 89 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 97 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 102 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 107 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 112 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\3ce07990352f1109b6a2ae1f29a78872.php 第 117 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:14:17+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500722057 ) AND ( deadline = 0 OR deadline > 1500722057 ) ORDER BY `id` DESC  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.058000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500722057 ) AND ( deadline = 0 OR deadline > 1500722057 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.048000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.045000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:30:58+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.009000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.008000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723058 ) AND ( deadline = 0 OR deadline > 1500723058 ) ORDER BY `id` DESC  [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.040000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723058 ) AND ( deadline = 0 OR deadline > 1500723058 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.009000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.031000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.028000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:31:49+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.018000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723109 ) AND ( deadline = 0 OR deadline > 1500723109 ) ORDER BY `id` DESC  [ RunTime:0.018000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.017000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.074000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.018000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723109 ) AND ( deadline = 0 OR deadline > 1500723109 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.017000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.056000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.053000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:32:08+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/index.html
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723128 ) AND ( deadline = 0 OR deadline > 1500723128 ) ORDER BY `id` DESC  [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.065000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723128 ) AND ( deadline = 0 OR deadline > 1500723128 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.046000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.044000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:32:14+08:00 ] 127.0.0.1 /index.php?s=/admin/Index/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 1 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 1 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `onethink_addons` [ RunTime:0.010000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.018000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_action_log` [ RunTime:0.009000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_action_log` LIMIT 1   [ RunTime:0.030000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.010000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_document` LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.011000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_category` LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_model` [ RunTime:0.010000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_model` LIMIT 1   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.153000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run SiteStat [ RunTime:0.152000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.260000s ]
+SQL: select version() as v; [ RunTime:0.009000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.104000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.115000s ]
+INFO: Run SystemInfo [ RunTime:0.115000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.280000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.125000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.127000s ]
+INFO: Run DevTeam [ RunTime:0.012000s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.279000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.125000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.127000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:32:16+08:00 ] 127.0.0.1 /index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.023000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=143 ) LIMIT 1   [ RunTime:0.048000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 143 )  [ RunTime:0.027000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 143 ) AND ( `hide` = 0 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的项目' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.034000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 143 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.015000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\54987056b783d0941793fefa50915f61.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:32:19+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:32:22+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/add.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/add%' ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=154 ) LIMIT 1   [ RunTime:0.023000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\a54a8eda63e2f542a5fcbb12de89174e.php 第 89 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-07-22T19:33:31+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/index%' ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=141 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.012000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: aid D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 128 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 129 行.
+NOTIC: [8] Undefined index: time D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 130 行.
+NOTIC: [8] Undefined index: atime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 131 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:33:36+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/wait.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/wait%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=142 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: meta_title D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\b6707fcb29060a05d617055ff2367269.php 第 5 行.
+NOTIC: [8] Undefined variable: _page D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\b6707fcb29060a05d617055ff2367269.php 第 147 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:33:41+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/index%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=141 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.026000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.017000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: aid D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 128 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 129 行.
+NOTIC: [8] Undefined index: time D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 130 行.
+NOTIC: [8] Undefined index: atime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 131 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:33:51+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.009000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.008000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.009000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:33:52+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/add.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: id D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 89 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 95 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 98 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 101 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 101 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 102 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 105 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 106 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 109 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 110 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 113 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 114 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 117 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 118 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 122 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 132 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 135 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 136 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 139 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 140 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 144 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 168 行.
+NOTIC: [8] Undefined variable: find D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 169 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:34:04+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.019000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.018000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.017000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.017000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:34:05+08:00 ] 127.0.0.1 /index.php?s=/Admin/Mine/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Mine/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=141 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.014000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.020000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: aid D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 128 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 129 行.
+NOTIC: [8] Undefined index: time D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 130 行.
+NOTIC: [8] Undefined index: atime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\41770d95bbb76781f72a771d9a998533.php 第 131 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:34:09+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.009000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:34:12+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.011000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:34:16+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/add/id/1.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.008000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_department` [ RunTime:0.009000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.009000s ]
+SQL: SELECT * FROM `onethink_department`  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_station` [ RunTime:0.013000s ]
+SQL: SELECT * FROM `onethink_station`  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `onethink_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 95 行.
+NOTIC: [8] Undefined index: nan D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 101 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 102 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 106 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 109 行.
+NOTIC: [8] Undefined index: username D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 113 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 114 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 117 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 118 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 122 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 132 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 135 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 136 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 139 行.
+NOTIC: [8] Undefined index: trydate D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 140 行.
+NOTIC: [8] Undefined index: completiontime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 144 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 168 行.
+NOTIC: [8] Undefined index: completionsalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 169 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:42:19+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723739 ) AND ( deadline = 0 OR deadline > 1500723739 ) ORDER BY `id` DESC  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.009000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.046000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723739 ) AND ( deadline = 0 OR deadline > 1500723739 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.010000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.034000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.032000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-22T19:42:50+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723770 ) AND ( deadline = 0 OR deadline > 1500723770 ) ORDER BY `id` DESC  [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.065000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723770 ) AND ( deadline = 0 OR deadline > 1500723770 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.015000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.049000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.046000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:42:51+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723771 ) AND ( deadline = 0 OR deadline > 1500723771 ) ORDER BY `id` DESC  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.059000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723771 ) AND ( deadline = 0 OR deadline > 1500723771 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.014000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.044000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.041000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:42:51+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1500723771 ) AND ( deadline = 0 OR deadline > 1500723771 ) ORDER BY `id` DESC  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `onethink_channel` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `onethink_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.046000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `onethink_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `onethink_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status` FROM `onethink_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` = 2 ) AND ( `create_time` < 1500723771 ) AND ( deadline = 0 OR deadline > 1500723771 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.011000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.035000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.032000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:45:50+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 1 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 1 ) AND ( `hide` = 0 )  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `onethink_addons` [ RunTime:0.011000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_action_log` [ RunTime:0.016000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_action_log` LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `onethink_document` [ RunTime:0.017000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_document` LIMIT 1   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `onethink_category` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_category` LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_model` [ RunTime:0.012000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_model` LIMIT 1   [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.159000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run SiteStat [ RunTime:0.158000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.013000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.330000s ]
+SQL: select version() as v; [ RunTime:0.012000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.169000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.183000s ]
+INFO: Run SystemInfo [ RunTime:0.183000s ]
+SQL: SELECT `config` FROM `onethink_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.356000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.195000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.197000s ]
+INFO: Run DevTeam [ RunTime:0.014000s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.355000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.195000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.197000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:45:53+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 16 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.016000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:45:54+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.023000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 68 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `onethink_config` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `onethink_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-22T19:45:55+08:00 ] 127.0.0.1 /index.php?s=/Admin/Appro/index.html
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `onethink_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id` FROM `onethink_menu` WHERE ( url like '%Appro/index%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_menu` [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `onethink_menu` WHERE ( id=125 ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT DISTINCT  `group` FROM `onethink_menu` WHERE ( pid = 125 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`url` FROM `onethink_menu` WHERE ( `pid` = 125 ) AND ( `hide` = 0 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `onethink_menu` WHERE ( `group` = '我的' ) AND ( `pid` = 125 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `onethink_member` [ RunTime:0.010000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `onethink_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: realname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 140 行.
+NOTIC: [8] Undefined index: phone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 143 行.
+NOTIC: [8] Undefined index: entrytime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 144 行.
+NOTIC: [8] Undefined index: political D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 145 行.
+NOTIC: [8] Undefined index: topeducation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 146 行.
+NOTIC: [8] Undefined index: major D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 147 行.
+NOTIC: [8] Undefined index: nation D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 149 行.
+NOTIC: [8] Undefined index: IDnumber D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 150 行.
+NOTIC: [8] Undefined index: matrimonial D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 151 行.
+NOTIC: [8] Undefined index: criticalname D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: criticalphone D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 152 行.
+NOTIC: [8] Undefined index: nativeplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 153 行.
+NOTIC: [8] Undefined index: hobbies D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 154 行.
+NOTIC: [8] Undefined index: nowliveplace D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 155 行.
+NOTIC: [8] Undefined index: worktime D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 156 行.
+NOTIC: [8] Undefined index: trysalary D:\phpStudy\WWW\ganen\oa\wwwroot\Runtime\Cache\Admin\17e656a79b68ccb456b4590473af9f41.php 第 157 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
