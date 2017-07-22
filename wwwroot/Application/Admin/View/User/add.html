@@ -2,28 +2,102 @@
 
 <block name="body">
     <div class="main-title">
+    <if condition="$Think.get.id eq ''">    
         <h2>新增用户</h2>
+    </if>
     </div>
-    <form action="{:U()}" method="post" class="form-horizontal">
+    <h1>基本信息</h1><hr>
+    <form action="{:U()}" method="post" class="form-horizontal">    
         <div class="form-item">
-            <label class="item-label">用户名<span class="check-tips">（用户名会作为默认的昵称）</span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="username" value="">
+        	<div>
+	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}">
+	        	<label></label><input type="hidden" class="text input-large" name="password" value="123456">
+	            <label></label><input type="hidden" class="text input-large" name="repassword" value="123456">
+	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}">
+            </div>
+            <div>
+	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" checked="{$find.nan}">男 　　<input type="radio"  name="sex" value="2" checked='{$find.nv}'>女　　　
+	 　　　　　　  <label>联系电话：</label><input type="text" class="text" name="phone" value="{$find.phone}">
+            </div>
+            <div>
+	            <label>QQ号：</label><input type="text" class="text" name="qq" value="{$find.qq}">
+	            <label>紧急联系人姓名：</label><input type="text" class="text" name="criticalname" value="{$find.criticalname}">
+            </div>
+            <div>
+	            <label>紧急联系人电话：</label><input type="text" class="text" name="criticalphone" value="{$find.criticalphone}">
+	            <label>出生日期：</label><input type="text" class="text" name="birthday" value="{$find.birthday}">
+            </div>
+            <div>
+	            <label>年龄：</label><input type="text" class="text" name="username" value="{$find.username}">
+	            <label>政治面貌：</label><input type="text" class="text" name="political" value="{$find.political}">
+            </div>
+            <div>
+	            <label>身份证号：</label><input type="text" class="text" name="IDnumber" value="{$find.IDnumber}">
+	            <label>专业：</label><input type="text" class="text" name="major" value="{$find.major}">
+            </div>
+            <div>
+	            <label>最高学历：</label><input type="text" class="text" name="topeducation" value="{$find.topeducation}">
+	            <label>民族：</label><input type="text" class="text" name="nation" value="{$find.nation}">
+            </div>
+            <div>
+	            <label>婚姻状况：</label>
+	            	<select name="matrimonial">
+	            		<option value="未婚">未婚</option>
+	            		<option value="已婚">已婚</option>
+	            		<option value="离异">离异</option>
+	            		<option value="丧偶">丧偶</option>
+	            	</select>
+	            <label>籍贯：</label><input type="text" class="text" name="nativeplace" value="{$find.nativeplace}">
+            </div>
+            <div>
+	            <label>现居地址：</label><input type="text" class="text" name="nowliveplace" value="{$find.nowliveplace}">
+	            <label>爱好、特长：</label><input type="text" class="text" name="hobbies" value="{$find.hobbies}">
+            </div>
+            <div>
+	            <label>入职时间：</label><input type="text" class="text" name="entrytime" value="{$find.entrytime}">
+	            <label>试用期：</label><input type="text" class="text" name="trydate" value="{$find.trydate}">
+            </div>
+            <div>
+	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是">正式 　　<input type="radio"  name="iscompletion" value="否">试用　　　
+	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
             </div>
         </div>
+        <h1>岗位信息</h1><hr>
         <div class="form-item">
-            <label class="item-label">密码<span class="check-tips">（用户密码不能少于6位）</span></label>
-            <div class="controls">
-                <input type="password" class="text input-large" name="password" value="">
+             <label>所属部门：</label>
+            	<select name="did">
+            		<volist name="department" id="vo">
+	            		<option value="{$vo.did}">{$vo.dname}</option>
+	            	</volist>
+            	</select>
+             <label>所属岗位：</label>
+            	<select name="sid">
+	            	<volist name="station" id="vo">
+	            		<option value="{$vo.sid}">{$vo.stationname}</option>
+	            	</volist>
+            	</select>
+            <div>
+	            <label>所属项目：</label>
+	            	<select name="p1">
+	            	<volist name="project" id="vo"> 
+	            		<option value="{$vo.did}">{$vo.dname}</option>
+	            	</volist>
+	            	</select>
+	             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
             </div>
         </div>
-        <div class="form-item">
-            <label class="item-label">确认密码</label>
-            <div class="controls">
-                <input type="password" class="text input-large" name="repassword" value="">
+        <h1>薪资信息</h1><hr>
+        <div class="form-item">             
+            <div>
+	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$find.trysalary}">	            	
+	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$find.completionsalary}"/>
+            </div>
+            <div>
+            	<label>绩效考核：</label><textarea></textarea>
             </div>
         </div>
-        <div class="form-item">
+        
+        <div class="form-item" style="display:none;">
             <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
             <div class="controls">
                 <input type="text" class="text input-large" name="email" value="">
