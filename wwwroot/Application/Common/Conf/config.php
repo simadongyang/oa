@@ -19,7 +19,7 @@ return array(
     //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
 
     /* 系统数据加密设置 */
-    'DATA_AUTH_KEY' => '&^0UfMQou_q[pK<G%({|>6xD#ZNwRJ.9"stk5Ov@', //默认数据加密KEY
+    'DATA_AUTH_KEY' => 'vAua:l)J-?sWHOX`}!cK>6q=^~,G%oEk8rZnw$5T', //默认数据加密KEY
 
     /* 调试配置 */
     'SHOW_PAGE_TRACE' => true,
