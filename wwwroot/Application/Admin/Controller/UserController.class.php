@@ -252,7 +252,7 @@ class UserController extends AdminController {
         } else {
             $this->meta_title = '新增用户';           
         }
-
+        $this->display();
     }
 
     /*

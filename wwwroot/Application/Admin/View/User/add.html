@@ -135,9 +135,10 @@
                     //增减项目
                     var a;
                     var html;
-                    var clicknum=0;
+                    var clicknum;
                     var first;
                     $('.jia').click(function(){
+                        clicknum=$(this).parents('div').find('.project').children('div').length;
                         a=$(this).attr('val');
                         if(a=='+'){
                             clicknum += 1;                          

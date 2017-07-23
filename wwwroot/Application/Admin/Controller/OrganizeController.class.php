@@ -22,6 +22,8 @@ class OrganizeController extends AdminController {
     public function index(){
     	//所属部门信息显示
       	$department=M('department')->select();
+        
+    
       	$this->assign('department',$department);
       	$this->assign('departmen',$department);
         $this->display();
