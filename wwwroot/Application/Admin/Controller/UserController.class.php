@@ -230,17 +230,7 @@ class UserController extends AdminController {
             	$arr['nickname']=$username;
             	$arr['status']=1;
                 $user = $arr;
-               /* $sa['projectid']='';
-                $sa['projectsalary']='';
-                $sa['salarytotal']=0;
-                foreach($arr as $k=>$v){
-                	if($k%2===0){//查询键值为数字的被2整除的值
-                		$sa['projectsalary'] .= $v.',';
-                		$sa['salarytotal'] += $v;
-                	}elseif($k%2===1){
-                		$sa['prejectid'] .= $k.',';
-                	}
-                }*/
+               
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {

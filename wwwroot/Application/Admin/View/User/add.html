@@ -60,6 +60,7 @@
             <div>
 	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是">正式 　　<input type="radio"  name="iscompletion" value="否">试用　　　
 	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
+                <input type="hidden" name="leixing" value="基本信息">
             </div>
         </div>
         <div class="form-item">
@@ -111,13 +112,8 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="leixing" value="岗位">
         
-        <div class="form-item" style="display:none;">
-            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="email" value="123@qq.comp">
-            </div>
-        </div>
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
