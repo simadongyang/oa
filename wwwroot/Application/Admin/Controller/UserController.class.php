@@ -230,7 +230,7 @@ class UserController extends AdminController {
             	$arr['nickname']=$username;
             	$arr['status']=1;
                 $user = $arr;
-                $sa['projectid']='';
+               /* $sa['projectid']='';
                 $sa['projectsalary']='';
                 $sa['salarytotal']=0;
                 foreach($arr as $k=>$v){
@@ -240,8 +240,8 @@ class UserController extends AdminController {
                 	}elseif($k%2===1){
                 		$sa['prejectid'] .= $k.',';
                 	}
-                }
-                if(!M('Member')->add($user) || M('salarydetail')->add($sa)){
+                }*/
+                if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {
                     $this->success('用户添加成功！',U('index'));
@@ -252,26 +252,102 @@ class UserController extends AdminController {
         } else {
             $this->meta_title = '新增用户';           
         }
-        
-        //如果是查询详情
+
+    }
+
+    /*
+    * 查看员工信息或修改信息
+
+
+    */
+    public function update(){
+        //查看员工基本信息
         $id=I('get.id');
         if($id){
-        	$find=M('Member')->where('uid='.$id)->find();
-        	if($find['sex']==1){
-        		$find['nan']=true;
-        	}else{
-        		$find['nv']=false;
-        	}
+            //查询信息
+            $find=M('Member')->where('uid='.$id)->find();
+            //显示性别
+            if($find['sex']==1){
+                $find['nan']='checked';
+            }else{
+                $find['nv']='checked';
+            }
+            //计算年龄
+            $find['age']=date('Y-m-d')-$find['birthday'];
+            //显示是否转正
+            if($find['iscompletion']=='是'){
+                $find['shi']='checked';
+            }else{
+                $find['fou']='checked';
+            }
 
-        	$this->assign('find',$find);
-            //根据员工的信息查询所属部门及岗位和薪资信息
-            $department=M('department')->where('sid='.$find['did'])->find();
-            $station=M('station')->where('sid='.$find['sid'])->find();
-            
-        }        
+            $this->assign('find',$find);           
+        } 
+
         
+        if(IS_POST){
+            $arr=I('post.');
+            //编辑员工基本信息
+            if($arr['leixing']=='基本信息'){               
+                $updat=M('Member')->where('uid='.$arr['gonghao'])->save($arr); 
+                if($updat){
+                    $this->success('用户编辑成功！',U('index'));                    
+                } else {
+                    $this->error('用户编辑失败！',U('update?id='.$arr['gonghao']));
+                } 
+            }           
+
+        } 
+
+
+
+        //显示员工的岗位及薪资信息
+        $id=I('get.id');
+        //显示所属部门信息
+        $department=M('department')->select();
+        $this->assign('department',$department);
+        
+        //显示项目信息
+        $department=M('department')->select();
+        $this->assign('project',$department);
+        
+        //显示岗位信息
+        $station=M('station')->select();
+        $this->assign('station',$station);
+
+        //查询员工岗位信息等
+        $where=array('uid'=>$id,'status'=>'是');
+        $sel=M('dss')->where($where)->select();
+        
+
+        $this->assign('sel',$sel);
+
+        if(IS_POST){
+            $arr=I('post.');
+            //编辑员工的岗位、薪资等信息
+            if($arr['leixing']=='岗位'){
+                //获取提交数组的个数并判断有几个项目
+               $num=(count($arr)-5)/2;
+               for($i=1;$i<=$num;$i++){
+                    $newarr[]['did']=$arr['did'];
+                    $newarr[]['sid']=$arr['sid'];
+                    $newarr[]['projectid']= $arr['p'.$i];
+                    $newarr[]['projectsalary']=$arr['ps'.$i];
+               }
+               foreach($newarr as $v){
+                    
+               }
+
+                M('dss')->add($arr);
+            }
+        }
+
+
+
+
         $this->display();
     }
+
 
     /**
      * 获取用户注册错误信息

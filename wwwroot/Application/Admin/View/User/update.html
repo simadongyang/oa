@@ -1,22 +1,18 @@
 <extend name="Public/base"/>
 
 <block name="body">
-    <div class="main-title">
-      
-        <h2>新增用户</h2>
     
-    </div>
     <h1>基本信息</h1><hr>
     <form action="{:U()}" method="post" class="form-horizontal">    
         <div class="form-item">
         	<div>
-	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}">
+	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}" >
 	        	<input type="hidden" class="text input-large" name="password" value="123456">
 	            <input type="hidden" class="text input-large" name="repassword" value="123456">
-	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}">
+	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}" readonly>
             </div>
             <div>
-	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" checked="{$find.nan}">男 　　<input type="radio"  name="sex" value="2" checked='{$find.nv}'>女　　　
+	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" {$find.nan}>男 　　<input type="radio"  name="sex" value="2" {$find.nv}>女　　　
 	 　　　　　　  <label>联系电话：</label><input type="text" class="text" name="phone" value="{$find.phone}">
             </div>
             <div>
@@ -42,10 +38,10 @@
             <div>
 	            <label>婚姻状况：</label>
 	            	<select name="matrimonial">
-	            		<option value="未婚">未婚</option>
-	            		<option value="已婚">已婚</option>
-	            		<option value="离异">离异</option>
-	            		<option value="丧偶">丧偶</option>
+	            		<option value="未婚" <if condition="$find.matrimonial eq '未婚'"> selected </if>>未婚</option>
+	            		<option value="已婚" <if condition="$find.matrimonial eq '已婚'"> selected </if>>已婚</option>
+	            		<option value="离异" <if condition="$find.matrimonial eq '离异'"> selected </if>>离异</option>
+	            		<option value="丧偶" <if condition="$find.matrimonial eq '丧偶'"> selected </if>>丧偶</option>
 	            	</select>
 	            <label>籍贯：</label><input type="text" class="text" name="nativeplace" value="{$find.nativeplace}">
             </div>
@@ -58,8 +54,9 @@
 	            <label>试用期：</label><input type="text" class="text" name="trydate" value="{$find.trydate}">
             </div>
             <div>
-	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是">正式 　　<input type="radio"  name="iscompletion" value="否">试用　　　
+	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是" {$find.shi}>正式 　　<input type="radio"  name="iscompletion" value="否" {$find.fou}>试用　　　
 	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
+                <input type="hidden" name="leixing" value="基本信息">
             </div>
         </div>
         <div class="form-item">
@@ -75,26 +72,33 @@
              <label>所属部门：</label>
             	<select name="did">
             		<volist name="department" id="vo">
-	            		<option value="{$vo.did}">{$vo.dname}</option>
+	            		<option value="{$vo.did}" <if condition="$vo.did eq $sel[0]['did']"> selected </if>>{$vo.dname}</option>
 	            	</volist>
             	</select>
              <label>所属岗位：</label>
             	<select name="sid" >
 	            	<volist name="station" id="vo">
-	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</option>
+	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
 	            	</volist>
             	</select>
             <div class="project hidd" >
-            	<div val='1'>
+                <volist name="sel" id="vo" key="k">
+            	<div val='{$k}'>
+                    <input type="hidden" name="pid" value="{$vo.dssid}">
 		            <label>所属项目：</label>
-		            	<select name="p0">
+		            	<select name="p1">
 		            	<volist name="project" id="vo"> 
-		            		<option value="{$vo.did}">{$vo.dname}</option>
+		            		<option value="{$vo.did}"  <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.dname}</option>
 		            	</volist>
 		            	</select>
-		             <label>分摊工资：</label><input type="text" class="text" name="ps0"/>
+		             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
+
+                     <if condition="$k eq 1">
 		             <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>
-	             </div>	             	             
+                     </if>
+
+	             </div>          
+                 </volist>	             	             
             </div>
          
 
@@ -111,13 +115,8 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="leixing" value="岗位">
         
-        <div class="form-item" style="display:none;">
-            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="email" value="123@qq.comp">
-            </div>
-        </div>
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
@@ -135,7 +134,7 @@
                     //增减项目
                     var a;
                     var html;
-                    var clicknum=0;
+                    var clicknum=1;
                     var first;
                     $('.jia').click(function(){
                         a=$(this).attr('val');
@@ -143,7 +142,7 @@
                             clicknum += 1;                          
                             html="<div><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
                                 "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
-                             " <label>分摊工资：</label><input type='text' class='text' name='ps1'/>";
+                             " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
                             $(this).parents('div').find('.project').append(html);
                         }
