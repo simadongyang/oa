@@ -9,6 +9,8 @@ html,body{
     min-width: 1280px;
     color: #666666;
     font-family:"Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
+    overflow-x: auto;
+    position: relative;
 }
 a{
     text-decoration: none;
