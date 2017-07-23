@@ -28,14 +28,10 @@
 
 						<tr>
 							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.did}" /></td>
-
-						  
-							<td>{$vo.did}</td>
+							<td>{$vo.did} </td>
 							<td>
 								{$vo.dname}
 							</td>
-						  
-
 							<td>
 								<eq name="vo.status" value="1">
 									<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
