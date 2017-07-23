@@ -214,34 +214,85 @@ class UserController extends AdminController {
     	$station=M('station')->select();
     	$this->assign('station',$station);
     	
+        //获取基本信息新增
         if(IS_POST){
         	$arr=I('post.');
-            /* 检测密码 */
-            if($password != $repassword){
-                $this->error('密码和重复密码不一致！');
-            }
-
-            /* 调用注册接口注册用户 */
-            $User   =   new UserApi;
-            $uid    =   $User->register($username, $password, $email);
-            if(0 < $uid){ //注册成功
-            	$arr['realname']=$arr['username'];
-            	$arr['uid']=$uid;
-            	$arr['nickname']=$username;
-            	$arr['status']=1;
-                $user = $arr;
-               
-                if(!M('Member')->add($user)){
-                    $this->error('用户添加失败！');
-                } else {
-                    $this->success('用户添加成功！',U('index'));
+            if($arr['leixing']=='基本信息'){
+                /* 检测密码 */
+                if($password != $repassword){
+                    $this->error('密码和重复密码不一致！');
                 }
-            } else { //注册失败，显示错误信息
-                $this->error($this->showRegError($uid));
+
+                /* 调用注册接口注册用户 */
+                $User   =   new UserApi;
+                $uid    =   $User->register($username, $password, $email);
+                if(0 < $uid){ //注册成功
+                	$arr['realname']=$arr['username'];
+                	$arr['uid']=$uid;
+                	$arr['nickname']=$username;
+                	$arr['status']=1;
+                    $user = $arr;
+                   
+                    if(!M('Member')->add($user)){
+                        $this->error('用户添加失败！');
+                    } else {
+                        $this->success('用户添加成功！',U('index'));
+                    }
+                } else { //注册失败，显示错误信息
+                    $this->error($this->showRegError($uid));
+                }
             }
         } else {
             $this->meta_title = '新增用户';           
         }
+        //获取部门、岗位等信息新增
+        if(IS_POST){
+            $arr=I('post.');
+            if($arr['leixing']=='岗位'){
+                //查询员工的应该有的id
+                $lastid=M('member')->order('uid desc')->find();
+                $arr['uid']=$lastid['uid']+1;
+                //查询该岗位是否为普通岗
+                $find=M('station')->where('sid='.$arr['sid'])->find();
+                if($find['isstaff']==1){
+                    $resl=M('dss')->add($arr);
+                }else{
+                   $num=(count($arr)-30)/2;
+                   $newarr=array();
+                   for($i=1;$i<=$num;$i++){
+                        $k=$i-1;
+                        $newarr[$k]['status']=1;
+                        $newarr[$k]['uid']=$arr['uid'];
+                        $newarr[$k]['did']=$arr['did'];
+                        $newarr[$k]['sid']=$arr['sid'];                        
+                        $newarr[$k]['projectid']= $arr['p'.$i];
+                        $newarr[$k]['projectsalary']=$arr['ps'.$i];                       
+                    }
+                   $countnum=0;
+                   foreach($newarr as $v){                    
+                        
+                        $ra=M('dss')->add($v);
+                        if($ra){
+                             $countnum += 1;                             
+                       } 
+                   }
+                   //添加薪资部分
+                   $salaryone=M('salarychange')->add($arr);
+                   if($countnum==$num && $salaryone){
+                        $resl=true;
+                   }
+                }
+                //判断是否添加成功
+                if($resl){
+                    $this->success('用户添加成功！',U('index'));
+                } else {
+                    $this->error('用户添加失败！');
+                }
+                
+            }
+        }
+
+
         $this->display();
     }
 
@@ -306,15 +357,16 @@ class UserController extends AdminController {
         $this->assign('station',$station);
 
         //查询员工岗位信息等
-        $where=array('uid'=>$id,'status'=>'是');
+        $where=array('uid'=>$id,'status'=>1);
         $sel=M('dss')->where($where)->select();
         foreach($sel as &$v){
             //获取员工岗位名称
             $find=M('department')->where('did='.$v['projectid'])->find();
-            $v['projectname']=$find['dname'];
-
-            
+            $v['projectname']=$find['dname'];            
         }
+        //查询员工薪资
+        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+        $this->assign('salarychange',$salarychange);
 
         $this->assign('sel',$sel);
        
@@ -325,11 +377,11 @@ class UserController extends AdminController {
             //编辑员工的岗位、薪资等信息
             if($arr['leixing']=='岗位'){
                 //获取提交数组的个数并判断有几个项目
-               $num=(count($arr)-30)/3;
+               $num=(count($arr)-31)/3;
                $newarr=array();
                for($i=1;$i<=$num;$i++){
                     $k=$i-1;
-                    $newarr[$k]['status']="是";
+                    $newarr[$k]['status']=1;
                     $newarr[$k]['uid']=$arr['uid'];
                     $newarr[$k]['did']=$arr['did'];
                     $newarr[$k]['sid']=$arr['sid'];
@@ -339,12 +391,12 @@ class UserController extends AdminController {
                     $idarr[$k]=$arr['prid'.$i];//用于判断
                }
                 //获得员工项目原有的id是否还存在，
-               $where=array('uid'=>$arr['uid'],'status'=>'是');
+               $where=array('uid'=>$arr['uid'],'status'=>1);
                $sel=M('dss')->where($where)->select();
                foreach($sel as $val){
                     //如果不存在了说明该项目已经结束
                     if(!in_array($val['dssid'],$idarr)){
-                        M('dss')->where('dssid='.$val['dssid'])->setField('status','否');
+                        M('dss')->where('dssid='.$val['dssid'])->setField('status',0);
                     }                    
                }
                $countnum=0;
@@ -362,8 +414,19 @@ class UserController extends AdminController {
                          }
                    } 
                }
+               //修改薪资部分
+              
+               $where=array('uid'=>$arr['uid']);
+               $salaryone=M('salarychange')->where($where)->order('uid deac')->find();
+
+               if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
+
+               }else{//如果有任何变动都会按新增处理
+                 $result=M('salarychange')->add($arr);
+               }
+              
                //如果$count的值等于项目的个数，说明操作成功
-               if($countnum==$num){
+               if($countnum==$num || $result){
                     $this->success('用户编辑成功！',U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
@@ -372,8 +435,6 @@ class UserController extends AdminController {
                
             }
         }
-
-
 
 
         $this->display();

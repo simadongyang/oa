@@ -116,11 +116,11 @@
             <h1>薪资信息</h1><hr>
             <div class="form-item">             
                 <div>
-    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$sel[0]['trysalary']}">	            	
-    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$sel[0]['completionsalary']}"/>
+    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$salarychange.trysalary}">	            	
+    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$salarychange.completionsalary}"/>
                 </div>
                 <div>
-                	<label>绩效考核：</label><textarea></textarea>
+                	<label>绩效考核：</label><textarea name="jixiao">{$salarychange.jixiao}</textarea>
                 </div>
             </div>
         </div>

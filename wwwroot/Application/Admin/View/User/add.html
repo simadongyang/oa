@@ -85,15 +85,16 @@
 	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</option>
 	            	</volist>
             	</select>
+                
             <div class="project hidd" >
             	<div val='1'>
 		            <label>所属项目：</label>
-		            	<select name="p0">
+		            	<select name="p1">
 		            	<volist name="project" id="vo"> 
 		            		<option value="{$vo.did}">{$vo.dname}</option>
 		            	</volist>
 		            	</select>
-		             <label>分摊工资：</label><input type="text" class="text" name="ps0"/>
+		             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
 		             <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>
 	             </div>	             	             
             </div>
@@ -108,7 +109,7 @@
     	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$find.completionsalary}"/>
                 </div>
                 <div>
-                	<label>绩效考核：</label><textarea></textarea>
+                	<label>绩效考核：</label><textarea name="jixiao"></textarea>
                 </div>
             </div>
         </div>
@@ -140,7 +141,7 @@
                             clicknum += 1;                          
                             html="<div><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
                                 "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
-                             " <label>分摊工资：</label><input type='text' class='text' name='ps1'/>";
+                             " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
                             $(this).parents('div').find('.project').append(html);
                         }
@@ -156,8 +157,10 @@
                     })
                     //如果是非普通员工岗位，人事将无权查看                   
                    var isst;
+                   var val8;
                     $('select[name=sid]').change(function(){
                         isst=$(this).find("option:selected").attr('isstaff');
+                        
                         if(isst==1){
                             $('.hidd').hide();
                         }else{
