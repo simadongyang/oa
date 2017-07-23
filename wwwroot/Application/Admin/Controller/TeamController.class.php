@@ -14,7 +14,7 @@ use User\Api\UserApi;
  * 后台用户控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
-class UserController extends AdminController {
+class TeamController extends AdminController {
 
     /**
      * 用户管理首页
@@ -201,21 +201,21 @@ class UserController extends AdminController {
     }
 
     public function add($username = '', $password = '', $repassword = '', $email = ''){
-    	
-    	//显示所属部门信息
-    	$department=M('department')->select();
-    	$this->assign('department',$department);
-    	
-    	//显示项目信息
-    	$department=M('department')->select();
-    	$this->assign('project',$department);
-    	
-    	//显示岗位信息
-    	$station=M('station')->select();
-    	$this->assign('station',$station);
-    	
+        
+        //显示所属部门信息
+        $department=M('department')->select();
+        $this->assign('department',$department);
+        
+        //显示项目信息
+        $department=M('department')->select();
+        $this->assign('project',$department);
+        
+        //显示岗位信息
+        $station=M('station')->select();
+        $this->assign('station',$station);
+        
         if(IS_POST){
-        	$arr=I('post.');
+            $arr=I('post.');
             /* 检测密码 */
             if($password != $repassword){
                 $this->error('密码和重复密码不一致！');
@@ -225,21 +225,21 @@ class UserController extends AdminController {
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
             if(0 < $uid){ //注册成功
-            	$arr['realname']=$arr['username'];
-            	$arr['uid']=$uid;
-            	$arr['nickname']=$username;
-            	$arr['status']=1;
+                $arr['realname']=$arr['username'];
+                $arr['uid']=$uid;
+                $arr['nickname']=$username;
+                $arr['status']=1;
                 $user = $arr;
                 $sa['projectid']='';
                 $sa['projectsalary']='';
                 $sa['salarytotal']=0;
                 foreach($arr as $k=>$v){
-                	if($k%2===0){//查询键值为数字的被2整除的值
-                		$sa['projectsalary'] .= $v.',';
-                		$sa['salarytotal'] += $v;
-                	}elseif($k%2===1){
-                		$sa['prejectid'] .= $k.',';
-                	}
+                    if($k%2===0){//查询键值为数字的被2整除的值
+                        $sa['projectsalary'] .= $v.',';
+                        $sa['salarytotal'] += $v;
+                    }elseif($k%2===1){
+                        $sa['prejectid'] .= $k.',';
+                    }
                 }
                 if(!M('Member')->add($user) || M('salarydetail')->add($sa)){
                     $this->error('用户添加失败！');
@@ -256,18 +256,13 @@ class UserController extends AdminController {
         //如果是查询详情
         $id=I('get.id');
         if($id){
-        	$find=M('Member')->where('uid='.$id)->find();
-        	if($find['sex']==1){
-        		$find['nan']=true;
-        	}else{
-        		$find['nv']=false;
-        	}
-
-        	$this->assign('find',$find);
-            //根据员工的信息查询所属部门及岗位和薪资信息
-            $department=M('department')->where('sid='.$find['did'])->find();
-            $station=M('station')->where('sid='.$find['sid'])->find();
-            
+            $find=M('Member')->where('uid='.$id)->find();
+            if($find['sex']==1){
+                $find['nan']=true;
+            }else{
+                $find['nv']=false;
+            }
+            $this->assign('find',$find);
         }        
         
         $this->display();

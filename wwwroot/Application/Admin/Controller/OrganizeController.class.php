@@ -44,6 +44,13 @@ class OrganizeController extends AdminController {
     //岗位信息
     public function station(){
     	$station=M('station')->select();
+        foreach($station as &$v){
+            if ($v['isstaff']==1) {
+                $v['isstaff']='否';
+            }else{
+                $v['isstaff']='是';
+            }
+        }
     	$this->assign('station',$station);    	
     	$this->display();
     }
@@ -53,6 +60,7 @@ class OrganizeController extends AdminController {
     	$this->assign('department',$department);
     	
     	$a=I('post.');
+        //var_dump($a);exit;
     	if(!empty($a)){
     		$result=M('station')->add($a);
     		if(!$result){
