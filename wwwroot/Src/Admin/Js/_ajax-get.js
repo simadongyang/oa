@@ -15,15 +15,15 @@ $(function(){
                     }else{
                         updateAlert(data.info,'alert-success');
                     }
-//                  setTimeout(function(){
-//                      if (data.url) {
-//                          location.href=data.url;
-//                      }else if( $(that).hasClass('no-refresh')){
-//                          $('#top-alert').find('button').click();
-//                      }else{
-//                          location.reload();
-//                      }
-//                  },1500);
+                    setTimeout(function(){
+                        if (data.url) {
+                            location.href=data.url;
+                        }else if( $(that).hasClass('no-refresh')){
+                            $('#top-alert').find('button').click();
+                        }else{
+                            location.reload();
+                        }
+                    },1500);
                 }else{
                     updateAlert(data.info);
                     setTimeout(function(){

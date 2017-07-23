@@ -8,7 +8,9 @@ html, body {
   font-size: 100%;
   min-width: 1280px;
   color: #666666;
-  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB"; }
+  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
+  overflow-x: auto;
+  position: relative; }
 
 a {
   text-decoration: none; }
@@ -124,7 +126,14 @@ h3 {
 
 .ui.button {
   font-weight: normal !important;
-  font-size: 12px; }
+  font-size: 14px; }
+
+.ui.table {
+  font-size: 14px; }
+  .ui.table thead th {
+    padding: .8em; }
+  .ui.table tr td {
+    padding: .8em; }
 
 .header {
   position: fixed;
@@ -187,7 +196,8 @@ h3 {
   bottom: 0px;
   width: 200px;
   background: #222d32;
-  padding-top: 30px; }
+  padding-top: 30px;
+  z-index: 1; }
   .sidebar .ui.accordion {
     border: none;
     border-radius: 0px;
