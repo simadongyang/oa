@@ -21,6 +21,8 @@ define ( 'APP_DEBUG', true );
  */
 define ( 'APP_PATH', './Application/' );
 
+
+
 if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;
@@ -37,3 +39,4 @@ define ( 'RUNTIME_PATH', './Runtime/' );
  * ThinkPHP亦可移动到WEB以外的目录
  */
 require './ThinkPHP/ThinkPHP.php';
+

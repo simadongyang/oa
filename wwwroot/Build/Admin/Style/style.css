@@ -1,0 +1,281 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px; }
+
+html, body {
+  font-size: 14;
+  font-size: 100%;
+  min-width: 1280px;
+  color: #666666;
+  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB"; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+input {
+  outline: none; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.hidden {
+  display: none; }
+
+.mt {
+  margin-left: auto !important;
+  margin-right: auto !important; }
+
+.mt0 {
+  margin-top: 0px !important; }
+
+.mt10 {
+  margin-top: 10px !important; }
+
+.mt15 {
+  margin-top: 15px !important; }
+
+.mt20 {
+  margin-top: 20px !important; }
+
+.mb10 {
+  margin-bottom: 10px !important; }
+
+.mb15 {
+  margin-bottom: 15px !important; }
+
+.mb20 {
+  margin-bottom: 20px !important; }
+
+.ml0 {
+  margin-left: 0px !important; }
+
+.ml10 {
+  margin-left: 10px !important; }
+
+.ml15 {
+  margin-left: 15px !important; }
+
+.ml20 {
+  margin-left: 20px !important; }
+
+.mr10 {
+  margin-right: 10px !important; }
+
+.mr15 {
+  margin-right: 15px !important; }
+
+.mr20 {
+  margin-right: 20px !important; }
+
+.pt0 {
+  padding-top: 0px !important; }
+
+.pt10 {
+  padding-top: 10px !important; }
+
+.pt15 {
+  padding-top: 15px !important; }
+
+.pt20 {
+  padding-top: 20px !important; }
+
+.pb10 {
+  padding-bottom: 10px !important; }
+
+.pb15 {
+  padding-bottom: 15px !important; }
+
+.pb20 {
+  padding-bottom: 20px !important; }
+
+@font-face {
+  font-family: 'icf';
+  /* project id 358860 */
+  src: url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.eot");
+  src: url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.woff") format("woff"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.ttf") format("truetype"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.svg#icf") format("svg"); }
+
+.icf {
+  font-family: "icf" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.main-title {
+  margin-top: 5px;
+  margin-bottom: 25px; }
+
+h2 {
+  font-size: 22px; }
+
+h3 {
+  font-size: 20px; }
+
+h3 {
+  font-size: 18px; }
+
+.ui.button {
+  font-weight: normal !important;
+  font-size: 12px; }
+
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 2;
+  height: 50px;
+  line-height: 50px;
+  background: #2185d0; }
+  .header .logo {
+    width: 200px;
+    height: 50px;
+    background: #367fa9;
+    display: inline-block; }
+  .header .main-nav {
+    display: inline-block;
+    margin-left: 30px; }
+    .header .main-nav li {
+      float: left; }
+      .header .main-nav li a {
+        display: block;
+        color: #fff;
+        line-height: 50px;
+        padding: 0px 20px; }
+      .header .main-nav li a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.2); }
+  .header .user-bar {
+    float: right;
+    margin-right: 30px;
+    color: #fff;
+    position: relative; }
+    .header .user-bar .user-entrance {
+      color: #fff; }
+      .header .user-bar .user-entrance .icf {
+        font-size: 20px;
+        vertical-align: middle; }
+    .header .user-bar .user-menu {
+      background: #3c8dbc;
+      position: absolute;
+      top: 50px;
+      right: -10px;
+      width: 140px; }
+      .header .user-bar .user-menu li {
+        padding: 0px;
+        line-height: 30px; }
+        .header .user-bar .user-menu li a {
+          padding: 0px 10px;
+          display: block;
+          color: #fff;
+          font-size: 12px; }
+          .header .user-bar .user-menu li a:hover {
+            background: #8aa4af; }
+
+.sidebar {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  bottom: 0px;
+  width: 200px;
+  background: #222d32;
+  padding-top: 30px; }
+  .sidebar .ui.accordion {
+    border: none;
+    border-radius: 0px;
+    background: none;
+    color: #fff; }
+    .sidebar .ui.accordion .title {
+      background: #1e282c;
+      color: #b8c7ce !important;
+      font-weight: normal;
+      padding: 1em; }
+      .sidebar .ui.accordion .title:hover {
+        background: #1e282c;
+        color: #fff; }
+    .sidebar .ui.accordion .content {
+      background: #2c3b41;
+      padding: 5px 0px; }
+      .sidebar .ui.accordion .content li.current a {
+        color: #fff; }
+      .sidebar .ui.accordion .content li a {
+        color: #b8c7ce;
+        display: block;
+        line-height: 35px;
+        padding-left: 40px;
+        font-size: 12px; }
+
+#main-content {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  right: 0px;
+  padding: 20px; }
+
+.toolbar {
+  margin-bottom: 20px; }
+
+#top-alert {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 3000;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: hidden;
+  font-size: 16px; }
+  #top-alert.alert {
+    color: #c09853;
+    font-weight: bold;
+    border: 1px solid #fbeed5;
+    background-color: #fcf8e3; }
+    #top-alert.alert.alert-info {
+      background-color: #D9EDF7;
+      border-color: #BCE8F1;
+      color: #3A87AD; }
+    #top-alert.alert.alert-error {
+      color: white;
+      border-color: #eed3d7;
+      background-color: #FF6666; }
+    #top-alert.alert.alert-success {
+      color: #468847;
+      background-color: #CCFF99;
+      border-color: #eed3d7; }
+    #top-alert.alert .alert-content {
+      margin-left: 14px;
+      max-width: 600px;
+      word-wrap: break-word;
+      word-break: break-word; }
+    #top-alert.alert .close {
+      float: right;
+      position: relative;
+      top: -2px;
+      right: -21px;
+      font: bold 20px/20px arial;
+      color: #c09853;
+      opacity: 0.4; }
+      #top-alert.alert .close:hover {
+        opacity: 0.6; }
+    #top-alert.alert button.close {
+      padding: 0;
+      cursor: pointer;
+      border: 0 none;
+      background: none; }
+    #top-alert.alert .close {
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 20px;
+      color: #000000;
+      text-shadow: 0 1px 0 #ffffff;
+      opacity: 0.2;
+      filter: alpha(opacity=20); }
