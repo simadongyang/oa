@@ -10,17 +10,14 @@ html{
     font-size: 100%;
 }
 body,input{
-    font-size: $global-size;
+    font-size: 14;
     color: #666666;
     font-family:"Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
 }
 a{
-    color: $global-a-color;
     text-decoration: none;
 }
-a:hover{
-    color: $global-a-color_hovers;
-}
+
 li{
     list-style: none;
 }
@@ -29,15 +26,4 @@ input{
 }
 .hidden {
 	display: none !important;
-}
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px $input-bg inset !important;
-}
-input[type="number"]{
-   -moz-appearance: textfield;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{
-    -webkit-appearance: none !important;
-    margin: 0;
 }

@@ -1,0 +1,207 @@
+[v-cloak] {
+  display: none; }
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px; }
+
+html {
+  font-size: 100%; }
+
+body, input {
+  font-size: 14;
+  color: #666666;
+  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB"; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+input {
+  outline: none; }
+
+.hidden {
+  display: none !important; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.hidden {
+  display: none; }
+
+.mt {
+  margin-left: auto !important;
+  margin-right: auto !important; }
+
+.mt0 {
+  margin-top: 0px !important; }
+
+.mt10 {
+  margin-top: 10px !important; }
+
+.mt15 {
+  margin-top: 15px !important; }
+
+.mt20 {
+  margin-top: 20px !important; }
+
+.mb10 {
+  margin-bottom: 10px !important; }
+
+.mb15 {
+  margin-bottom: 15px !important; }
+
+.mb20 {
+  margin-bottom: 20px !important; }
+
+.ml0 {
+  margin-left: 0px !important; }
+
+.ml10 {
+  margin-left: 10px !important; }
+
+.ml15 {
+  margin-left: 15px !important; }
+
+.ml20 {
+  margin-left: 20px !important; }
+
+.mr10 {
+  margin-right: 10px !important; }
+
+.mr15 {
+  margin-right: 15px !important; }
+
+.mr20 {
+  margin-right: 20px !important; }
+
+.pt0 {
+  padding-top: 0px !important; }
+
+.pt10 {
+  padding-top: 10px !important; }
+
+.pt15 {
+  padding-top: 15px !important; }
+
+.pt20 {
+  padding-top: 20px !important; }
+
+.pb10 {
+  padding-bottom: 10px !important; }
+
+.pb15 {
+  padding-bottom: 15px !important; }
+
+.pb20 {
+  padding-bottom: 20px !important; }
+
+@font-face {
+  font-family: 'icf';
+  /* project id 358860 */
+  src: url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.eot");
+  src: url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.woff") format("woff"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.ttf") format("truetype"), url("//at.alicdn.com/t/font_s7c4y5iwtye3ik9.svg#icf") format("svg"); }
+
+.icf {
+  font-family: "icf" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 50px;
+  line-height: 50px;
+  background: #3c8dbc; }
+  .header .logo {
+    width: 200px;
+    height: 50px;
+    background: #367fa9;
+    display: inline-block; }
+  .header .main-nav {
+    display: inline-block;
+    margin-left: 30px; }
+    .header .main-nav li {
+      float: left; }
+      .header .main-nav li a {
+        display: block;
+        color: #fff;
+        line-height: 50px;
+        padding: 0px 20px; }
+      .header .main-nav li a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.2); }
+  .header .user-bar {
+    float: right;
+    margin-right: 30px;
+    color: #fff; }
+    .header .user-bar .user-entrance {
+      padding-right: 10px;
+      color: #fff; }
+      .header .user-bar .user-entrance .icf {
+        font-size: 20px;
+        vertical-align: middle; }
+    .header .user-bar .user-menu {
+      background: #3c8dbc;
+      margin-top: -2px; }
+      .header .user-bar .user-menu li {
+        padding: 0px;
+        line-height: 30px; }
+        .header .user-bar .user-menu li a {
+          padding: 0px 10px;
+          display: block;
+          color: #fff;
+          font-size: 12px; }
+          .header .user-bar .user-menu li a:hover {
+            background: #8aa4af; }
+
+.sidebar {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  bottom: 0px;
+  width: 200px;
+  background: #222d32;
+  padding-top: 30px; }
+  .sidebar .ui.accordion {
+    border: none;
+    border-radius: 0px;
+    background: none;
+    color: #fff; }
+    .sidebar .ui.accordion .title {
+      background: #1e282c;
+      color: #b8c7ce !important;
+      font-weight: normal;
+      padding: 1em; }
+      .sidebar .ui.accordion .title:hover {
+        background: #1e282c;
+        color: #fff; }
+    .sidebar .ui.accordion .content {
+      background: #2c3b41;
+      padding: 5px 0px; }
+      .sidebar .ui.accordion .content li.current a {
+        color: #fff; }
+      .sidebar .ui.accordion .content li a {
+        color: #b8c7ce;
+        display: block;
+        line-height: 35px;
+        padding-left: 40px;
+        font-size: 12px; }
+
+#main-content {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  right: 0px;
+  padding: 20px; }
