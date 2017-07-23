@@ -82,33 +82,42 @@
 	            	</volist>
             	</select>
             <div class="project hidd" >
-                <volist name="sel" id="vo" key="k">
-            	<div val='{$k}'>
-                    <input type="hidden" name="pid" value="{$vo.dssid}">
-		            <label>所属项目：</label>
-		            	<select name="p1">
-		            	<volist name="project" id="vo"> 
-		            		<option value="{$vo.did}"  <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.dname}</option>
-		            	</volist>
-		            	</select>
-		             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
-
-                     <if condition="$k eq 1">
-		             <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>
+                <div val='1'>
+                    <input type="hidden" name="prid1" value="{$sel[0]['dssid']}">
+                    <label>所属项目：</label>
+                        <if condition="$sel[0]['projectid'] neq ''">
+                            <input type="text" name="p1" value="{$sel[0]['projectname']}" readonly>
+                            <label>分摊工资：</label><input type="text" class="text" name="ps1" readonly value="{$sel[0]['projectsalary']}"/>
+                        <else/>
+                        <select name="p1">
+                        <volist name="project" id="vo"> 
+                            <option value="{$vo.did}"  >{$vo.dname}</option>
+                        </volist>
+                        </select>
+                        
+                     <label>分摊工资：</label><input type="text" class="text" name="ps1" value=""/>
                      </if>
+                     <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>                    
 
-	             </div>          
+                 </div>       
+                <volist name="sel" id="vos" key="k">
+                <if condition="$k gt 1">
+            	<div>
+                    <input type="hidden" name="prid{$k}" value="{$vos.dssid}" >
+		            <label>所属项目：</label>
+		                <input type="text" name="p1" value="{$vos.projectname}" readonly >
+		            <label>分摊工资：</label><input type="text" class="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>                    
+	             </div> 
+                 </if>         
                  </volist>	             	             
             </div>
-         
-
-        </div>
+        </div>        
         <div class="hidd" >
             <h1>薪资信息</h1><hr>
             <div class="form-item">             
                 <div>
-    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$find.trysalary}">	            	
-    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$find.completionsalary}"/>
+    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$sel[0]['trysalary']}">	            	
+    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$sel[0]['completionsalary']}"/>
                 </div>
                 <div>
                 	<label>绩效考核：</label><textarea></textarea>
@@ -116,7 +125,7 @@
             </div>
         </div>
         <input type="hidden" name="leixing" value="岗位">
-        
+        <input type="hidden" name="uid" value="$sel[0]['uid']">
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
@@ -134,13 +143,14 @@
                     //增减项目
                     var a;
                     var html;
-                    var clicknum=1;
+                    var clicknum;
                     var first;
                     $('.jia').click(function(){
+                        clicknum=$(this).parents('div').find('.project').children('div').length;
                         a=$(this).attr('val');
                         if(a=='+'){
                             clicknum += 1;                          
-                            html="<div><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
+                            html="<div><input type='hidden' name='pridnew"+clicknum+"' value=''><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
                                 "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
                              " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           

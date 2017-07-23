@@ -318,27 +318,65 @@ class UserController extends AdminController {
         //查询员工岗位信息等
         $where=array('uid'=>$id,'status'=>'是');
         $sel=M('dss')->where($where)->select();
-        
+        foreach($sel as &$v){
+            //获取员工岗位名称
+            $find=M('department')->where('did='.$v['projectid'])->find();
+            $v['projectname']=$find['dname'];
+
+            
+        }
 
         $this->assign('sel',$sel);
+       
+
 
         if(IS_POST){
             $arr=I('post.');
             //编辑员工的岗位、薪资等信息
             if($arr['leixing']=='岗位'){
                 //获取提交数组的个数并判断有几个项目
-               $num=(count($arr)-5)/2;
+               $num=(count($arr)-29)/3;
+               $newarr=array();
                for($i=1;$i<=$num;$i++){
-                    $newarr[]['did']=$arr['did'];
-                    $newarr[]['sid']=$arr['sid'];
-                    $newarr[]['projectid']= $arr['p'.$i];
-                    $newarr[]['projectsalary']=$arr['ps'.$i];
+                    $k=$i-1;
+                    $newarr[$k]['status']="是";
+                    $newarr[$k]['uid']=$arr['uid'];
+                    $newarr[$k]['did']=$arr['did'];
+                    $newarr[$k]['sid']=$arr['sid'];
+                    $newarr[$k]['dssid']=$arr['prid'.$i]?$arr['prid'.$i]:$arr['pridnew'.$i];
+                    $newarr[$k]['projectid']= $arr['p'.$i];
+                    $newarr[$k]['projectsalary']=$arr['ps'.$i];
+                    $idarr[$k]=$arr['prid'.$i];//用于判断
                }
+                //获得员工项目原有的id是否还存在，
+               foreach($sel as $val){
+                    //如果不存在了说明该项目已经结束
+                    if(!in_array($val['dssid'],$idarr)){
+                        M('dss')->where('dssid='.$val['dssid'])->setField('status','否');
+                    }                    
+               }
+               $countnum=0;
                foreach($newarr as $v){
-                    
+                //如果dssid不为-1说明原有记录没有变动
+                   if($v['dssid']!='-1'){                         
+                        $countnum += 1;
+                         
+                   }else{//如果dissid为-1时表示添加
+                        unset($v['dssid']);
+                         $ra=M('dss')->add($v);
+                         if($ra){
+                            $countnum += 1;
+                         }
+                   } 
                }
+               //如果$count的值等于项目的个数，说明操作成功
+               if($countnum==$num){
+                    $this->success('用户编辑成功！'.$ra,U('index'));                    
+                } else {
+                    $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
+                } 
 
-                M('dss')->add($arr);
+               
             }
         }
 
