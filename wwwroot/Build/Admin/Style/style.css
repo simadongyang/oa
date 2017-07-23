@@ -289,3 +289,34 @@ h3 {
       text-shadow: 0 1px 0 #ffffff;
       opacity: 0.2;
       filter: alpha(opacity=20); }
+
+#authManagerManagerGroup {
+  margin-top: 5px; }
+  #authManagerManagerGroup .ui.menu {
+    font-size: 14px; }
+  #authManagerManagerGroup .checkmod {
+    font-size: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ebebeb; }
+    #authManagerManagerGroup .checkmod input {
+      margin-right: 5px;
+      vertical-align: middle; }
+    #authManagerManagerGroup .checkmod dt {
+      padding-left: 10px;
+      height: 30px;
+      line-height: 30px;
+      font-weight: bold;
+      border-bottom: 1px solid #ebebeb;
+      background-color: #ECECEC; }
+      #authManagerManagerGroup .checkmod dt .checkbox {
+        font-weight: bold; }
+    #authManagerManagerGroup .checkmod dd {
+      padding-left: 10px;
+      line-height: 30px;
+      margin-left: 20px; }
+      #authManagerManagerGroup .checkmod dd .checkbox {
+        margin: 0 10px 0 0; }
+        #authManagerManagerGroup .checkmod dd .checkbox input {
+          margin-right: 5px; }
+      #authManagerManagerGroup .checkmod dd .child_row {
+        padding-left: 20px; }
