@@ -335,7 +335,7 @@ class UserController extends AdminController {
             //编辑员工的岗位、薪资等信息
             if($arr['leixing']=='岗位'){
                 //获取提交数组的个数并判断有几个项目
-               $num=(count($arr)-29)/3;
+               $num=(count($arr)-30)/3;
                $newarr=array();
                for($i=1;$i<=$num;$i++){
                     $k=$i-1;
@@ -349,6 +349,8 @@ class UserController extends AdminController {
                     $idarr[$k]=$arr['prid'.$i];//用于判断
                }
                 //获得员工项目原有的id是否还存在，
+               $where=array('uid'=>$arr['uid'],'status'=>'是');
+               $sel=M('dss')->where($where)->select();
                foreach($sel as $val){
                     //如果不存在了说明该项目已经结束
                     if(!in_array($val['dssid'],$idarr)){
@@ -362,7 +364,8 @@ class UserController extends AdminController {
                         $countnum += 1;
                          
                    }else{//如果dissid为-1时表示添加
-                        unset($v['dssid']);
+                        $find=M('dss')->order('dssid desc')->find();
+                        $v['dssid']=$find['dssid']+1;
                          $ra=M('dss')->add($v);
                          if($ra){
                             $countnum += 1;
@@ -371,7 +374,7 @@ class UserController extends AdminController {
                }
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num){
-                    $this->success('用户编辑成功！'.$ra,U('index'));                    
+                    $this->success('用户编辑成功！',U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                 } 

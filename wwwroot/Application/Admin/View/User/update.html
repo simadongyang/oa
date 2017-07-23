@@ -105,7 +105,7 @@
             	<div>
                     <input type="hidden" name="prid{$k}" value="{$vos.dssid}" >
 		            <label>所属项目：</label>
-		                <input type="text" name="p1" value="{$vos.projectname}" readonly >
+		                <input type="text" name="p{$k}" value="{$vos.projectname}" readonly >
 		            <label>分摊工资：</label><input type="text" class="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>                    
 	             </div> 
                  </if>         
@@ -125,7 +125,8 @@
             </div>
         </div>
         <input type="hidden" name="leixing" value="岗位">
-        <input type="hidden" name="uid" value="$sel[0]['uid']">
+        <input type="hidden" name="uid" value="{$sel[0]['uid']}">
+        <!--  <input type="submit" value="提交">-->
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
@@ -150,7 +151,7 @@
                         a=$(this).attr('val');
                         if(a=='+'){
                             clicknum += 1;                          
-                            html="<div><input type='hidden' name='pridnew"+clicknum+"' value=''><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
+                            html="<div><input type='hidden' name='pridnew"+clicknum+"' value='-1'><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
                                 "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
                              " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
