@@ -1,16 +1,12 @@
-[v-cloak] {
-  display: none; }
-
 * {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px; }
 
-html {
-  font-size: 100%; }
-
-body, input {
+html, body {
   font-size: 14;
+  font-size: 100%;
+  min-width: 1280px;
   color: #666666;
   font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB"; }
 
@@ -22,9 +18,6 @@ li {
 
 input {
   outline: none; }
-
-.hidden {
-  display: none !important; }
 
 .clearfix:after {
   content: ".";
@@ -116,14 +109,32 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.main-title {
+  margin-top: 5px;
+  margin-bottom: 25px; }
+
+h2 {
+  font-size: 22px; }
+
+h3 {
+  font-size: 20px; }
+
+h3 {
+  font-size: 18px; }
+
+.ui.button {
+  font-weight: normal !important;
+  font-size: 12px; }
+
 .header {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
+  z-index: 2;
   height: 50px;
   line-height: 50px;
-  background: #3c8dbc; }
+  background: #2185d0; }
   .header .logo {
     width: 200px;
     height: 50px;
@@ -145,16 +156,19 @@ input {
   .header .user-bar {
     float: right;
     margin-right: 30px;
-    color: #fff; }
+    color: #fff;
+    position: relative; }
     .header .user-bar .user-entrance {
-      padding-right: 10px;
       color: #fff; }
       .header .user-bar .user-entrance .icf {
         font-size: 20px;
         vertical-align: middle; }
     .header .user-bar .user-menu {
       background: #3c8dbc;
-      margin-top: -2px; }
+      position: absolute;
+      top: 50px;
+      right: -10px;
+      width: 140px; }
       .header .user-bar .user-menu li {
         padding: 0px;
         line-height: 30px; }
@@ -205,3 +219,63 @@ input {
   left: 200px;
   right: 0px;
   padding: 20px; }
+
+.toolbar {
+  margin-bottom: 20px; }
+
+#top-alert {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 3000;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: hidden;
+  font-size: 16px; }
+  #top-alert.alert {
+    color: #c09853;
+    font-weight: bold;
+    border: 1px solid #fbeed5;
+    background-color: #fcf8e3; }
+    #top-alert.alert.alert-info {
+      background-color: #D9EDF7;
+      border-color: #BCE8F1;
+      color: #3A87AD; }
+    #top-alert.alert.alert-error {
+      color: white;
+      border-color: #eed3d7;
+      background-color: #FF6666; }
+    #top-alert.alert.alert-success {
+      color: #468847;
+      background-color: #CCFF99;
+      border-color: #eed3d7; }
+    #top-alert.alert .alert-content {
+      margin-left: 14px;
+      max-width: 600px;
+      word-wrap: break-word;
+      word-break: break-word; }
+    #top-alert.alert .close {
+      float: right;
+      position: relative;
+      top: -2px;
+      right: -21px;
+      font: bold 20px/20px arial;
+      color: #c09853;
+      opacity: 0.4; }
+      #top-alert.alert .close:hover {
+        opacity: 0.6; }
+    #top-alert.alert button.close {
+      padding: 0;
+      cursor: pointer;
+      border: 0 none;
+      background: none; }
+    #top-alert.alert .close {
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 20px;
+      color: #000000;
+      text-shadow: 0 1px 0 #ffffff;
+      opacity: 0.2;
+      filter: alpha(opacity=20); }

@@ -1,16 +1,12 @@
-[v-cloak] {
-    display: none;
-}
 *{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
-html{
-    font-size: 100%;
-}
-body,input{
+html,body{
     font-size: 14;
+    font-size: 100%;
+    min-width: 1280px;
     color: #666666;
     font-family:"Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
 }
@@ -23,7 +19,4 @@ li{
 }
 input{
     outline:none;
-}
-.hidden {
-	display: none !important;
 }
