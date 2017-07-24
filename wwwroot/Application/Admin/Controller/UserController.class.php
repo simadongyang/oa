@@ -9,7 +9,7 @@
 
 namespace Admin\Controller;
 use User\Api\UserApi;
-
+use Think\Controller;
 /**
  * 后台用户控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
@@ -219,7 +219,7 @@ class UserController extends AdminController {
         }
     }
 
-    public function add($username = '', $password = '', $repassword = '', $email = ''){
+    public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	//查询员工表最后一个id
         $findlast=M('Member')->order('uid desc')->find();
         $gonghao['a']=$findlast['uid']+1;
@@ -251,16 +251,33 @@ class UserController extends AdminController {
 
                 /* 调用注册接口注册用户 */
                 $User   =   new UserApi;
-                $uid    =   $User->register($username, $password, $email);
+                $uid    =   $User->register($username, $password, $email,$criticalname);
                 if(0 < $uid){ //注册成功
                 	$arr['realname']=$arr['username'];
                 	$arr['uid']=$uid;
                 	$arr['nickname']=$username;
                 	$arr['status']=1;
                     $user = $arr;
+
+
+
+
+
+
+                    $su=D('Member')->create($user);
+                    /*if(!$su){
+                         echo $User->getError();exit;
+                       //$this->error('用户添加失败！'.'8888');
+                   }  */                  
                    
-                    if(!M('Member')->add($user)){
-                        $this->error('用户添加失败！'.'8888');
+
+
+
+
+
+                   
+                    if(!D('Member')->add($user)){
+                        $this->error('用户添加失败！');
                     } else {
                         $this->success('用户添加成功！',U('index'));
                     }
