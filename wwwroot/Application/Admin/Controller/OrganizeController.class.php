@@ -21,7 +21,7 @@ class OrganizeController extends AdminController {
      */
     public function index(){
     	//所属部门信息显示
-      	$department=M('department')->select(); 
+      	$department=M('department')->where('status>-1')->select(); 
         //构造新数组       
         $department=getTrees($department);
       	$this->assign('department',$department);      	
@@ -34,14 +34,29 @@ class OrganizeController extends AdminController {
         $department=getTrees($department);
     	$this->assign('department',$department);    	
     	$a=I('post.');    	
-    	if(!empty($a)){    		
-	    	$result=M('department')->add($a);
-	    	if(!$result){
-	    		$this->error('用户添加失败！');
-	    	} else {
-	    		$this->success('用户添加成功！',U('index'));
-	    	}
+    	if(!empty($a)){
+            if($a['did']){//确定是否编辑
+                $result=M('department')->where('did='.$a['did'])->save($a);
+                if(!$result){
+                    $this->error('部门编辑失败！');
+                } else {
+                    $this->success('部门编辑成功！',U('index'));
+                }
+            }else{//确定是否添加 		
+    	    	$result=M('department')->add($a);
+    	    	if(!$result){
+    	    		$this->error('部门添加失败！');
+    	    	} else {
+    	    		$this->success('部门添加成功！',U('index'));
+    	    	}
+            }
     	}
+        //编辑部门信息显示
+        $did=I('get.did');
+        if($did){
+            $done=M('department')->where('did='.$did)->find();
+            $this->assign('done',$done);
+        }
     	$this->display();
     }
 

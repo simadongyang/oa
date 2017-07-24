@@ -13,7 +13,7 @@
 	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}">
 	        	<input type="hidden" class="text input-large" name="password" value="123456">
 	            <input type="hidden" class="text input-large" name="repassword" value="123456">
-	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}">
+	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$gonghao.a}">
             </div>
             <div>
 	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" checked="{$find.nan}">男 　　<input type="radio"  name="sex" value="2" checked='{$find.nv}'>女　　　
@@ -60,11 +60,20 @@
             <div>
 	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是">正式 　　<input type="radio"  name="iscompletion" value="否">试用　　　
 	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
-                <input type="hidden" name="leixing" value="基本信息">
+                <input type="hidden" name="leixing1" value="" class="jibenxinxi">
             </div>
         </div>
+        
+        <div class="form-item" style="display:none;">
+            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$gonghao.b}@qq.com">
+            </div>
+        </div>
+
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定 编 辑</button>
+            <button class="btn submit-btn ajax-post jiben" id="submit"  target-form="form-horizontal">确 定 添 加</button>
+            <button class="btn submit-btn ajax-post jiben1" id="submit" style='display:none'  type="submit" target-form="form-horizontal">确 定 编 辑</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
@@ -113,10 +122,11 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="leixing" value="岗位">
+        <input type="hidden" name="leixing2" value="" class="gangwei">
         
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn ajax-post gang " id="submit"  target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn ajax-post gang1 " id="submit" type="submit" style="display:none;" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
@@ -167,7 +177,22 @@
                             $('.hidd').show();
                         }
                     });
-                    
+
+                    //点击基本信息时                    
+                    $('.jiben').click(function(){
+                        
+                        $('.jibenxinxi').attr("value",'基本信息');
+                        
+                        $('.jiben1').click();
+                       
+                    })
+                    //点击岗位下面的确认时。
+                    $('.gang').click(function(){
+
+                        $('.gangwei').attr("value",'岗位');
+                        $('.gang1').click();
+
+                    });
 
                 })
   </script>
