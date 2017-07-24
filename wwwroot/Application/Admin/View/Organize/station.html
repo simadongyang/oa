@@ -8,9 +8,9 @@
 	<div class="cf">
 		<div class="fl">
             <a class="btn" href="{:U('Organize/addstation')}">新 增</a>
-            <button class="btn ajax-post" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
-            <button class="btn ajax-post" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
-            <button class="btn ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+            <button class="btn ajax-post" url="{:U('Organize/changeStatus_s',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+            <button class="btn ajax-post" url="{:U('Organize/changeStatus_s',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+            <button class="btn ajax-post confirm" url="{:U('Organize/changeStatus_s',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
         </div>
 
         <!-- 高级搜索 -->
@@ -38,7 +38,7 @@
 		<volist name="station" id="vo">
 			
 		<tr>
-            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.did}" /></td>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.sid}" /></td>
 			<td>{$vo.sid} </td>
 			<td>
 			{$vo.stationname}							
@@ -46,12 +46,14 @@
 			<td>
 			{$vo.isstaff}							
 			</td>			
-			<td><eq name="vo.status" value="1">
-				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
+			<td>
+				<a href="{:U('Organize/addstation?sid='.$vo['sid'])}" >编辑</a>
+				<eq name="vo.status" value="1">				
+				<a href="{:U('Organize/changeStatus_s?method=forbidUser&id='.$vo['sid'])}" class="ajax-get">禁用</a>
 				<else/>
-				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
+				<a href="{:U('Organize/changeStatus_s?method=resumeUser&id='.$vo['sid'])}" class="ajax-get">启用</a>
 				</eq>
-				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
+				<a href="{:U('Organize/changeStatus_s?method=deleteuser&id='.$vo['sid'])}" class="confirm ajax-get">删除</a>
              </td>
 		</tr>
 			

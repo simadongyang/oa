@@ -371,3 +371,50 @@ function get_action_type($type, $all = false){
 	}
 	return $list[$type];
 }
+
+
+
+
+//以上是原有的。下面的是自己新增的
+
+//用于无限极分类
+function tree($sorts,$selected=0,$dpid=0,$leven=0)
+    {
+         static $list;//这个一定要有 不然不能赋值的
+      
+        foreach ($sorts as $sort)   //循环数组
+        {
+            if ($sort['dpid'] == $dpid)   //如果是同组
+            {
+                if($sort['did'] == $selected)    //如果ID等于要选中的编号
+                {
+                   $list.='<option value="'.$sort['did'].'"selected="selected">'.str_repeat('|-',$leven).$sort['dname'].'</option>'."\r\n";
+                }else{
+                   $list.= '<option value="'.$sort['did'].'">'.str_repeat('|-',$leven).$sort['dname'].'</option>'."\r\n"; 
+                    /** 查找属于自己的下一级，调用自身 */        
+                     tree($sorts,$selected,$sort['did'], $leven+1);
+                    
+                }
+           }             
+        }
+       
+         return $list;
+    }
+
+//将无限极分类重新组成新的数组
+function getTrees($arr,$pid=0,$step = 0){
+    global $tree;
+    foreach($arr as $val) {
+        if($val['dpid'] == $pid) {
+            $flag = str_repeat('&nbsp;&nbsp;',$step);
+            if($pid==0){
+                $val['dname'] = $flag.$val['dname'];
+            }else{
+                $val['dname'] = $flag.'|-'.$val['dname'];
+            }
+            $tree[] = $val;
+            getTrees($arr , $val['did'] ,$step+1);
+        }
+    }
+    return $tree;
+}

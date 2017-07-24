@@ -12,7 +12,7 @@
 	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}" readonly>
             </div>
             <div>
-	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" {$find.nan}>男 　　<input type="radio"  name="sex" value="2" {$find.nv}>女　　　
+	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" {$find.nan}>男 　　<input type="radio"  name="sex" value="0" {$find.nv}>女　　　
 	 　　　　　　  <label>联系电话：</label><input type="text" class="text" name="phone" value="{$find.phone}">
             </div>
             <div>
@@ -56,12 +56,14 @@
             <div>
 	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是" {$find.shi}>正式 　　<input type="radio"  name="iscompletion" value="否" {$find.fou}>试用　　　
 	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
-                <input type="hidden" name="leixing" value="基本信息">
+                <input type="hidden" name="leixing1" value="" class='jibenxinxi'>
             </div>
         </div>
-        <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定 编 辑</button>
+        <div class="form-item">            
+            <button class="btn submit-btn ajax-post jiben" id="submit"  target-form="form-horizontal">确 定 编 辑</button>
+            <button class="btn submit-btn ajax-post jiben1" id="submit" style='display:none'  type="submit" target-form="form-horizontal">确 定 编 辑</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+           
         </div>
     </form>
 
@@ -91,7 +93,7 @@
                         <else/>
                         <select name="p1">
                         <volist name="project" id="vo"> 
-                            <option value="{$vo.did}"  >{$vo.dname}</option>
+                            <option value="{$vo.id}"  >{$vo.name}</option>
                         </volist>
                         </select>
                         
@@ -124,11 +126,13 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="leixing" value="岗位">
+        <input type="hidden" name="leixing2" value="" class="gangwei">
         <input type="hidden" name="uid" value="{$sel[0]['uid']}">
         <!--  <input type="submit" value="提交">-->
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+
+            <button class="btn submit-btn ajax-post gang " id="submit"  target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn ajax-post gang1 " id="submit" type="submit" style="display:none;" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
@@ -152,7 +156,7 @@
                         if(a=='+'){
                             clicknum += 1;                          
                             html="<div><input type='hidden' name='pridnew"+clicknum+"' value='-1'><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
-                                "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
+                                "<option value='{$vo.id}'>{$vo.name}</option></volist></select>"+
                              " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
                             $(this).parents('div').find('.project').append(html);
@@ -177,8 +181,22 @@
                             $('.hidd').show();
                         }
                     });
-                    
+                   
+                    //点击基本信息时                    
+                    $('.jiben').click(function(){
+                        
+                        $('.jibenxinxi').attr("value",'基本信息');
+                        
+                        $('.jiben1').click();
+                       
+                    })
+                    //点击岗位下面的确认时。
+                    $('.gang').click(function(){
 
+                        $('.gangwei').attr("value",'岗位');
+                        $('.gang1').click();
+
+                    });
                 })
   </script>
 </block>

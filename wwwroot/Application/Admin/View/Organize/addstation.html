@@ -2,15 +2,19 @@
 
 <block name="body">
     <div class="main-title">
+    <if condition="$sone.sid neq ''">
+        <h2>编辑岗位信息</h2>
+    <else/>
         <h2>新增岗位</h2>
+    </if>
     </div>    
     <form action="{:U()}" method="post" class="form-horizontal"> 
     	<div class="form-item">
             <label class="item-label">所属部门</label>
             <select name='did'>
-            	<option value="0">通用岗位名称</option>
+            	<option value="0" <if condition="$sone.did eq 0"> selected </if>>通用岗位名称</option>
             	<volist name="department" id="vo">
-            	<option class="child" value="{$vo.did}">{$vo.dname}</option>
+            	<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
             	</volist>
             </select>
             
@@ -18,14 +22,14 @@
         <div class="form-item">
             <label class="item-label">岗位名称</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="stationname" value="">
+                <input type="text" class="text input-large" name="stationname" value="{$sone.stationname}">
             </div>
         </div>
         <div class="form-item">
             <label class="item-label">是否为普通员工岗位</label>
-            <input type="radio"  name="isstaff" value="0" >是 　　<input type="radio"  name="isstaff" value="1">否    
+            <input type="radio"  name="isstaff" value="0" {$sone.shi} >是 　　<input type="radio"  name="isstaff" value="1" {$sone.fou} >否    
         </div>
-        
+        <input type="hidden" name="sid" value="{$sone.sid}">
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>

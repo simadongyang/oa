@@ -2,24 +2,34 @@
 
 <block name="body">
     <div class="main-title">
+    <if condition="$done.did neq ''">
+        <h2>编辑部门信息</h2>
+    <else/>
         <h2>新增部门</h2>
+    </if>
     </div>    
     <form action="{:U()}" method="post" class="form-horizontal"> 
     	<div class="form-item">
-            <label class="item-label">所属部门</label>
+            <label class="item-label">所属上级部门</label>
             <select name='dpid'>
             	<volist name="department" id="vo">
-            	<option value="{$vo.did}">{$vo.dname}</option>
+            	<option value="{$vo.did}" <if condition="$vo.did eq $done['dpid']"> selected </if> >{$vo.dname}</option>
             	</volist>
             </select>
         </div>   
         <div class="form-item">
-            <label class="item-label">部门名称</label>
+            <label class="item-label">本部门名称</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="dname" value="">
+                <input type="text" class="text input-large" name="dname" value="{$done.dname}">
             </div>
         </div>
-        
+        <div class="form-item">
+            <label class="item-label">本部门负责人</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="dperson" value="{$done.dperson}">
+            </div>
+        </div>
+        <input type="hidden" name="did" value="{$done.did}"> 
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>

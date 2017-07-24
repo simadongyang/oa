@@ -9,7 +9,7 @@
 
 namespace Admin\Controller;
 use User\Api\UserApi;
-
+use Think\Controller;
 /**
  * 后台用户控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
@@ -30,6 +30,25 @@ class UserController extends AdminController {
         }
 
         $list   = $this->lists('Member', $map);
+
+        //根据获得的信息查询相关的信息
+        foreach($list as &$v){
+            //将数字转为文字
+            if($v['sex']==1){
+                $v['sex']='男';
+            }else{
+                $v['sex']='女';
+            }
+            //显示年龄
+            $v['age']=date('Y-m-d')-$v['birthday'];
+            //查询员工所属部门
+            $dss=M('dss')->where('uid='.$v['uid'])->order('dssid desc')->find();            
+            $department=M('department')->where('did='.$dss['did'])->find();            
+            $v['dname']=$department['dname'];
+            //查询员工所属岗位
+            $station=M('station')->where('sid='.$dss['sid'])->find(); 
+            $v['stationname']=$station['stationname'];
+        }
         int_to_string($list);
         $this->assign('_list', $list);
         $this->meta_title = '用户信息';
@@ -200,15 +219,22 @@ class UserController extends AdminController {
         }
     }
 
-    public function add($username = '', $password = '', $repassword = '', $email = ''){
-    	
+    public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
+    	//查询员工表最后一个id
+        $findlast=M('Member')->order('uid desc')->find();
+        $gonghao['a']=$findlast['uid']+1;
+        $gonghao['b']=rand(0,100000).'_gonghao'.$gonghao['a'];
+        $this->assign('gonghao',$gonghao);
+
     	//显示所属部门信息
     	$department=M('department')->select();
+        //$department=tree($department);
+        $department=getTrees($department);
     	$this->assign('department',$department);
     	
     	//显示项目信息
-    	$department=M('department')->select();
-    	$this->assign('project',$department);
+    	$project=M('project')->select();
+    	$this->assign('project',$project);
     	
     	//显示岗位信息
     	$station=M('station')->select();
@@ -217,7 +243,7 @@ class UserController extends AdminController {
         //获取基本信息新增
         if(IS_POST){
         	$arr=I('post.');
-            if($arr['leixing']=='基本信息'){
+            if($arr['leixing1']=='基本信息'){
                 /* 检测密码 */
                 if($password != $repassword){
                     $this->error('密码和重复密码不一致！');
@@ -225,15 +251,32 @@ class UserController extends AdminController {
 
                 /* 调用注册接口注册用户 */
                 $User   =   new UserApi;
-                $uid    =   $User->register($username, $password, $email);
+                $uid    =   $User->register($username, $password, $email,$criticalname);
                 if(0 < $uid){ //注册成功
                 	$arr['realname']=$arr['username'];
                 	$arr['uid']=$uid;
                 	$arr['nickname']=$username;
                 	$arr['status']=1;
                     $user = $arr;
+
+
+
+
+
+
+                    $su=D('Member')->create($user);
+                    /*if(!$su){
+                         echo $User->getError();exit;
+                       //$this->error('用户添加失败！'.'8888');
+                   }  */                  
                    
-                    if(!M('Member')->add($user)){
+
+
+
+
+
+                   
+                    if(!D('Member')->add($user)){
                         $this->error('用户添加失败！');
                     } else {
                         $this->success('用户添加成功！',U('index'));
@@ -248,10 +291,11 @@ class UserController extends AdminController {
         //获取部门、岗位等信息新增
         if(IS_POST){
             $arr=I('post.');
-            if($arr['leixing']=='岗位'){
-                //查询员工的应该有的id
-                $lastid=M('member')->order('uid desc')->find();
-                $arr['uid']=$lastid['uid']+1;
+            if($arr['leixing2']=='岗位'){
+                if(!$arr['uid']){
+                     $this->error('请先填写基本信息，然后通过查看详情信息进行添加岗位等信息');
+                }
+                
                 //查询该岗位是否为普通岗
                 $find=M('station')->where('sid='.$arr['sid'])->find();
                 if($find['isstaff']==1){
@@ -284,7 +328,7 @@ class UserController extends AdminController {
                 }
                 //判断是否添加成功
                 if($resl){
-                    $this->success('用户添加成功！',U('index'));
+                    $this->success('用户添加成功！'.$newarr[0]['did'],U('index'));
                 } else {
                     $this->error('用户添加失败！');
                 }
@@ -328,8 +372,10 @@ class UserController extends AdminController {
         
         if(IS_POST){
             $arr=I('post.');
+
             //编辑员工基本信息
-            if($arr['leixing']=='基本信息'){               
+            if($arr['leixing1']=='基本信息'){ 
+                            
                 $updat=M('Member')->where('uid='.$arr['gonghao'])->save($arr); 
                 if($updat){
                     $this->success('用户编辑成功！',U('index'));                    
@@ -344,13 +390,11 @@ class UserController extends AdminController {
 
         //显示员工的岗位及薪资信息
         $id=I('get.id');
-        //显示所属部门信息
-        $department=M('department')->select();
-        $this->assign('department',$department);
+        
         
         //显示项目信息
-        $department=M('department')->select();
-        $this->assign('project',$department);
+        $project=M('project')->select();
+        $this->assign('project',$project);
         
         //显示岗位信息
         $station=M('station')->select();
@@ -360,10 +404,16 @@ class UserController extends AdminController {
         $where=array('uid'=>$id,'status'=>1);
         $sel=M('dss')->where($where)->select();
         foreach($sel as &$v){
-            //获取员工岗位名称
-            $find=M('department')->where('did='.$v['projectid'])->find();
-            $v['projectname']=$find['dname'];            
+            //获取员工所在项目名称
+            $find=M('project')->where('id='.$v['projectid'])->find();
+            $v['projectname']=$find['name'];            
         }
+
+        //显示所属部门信息及员工所属部门
+        $department=M('department')->select();
+        //$department=tree($department,$sel[0]['did']);
+        $department=getTrees($department);
+        $this->assign('department',$department);
         //查询员工薪资
         $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
         $this->assign('salarychange',$salarychange);
@@ -375,7 +425,7 @@ class UserController extends AdminController {
         if(IS_POST){
             $arr=I('post.');
             //编辑员工的岗位、薪资等信息
-            if($arr['leixing']=='岗位'){
+            if($arr['leixing2']=='岗位'){
                 //获取提交数组的个数并判断有几个项目
                $num=(count($arr)-31)/3;
                $newarr=array();

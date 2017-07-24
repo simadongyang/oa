@@ -13,10 +13,10 @@
 	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}">
 	        	<input type="hidden" class="text input-large" name="password" value="123456">
 	            <input type="hidden" class="text input-large" name="repassword" value="123456">
-	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}">
+	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$gonghao.a}">
             </div>
             <div>
-	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" checked="{$find.nan}">男 　　<input type="radio"  name="sex" value="2" checked='{$find.nv}'>女　　　
+	            <label>性别：</label>　　<input type="radio"  name="sex" value="1">男 　　<input type="radio"  name="sex" value="0">女　　　
 	 　　　　　　  <label>联系电话：</label><input type="text" class="text" name="phone" value="{$find.phone}">
             </div>
             <div>
@@ -25,7 +25,7 @@
             </div>
             <div>
 	            <label>紧急联系人电话：</label><input type="text" class="text" name="criticalphone" value="{$find.criticalphone}">
-	            <label>出生日期：</label><input type="text" class="text" name="birthday" value="{$find.birthday}">
+	            <label>出生日期：</label><input type="text" class="text" name="birthday" value="0000-00-00">
             </div>
             <div>
 	            <label>年龄：</label><input type="text" class="text" name="age" value="{$find.age}">
@@ -54,17 +54,26 @@
 	            <label>爱好、特长：</label><input type="text" class="text" name="hobbies" value="{$find.hobbies}">
             </div>
             <div>
-	            <label>入职时间：</label><input type="text" class="text" name="entrytime" value="{$find.entrytime}">
+	            <label>入职时间：</label><input type="text" class="text" name="entrytime" value="0000-00-00">
 	            <label>试用期：</label><input type="text" class="text" name="trydate" value="{$find.trydate}">
             </div>
             <div>
 	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是">正式 　　<input type="radio"  name="iscompletion" value="否">试用　　　
-	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
-                <input type="hidden" name="leixing" value="基本信息">
+	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="0000-00-00">
+                <input type="hidden" name="leixing1" value="" class="jibenxinxi">
             </div>
         </div>
+        
+        <div class="form-item" style="display:none;">
+            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$gonghao.b}@qq.com">
+            </div>
+        </div>
+
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定 编 辑</button>
+            <button class="btn submit-btn ajax-post jiben" id="submit"  target-form="form-horizontal">确 定 添 加</button>
+            <button class="btn submit-btn ajax-post jiben1" id="submit" style='display:none'  type="submit" target-form="form-horizontal">确 定 编 辑</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
@@ -91,7 +100,7 @@
 		            <label>所属项目：</label>
 		            	<select name="p1">
 		            	<volist name="project" id="vo"> 
-		            		<option value="{$vo.did}">{$vo.dname}</option>
+		            		<option value="{$vo.id}">{$vo.name}</option>
 		            	</volist>
 		            	</select>
 		             <label>分摊工资：</label><input type="text" class="text" name="ps1"/>
@@ -113,10 +122,11 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="leixing" value="岗位">
+        <input type="hidden" name="leixing2" value="" class="gangwei">
         
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn ajax-post gang " id="submit"  target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn ajax-post gang1 " id="submit" type="submit" style="display:none;" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
@@ -140,7 +150,7 @@
                         if(a=='+'){
                             clicknum += 1;                          
                             html="<div><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
-                                "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
+                                "<option value='{$vo.id}'>{$vo.name}</option></volist></select>"+
                              " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
                             $(this).parents('div').find('.project').append(html);
@@ -167,7 +177,22 @@
                             $('.hidd').show();
                         }
                     });
-                    
+
+                    //点击基本信息时                    
+                    $('.jiben').click(function(){
+                        
+                        $('.jibenxinxi').attr("value",'基本信息');
+                        
+                        $('.jiben1').click();
+                       
+                    })
+                    //点击岗位下面的确认时。
+                    $('.gang').click(function(){
+
+                        $('.gangwei').attr("value",'岗位');
+                        $('.gang1').click();
+
+                    });
 
                 })
   </script>
