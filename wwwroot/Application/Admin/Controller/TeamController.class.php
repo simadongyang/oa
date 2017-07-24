@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Admin\Controller;
-use User\Api\UserApi;
+
 
 /**
  * 后台用户控制器
@@ -21,19 +21,105 @@ class TeamController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
-        $nickname       =   I('nickname');
-        $map['status']  =   array('egt',0);
-        if(is_numeric($nickname)){
-            $map['uid|nickname']=   array(intval($nickname),array('like','%'.$nickname.'%'),'_multi'=>true);
-        }else{
-            $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
-        }
+       
 
-        $list   = $this->lists('Member', $map);
+        $list   = $this->lists('Project');
         int_to_string($list);
         $this->assign('_list', $list);
         $this->meta_title = '用户信息';
         $this->display();
+    }
+    public function add(){
+       if(IS_POST){
+            $Menu = D('Project');
+            $data = $Menu->create();
+            if($data){
+                $id = $Menu->add();
+                if($id){
+                    // S('DB_CONFIG_DATA',null);
+                    //记录行为
+                    action_log('update_menu', 'Menu', $id, UID);
+                    $this->success('新增成功', Cookie('__forward__'));
+                } else {
+                    $this->error('新增失败');
+                }
+            } else {
+                $this->error($Menu->getError());
+            }
+        } else {
+            
+            $this->display();
+        }
+    }
+
+    public function edit($id = 0)
+    {
+        if(IS_POST){
+            $Pro = D('Project');
+            $data = $Pro->create();
+            if($data ){
+                if($data['id']) // 编辑
+                {
+                    if($Pro->save()!== false){
+                    // S('DB_CONFIG_DATA',null);
+                    //记录行为
+                    action_log('update_pro', 'Pro', $data['id'], UID);
+                    $this->success('更新成功',U('Team/index'));
+                    } else {
+                        $this->error(json_encode($data));
+                    }
+                }else{ // 新增
+                     $id = $Pro->add();
+                    if($id){
+                        // S('DB_CONFIG_DATA',null);
+                        //记录行为
+                        action_log('add_pro', 'Pro', $id, UID);
+                        $this->success('新增成功', U('Team/index'));
+                    } else {
+                        $this->error('新增失败');
+                    }
+                }
+                
+            } else {
+                $this->error($Pro->getError());
+            }
+        } else { //编辑页
+            $info = array();
+            /* 获取数据 */
+            $info = M('Project')->field(true)->find($id);
+            //$menus = M('Project')->field(true)->select();
+           // $menus = D('Common/Tree')->toFormatTree($menus);
+
+            //$menus = array_merge(array(0=>array('id'=>0,'title_show'=>'顶级菜单')), $menus);
+            //$this->assign('Menus', $menus);
+            if(false === $info){
+                $this->error('获取后台菜单信息错误');
+            }
+            $this->assign('info', $info);
+            $this->meta_title = '编辑';
+            $this->display();
+        }
+    }
+    /**
+     * 删除项目
+     * @author yangweijie <yangweijiester@gmail.com>
+     */
+    public function del(){
+        $id = array_unique((array)I('id',0));
+
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+
+        $map = array('id' => array('in', $id) );
+        if(M('Project')->where($map)->delete()){
+            // S('DB_CONFIG_DATA',null);
+            //记录行为
+            action_log('update_project', 'Project', $id, UID);
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败！');
+        }
     }
 
     /**
@@ -177,96 +263,50 @@ class TeamController extends AdminController {
      */
     public function changeStatus($method=null){
         $id = array_unique((array)I('id',0));
-        if( in_array(C('USER_ADMINISTRATOR'), $id)){
-            $this->error("不允许对超级管理员执行该操作!");
-        }
         $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
-        $map['uid'] =   array('in',$id);
+        $map['id'] =   array('in',$id);
         switch ( strtolower($method) ){
             case 'forbiduser':
-                $this->forbid('Member', $map );
+                $this->forbid('Project', $map );
                 break;
             case 'resumeuser':
-                $this->resume('Member', $map );
+                $this->resume('Project', $map );
                 break;
             case 'deleteuser':
-                $this->delete('Member', $map );
+                $this->delete("Project", $map );
                 break;
             default:
                 $this->error('参数非法');
         }
     }
+    public function add_t()
+    {
+         if(IS_POST)
+        {
+            $arr=I('post.'); 
+           // var_dump($arr);die;
+            $data['name']  = 'test';
+            $data['area']  = 'test';
+            $data['h_name']  = 'test';
+            $data['depar']  = 'test';
+            $data['charge']  = 'test';
 
-    public function add($username = '', $password = '', $repassword = '', $email = ''){
-        
-        //显示所属部门信息
-        $department=M('department')->select();
-        $this->assign('department',$department);
-        
-        //显示项目信息
-        $department=M('department')->select();
-        $this->assign('project',$department);
-        
-        //显示岗位信息
-        $station=M('station')->select();
-        $this->assign('station',$station);
-        
-        if(IS_POST){
-            $arr=I('post.');
-            /* 检测密码 */
-            if($password != $repassword){
-                $this->error('密码和重复密码不一致！');
+            if(!M('Project')->add($arr))
+            {
+                $this->error('用户添加失败！');
+            } else {
+               // $this->success('',U('add'));
+              $this->success('操作完成','admin/team/add',3);
             }
 
-            /* 调用注册接口注册用户 */
-            $User   =   new UserApi;
-            $uid    =   $User->register($username, $password, $email);
-            if(0 < $uid){ //注册成功
-                $arr['realname']=$arr['username'];
-                $arr['uid']=$uid;
-                $arr['nickname']=$username;
-                $arr['status']=1;
-                $user = $arr;
-                $sa['projectid']='';
-                $sa['projectsalary']='';
-                $sa['salarytotal']=0;
-                foreach($arr as $k=>$v){
-                    if($k%2===0){//查询键值为数字的被2整除的值
-                        $sa['projectsalary'] .= $v.',';
-                        $sa['salarytotal'] += $v;
-                    }elseif($k%2===1){
-                        $sa['prejectid'] .= $k.',';
-                    }
-                }
-                if(!M('Member')->add($user) || M('salarydetail')->add($sa)){
-                    $this->error('用户添加失败！');
-                } else {
-                    $this->success('用户添加成功！',U('index'));
-                }
-            } else { //注册失败，显示错误信息
-                $this->error($this->showRegError($uid));
-            }
-        } else {
-            $this->meta_title = '新增用户';           
         }
-        
-        //如果是查询详情
-        $id=I('get.id');
-        if($id){
-            $find=M('Member')->where('uid='.$id)->find();
-            if($find['sex']==1){
-                $find['nan']=true;
-            }else{
-                $find['nv']=false;
-            }
-            $this->assign('find',$find);
-        }        
-        
-        $this->display();
+       //  $this->display('team/add');
+        // $this->redirect('Team/add');
     }
+
 
     /**
      * 获取用户注册错误信息
