@@ -91,7 +91,7 @@
                         <else/>
                         <select name="p1">
                         <volist name="project" id="vo"> 
-                            <option value="{$vo.did}"  >{$vo.dname}</option>
+                            <option value="{$vo.id}"  >{$vo.name}</option>
                         </volist>
                         </select>
                         
@@ -152,7 +152,7 @@
                         if(a=='+'){
                             clicknum += 1;                          
                             html="<div><input type='hidden' name='pridnew"+clicknum+"' value='-1'><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
-                                "<option value='{$vo.did}'>{$vo.dname}</option></volist></select>"+
+                                "<option value='{$vo.id}'>{$vo.name}</option></volist></select>"+
                              " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
                           
                             $(this).parents('div').find('.project').append(html);

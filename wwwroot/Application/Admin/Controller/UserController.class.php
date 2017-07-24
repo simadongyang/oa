@@ -204,11 +204,13 @@ class UserController extends AdminController {
     	
     	//显示所属部门信息
     	$department=M('department')->select();
+        //$department=tree($department);
+        $department=getTrees($department);
     	$this->assign('department',$department);
     	
     	//显示项目信息
-    	$department=M('department')->select();
-    	$this->assign('project',$department);
+    	$project=M('project')->select();
+    	$this->assign('project',$project);
     	
     	//显示岗位信息
     	$station=M('station')->select();
@@ -284,7 +286,7 @@ class UserController extends AdminController {
                 }
                 //判断是否添加成功
                 if($resl){
-                    $this->success('用户添加成功！',U('index'));
+                    $this->success('用户添加成功！'.$newarr[0]['did'],U('index'));
                 } else {
                     $this->error('用户添加失败！');
                 }
@@ -344,13 +346,11 @@ class UserController extends AdminController {
 
         //显示员工的岗位及薪资信息
         $id=I('get.id');
-        //显示所属部门信息
-        $department=M('department')->select();
-        $this->assign('department',$department);
+        
         
         //显示项目信息
-        $department=M('department')->select();
-        $this->assign('project',$department);
+        $project=M('project')->select();
+        $this->assign('project',$project);
         
         //显示岗位信息
         $station=M('station')->select();
@@ -360,10 +360,16 @@ class UserController extends AdminController {
         $where=array('uid'=>$id,'status'=>1);
         $sel=M('dss')->where($where)->select();
         foreach($sel as &$v){
-            //获取员工岗位名称
-            $find=M('department')->where('did='.$v['projectid'])->find();
-            $v['projectname']=$find['dname'];            
+            //获取员工所在项目名称
+            $find=M('project')->where('id='.$v['projectid'])->find();
+            $v['projectname']=$find['name'];            
         }
+
+        //显示所属部门信息及员工所属部门
+        $department=M('department')->select();
+        //$department=tree($department,$sel[0]['did']);
+        $department=getTrees($department);
+        $this->assign('department',$department);
         //查询员工薪资
         $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
         $this->assign('salarychange',$salarychange);

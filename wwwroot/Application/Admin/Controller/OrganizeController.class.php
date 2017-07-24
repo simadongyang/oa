@@ -21,15 +21,17 @@ class OrganizeController extends AdminController {
      */
     public function index(){
     	//所属部门信息显示
-      	$department=M('department')->select();        
-    
-      	$this->assign('department',$department);
-      	$this->assign('departmen',$department);
+      	$department=M('department')->select(); 
+        //构造新数组       
+        $department=getTrees($department);
+      	$this->assign('department',$department);      	
         $this->display();
     }
     public function add(){
     	//显示所属部门信息
     	$department=M('department')->select();
+        //构造新数组       
+        $department=getTrees($department);
     	$this->assign('department',$department);    	
     	$a=I('post.');    	
     	if(!empty($a)){    		
@@ -42,6 +44,44 @@ class OrganizeController extends AdminController {
     	}
     	$this->display();
     }
+
+    public function changeStatus($method=null){
+        $id = array_unique((array)I('id',0));
+        if( in_array(C('USER_ADMINISTRATOR'), $id)){
+            $this->error("不允许对超级管理员执行该操作!");
+        }
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+        $map['did'] =   array('in',$id);
+        switch ( strtolower($method) ){
+            case 'forbiduser':
+                $this->forbid('department', $map );
+                break;
+            case 'resumeuser':
+                $this->resume('department', $map );
+                break;
+            case 'deleteuser':
+                $this->delete('department', $map );
+                break;
+            default:
+                $this->error('参数非法');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     //岗位信息
     public function station(){
     	$station=M('station')->select();
@@ -58,6 +98,8 @@ class OrganizeController extends AdminController {
     public function addstation(){
     	//显示所属部门信息
     	$department=M('department')->select();
+        //构造新数组       
+        $department=getTrees($department);
     	$this->assign('department',$department);
     	
     	$a=I('post.');
