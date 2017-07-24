@@ -99,7 +99,7 @@ class OrganizeController extends AdminController {
 
     //岗位信息
     public function station(){
-    	$station=M('station')->select();
+    	$station=M('station')->where('status>-1')->select();
         foreach($station as &$v){
             if ($v['isstaff']==1) {
                 $v['isstaff']='否';
@@ -110,6 +110,7 @@ class OrganizeController extends AdminController {
     	$this->assign('station',$station);    	
     	$this->display();
     }
+    //新增岗位信息
     public function addstation(){
     	//显示所属部门信息
     	$department=M('department')->select();
@@ -120,15 +121,62 @@ class OrganizeController extends AdminController {
     	$a=I('post.');
         //var_dump($a);exit;
     	if(!empty($a)){
-    		$result=M('station')->add($a);
-    		if(!$result){
-    			$this->error('用户添加失败！');
-    		} else {
-    			$this->success('用户添加成功！',U('station'));
-    		}
+            if($a['sid']){
+            //var_dump($a);exit;                
+                $result=M('station')->where('sid='.$a['sid'])->save($a);
+                if(!$result){
+                    $this->error('岗位编辑失败！');
+                } else {
+                    $this->success('岗位编辑成功！',U('station'));
+                }
+            }else{
+        		$result=M('station')->add($a);
+        		if(!$result){
+        			$this->error('岗位添加失败！');
+        		} else {
+        			$this->success('岗位添加成功！',U('station'));
+        		}
+            }
     	}
+        //显示编辑岗位信息
+        $sid=I('get.sid');
+        if($sid){
+            $sone=M('station')->where('sid='.$sid)->find();
+            if($sone['isstaff']==0){
+                $sone['shi']='checked';
+            }else{
+                $sone['fou']='checked';
+            }
+            $this->assign('sone',$sone);
+
+        }
     	$this->display();
     }
-    
+    //操作
+    public function changeStatus_s($method=null){
+
+        $id = array_unique((array)I('id',0));
+        if( in_array(C('USER_ADMINISTRATOR'), $id)){
+            $this->error("不允许对超级管理员执行该操作!");
+        }
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+        $map['sid'] =   array('in',$id);
+        switch ( strtolower($method) ){
+            case 'forbiduser':
+                $this->forbid('station', $map );
+                break;
+            case 'resumeuser':
+                $this->resume('station', $map );
+                break;
+            case 'deleteuser':
+                $this->delete('station', $map );
+                break;
+            default:
+                $this->error('参数非法');
+        }
+    }
 
 }

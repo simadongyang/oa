@@ -13,7 +13,7 @@
             <label class="item-label">所属上级部门</label>
             <select name='dpid'>
             	<volist name="department" id="vo">
-            	<option value="{$vo.did}" <if condition="$done.dpid eq $vo.did"> selected </if>>{$vo.dname}</option>
+            	<option value="{$vo.did}" <if condition="$vo.did eq $done['dpid']"> selected </if> >{$vo.dname}</option>
             	</volist>
             </select>
         </div>   
