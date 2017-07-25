@@ -54,7 +54,7 @@
 	            <label>试用期：</label><input type="text" class="text" name="trydate" value="{$find.trydate}">
             </div>
             <div>
-	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是" {$find.shi}>正式 　　<input type="radio"  name="iscompletion" value="否" {$find.fou}>试用　　　
+	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="1" {$find.shi}>正式 　　<input type="radio"  name="iscompletion" value="0" {$find.fou}>试用　　　
 	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
                 <input type="hidden" name="leixing1" value="" class='jibenxinxi'>
             </div>
@@ -70,7 +70,7 @@
     <h1>岗位信息</h1><hr>
 
     <form action="{:U()}" method="post" class="form-horizontal">   
-        <div class="form-item">
+        <div class="form-item ">
              <label>所属部门：</label>
             	<select name="did">
             		<volist name="department" id="vo">
@@ -79,18 +79,25 @@
             	</select>
              <label>所属岗位：</label>
             	<select name="sid" >
+                    
 	            	<volist name="station" id="vo">
 	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
 	            	</volist>
-            	</select>
+            	</select> 
+            <span class="hidd">项目管理<a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a></span>
+                <!-- 判断能否查看他人薪资 -->
+                <if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
+
             <div class="project hidd" >
                 <div val='1'>
-                    <input type="hidden" name="prid1" value="{$sel[0]['dssid']}">
+                    
                     <label>所属项目：</label>
-                        <if condition="$sel[0]['projectid'] neq ''">
+                        <if condition="$sel[0]['projectid'] neq 0">
+                            <input type="hidden" name="prid1" value="{$sel[0]['dssid']}">
                             <input type="text" name="p1" value="{$sel[0]['projectname']}" readonly>
                             <label>分摊工资：</label><input type="text" class="text" name="ps1" readonly value="{$sel[0]['projectsalary']}"/>
                         <else/>
+                        <input type='hidden' name='pridnew1' value='-1'>
                         <select name="p1">
                         <volist name="project" id="vo"> 
                             <option value="{$vo.id}"  >{$vo.name}</option>
@@ -99,7 +106,7 @@
                         
                      <label>分摊工资：</label><input type="text" class="text" name="ps1" value=""/>
                      </if>
-                     <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>                    
+                                         
 
                  </div>       
                 <volist name="sel" id="vos" key="k">
@@ -113,6 +120,7 @@
                  </if>         
                  </volist>	             	             
             </div>
+            <p class="tianjia"></p>
         </div>        
         <div class="hidd" >
             <h1>薪资信息</h1><hr>
@@ -126,6 +134,11 @@
                 </div>
             </div>
         </div>
+
+        <else/>
+        </div>
+        </if>
+
         <input type="hidden" name="leixing2" value="" class="gangwei">
         <input type="hidden" name="uid" value="{$sel[0]['uid']}">
         <!--  <input type="submit" value="提交">-->
@@ -163,11 +176,11 @@
                         }
                         if(a=='-'){
                             
-                            first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
+                            //first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
                            
-                            if(first!=1){
-                                $(this).parents('div').find('.project').children('div:last-child').remove();    
-                            }                   
+                            
+                            $(this).parents('div').find('.project').children('div:last-child').remove();    
+                                              
                             
                         }
                     })
@@ -176,11 +189,15 @@
                     $('select[name=sid]').change(function(){
                         isst=$(this).find("option:selected").attr('isstaff');
                         if(isst==1){
-                            $('.hidd').hide();
+                            $('.hidd').hide();                            
+                            $('.tianjia').append('<input type="hidden" name="panduan" value="1">');
                         }else{
                             $('.hidd').show();
+
                         }
                     });
+
+                    
                    
                     //点击基本信息时                    
                     $('.jiben').click(function(){

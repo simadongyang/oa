@@ -33,12 +33,13 @@
 								{$vo.dname}
 							</td>
 							<td>
+								<a href="{:U('Organize/add?did='.$vo['did'])}">编辑</a>
 								<eq name="vo.status" value="1">
-									<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
+									<a href="{:U('Organize/changeStatus?method=forbidUser&id='.$vo['did'])}" class="ajax-get">禁用</a>
 									<else/>
-									<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
+									<a href="{:U('Organize/changeStatus?method=resumeUser&id='.$vo['did'])}" class="ajax-get">启用</a>
 								</eq>
-								<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
+								<a href="{:U('Organize/changeStatus?method=deleteUser&id='.$vo['did'])}" class="confirm ajax-get">删除</a>
 							</td>
 						</tr>
 

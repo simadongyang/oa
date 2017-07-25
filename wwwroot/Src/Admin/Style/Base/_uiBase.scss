@@ -1,0 +1,17 @@
+.ui{
+    &.form{
+        .field>label{
+            font-weight: normal;
+        }
+        .fields{
+            .field{
+                .ui.dropdown.w204{
+                    width: 204px;
+                }
+                textarea.w204{
+                    width: 204px;
+                }
+            }
+        }
+    }
+}
