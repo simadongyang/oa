@@ -196,17 +196,8 @@
 
                         }
                     });
-                    
-                    $('select[name=sid]').change(function(){
-                        isst=$(this).find("option:selected").attr('isstaff');
-                        if(isst==1){
-                            $('.hidd').hide();                            
-                            $('.tianjia').append('<input type="hidden" name="panduan" value="1">');
-                        }else{
-                            $('.hidd').show();
 
-                        }
-                    });
+                    
                    
                     //点击基本信息时                    
                     $('.jiben').click(function(){
