@@ -63,11 +63,15 @@ class PerapproController extends AdminController {
         {
             $this->error('审批生成失败');
         }
-       
+        $res = M('Dss')
+            ->field('did')
+            ->where("uid = $nid")
+            ->find();
+        if(!empty($res)) return ;
        // 判断是否为第一次添加
        
         $pids = $this -> partment($did);
-
+        if(empty($pids)) $this->error('岗位信息有误');
             //当前用户的uid
             $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
             $res=M('Department')
@@ -101,7 +105,9 @@ class PerapproController extends AdminController {
     }
     public function test()
     {
-        // $nid 新入职的id $did 本部门id
+        // $nid 新入职的id $did 本部门id\
+        $nid =144440;
+        $did = 7;
          $this->appr($nid,$did);
     }
     public function waitbak(){
@@ -387,7 +393,7 @@ class PerapproController extends AdminController {
         // 审批人的信息
          $ares=M('Appro')
           ->alias('a')
-          ->field('m.username,a.*')
+          ->field('m.username,a.status')
           ->join('onethink_ucenter_member m on a.aid = m.id')
          ->where("a.uid = $uid")->select();
          // 被审批人的信息
