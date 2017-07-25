@@ -16,7 +16,15 @@ namespace Admin\Controller;
  */
 class PerapproController extends AdminController {
 
- 
+     public function index(){
+       
+        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+         $res=M('Appro')->where("uid = $uid")->group('time')->select();
+        //var_dump($res);die;      
+
+        $this->assign('_list', $res);
+        $this->display();
+    }
     public function wait_(){
         $find = [0,1];
      $replace = ['q','e'];
