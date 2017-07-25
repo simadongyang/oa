@@ -8,9 +8,9 @@
 		</div>
 		<div class="toolbar">
 			<a class="ui blue button" href="{:U('Organize/add')}">新 增</a>
-			<button class="ui blue button ajax-post" url="{:U('Organize/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
-			<button class="ui blue button ajax-post" url="{:U('Organize/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
-			<button class="ui blue button ajax-post confirm" url="{:U('Organize/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+			<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+			<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+			<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
 		</div>
 		<!-- 数据列表 -->
 		<table class="ui celled table">
@@ -19,7 +19,6 @@
 					<th class="row-selected row-selected"><input class="check-all" type="checkbox" /></th>
 					<th>部门id</th>
 					<th>部门名称</th>
-					<th>部门负责人</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -30,16 +29,16 @@
 						<tr>
 							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.did}" /></td>
 							<td>{$vo.did} </td>
-							<td>{$vo.dname}</td>
-							<td>{$vo.dperson}</td>
 							<td>
-								<a href="{:U('Organize/add?did='.$vo['did'])}" >编辑</a>
+								{$vo.dname}
+							</td>
+							<td>
 								<eq name="vo.status" value="1">
-									<a href="{:U('Organize/changeStatus?method=forbidUser&id='.$vo['did'])}" class="ajax-get">禁用</a>
+									<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 									<else/>
-									<a href="{:U('Organize/changeStatus?method=resumeUser&id='.$vo['did'])}" class="ajax-get">启用</a>
+									<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
 								</eq>
-								<a href="{:U('Organize/changeStatus?method=deleteUser&id='.$vo['did'])}" class="confirm ajax-get">删除</a>
+								<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
 							</td>
 						</tr>
 
@@ -58,7 +57,6 @@
 <block name="script">
 	<script type="text/javascript">
 		//导航高亮
-		highlight_subnav('{:U('
-			User / index ')}');
+		highlight_subnav('{:U('User/index')}');
 	</script>
 </block>
