@@ -1,6 +1,7 @@
 @import "Base/base";
 @import "Base/class";
 @import "Base/font";
+@import "Base/uiBase";
 
 @import "Components/h";
 @import "Components/button";
@@ -12,6 +13,7 @@
 @import "Layout/main";
 @import "Layout/toolbar";
 @import "Layout/topAlert";
+@import "Layout/page";
 
 @import "Page/authManager-managerGroup";
 @import "Page/menu-edit";
