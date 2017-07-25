@@ -20,16 +20,13 @@ class UserController extends AdminController {
      * 用户管理首页
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
-    public function index(){
-        $nickname       =   I('nickname');
-        $map['status']  =   array('egt',0);
-        if(is_numeric($nickname)){
-            $map['uid|nickname']=   array(intval($nickname),array('like','%'.$nickname.'%'),'_multi'=>true);
-        }else{
-            $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
-        }
+    public function index(){       
 
-        $list   = $this->lists('Member', $map);
+        
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
+        $map['status']  =   array('egt',0);
+        $list   = $this->lists('Member', $map,'','',$field);
+        
 
         //根据获得的信息查询相关的信息
         foreach($list as &$v){
@@ -38,6 +35,12 @@ class UserController extends AdminController {
                 $v['sex']='男';
             }else{
                 $v['sex']='女';
+            }
+            //将是否转正数字转为文字
+            if($v['iscompletion']==1){
+                $v['iscompletion']='正式';
+            }else{
+                $v['iscompletion']='试用';
             }
             //显示年龄
             $v['age']=date('Y-m-d')-$v['birthday'];
@@ -49,9 +52,9 @@ class UserController extends AdminController {
             $station=M('station')->where('sid='.$dss['sid'])->find(); 
             $v['stationname']=$station['stationname'];
         }
-        int_to_string($list);
+       // int_to_string($list);
         $this->assign('_list', $list);
-        $this->meta_title = '用户信息';
+        //$this->meta_title = '用户信息';
         $this->display();
     }
 
@@ -412,7 +415,7 @@ class UserController extends AdminController {
         //判断员工现在是否有所属项目
         if($sel[0]['projectid']){
             $where=array('uid'=>$id,'status'=>1);
-            $sel=M('dss')->where($where)->order('dssid desc')->select();
+            $sel=M('dss')->where($where)->select();
 
             foreach($sel as &$v){
                 //获取员工所在项目名称
@@ -507,7 +510,7 @@ class UserController extends AdminController {
               
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num || $result){
-                    $this->success('用户编辑成功！'.$project[0]['id'].'8888',U('index'));                    
+                    $this->success('用户编辑成功！'.$num,U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                 } 
