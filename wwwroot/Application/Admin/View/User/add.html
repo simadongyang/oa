@@ -1,8 +1,5 @@
 <extend name="Public/base" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
+
 <block name="body">
 
     
@@ -221,7 +218,7 @@
                 })
   </script>
 </block>
-=======
+
 	<div class="main-title">
 		<h2>新增用户</h2>
 	</div>
@@ -256,8 +253,7 @@
 					<a class='jia' val='-'>－</a>
 				</div>
 			</div>
->>>>>>> 43d5a649fd8dc0b0ca8635969a9868ba4fa6e061
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 
 <block name="body">
 	<div id="userAdd">
@@ -274,7 +270,7 @@
 					</div>
 					<div class="field">
 						<label>姓名</label>
-<<<<<<< HEAD
+
 						<input type="text" name="username" value="{$find.realname}">						
 					</div>
 				</div>
@@ -313,23 +309,22 @@
 					<div class="field">
 						<label>出生日期</label>
 						<input type="text" name="birthday" value="{$find.birthday}">
-=======
+
 						<input type="text" name="username" value="{$find.realname}">
 						<input type="hidden" class="text input-large" name="password" value="123456">
 						<input type="hidden" class="text input-large" name="repassword" value="123456">
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 					</div>
 				</div>
 				<div class="fields">
 					<div class="field">
-<<<<<<< HEAD
+
 						<label>民族</label>
 						<input type="text" name="nation" value="{$find.nation}">
 					</div>
 					<div class="field">
 						<label>政治面貌</label>
 						<input type="text" name="political" value="{$find.political}">
-=======
 						<label>性别</label>
 						<div class="ui radio checkbox mr15">
 							<input type="radio" name="sex" value="1" tabindex="0" class="hidden" {$find.nan} <if condition="$sone.isstaff eq 0"> checked="" </if>>
@@ -343,13 +338,12 @@
 					<div class="field">
 						<label>联系电话</label>
 						<input type="text" name="phone" value="{$find.phone}">
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 					</div>
 				</div>
 				<div class="fields">
 					<div class="field">
-<<<<<<< HEAD
-=======
+
 						<label>QQ号</label>
 						<input type="text" name="qq" value="{$find.qq}">
 					</div>
@@ -380,7 +374,7 @@
 				</div>
 				<div class="fields">
 					<div class="field">
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 						<label>身份证号</label>
 						<input type="text" name="IDnumber" value="{$find.IDnumber}">
 					</div>
@@ -453,12 +447,12 @@
 				</div>
 				<input type="hidden" name="savestatus" value="基本信息">
 				<div class="form-item">
-<<<<<<< HEAD
+
 				<input type="submit" value="提交">
 					<button class="ui blue button submit-btn ajax-post mr20" id="submit" target-form="form-horizonta">确 定</button>
-=======
+
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
 			</form>
@@ -479,13 +473,13 @@
 						<!--
 							isstaff = 1 则是非普通员工，隐藏薪资内容
 						-->
-<<<<<<< HEAD
+
 						<select class="ui dropdown dropdown-init" name="sid">
 							<volist name="station" id="vo">
 								<option value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
 							</volist>
 						</select>
-=======
+
 						<!--<select class="ui dropdown" name="sid" id="station">
 							<volist name="station" id="vo">
 								<option value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
@@ -501,25 +495,25 @@
 								</volist>
 							</div>
 						</div>
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 					</div>
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
 					<empty name="sel">
-<<<<<<< HEAD
+
 						<div class="fields">
-=======
+
 						<div class="fields fields-xm">
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="did">
 									<volist name="department" id="vo">
-<<<<<<< HEAD
+
 										<option value="{$vo.did}" <if condition="$vo.did eq $sel[0]['did']"> selected </if>>{$vo.dname}</option>
-=======
+
 										<option value="{$vo.did}">{$vo.dname}</option>
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 									</volist>
 								</select>
 							</div>
@@ -534,11 +528,11 @@
 						</div>
 					<else />
 						<volist name="sel" id="vos" key="k">
-<<<<<<< HEAD
+
 							<div class="fields">
-=======
+
 							<div class="fields fields-xm">
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
@@ -576,12 +570,11 @@
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
 				<div class="form-item">
-<<<<<<< HEAD
 				<input type="submit" value="提交"> 
 					<button class="ui blue button submit-btn ajax-post mr20" id="submit" target-form="form-horizontal2">确 定</button>
-=======
+
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal2">确 定</button>
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
 			</form>
@@ -595,8 +588,7 @@
 			$('.menu .item').tab();
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init').dropdown();
-<<<<<<< HEAD
-=======
+
 			$("#station").dropdown({
 				onChange: function(value, text, $selectedItem) {
 					console.log($selectedItem);
@@ -633,7 +625,7 @@
 					alert("至少保留一个所属项目");
 				}
 			})
->>>>>>> 29956a932501af535c468db2c1f3cbc53d80f72e
+
 		})
 		//导航高亮
 		highlight_subnav('{:U('User/index')}');
