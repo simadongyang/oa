@@ -135,6 +135,22 @@ h3 {
   .ui.table tr td {
     padding: .8em; }
 
+.ui.form .field label {
+  font-size: 16px;
+  font-weight: normal; }
+  .ui.form .field label .check-tips {
+    color: #aaa;
+    font-size: 14px; }
+
+.ui.form .field input {
+  font-size: 13px; }
+
+.ui.form .field select {
+  padding: .3em .6em; }
+
+.ui.form .field.default {
+  width: 400px; }
+
 .header {
   position: fixed;
   top: 0px;
@@ -320,14 +336,3 @@ h3 {
           margin-right: 5px; }
       #authManagerManagerGroup .checkmod dd .child_row {
         padding-left: 20px; }
-
-#menuEdit .field {
-  width: 400px; }
-  #menuEdit .field label {
-    font-size: 16px;
-    font-weight: normal; }
-    #menuEdit .field label .check-tips {
-      color: #aaa;
-      font-size: 14px; }
-  #menuEdit .field input {
-    font-size: 13px; }
