@@ -35,7 +35,7 @@
 				<div class="ui radio checkbox mr15">
 					<input type="radio" name="isstaff" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 0"> checked="" </if>>
 					<label>否</label>
-				</div>
+				</div> 
 	        </div>
         </div>
         <input type="hidden" name="sid" value="{$sone.sid}">
@@ -54,6 +54,5 @@
 		})
         //导航高亮
         highlight_subnav('{:U('User/index')}');
-        
     </script>
 </block>
