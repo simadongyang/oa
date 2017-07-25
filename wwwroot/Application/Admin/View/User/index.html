@@ -43,13 +43,12 @@
 						<td>{$vo.iscompletion}</td>
 						<td>{$vo.entrytime}</td>
 						<td>
-<<<<<<< HEAD
+
 							<a href="{:U('User/add?id='.$vo['uid'])}">查看详情</a>
 							<eq name="vo.status" value="1">								
-=======
-							<a href="{:U('User/update?id='.$vo['uid'])}">查看详情</a>
+        					<a href="{:U('User/update?id='.$vo['uid'])}">查看详情</a>
 							<eq name="vo.status" value="1">
->>>>>>> 82671843591ac22d573cb65461f13872136521fc
+
 								<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 								<else/>
 								<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
