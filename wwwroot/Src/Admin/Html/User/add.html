@@ -185,10 +185,10 @@
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="did">
-									<volist name="department" id="vo">
-										<option value="{$vo.did}">{$vo.dname}</option>
-									</volist>
-								</select>
+				                    <volist name="project" id="vo">
+				                    	<option value="{$vo.id}">{$vo.name}</option>
+				                    </volist>
+				                </select>
 							</div>
 							<div class="field">
 								<label>分摊工资</label>

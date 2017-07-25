@@ -55,15 +55,15 @@
 	                cache: false,
 	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
 	                onResponse:function(response){
-	                    if(!response.data.lists.length && !response.data.status){
+	                    if(!response.status || !response.data.length){
 	                        return;
 	                    }
 	                    var data = {
 	                        "success":true,
 	                        "results" : []
 	                    };
-	                    for(var i = 0; i < response.data.lists.length; i++){
-	                        data.results.push({"name":response.data.lists[i].member_name,"value":response.data.lists[i].member_id})
+	                    for(var i = 0; i < response.data.length; i++){
+	                        data.results.push({"name":response.data[i].realname,"value":response.data[i].uid})
 	                    }
 	                    return data;
 	                },
