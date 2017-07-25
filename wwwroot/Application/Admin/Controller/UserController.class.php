@@ -52,9 +52,9 @@ class UserController extends AdminController {
             $station=M('station')->where('sid='.$dss['sid'])->find(); 
             $v['stationname']=$station['stationname'];
         }
-       // int_to_string($list);
+       
         $this->assign('_list', $list);
-        //$this->meta_title = '用户信息';
+        
         $this->display();
     }
 
@@ -510,7 +510,7 @@ class UserController extends AdminController {
               
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num || $result){
-                    $this->success('用户编辑成功！'.$num,U('index'));                    
+                    $this->success('用户编辑成功！',U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                 } 
