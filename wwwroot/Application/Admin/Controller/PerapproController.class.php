@@ -414,8 +414,14 @@ class PerapproController extends AdminController {
         $data['username'] = $res['username'];
         //审批人的信息
         $data['info'] = $ares;
-        //echo '<pre>';
-        //var_dump($data);die;
+        // 去掉拒绝之后的
+        foreach($data['info'] as $k => $v)
+        {
+            if($v['status'] == 0)
+            {
+              $data['info']=array_slice($data['info'],0,$k+1);
+            }
+        }
         $this ->assign('appro',$data);
         $this->display();
     }
@@ -458,10 +464,18 @@ class PerapproController extends AdminController {
             $data['username'] = $res['username'];
             //审批人的信息
             $data['info'] = $ares;
-            $this ->assign('appro',$data);
+            // 去掉拒绝之后的
+            foreach($data['info'] as $k => $v)
+            {
+                if($v['status'] == 0)
+                {
+                  $data['info']=array_slice($data['info'],0,$k+1);
+                }
+            }
+                $this ->assign('appro',$data);
 
-            $this->assign('find',$find);           
-        } 
+                $this->assign('find',$find);           
+            } 
 
         
         if(IS_POST){
