@@ -6,26 +6,18 @@
 	</div>
 
 	<form action="{:U('AuthManager/writeGroup')}" enctype="application/x-www-form-urlencoded" method="POST" class="form-horizontal ui form">
-		<div class="field default">
-			<label>用户组</label>
-			<input type="text" name="title" value="{$auth_group.title}" />
-		</div>
-		<div class="field default">
-			<label>描述</label>
-			<textarea type="text" name="description">{$auth_group.description}</textarea>
-		</div>
-		<!--<div class="form-item">
-			<label for="auth-title" class="item-label">用户组</label>
-			<div class="controls">
-				<input id="auth-title" type="text" name="title" class="text input-large" value="{$auth_group.title}" />
+		<div class="fields">
+			<div class="field default">
+				<label>用户组</label>
+				<input type="text" name="title" value="{$auth_group.title}" />
 			</div>
-		</div>-->
-		<!--<div class="form-item">
-			<label for="auth-description" class="item-label">描述</label>
-			<div class="controls">
-				<label class="textarea input-large"><textarea id="auth-description" type="text" name="description">{$auth_group.description}</textarea></label>
+		</div>
+		<div class="fields">
+			<div class="field default">
+				<label>描述</label>
+				<textarea type="text" rows="5" class="w204" name="description">{$auth_group.description}</textarea>
 			</div>
-		</div>-->
+		</div>
 		<div class="form-item">
 			<input type="hidden" name="id" value="{$auth_group.id}" />
 			<button type="submit" class="ui blue button submit-btn ajax-post" target-form="form-horizontal">确 定</button>

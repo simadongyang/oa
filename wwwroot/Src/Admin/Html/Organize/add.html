@@ -9,30 +9,36 @@
     </if>
     </div>    
     <form action="{:U()}" method="post" class="form-horizontal ui form"> 
-    	<div class="field default">
-			<label>上级部门</label>
-			<select name='did'>
-            	<volist name="department" id="vo">
-            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
-            	</volist>
-            </select>
+    	<div class="fields">
+	    	<div class="field">
+				<label>上级部门</label>
+				<select class="ui dropdown" name='did'>
+	            	<volist name="department" id="vo">
+	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
+	            	</volist>
+	            </select>
+			</div>
 		</div>
-		<div class="field default">
-			<label>部门名称</label>
-			<input type="text" name="dname" value="{$done.dname}">
+		<div class="fields">
+			<div class="field">
+				<label>部门名称</label>
+				<input type="text" name="dname" value="{$done.dname}">
+			</div>
 		</div>
-		<div class="field default">
-			<label>部门负责人</label>
-			<div class="ui search selection dropdown" id="searchUser">
-                <input type="hidden" name="dperson">
-                <i class="dropdown icon"></i>
-                <div class="default text">输入姓名搜索</div>
-                <div class="menu"> </div>
-            </div>
-			<!--<input type="text" name="dperson" value="{$done.dperson}">-->
+		<div class="fields">	
+			<div class="field">
+				<label>部门负责人</label>
+				<div class="ui search selection dropdown" id="searchUser">
+	                <input type="hidden" name="dperson">
+	                <i class="dropdown icon"></i>
+	                <div class="default text">输入姓名搜索</div>
+	                <div class="menu"> </div>
+	            </div>
+				<!--<input type="text" name="dperson" value="{$done.dperson}">-->
+			</div>
 		</div>
         <input type="hidden" name="did" value="{$done.did}"> 
-        <div class="form-item">
+        <div class="form-item mt20">
             <button class="ui blue button submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
@@ -42,11 +48,12 @@
 <block name="script">
     <script type="text/javascript">
     	$(function(){
+    		$('.ui.dropdown').dropdown();
     		$('#searchUser').dropdown({
 	            forceSelection: false,
 	            apiSettings: {
 	                cache: false,
-	                url: "__URL__/Api/membername" + '{query}',
+	                url: "__APP__/Admin/Api/membername" + '{query}',
 	                onResponse:function(response){
 	                    if(!response.data.lists.length && !response.data.status){
 	                        return;

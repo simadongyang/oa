@@ -9,28 +9,34 @@
     </if>
     </div>    
     <form action="{:U()}" method="post" class="form-horizontal ui form"> 
-    	<div class="field default">
-			<label>上级岗位</label>
-			<select name='did'>
-            	<volist name="department" id="vo">
-            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
-            	</volist>
-            </select>
-		</div>
-		<div class="field default">
-			<label>岗位名称</label>
-			<input type="text" name="stationname" value="{$sone.stationname}">
-		</div>
-        <div class="field default">
-            <label class="item-label">是否为普通员工岗位</label>
-            <div class="ui radio checkbox mr15">
-				<input type="radio" name="isstaff" value="0" tabindex="0" class="hidden" <if condition="$sone.isstaff eq 0"> checked="" </if>>
-				<label>是</label>
+    	<div class="fields">
+	    	<div class="field">
+				<label>上级岗位</label>
+				<select name='did'>
+	            	<volist name="department" id="vo">
+	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
+	            	</volist>
+	            </select>
 			</div>
-			<div class="ui radio checkbox mr15">
-				<input type="radio" name="isstaff" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 0"> checked="" </if>>
-				<label>否</label>
+		</div>
+		<div class="fields">
+			<div class="field">
+				<label>岗位名称</label>
+				<input type="text" name="stationname" value="{$sone.stationname}">
 			</div>
+		</div>
+		<div class="fields">
+	        <div class="field">
+	            <label class="item-label">是否为普通员工岗位</label>
+	            <div class="ui radio checkbox mr15">
+					<input type="radio" name="isstaff" value="0" tabindex="0" class="hidden" <if condition="$sone.isstaff eq 0"> checked="" </if>>
+					<label>是</label>
+				</div>
+				<div class="ui radio checkbox mr15">
+					<input type="radio" name="isstaff" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 0"> checked="" </if>>
+					<label>否</label>
+				</div>
+	        </div>
         </div>
         <input type="hidden" name="sid" value="{$sone.sid}">
         <div class="form-item mt20">

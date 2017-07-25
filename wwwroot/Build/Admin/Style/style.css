@@ -5,7 +5,6 @@
 
 html, body {
   font-size: 14;
-  font-size: 100%;
   min-width: 1280px;
   color: #666666;
   font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
@@ -111,6 +110,15 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.ui.form .field > label {
+  font-weight: normal; }
+
+.ui.form .fields .field .ui.dropdown.w204 {
+  width: 204px; }
+
+.ui.form .fields .field textarea.w204 {
+  width: 204px; }
+
 .main-title {
   margin-top: 5px;
   margin-bottom: 25px; }
@@ -134,22 +142,6 @@ h3 {
     padding: .8em; }
   .ui.table tr td {
     padding: .8em; }
-
-.ui.form .field label {
-  font-size: 16px;
-  font-weight: normal; }
-  .ui.form .field label .check-tips {
-    color: #aaa;
-    font-size: 14px; }
-
-.ui.form .field input {
-  font-size: 13px; }
-
-.ui.form .field select {
-  padding: .3em .6em; }
-
-.ui.form .field.default {
-  width: 400px; }
 
 .header {
   position: fixed;

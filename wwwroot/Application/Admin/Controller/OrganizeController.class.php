@@ -152,11 +152,7 @@ class OrganizeController extends AdminController {
         $sid=I('get.sid');
         if($sid){
             $sone=M('station')->where('sid='.$sid)->find();
-            if($sone['isstaff']==0){
-                $sone['shi']='checked';
-            }else{
-                $sone['fou']='checked';
-            }
+            
             $this->assign('sone',$sone);
 
         }

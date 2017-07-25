@@ -20,16 +20,13 @@ class UserController extends AdminController {
      * 用户管理首页
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
-    public function index(){
-        $nickname       =   I('nickname');
-        $map['status']  =   array('egt',0);
-        if(is_numeric($nickname)){
-            $map['uid|nickname']=   array(intval($nickname),array('like','%'.$nickname.'%'),'_multi'=>true);
-        }else{
-            $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
-        }
+    public function index(){       
 
-        $list   = $this->lists('Member', $map);
+        
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
+        $map['status']  =   array('egt',0);
+        $list   = $this->lists('Member', $map,'','',$field);
+        
 
         //根据获得的信息查询相关的信息
         foreach($list as &$v){
@@ -38,6 +35,12 @@ class UserController extends AdminController {
                 $v['sex']='男';
             }else{
                 $v['sex']='女';
+            }
+            //将是否转正数字转为文字
+            if($v['iscompletion']==1){
+                $v['iscompletion']='正式';
+            }else{
+                $v['iscompletion']='试用';
             }
             //显示年龄
             $v['age']=date('Y-m-d')-$v['birthday'];
@@ -49,9 +52,9 @@ class UserController extends AdminController {
             $station=M('station')->where('sid='.$dss['sid'])->find(); 
             $v['stationname']=$station['stationname'];
         }
-        int_to_string($list);
+       
         $this->assign('_list', $list);
-        $this->meta_title = '用户信息';
+        
         $this->display();
     }
 
@@ -346,6 +349,12 @@ class UserController extends AdminController {
 
     */
     public function update(){
+        //查询登录用户能否他人查看薪资
+        $user = session('user_auth');
+        $denguid=$user['uid'];
+        $deng=M('Member')->where('uid='.$denguid)->find();
+        $this->assign('look',$deng['looksalary']);
+
         //查看员工基本信息
         $id=I('get.id');
         if($id){
@@ -401,13 +410,24 @@ class UserController extends AdminController {
         $this->assign('station',$station);
 
         //查询员工岗位信息等
-        $where=array('uid'=>$id,'status'=>1);
-        $sel=M('dss')->where($where)->select();
-        foreach($sel as &$v){
-            //获取员工所在项目名称
-            $find=M('project')->where('id='.$v['projectid'])->find();
-            $v['projectname']=$find['name'];            
+        $where=array('uid'=>$id);
+        $sel=M('dss')->where($where)->order('dssid desc')->select();
+        //判断员工现在是否有所属项目
+        if($sel[0]['projectid']){
+            $where=array('uid'=>$id,'status'=>1);
+            $sel=M('dss')->where($where)->select();
+
+            foreach($sel as &$v){
+                //获取员工所在项目名称
+                $find=M('project')->where('id='.$v['projectid'])->find();
+                $v['projectname']=$find['name'];            
+            }
         }
+
+        //根据员工的岗位等信息获取该岗位是否为普通岗
+        $isstaff=M('station')->where('sid='.$sel[0]['sid'])->find();
+        $this->assign('isstaff',$isstaff['isstaff']);
+        
 
         //显示所属部门信息及员工所属部门
         $department=M('department')->select();
@@ -422,10 +442,23 @@ class UserController extends AdminController {
        
 
 
+
         if(IS_POST){
             $arr=I('post.');
+            $arr['uid']=$arr['gonghao'];
             //编辑员工的岗位、薪资等信息
             if($arr['leixing2']=='岗位'){
+                //判断是否为普通岗
+                $findst=M('station')->where('sid='.$arr['sid'])->find();
+                if($findst['isstaff']==1 && empty($arr['p1'])){
+                    $resul=M('dss')->add($arr);
+                    if($resul){
+                        $this->success('用户编辑成功！'.'222',U('index'));                    
+                    } else {
+                        $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
+                    } 
+
+                }
                 //获取提交数组的个数并判断有几个项目
                $num=(count($arr)-31)/3;
                $newarr=array();
@@ -477,7 +510,7 @@ class UserController extends AdminController {
               
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num || $result){
-                    $this->success('用户编辑成功！',U('index'));                    
+                    $this->success('用户编辑成功！'.'66'.$arr['p1'],U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                 } 
