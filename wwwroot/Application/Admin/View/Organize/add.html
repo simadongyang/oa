@@ -53,7 +53,7 @@
 	            forceSelection: false,
 	            apiSettings: {
 	                cache: false,
-	                url: "__APP__/Admin/Api/membername" + '{query}',
+	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
 	                onResponse:function(response){
 	                    if(!response.data.lists.length && !response.data.status){
 	                        return;
