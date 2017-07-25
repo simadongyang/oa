@@ -19,13 +19,137 @@ class PerapproController extends AdminController {
      public function index(){
        
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-         $res=M('Appro')->where("uid = $uid")->group('time')->select();
+         $res=M('Appro')
+          ->alias('a')
+          ->group('update_time')
+          ->field('m.username,a.*')
+          ->join('onethink_ucenter_member m on a.aid = m.id')
+         ->where("a.uid = $uid")->select();
+          //->alias('a')
+           //->field('m.username,a.*')
+            //->join('onethink_ucenter_member m on a.uid = m.id')
         //var_dump($res);die;      
 
         $this->assign('_list', $res);
         $this->display();
     }
-    public function wait_(){
+    //递归得到pid
+    public function partment($did)
+    {
+        $data = [];
+        function sima($pid)
+        {
+            $res = M('Department')
+            ->alias('d')
+            ->field('d.did did ,p.did pid , d.dperson dp , p.dperson pd')
+            ->join('onethink_department p on d.dpid = p.did ')
+            ->where("d.did = $pid")
+            ->find();
+            $data =$res['pd']; 
+            if(!empty($res['pid']))
+            {
+                $data=$data.','.sima($res['pid']);
+            }  
+            return trim($data,',');
+        }
+         
+        return sima($did);
+    }
+    // 生成审批数据
+    public function appr($nid,$did)
+    {
+              
+        if(empty($nid) || empty($did))
+        {
+            $this->error('审批生成失败');
+        }
+        $res = M('Dss')
+            ->field('did')
+            ->where("uid = $nid")
+            ->find();
+        if(!empty($res)) return ;
+       // 判断是否为第一次添加
+       
+        $pids = $this -> partment($did);
+        if(empty($pids)) $this->error('岗位信息有误');
+            //当前用户的uid
+            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+            $res=M('Department')
+            ->field('dperson')
+             ->where("did = $did")
+             ->find();
+            // 判断是否为本部门的负责人
+            $dp = $res['dperson'];
+            if($uid != $dp)
+            {
+                $pids = $dp . ',' .$pids;
+            }
+            //生成 审批
+            $arr_pids = explode(',',$pids);
+            //审批名称
+            $name = '入职';
+            // 申请原因
+            $reason = '新人入职';
+            foreach($arr_pids as $k => $v)
+            {
+                $Appro = M("Appro"); // 实例化User对象
+                $data['uid'] = $nid;
+                $data['aids'] = $pids;
+                $data['aid'] = $v;
+                $data['name'] = $name;
+                $data['reason'] = $reason;
+                $data['time'] = time();
+                $data['status'] = -2;
+                $Appro->add($data);
+            }
+    }
+    public function test()
+    {
+        // $nid 新入职的id $did 本部门id\
+        $nid =144440;
+        $did = 7;
+         $this->appr($nid,$did);
+    }
+    public function waitbak(){
+        die;
+             //  xxx发起->第一个（通过-备注）->第二个（正在审批）->第三个
+           $pids = $this -> partment($did);
+            //当前用户的uid
+            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+            $res=M('Department')
+            ->field('dperson')
+             ->where("did = $did")
+             ->find();
+            // 判断是否为本部门的负责人
+            $dp = $res['dperson'];
+            if($uid != $dp)
+            {
+                $pids = $dp . ',' .$pids;
+            }
+            //生成 审批
+            $arr_pids = explode(',',$pids);
+            //发起人id
+            $uid = 110;
+            //审批名称
+            $name = '入职';
+            // 申请原因
+            $reason = '新人入职';
+            foreach($arr_pids as $k => $v)
+            {
+                $Appro = M("Appro"); // 实例化User对象
+                $data['uid'] = $uid;
+                $data['aids'] = $pids;
+                $data['aid'] = $v;
+                $data['name'] = $name;
+                $data['reason'] = $reason;
+                $data['time'] = time();
+                $data['status'] = -2;
+                $Appro->add($data);
+            }
+           
+          var_dump($pids);die;
+          var_dump($res);die;
+
         $find = [0,1];
      $replace = ['q','e'];
         $arr = [3,2,4,1,0];
@@ -202,9 +326,93 @@ class PerapproController extends AdminController {
 
 
     */
+    public function info_mine()
+    {
+        // $this->redirect('User/update', array('id' => 9));die;
+        //查看员工基本信息
+        $id=I('get.id');
+        if(empty($id))  $this->error('查询失败！');
+            //查询信息
+            $find=M('Member')->where('uid='.$id)->find();
+            //显示性别
+            if($find['sex']==1){
+                $find['nan']='checked';
+            }else{
+                $find['nv']='checked';
+            }
+            //计算年龄
+            $find['age']=date('Y-m-d')-$find['birthday'];
+            //显示是否转正
+            if($find['iscompletion']=='是'){
+                $find['shi']='checked';
+            }else{
+                $find['fou']='checked';
+            }
+
+            $this->assign('find',$find);           
+      
+
+        
+      
+
+
+        //显示员工的岗位及薪资信息
+        
+        
+        //显示项目信息
+        $project=M('project')->select();
+        $this->assign('project',$project);
+        
+        //显示岗位信息
+        $station=M('station')->select();
+        $this->assign('station',$station);
+
+        //查询员工岗位信息等
+        $where=array('uid'=>$id,'status'=>1);
+        $sel=M('dss')->where($where)->select();
+        foreach($sel as &$v){
+            //获取员工所在项目名称
+            $find=M('project')->where('id='.$v['projectid'])->find();
+            $v['projectname']=$find['name'];            
+        }
+
+        //显示所属部门信息及员工所属部门
+        $department=M('department')->select();
+        //$department=tree($department,$sel[0]['did']);
+        $department=getTrees($department);
+        $this->assign('department',$department);
+        //查询员工薪资
+        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+        $this->assign('salarychange',$salarychange);
+
+        $this->assign('sel',$sel);
+       
+
+        //审批流程数据
+        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        // 审批人的信息
+         $ares=M('Appro')
+          ->alias('a')
+          ->field('m.username,a.status')
+          ->join('onethink_ucenter_member m on a.aid = m.id')
+         ->where("a.uid = $uid")->select();
+         // 被审批人的信息
+         $res=M('Ucenter_member')
+         ->field('username')
+         ->where("id = $uid")->find();
+        //被审批人的名字
+        $data['username'] = $res['username'];
+        //审批人的信息
+        $data['info'] = $ares;
+        //echo '<pre>';
+        //var_dump($data);die;
+        $this ->assign('appro',$data);
+        $this->display();
+    }
+    
     public function info(){
-     $this->assign('id', 4);
-        return $this->display('User/update');
+
+       // $this->redirect('User/update', array('id' => 9));die;
         //查看员工基本信息
         $id=I('get.id');
         if($id){
@@ -333,7 +541,8 @@ class PerapproController extends AdminController {
                }else{//如果有任何变动都会按新增处理
                  $result=M('salarychange')->add($arr);
                }
-              
+              //处理 审批状态
+              $this->resume(I('post.uid'));
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num || $result){
                     $this->success('用户编辑成功！',U('index'));                    
@@ -348,14 +557,16 @@ class PerapproController extends AdminController {
 
         $this->display();
     }
-    public function resume ($id=[])
+    //同意审批
+    public function resume ($id)
     {
-         $id = array_unique((array)I('id',0));
+         $id = array_unique((array)$id);
         $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
         $map['id'] =   array('in',$id);
+
          // 删除 aids 里面的id
                 $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
                 $res=M('Appro')
@@ -383,9 +594,53 @@ class PerapproController extends AdminController {
                     // 要修改的数据对象属性赋值
                     $data['aids'] = $str;
                     $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+                    //更新状态
+                    $Ures = M("Appro"); 
+                    // 要修改的数据对象属性赋值
+                    $data['status'] = 1;
+                    $data['atime'] = time();
+                    $Ures->where($map)->save($data); // 根据条件更新记录
+                }
+               // $this->resume('Appro', $map );
+    }
+    //拒绝审批
+    public function forbid()
+    {
+            $id = array_unique((array)I('id',0));
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+        $map['id'] =   array('in',$id);
+         $res=M('Appro')
+                 ->where($map)
+                ->select();
+                foreach($res as $key=>$val)
+                {
+                    //删除后把 aids 改为 -1
+                    $str = -1;
+                     //更改数据
+                     //得到uid
+                    $uid = $val['uid'];
+                    $Ures = M("Appro"); 
+                    // 要修改的数据对象属性赋值
+                    $data['aids'] = $str;
+                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
                 
                 }
-                $this->resume('Appro', $map );
+                 //更新状态
+                    $Ures = M("Appro"); 
+                    // 要修改的数据对象属性赋值
+                    $data['status'] = 0;
+                    $data['atime'] = time();
+                    $res = $Ures->where($map)->save($data); // 根据条件更新记录
+
+                        if($res)
+                        {
+                             $this->success('已经拒绝审批',U('index')); 
+                        }
+                    
+                    
     }
     /**
      * 会员状态修改

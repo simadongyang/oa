@@ -133,7 +133,9 @@
 
             <button class="btn submit-btn ajax-post gang " id="submit"  target-form="form-horizontal">同意</button>
             <button class="btn submit-btn ajax-post gang1 " id="submit" type="submit" style="display:none;" target-form="form-horizontal">确 定</button>
-           <a href="{:U('Perappro/changeStatus?method=forbidUser&id='.$find['uid'])}" class="ajax-get">拒绝</a>
+           <?php
+				echo "<a href='".U("Perappro/forbid?id=$find[uid]")."'>拒绝</a>";
+			?>
         </div>
     </form>
 </block>

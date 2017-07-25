@@ -12,7 +12,7 @@
     	<div class="fields">
 	    	<div class="field">
 				<label>上级岗位</label>
-				<select name='did'>
+				<select class="ui dropdown" name='did'>
 	            	<volist name="department" id="vo">
 	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
 	            	</volist>
@@ -49,8 +49,8 @@
 <block name="script">
     <script type="text/javascript">
     	$(function() {
-			$('.ui.radio.checkbox')
-				.checkbox();
+    		$('.ui.dropdown').dropdown();
+			$('.ui.radio.checkbox').checkbox();
 		})
         //导航高亮
         highlight_subnav('{:U('User/index')}');
