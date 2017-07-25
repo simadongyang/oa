@@ -69,8 +69,11 @@ class PerapproController extends AdminController {
         //当前用户的uid
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         $res=M('Appro')
-        ->where("aid=$uid and status = -2")
-        ->select();
+            ->alias('a')
+            ->field('m.username,a.*')
+            ->join('onethink_ucenter_member m on a.uid = m.id')
+            ->where("a.aid=$uid and a.status = -2")
+            ->select();
         //判断是否为当前审批人
         foreach($res as $key=>$val)
         {
@@ -85,12 +88,22 @@ class PerapproController extends AdminController {
         $this->display();
     }
      public function his(){
-       
+       // echo '<pre>';
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-        $list   = $this->lists('Appro',["aid = $uid"]);
-        int_to_string($list);
-        $this->assign('_list', $list);
+         $res=M('Appro')
+         ->alias('a')
+         ->field('m.username,a.*')
+         ->join('onethink_ucenter_member m on m.id = a.uid')
+         ->where("a.aid = $uid")
+         ->where('a.status = 1 or a.status=0')
+         ->select();
+         //var_dump($res);die;
+        $this->assign('_list', $res);
         $this->display();
+    }
+    public function appro()
+    {
+        $this->display('User/update');
     }
     public function add(){
        if(IS_POST){
@@ -183,6 +196,196 @@ class PerapproController extends AdminController {
         } else {
             $this->error('删除失败！');
         }
+    }
+     /*
+    * 查看员工信息或修改信息
+
+
+    */
+    public function info(){
+     $this->assign('id', 4);
+        return $this->display('User/update');
+        //查看员工基本信息
+        $id=I('get.id');
+        if($id){
+            //查询信息
+            $find=M('Member')->where('uid='.$id)->find();
+            //显示性别
+            if($find['sex']==1){
+                $find['nan']='checked';
+            }else{
+                $find['nv']='checked';
+            }
+            //计算年龄
+            $find['age']=date('Y-m-d')-$find['birthday'];
+            //显示是否转正
+            if($find['iscompletion']=='是'){
+                $find['shi']='checked';
+            }else{
+                $find['fou']='checked';
+            }
+
+            $this->assign('find',$find);           
+        } 
+
+        
+        if(IS_POST){
+            $arr=I('post.');
+
+            //编辑员工基本信息
+            if($arr['leixing1']=='基本信息'){ 
+                            
+                $updat=M('Member')->where('uid='.$arr['gonghao'])->save($arr); 
+                if($updat){
+                    $this->success('用户编辑成功！',U('index'));                    
+                } else {
+                    $this->error('用户编辑失败！',U('update?id='.$arr['gonghao']));
+                } 
+            }           
+
+        } 
+
+
+
+        //显示员工的岗位及薪资信息
+        $id=I('get.id');
+        
+        
+        //显示项目信息
+        $project=M('project')->select();
+        $this->assign('project',$project);
+        
+        //显示岗位信息
+        $station=M('station')->select();
+        $this->assign('station',$station);
+
+        //查询员工岗位信息等
+        $where=array('uid'=>$id,'status'=>1);
+        $sel=M('dss')->where($where)->select();
+        foreach($sel as &$v){
+            //获取员工所在项目名称
+            $find=M('project')->where('id='.$v['projectid'])->find();
+            $v['projectname']=$find['name'];            
+        }
+
+        //显示所属部门信息及员工所属部门
+        $department=M('department')->select();
+        //$department=tree($department,$sel[0]['did']);
+        $department=getTrees($department);
+        $this->assign('department',$department);
+        //查询员工薪资
+        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+        $this->assign('salarychange',$salarychange);
+
+        $this->assign('sel',$sel);
+       
+
+
+        if(IS_POST){
+            $arr=I('post.');
+            //编辑员工的岗位、薪资等信息
+            if($arr['leixing2']=='岗位'){
+                //获取提交数组的个数并判断有几个项目
+               $num=(count($arr)-31)/3;
+               $newarr=array();
+               for($i=1;$i<=$num;$i++){
+                    $k=$i-1;
+                    $newarr[$k]['status']=1;
+                    $newarr[$k]['uid']=$arr['uid'];
+                    $newarr[$k]['did']=$arr['did'];
+                    $newarr[$k]['sid']=$arr['sid'];
+                    $newarr[$k]['dssid']=$arr['prid'.$i]?$arr['prid'.$i]:$arr['pridnew'.$i];
+                    $newarr[$k]['projectid']= $arr['p'.$i];
+                    $newarr[$k]['projectsalary']=$arr['ps'.$i];
+                    $idarr[$k]=$arr['prid'.$i];//用于判断
+               }
+                //获得员工项目原有的id是否还存在，
+               $where=array('uid'=>$arr['uid'],'status'=>1);
+               $sel=M('dss')->where($where)->select();
+               foreach($sel as $val){
+                    //如果不存在了说明该项目已经结束
+                    if(!in_array($val['dssid'],$idarr)){
+                        M('dss')->where('dssid='.$val['dssid'])->setField('status',0);
+                    }                    
+               }
+               $countnum=0;
+               foreach($newarr as $v){
+                //如果dssid不为-1说明原有记录没有变动
+                   if($v['dssid']!='-1'){                         
+                        $countnum += 1;
+                         
+                   }else{//如果dissid为-1时表示添加
+                        $find=M('dss')->order('dssid desc')->find();
+                        $v['dssid']=$find['dssid']+1;
+                         $ra=M('dss')->add($v);
+                         if($ra){
+                            $countnum += 1;
+                         }
+                   } 
+               }
+               //修改薪资部分
+              
+               $where=array('uid'=>$arr['uid']);
+               $salaryone=M('salarychange')->where($where)->order('uid deac')->find();
+
+               if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
+
+               }else{//如果有任何变动都会按新增处理
+                 $result=M('salarychange')->add($arr);
+               }
+              
+               //如果$count的值等于项目的个数，说明操作成功
+               if($countnum==$num || $result){
+                    $this->success('用户编辑成功！',U('index'));                    
+                } else {
+                    $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
+                } 
+
+               
+            }
+        }
+
+
+        $this->display();
+    }
+    public function resume ($id=[])
+    {
+         $id = array_unique((array)I('id',0));
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+        $map['id'] =   array('in',$id);
+         // 删除 aids 里面的id
+                $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
+                $res=M('Appro')
+                 ->where($map)
+                ->select();
+                foreach($res as $key=>$val)
+                {
+                    //查到要改的数据
+                    $uid = $val['uid'];
+                     $nres=M('Appro')->where("uid = $uid")->select();
+                     $arr = explode(',',$nres[0]['aids']);
+                     //删除第一个元素
+                     if($arr[0] == $suid)
+                     {
+                        array_shift($arr);
+                     }else{
+                        return false;
+                     }
+                     
+                     $str=implode(',',$arr);
+                     //判断是否为空
+                     if(empty($str)) $str = 0;
+                     //更改数据
+                    $Ures = M("Appro"); 
+                    // 要修改的数据对象属性赋值
+                    $data['aids'] = $str;
+                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+                
+                }
+                $this->resume('Appro', $map );
     }
     /**
      * 会员状态修改
