@@ -59,12 +59,7 @@
                 <input type="hidden" name="leixing1" value="" class='jibenxinxi'>
             </div>
         </div>
-        <div class="form-item">            
-            <button class="btn submit-btn ajax-post jiben" id="submit"  target-form="form-horizontal">确 定 编 辑</button>
-            <button class="btn submit-btn ajax-post jiben1" id="submit" style='display:none'  type="submit" target-form="form-horizontal">确 定 编 辑</button>
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-           
-        </div>
+       
     </form>
 
     <h1>岗位信息</h1><hr>
@@ -126,17 +121,21 @@
                 </div>
             </div>
         </div>
+        <br/>
+        <div class="hidd" >
+            <h1>审批流程</h1><hr>
+            <div class="form-item">             
+                
+                    <p style="margin-top:30px;">
+                        xxx发起->第一个（通过-备注）->第二个（正在审批）->第三个
+                    </p>
+               
+            </div>
+        </div>
         <input type="hidden" name="leixing2" value="" class="gangwei">
         <input type="hidden" name="uid" value="{$sel[0]['uid']}">
         <!--  <input type="submit" value="提交">-->
-        <div class="form-item">
-
-            <button class="btn submit-btn ajax-post gang " id="submit"  target-form="form-horizontal">同意</button>
-            <button class="btn submit-btn ajax-post gang1 " id="submit" type="submit" style="display:none;" target-form="form-horizontal">确 定</button>
-           <?php
-				echo "<a href='".U("Perappro/forbid?id=$find[uid]")."'>拒绝</a>";
-			?>
-        </div>
+       
     </form>
 </block>
 

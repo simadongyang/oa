@@ -7,7 +7,7 @@
 	</div>
 	<div class="toolbar">
 		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>-->
-		<button class="ui blue button ajax-post confirm" url="{:U('Perappro/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+		<!-- <button class="ui blue button ajax-post confirm" url="{:U('Perappro/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button> -->
 	</div>
 	<!-- 数据列表 -->
 	<table class="ui celled table">
@@ -18,7 +18,6 @@
 				<th>申请事由</th>
 				<th>申请原因</th>
 				<th>发起时间</th>
-				<th>审批时间</th>
 				<th>审批状态</th>
 				<th>操作</th>
 			</tr>
@@ -32,16 +31,15 @@
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
 						<td>{$vo.time}</td>
-						<td>{$vo.atime}</td>
-						<td>						
-						    <if condition="($vo['aids'] eq 0) "> 通过
-   							 <elseif condition="$vo['aids'] eq -1"/>未通过
-    						<else /> 正在审批中
-    						</if>
-						</td>
+						<td>    <if condition="($vo['aids'] eq 0) "> 通过
+    					<elseif condition="$vo['aids'] eq -1"/>被拒
+    					<else /> 正在审批中
+    					</if></td>
 
 						<td>
-							<a href="{:U('Perappro/changeStatus?method=deleteUser&id='.$vo['id'])}" class="ajax-get">删除</a>
+							<?php
+									echo "<a href='".U("Perappro/info_mine?id=$vo[uid]")."'>详情</a>";
+							 ?>
 						</td>
 					</tr>
 				</volist>
