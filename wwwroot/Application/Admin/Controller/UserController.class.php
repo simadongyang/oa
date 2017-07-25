@@ -276,12 +276,14 @@ class UserController extends AdminController {
         //获取基本信息新增
         if(IS_POST){
         	$arr=I('post.');
-            if($arr['leixing1']=='基本信息'){
+
+            
+            if($arr['savestatus']=='基本信息'){                 
 
                     //作用修改(开始2).修改基本信息
                 
-                if($arr['gonghao']){//如果存在工号，说明是修改
-                    $updat=M('Member')->where('uid='.$arr['gonghao'])->save($arr); 
+                if($arr['uid']){//如果存在工号，说明是修改
+                    $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                     if($updat){
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
@@ -300,10 +302,11 @@ class UserController extends AdminController {
 
                     /* 调用注册接口注册用户 */
                     $User   =   new UserApi;
-                    $email=rand(0,100000).rand(a,z).$username.'@qq.com';
+                   /* $email=rand(0,100000).rand(a,z).$username.'@qq.com';
                     //获取身份证号码后4位
                     $hou4=substr($arr['IDnumber'],-4);
                     $username=$arr['username'].$hou4;
+                    $password='123456';*/
                     $uid    =   $User->register($username, $password, $email,$criticalname);
                     if(0 < $uid){ //注册成功
                     	$arr['realname']=$arr['username'];
@@ -377,7 +380,8 @@ class UserController extends AdminController {
         
         if(IS_POST){
             $arr=I('post.');
-            if($arr['leixing2']=='岗位'){
+            if($arr['savestatus']=='岗位'){
+                
                 //如果没有填写基本信息而进行岗位信息的提交时，提示
                 if(!$arr['uid']){
                      $this->error('请先填写基本信息，然后通过查看详情信息进行添加岗位等信息');
@@ -391,7 +395,7 @@ class UserController extends AdminController {
                         if($resul){
                             $this->success('用户编辑成功！',U('index'));                    
                         } else {
-                            $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
+                            $this->error('用户编辑失败'.'888',U('add?id='.$arr['uid']));
                         } 
 
                     }
@@ -449,7 +453,7 @@ class UserController extends AdminController {
                    if($countnum==$num || $result){
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
-                        $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
+                        $this->error('用户编辑失败'.'000000',U('add?id='.$arr['uid']));
                     } 
                 }                
                 
