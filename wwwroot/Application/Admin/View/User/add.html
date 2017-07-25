@@ -141,6 +141,7 @@
 				</div>
 				<input type="hidden" name="savestatus" value="基本信息">
 				<div class="form-item">
+
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
@@ -289,47 +290,8 @@
 					alert("至少保留一个所属项目");
 				}
 			})
-		})
-		//导航高亮
-		highlight_subnav('{:U('User/index')}');
-
-		$(function() {
-			//增减项目
-			var a;
-			var html;
-			var clicknum;
-			var first;
-			$('.jia').click(function() {
-				clicknum = $(this).parents('div').find('.project').children('div').length;
-				a = $(this).attr('val');
-				if(a == '+') {
-					clicknum += 1;
-					html = "<div><input type='hidden' name='pridnew" + clicknum + "' value='-1'><label>所属项目：</label> <select name='p" + clicknum + "'><volist name='project' id='vo'>" +
-						"<option value='{$vo.id}'>{$vo.name}</option></volist></select>" +
-						" <label>分摊工资：</label><input type='text' class='text' name='ps" + clicknum + "'/>";
-
-					$(this).parents('div').find('.project').append(html);
-				}
-				if(a == '-') { 
-
-					//first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
-
-					$(this).parents('div').find('.project').children('div:last-child').remove();
-
-				}
-			})
-			//如果是非普通员工岗位，人事将无权查看                   
-			var isst;
-			$('select[name=sid]').change(function() {
-				isst = $(this).find("option:selected").attr('isstaff');
-				if(isst == 1) {
-					$('.hidd').hide();
-					$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
-				} else {
-					$('.hidd').show();
-
-				}
-			});
+			//导航高亮
+			highlight_subnav('{:U('User/index')}');
 		})
 	</script>
 </block>
