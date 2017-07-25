@@ -181,7 +181,7 @@
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
 					<empty name="sel">
-						<div class="fields fields-xm">
+						<div class="fields fields-xm isstaff">
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="did">
@@ -201,7 +201,7 @@
 						</div>
 					<else />
 						<volist name="sel" id="vos" key="k">
-							<div class="fields fields-xm">
+							<div class="fields fields-xm isstaff">
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
@@ -219,7 +219,7 @@
 						</volist>
 					</empty> 
 					
-					<div class="fields">
+					<div class="fields isstaff">
 						<div class="field">
 							<label>试用薪资</label>
 							<input type="text" name="trysalary" value="{$salarychange.trysalary}">
@@ -229,7 +229,7 @@
 							<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
 						</div>
 					</div>
-					<div class="fields">
+					<div class="fields isstaff">
 						<div class="field field-textarea">
 							<label>绩效考核</label>
 							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
@@ -255,7 +255,10 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown({
 				onChange: function(value, text, $selectedItem) {
-					console.log($selectedItem);
+					if($selectedItem.attr("") == 1){
+						$('.hidd').hide();
+						$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
+					}
 				}
 			});
 			//增加项目
@@ -293,43 +296,43 @@
 		//导航高亮
 		highlight_subnav('{:U('User/index')}');
 
-		$(function() {
-			//增减项目
-			var a;
-			var html;
-			var clicknum;
-			var first;
-			$('.jia').click(function() {
-				clicknum = $(this).parents('div').find('.project').children('div').length;
-				a = $(this).attr('val');
-				if(a == '+') {
-					clicknum += 1;
-					html = "<div><input type='hidden' name='pridnew" + clicknum + "' value='-1'><label>所属项目：</label> <select name='p" + clicknum + "'><volist name='project' id='vo'>" +
-						"<option value='{$vo.id}'>{$vo.name}</option></volist></select>" +
-						" <label>分摊工资：</label><input type='text' class='text' name='ps" + clicknum + "'/>";
-
-					$(this).parents('div').find('.project').append(html);
-				}
-				if(a == '-') {
-
-					//first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
-
-					$(this).parents('div').find('.project').children('div:last-child').remove();
-
-				}
-			})
-			//如果是非普通员工岗位，人事将无权查看                   
-			var isst;
-			$('select[name=sid]').change(function() {
-				isst = $(this).find("option:selected").attr('isstaff');
-				if(isst == 1) {
-					$('.hidd').hide();
-					$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
-				} else {
-					$('.hidd').show();
-
-				}
-			});
-		})
+//		$(function() {
+//			//增减项目
+//			var a;
+//			var html;
+//			var clicknum;
+//			var first;
+//			$('.jia').click(function() {
+//				clicknum = $(this).parents('div').find('.project').children('div').length;
+//				a = $(this).attr('val');
+//				if(a == '+') {
+//					clicknum += 1;
+//					html = "<div><input type='hidden' name='pridnew" + clicknum + "' value='-1'><label>所属项目：</label> <select name='p" + clicknum + "'><volist name='project' id='vo'>" +
+//						"<option value='{$vo.id}'>{$vo.name}</option></volist></select>" +
+//						" <label>分摊工资：</label><input type='text' class='text' name='ps" + clicknum + "'/>";
+//
+//					$(this).parents('div').find('.project').append(html);
+//				}
+//				if(a == '-') {
+//
+//					//first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
+//
+//					$(this).parents('div').find('.project').children('div:last-child').remove();
+//
+//				}
+//			})
+//			//如果是非普通员工岗位，人事将无权查看                   
+//			var isst;
+//			$('select[name=sid]').change(function() {
+//				isst = $(this).find("option:selected").attr('isstaff');
+//				if(isst == 1) {
+//					$('.hidd').hide();
+//					$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
+//				} else {
+//					$('.hidd').show();
+//
+//				}
+//			});
+//		})
 	</script>
 </block>
