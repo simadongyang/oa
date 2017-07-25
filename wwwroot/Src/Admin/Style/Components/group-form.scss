@@ -1,0 +1,21 @@
+.ui.form{
+    .field {
+        label {
+            font-size: 16px;
+            font-weight: normal;
+            .check-tips {
+                color: #aaa;
+                font-size: 14px;
+            }
+        }
+        input {
+            font-size: 13px;
+        }
+        select {
+            padding: .3em .6em;
+        }
+        &.default {
+            width: 400px;
+        }
+    }
+}

@@ -35,7 +35,7 @@
 						<td>{$vo.reason}</td>
 						<td>{$vo.time}</td>
 						<td>{$vo.atime}</td>
-						<td><?php echo str_replace([0,1],['未通过','通过'],$vo['status']);?></td>
+						<td><?php echo str_replace([0,1],['拒绝','通过'],$vo['status']);?></td>
 
 						<td>
 							<a href="{:U('Perappro/changeStatus?method=deleteUser&id='.$vo['id'])}" class="ajax-get">删除</a>
