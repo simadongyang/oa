@@ -450,10 +450,10 @@ class UserController extends AdminController {
             if($arr['leixing2']=='岗位'){
                 //判断是否为普通岗
                 $findst=M('station')->where('sid='.$arr['sid'])->find();
-                if($findst['isstaff']==1){
+                if($findst['isstaff']==1 && empty($arr['p1'])){
                     $resul=M('dss')->add($arr);
                     if($resul){
-                        $this->success('用户编辑成功！',U('index'));                    
+                        $this->success('用户编辑成功！'.'222',U('index'));                    
                     } else {
                         $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                     } 
@@ -510,7 +510,7 @@ class UserController extends AdminController {
               
                //如果$count的值等于项目的个数，说明操作成功
                if($countnum==$num || $result){
-                    $this->success('用户编辑成功！',U('index'));                    
+                    $this->success('用户编辑成功！'.'66'.$arr['p1'],U('index'));                    
                 } else {
                     $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
                 } 

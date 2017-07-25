@@ -18,4 +18,4 @@ class AipConroller extends AdminController{
 			die(json_encode($arr));
 		}
 	}
-} __URL__/Api/membername
+} 
