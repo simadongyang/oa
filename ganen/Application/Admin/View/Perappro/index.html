@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>审批历史</h2>
+	</div>
+	<div class="toolbar">
+		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>-->
+		<!-- <button class="ui blue button ajax-post confirm" url="{:U('Perappro/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button> -->
+	</div>
+	<!-- 数据列表 -->
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th><input class="check-all" type="checkbox" /></th>
+				<th>id</th>
+				<th>申请事由</th>
+				<th>申请原因</th>
+				<th>发起时间</th>
+				<th>审批状态</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<notempty name="_list">
+				<volist name="_list" id="vo">
+					<tr>
+						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+						<td>{$vo.id} </td>
+						<td>{$vo.name}</td>
+						<td>{$vo.reason}</td>
+						<td>{$vo.time}</td>
+						<td>    <if condition="($vo['aids'] eq 0) "> 通过
+    					<elseif condition="$vo['aids'] eq -1"/>被拒
+    					<else /> 正在审批中
+    					</if></td>
+
+						<td>
+							<?php
+									echo "<a href='".U("Perappro/info_mine?id=$vo[uid]")."'>详情</a>";
+							 ?>
+						</td>
+					</tr>
+				</volist>
+					<else/>
+					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>		
+		</tbody>
+	</table>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('
+			User / index ')}');
+	</script>
+</block>

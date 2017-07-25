@@ -1,0 +1,31 @@
+{
+  "name": "care7x24",
+  "version": "1.0.0",
+  "description": "<!DOCTYPE html>\r <html>\r <head>\r \t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r \t<title>OneThink&#8250;使用说明</title>\r \t<style type=\"text/css\">\r \t\thtml,body {\r \t\t\tfont: 16px/1.5 \"microsoft yahei\", Helvetica, Tahoma, Arial, sans-serif;\r \t\t\tcolor:#404040;\r \t\t\tbackground-color:#fafafa;\r \t\t}\r \t\tbody,p,pre,h1,h2,h3,h4,h5,h6,\t\t\t\r \t\tdl,dt,dd,ul,ol,li {\r \t\t\tmargin:0;\r \t\t\tpadding:0;\r \t\t}\r \t\tul,ol {\r \t\t\tmargin-left: 16px;\r \t\t\tline-height: 1.8;\r \t\t}\r \t\tfieldset,img {\r \t\t\tborder:0 none;\r \t\t}\r \t\timg {\r \t\t\tmax-width: 100%;\r \t\t}\r \t\ta {\r \t\t\tcolor: #08c;\r \t\t\ttext-decoration:none;\r \t\t}\r \t\ta:hover{\r \t\t\tcolor: #058;\r \t\t}\r \t\t.main {\r \t\t\tmargin: 20px auto;\r \t\t\tpadding: 34px;\r \t\t\twidth: 930px;\r \t\t\tborder: 1px solid #dfdfdf;\r \t\t\tbackground-color: #fff;\r \t\t}\r \t\t#logo {\r \t\t\tpadding: 0;\r \t\t\ttext-align: center;\r \t\t\tborder-bottom: 0 none;\r \t\t}\r \t\t#logo span {\r \t\t\tdisplay: block;\r \t\t\tmargin-top: 15px;\r \t\t\tfont: normal normal 30px Georgia;\r \t\t}\r \t\t#logo b {\r \t\t\tfont-size: .7em;\r \t\t}\r \t\th1 {\r \t\t\tmargin-bottom: 10px;\r \t\t\tpadding: 8px 0;\r \t\t\tfont-size: 24px;\r \t\t\tfont-weight: normal;\r \t\t\tcolor: #666;\r \t\t\tborder-bottom: 1px solid #dfdfdf;\r \t\t}\r \t\tp {\r \t\t\tline-height: 1.8;\r \t\t}\r \t\tpre {\r \t\t\tfont-family: Consolas,\"微软雅黑\";\r \t\t}\r \t\t.solgan {\r \t\t\tmargin-bottom: 50px;\r \t\t\tfont-size: 22px;\r \t\t\tfont-weight: bold;\r \t\t\ttext-align: center;\r \t\t}\r \t</style>\r </head>\r <body>\r <div class=\"main\">\r \t<h1 id=\"logo\">\r \t\t<a href=\"http://www.onethink.cn/\"><img alt=\"OneThink\" src=\"logo.png\" /></a>\r \t\t<span>Version 1.0 </span>\r \t</h1>\r \t<p class=\"solgan\">OneThink是一个开源的内容管理框架，致力于让网站开发变得更简单。</p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-dir": "^1.0.0",
+    "gulp-file-include": "^1.1.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-collector": "^1.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-uglify": "^2.0.1",
+    "gulp-watch": "^4.3.11",
+    "require-dir": "^0.3.1"
+  }
+}

@@ -1,0 +1,69 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>人事信息</h2>
+	</div>
+	<div class="toolbar">
+		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>-->
+		<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+		<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+		<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+	</div>
+	<!-- 数据列表 -->
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th><input class="check-all" type="checkbox" /></th>
+				<th>UID</th>
+				<th>项目名称</th>
+				<th>所属地区</th>
+				<th>医院名称</th>
+				<th>科室</th>
+				<th>项目主管</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<notempty name="_list">
+				<volist name="_list" id="vo">
+					<tr>
+						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
+						<td>{$vo.uid} </td>
+						<td>{$vo.realname}</td>
+						<td>{$vo.sex}</td>
+						<td>年龄</td>
+						<td>{$vo.phone}</td>
+						<td>部门</td>
+						<td>岗位</td>
+						<td>状态</td>
+						<td>{$vo.entrytime}</td>
+						<td>
+							<eq name="vo.status" value="1">
+								<a href="{:U('User/update?id='.$vo['uid'])}">查看详情</a>
+								<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
+								<else/>
+								<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
+							</eq>
+							<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="confirm ajax-get">删除</a>
+						</td>
+					</tr>
+				</volist>
+					<else/>
+					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>		
+		</tbody>
+	</table>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('
+			User / index ')}');
+	</script>
+</block>

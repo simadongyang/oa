@@ -1,0 +1,63 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<div id="organizeIndex">
+		<!-- 标题栏 -->
+		<div class="main-title">
+			<h2>部门列表</h2>
+		</div>
+		<div class="toolbar">
+			<a class="ui blue button" href="{:U('Organize/add')}">新 增</a>
+			<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+			<button class="ui blue button ajax-post" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+			<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+		</div>
+		<!-- 数据列表 -->
+		<table class="ui celled table">
+			<thead>
+				<tr>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox" /></th>
+					<th>部门id</th>
+					<th>部门名称</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="department">
+					<volist name="department" id="vo">
+
+						<tr>
+							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.did}" /></td>
+							<td>{$vo.did} </td>
+							<td>
+								{$vo.dname}
+							</td>
+							<td>
+								<a href="{:U('Organize/add?did='.$vo['did'])}">编辑</a>
+								<eq name="vo.status" value="1">
+									<a href="{:U('Organize/changeStatus?method=forbidUser&id='.$vo['did'])}" class="ajax-get">禁用</a>
+									<else/>
+									<a href="{:U('Organize/changeStatus?method=resumeUser&id='.$vo['did'])}" class="ajax-get">启用</a>
+								</eq>
+								<a href="{:U('Organize/changeStatus?method=deleteUser&id='.$vo['did'])}" class="confirm ajax-get">删除</a>
+							</td>
+						</tr>
+
+					</volist>
+					<else/>
+					<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+		<div class="page">
+			{$_page}
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('User/index')}');
+	</script>
+</block>

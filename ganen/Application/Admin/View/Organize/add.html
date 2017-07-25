@@ -1,0 +1,79 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+    <if condition="$done.did neq ''">
+        <h2>编辑部门信息</h2>
+    <else/>
+        <h2>新增部门</h2>
+    </if>
+    </div>    
+    <form action="{:U()}" method="post" class="form-horizontal ui form"> 
+    	<div class="fields">
+	    	<div class="field">
+				<label>上级部门</label>
+				<select class="ui dropdown" name='did'>
+	            	<volist name="department" id="vo">
+	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
+	            	</volist>
+	            </select>
+			</div>
+		</div>
+		<div class="fields">
+			<div class="field">
+				<label>部门名称</label>
+				<input type="text" name="dname" value="{$done.dname}">
+			</div>
+		</div>
+		<div class="fields">	
+			<div class="field">
+				<label>部门负责人</label>
+				<div class="ui search selection dropdown" id="searchUser">
+	                <input type="hidden" name="dperson">
+	                <i class="dropdown icon"></i>
+	                <div class="default text">输入姓名搜索</div>
+	                <div class="menu"> </div>
+	            </div>
+				<!--<input type="text" name="dperson" value="{$done.dperson}">-->
+			</div>
+		</div>
+        <input type="hidden" name="did" value="{$done.did}"> 
+        <div class="form-item mt20">
+            <button class="ui blue button submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+    	$(function(){
+    		$('.ui.dropdown').dropdown();
+    		$('#searchUser').dropdown({
+	            forceSelection: false,
+	            apiSettings: {
+	                cache: false,
+	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
+	                onResponse:function(response){
+	                    if(!response.data.lists.length && !response.data.status){
+	                        return;
+	                    }
+	                    var data = {
+	                        "success":true,
+	                        "results" : []
+	                    };
+	                    for(var i = 0; i < response.data.lists.length; i++){
+	                        data.results.push({"name":response.data.lists[i].member_name,"value":response.data.lists[i].member_id})
+	                    }
+	                    return data;
+	                },
+	            },
+	            message: {
+	                noResults: '未找到搜索结果'
+	            }
+	        });
+    	})
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>

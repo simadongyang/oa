@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>项目信息</h2>
+	</div>
+	<div class="toolbar">
+		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>
+		<button class="ui blue button ajax-post" url="{:U('Perappro/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">同 意</button>
+		<button class="ui blue button ajax-post" url="{:U('Perappro/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">拒 绝</button>-->
+	</div>
+	<!-- 数据列表 -->
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>发起人</th>
+				<th>申请事由</th>
+				<th>申请原因</th>
+				<th>发起时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<notempty name="_list">
+				<volist name="_list" id="vo">
+					<tr>
+						<td>{$vo.id} </td>
+						<td>{$vo.username} </td>
+						<td>{$vo.name}</td>
+						<td>{$vo.reason}</td>
+						<td>{$vo.time}</td>
+						<td>
+							<!-- <a href="{:U('Perappro/changeStatus?method=resumeuser&id='.$vo['id'])}" class="ajax-get">同意</a>
+							<a href="{:U('Perappro/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get">拒绝</a> -->
+							<?php
+									echo "<a href='".U("Perappro/info?id=$vo[id]")."'>详情</a>";
+							 ?>
+						</td>
+					</tr>
+				</volist>
+					<else/>
+					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>		
+		</tbody>
+	</table>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		window.onload = function(){
+			setInterval("location.reload()",1000*60*5);
+		}
+		//导航高亮
+		highlight_subnav('{:U('
+			User / index ')}');
+	</script>
+</block>

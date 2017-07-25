@@ -1,0 +1,213 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    
+    <h1>基本信息</h1><hr>
+    <form action="{:U()}" method="post" class="form-horizontal">    
+        <div class="form-item">
+        	<div>
+	        	<label>姓名：</label><input type="text" class="text" name="username" value="{$find.realname}" >
+	        	<input type="hidden" class="text input-large" name="password" value="123456">
+	            <input type="hidden" class="text input-large" name="repassword" value="123456">
+	      　 　           <label>工号：</label> <input type="text" class="text" name="gonghao" value="{$find.uid}" readonly>
+            </div>
+            <div>
+	            <label>性别：</label>　　<input type="radio"  name="sex" value="1" {$find.nan}>男 　　<input type="radio"  name="sex" value="0" {$find.nv}>女　　　
+	 　　　　　　  <label>联系电话：</label><input type="text" class="text" name="phone" value="{$find.phone}">
+            </div>
+            <div>
+	            <label>QQ号：</label><input type="text" class="text" name="qq" value="{$find.qq}">
+	            <label>紧急联系人姓名：</label><input type="text" class="text" name="criticalname" value="{$find.criticalname}">
+            </div>
+            <div>
+	            <label>紧急联系人电话：</label><input type="text" class="text" name="criticalphone" value="{$find.criticalphone}">
+	            <label>出生日期：</label><input type="text" class="text" name="birthday" value="{$find.birthday}">
+            </div>
+            <div>
+	            <label>年龄：</label><input type="text" class="text" name="age" value="{$find.age}">
+	            <label>政治面貌：</label><input type="text" class="text" name="political" value="{$find.political}">
+            </div>
+            <div>
+	            <label>身份证号：</label><input type="text" class="text" name="IDnumber" value="{$find.IDnumber}">
+	            <label>专业：</label><input type="text" class="text" name="major" value="{$find.major}">
+            </div>
+            <div>
+	            <label>最高学历：</label><input type="text" class="text" name="topeducation" value="{$find.topeducation}">
+	            <label>民族：</label><input type="text" class="text" name="nation" value="{$find.nation}">
+            </div>
+            <div>
+	            <label>婚姻状况：</label>
+	            	<select name="matrimonial">
+	            		<option value="未婚" <if condition="$find.matrimonial eq '未婚'"> selected </if>>未婚</option>
+	            		<option value="已婚" <if condition="$find.matrimonial eq '已婚'"> selected </if>>已婚</option>
+	            		<option value="离异" <if condition="$find.matrimonial eq '离异'"> selected </if>>离异</option>
+	            		<option value="丧偶" <if condition="$find.matrimonial eq '丧偶'"> selected </if>>丧偶</option>
+	            	</select>
+	            <label>籍贯：</label><input type="text" class="text" name="nativeplace" value="{$find.nativeplace}">
+            </div>
+            <div>
+	            <label>现居地址：</label><input type="text" class="text" name="nowliveplace" value="{$find.nowliveplace}">
+	            <label>爱好、特长：</label><input type="text" class="text" name="hobbies" value="{$find.hobbies}">
+            </div>
+            <div>
+	            <label>入职时间：</label><input type="text" class="text" name="entrytime" value="{$find.entrytime}">
+	            <label>试用期：</label><input type="text" class="text" name="trydate" value="{$find.trydate}">
+            </div>
+            <div>
+	            <label>状态：</label>　　<input type="radio"  name="iscompletion" value="是" {$find.shi}>正式 　　<input type="radio"  name="iscompletion" value="否" {$find.fou}>试用　　　
+	            <label>转正日期：</label><input type="text" class="text" name="completiontime" value="{$find.completiontime}">
+                <input type="hidden" name="leixing1" value="" class='jibenxinxi'>
+            </div>
+        </div>
+       
+    </form>
+
+    <h1>岗位信息</h1><hr>
+
+    <form action="{:U()}" method="post" class="form-horizontal">   
+        <div class="form-item">
+             <label>所属部门：</label>
+            	<select name="did">
+            		<volist name="department" id="vo">
+	            		<option value="{$vo.did}" <if condition="$vo.did eq $sel[0]['did']"> selected </if>>{$vo.dname}</option>
+	            	</volist>
+            	</select>
+             <label>所属岗位：</label>
+            	<select name="sid" >
+	            	<volist name="station" id="vo">
+	            		<option  value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
+	            	</volist>
+            	</select>
+            <div class="project hidd" >
+                <div val='1'>
+                    <input type="hidden" name="prid1" value="{$sel[0]['dssid']}">
+                    <label>所属项目：</label>
+                        <if condition="$sel[0]['projectid'] neq ''">
+                            <input type="text" name="p1" value="{$sel[0]['projectname']}" readonly>
+                            <label>分摊工资：</label><input type="text" class="text" name="ps1" readonly value="{$sel[0]['projectsalary']}"/>
+                        <else/>
+                        <select name="p1">
+                        <volist name="project" id="vo"> 
+                            <option value="{$vo.id}"  >{$vo.name}</option>
+                        </volist>
+                        </select>
+                        
+                     <label>分摊工资：</label><input type="text" class="text" name="ps1" value=""/>
+                     </if>
+                     <a class='jia' val='+'>＋</a> <a class='jia' val='-'>－</a>                    
+
+                 </div>       
+                <volist name="sel" id="vos" key="k">
+                <if condition="$k gt 1">
+            	<div>
+                    <input type="hidden" name="prid{$k}" value="{$vos.dssid}" >
+		            <label>所属项目：</label>
+		                <input type="text" name="p{$k}" value="{$vos.projectname}" readonly >
+		            <label>分摊工资：</label><input type="text" class="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>                    
+	             </div> 
+                 </if>         
+                 </volist>	             	             
+            </div>
+        </div>        
+        <div class="hidd" >
+            <h1>薪资信息</h1><hr>
+            <div class="form-item">             
+                <div>
+    	            <label>试用薪资：</label><input type="text" class="text" name="trysalary" value="{$salarychange.trysalary}">	            	
+    	            <label>正式薪资：</label><input type="text" class="text" name="completionsalary" value="{$salarychange.completionsalary}"/>
+                </div>
+                <div>
+                	<label>绩效考核：</label><textarea name="jixiao">{$salarychange.jixiao}</textarea>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="hidd" >
+            <h1>审批流程</h1><hr>
+            <div class="form-item">             
+                
+                    <p style="margin-top:30px;">
+                        {$appro.username}（发起）
+                                <volist name='appro.info' id="vo">
+                                 ->{$vo.username}
+								 (
+									  
+									<if condition="($vo['status'] eq 1) "> 通过
+										<elseif condition="$vo['status'] eq 0"/>拒绝
+										<elseif condition="$vo['status'] eq -2"/>正在审核
+									</if>
+								 )
+                                </volist> 
+                    </p>
+               
+            </div>
+        </div>
+        <input type="hidden" name="leixing2" value="" class="gangwei">
+        <input type="hidden" name="uid" value="{$sel[0]['uid']}">
+        <!--  <input type="submit" value="提交">-->
+       
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');  
+
+
+                $(function(){
+                    //增减项目
+                    var a;
+                    var html;
+                    var clicknum;
+                    var first;
+                    $('.jia').click(function(){
+                        clicknum=$(this).parents('div').find('.project').children('div').length;
+                        a=$(this).attr('val');
+                        if(a=='+'){
+                            clicknum += 1;                          
+                            html="<div><input type='hidden' name='pridnew"+clicknum+"' value='-1'><label>所属项目：</label> <select name='p"+clicknum+"'><volist name='project' id='vo'>"+
+                                "<option value='{$vo.id}'>{$vo.name}</option></volist></select>"+
+                             " <label>分摊工资：</label><input type='text' class='text' name='ps"+clicknum+"'/>";
+                          
+                            $(this).parents('div').find('.project').append(html);
+                        }
+                        if(a=='-'){
+                            
+                            first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
+                           
+                            if(first!=1){
+                                $(this).parents('div').find('.project').children('div:last-child').remove();    
+                            }                   
+                            
+                        }
+                    })
+                    //如果是非普通员工岗位，人事将无权查看                   
+                   var isst;
+                    $('select[name=sid]').change(function(){
+                        isst=$(this).find("option:selected").attr('isstaff');
+                        if(isst==1){
+                            $('.hidd').hide();
+                        }else{
+                            $('.hidd').show();
+                        }
+                    });
+                   
+                    //点击基本信息时                    
+                    $('.jiben').click(function(){
+                        
+                        $('.jibenxinxi').attr("value",'基本信息');
+                        
+                        $('.jiben1').click();
+                       
+                    })
+                    //点击岗位下面的确认时。
+                    $('.gang').click(function(){
+
+                        $('.gangwei').attr("value",'岗位');
+                        $('.gang1').click();
+
+                    });
+                })
+  </script>
+</block>

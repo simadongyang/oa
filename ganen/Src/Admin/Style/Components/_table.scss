@@ -1,0 +1,15 @@
+.ui{
+    &.table{
+        font-size: 14px;
+        thead{
+            th{
+                padding: .8em;
+            }
+        }
+        tr{
+            td{
+                padding: .8em;
+            }
+        }
+    }
+}

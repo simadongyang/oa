@@ -1,0 +1,67 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>部门列表</h2>
+	</div>
+	<div class="toolbar">
+		<a class="ui blue button" href="{:U('Organize/addstation')}">新 增</a>
+		<button class="ui blue button ajax-post" url="{:U('Organize/changeStatus_s',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+		<button class="ui blue button ajax-post" url="{:U('Organize/changeStatus_s',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+		<button class="ui blue button ajax-post confirm" url="{:U('Organize/changeStatus_s',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+	</div>
+	<!-- 数据列表 -->
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th class="row-selected row-selected"><input class="check-all" type="checkbox" /></th>
+				<th class="">岗位id</th>
+				<th class="">岗位名称</th>
+				<th class="">是否普通岗</th>
+				<th class="">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<notempty name="station">
+				<volist name="station" id="vo">
+
+					<tr>
+						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.sid}" /></td>
+						<td>{$vo.sid} </td>
+						<td>
+							{$vo.stationname}
+						</td>
+						<td>
+							{$vo.isstaff}
+						</td>
+						<td>
+							<a href="{:U('Organize/addstation?sid='.$vo['sid'])}">编辑</a>
+							<eq name="vo.status" value="1">
+								<a href="{:U('Organize/changeStatus_s?method=forbidUser&id='.$vo['sid'])}" class="ajax-get">禁用</a>
+								<else/>
+								<a href="{:U('Organize/changeStatus_s?method=resumeUser&id='.$vo['sid'])}" class="ajax-get">启用</a>
+							</eq>
+							<a href="{:U('Organize/changeStatus_s?method=deleteuser&id='.$vo['sid'])}" class="confirm ajax-get">删除</a>
+						</td>
+					</tr>
+
+				</volist>
+				<else/>
+				<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>
+		</tbody>
+	</table>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('User/index')}');
+	</script>
+</block>

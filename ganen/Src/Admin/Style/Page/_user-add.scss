@@ -1,0 +1,24 @@
+#userAdd{
+    .field{
+        min-width: 230px !important;
+        margin-right: 50px;
+    }
+    .field-icon{
+        position: relative;
+        .icon{
+            font-size: 24px;
+            position: absolute;
+            top: 30px;
+            cursor: pointer;
+            &.add{
+                left: -40px;
+            }
+            &.minus{
+                left: 0px;
+            }
+        }
+    }
+    .field-textarea{
+        width: 512px;
+    }
+}

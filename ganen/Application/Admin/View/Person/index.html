@@ -1,0 +1,66 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>人事信息</h2>
+	</div>
+	<div class="toolbar">
+		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>-->
+		<button class="ui blue button ajax-post" url="{:U('Team/changeStatus',array('method'=>'resumeUser'))}" target-form="ids">启 用</button>
+		<button class="ui blue button ajax-post" url="{:U('Team/changeStatus',array('method'=>'forbidUser'))}" target-form="ids">禁 用</button>
+		<button class="ui blue button ajax-post confirm" url="{:U('Team/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+	</div>
+	<!-- 数据列表 -->
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th><input class="check-all" type="checkbox" /></th>
+				<th>UID</th>
+				<th>项目名称</th>
+				<th>所属地区</th>
+				<th>医院名称</th>
+				<th>科室</th>
+				<th>项目主管</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<notempty name="_list">
+				<volist name="_list" id="vo">
+					<tr>
+						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+						<td>{$vo.id} </td>
+						<td>{$vo.name}</td>
+						<td>{$vo.area}</td>
+						<td>{$vo.h_name}</td>
+						<td>{$vo.depar}</td>	
+						<td>{$vo.charge}</td>
+						<td>
+						<eq name="vo.status" value="1">
+								<a href="{:U('Team/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get">禁用</a>
+								<else/>
+								<a href="{:U('Team/changeStatus?method=resumeUser&id='.$vo['id'])}" class="ajax-get">启用</a>
+							</eq>
+							<a href="{:U('Team/edit?id='.$vo['id'])}" >编辑</a>
+							<a href="{:U('Team/del?id='.$vo['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+					<else/>
+					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>		
+		</tbody>
+	</table>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('
+			User / index ')}');
+	</script>
+</block>

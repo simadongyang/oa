@@ -1,0 +1,40 @@
+#authManagerManagerGroup {
+    margin-top: 5px;
+    .ui.menu {
+        font-size: 14px;
+    }
+    .checkmod {
+        font-size: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ebebeb;
+        input{
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        dt {
+            padding-left: 10px;
+            height: 30px;
+            line-height: 30px;
+            font-weight: bold;
+            border-bottom: 1px solid #ebebeb;
+            background-color: #ECECEC;
+            .checkbox{
+                font-weight: bold;
+            }
+        }
+        dd {
+            padding-left: 10px;
+            line-height: 30px;
+            margin-left: 20px;
+            .checkbox {
+                margin: 0 10px 0 0;
+                input{
+                    margin-right: 5px;
+                }
+            }
+            .child_row{
+                padding-left: 20px;
+            }
+        }
+    }
+}

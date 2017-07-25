@@ -1,0 +1,63 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <div id="menuEdit">
+        <div class="main-title">
+            <h2>{:isset($info['id'])?'编辑':'新增'}项目</h2>
+        </div>
+        <form action="{:U()}" method="post" class="form-horizontal ui form">
+            <div class="field">
+                <label>项目名称</label>
+                <input type="text" class="text input-large" name="name" value="{$info.name|default=''}">
+            </div>
+            <div class="form-item">
+                <label class="item-label">所属地区</label>
+                <div class="controls">
+                    <input type="text" class="text input-small" name="area" value="{$info.area|default=''}">
+                </div>
+            </div>
+            <div class="form-item">
+                <label class="item-label">医院名称</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="h_name" value="{$info.h_name|default=''}">
+                </div>
+            </div>
+             <div class="form-item">
+                <label class="item-label">科室</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="depar" value="{$info.depar|default=''}">
+                </div>
+            </div>
+             <div class="form-item">
+                <label class="item-label">项目主管</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="charge" value="{$info.charge|default=''}">
+                </div>
+            </div>
+            <div class="form-item">
+                <input type="hidden" name="id" value="{$info.id|default=''}">
+                <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        Think.setValue("pid", {
+            $info.pid |
+            default = 0
+        });
+        Think.setValue("hide", {
+            $info.hide |
+            default = 0
+        });
+        Think.setValue("is_dev", {
+            $info.is_dev |
+            default = 0
+        });
+        //导航高亮
+        highlight_subnav('{:U('index')}');
+    </script>
+</block>
