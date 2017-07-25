@@ -5,6 +5,7 @@ $(function(){
         var that = this;
         var nead_confirm=false;
         if( ($(this).attr('type')=='submit') || (target = $(this).attr('href')) || (target = $(this).attr('url')) ){
+        	console.log("222");
             form = $('.'+target_form);
 
             if ($(this).attr('hide-data') === 'true'){//无数据时也可以使用的功能
