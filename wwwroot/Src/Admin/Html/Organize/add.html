@@ -23,7 +23,13 @@
 		</div>
 		<div class="field default">
 			<label>部门负责人</label>
-			<input type="text" name="dperson" value="{$done.dperson}">
+			<div class="ui search selection dropdown" id="searchUser">
+                <input type="hidden" name="dperson">
+                <i class="dropdown icon"></i>
+                <div class="default text">输入姓名搜索</div>
+                <div class="menu"> </div>
+            </div>
+			<!--<input type="text" name="dperson" value="{$done.dperson}">-->
 		</div>
         <input type="hidden" name="did" value="{$done.did}"> 
         <div class="form-item">
@@ -35,6 +41,31 @@
 
 <block name="script">
     <script type="text/javascript">
+    	$(function(){
+    		$('#searchUser').dropdown({
+	            forceSelection: false,
+	            apiSettings: {
+	                cache: false,
+	                url: "__URL__/Api/membername" + '{query}',
+	                onResponse:function(response){
+	                    if(!response.data.lists.length && !response.data.status){
+	                        return;
+	                    }
+	                    var data = {
+	                        "success":true,
+	                        "results" : []
+	                    };
+	                    for(var i = 0; i < response.data.lists.length; i++){
+	                        data.results.push({"name":response.data.lists[i].member_name,"value":response.data.lists[i].member_id})
+	                    }
+	                    return data;
+	                },
+	            },
+	            message: {
+	                noResults: '未找到搜索结果'
+	            }
+	        });
+    	})
         //导航高亮
         highlight_subnav('{:U('User/index')}');
     </script>

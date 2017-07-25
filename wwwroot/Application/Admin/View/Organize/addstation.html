@@ -24,11 +24,11 @@
         <div class="field default">
             <label class="item-label">是否为普通员工岗位</label>
             <div class="ui radio checkbox mr15">
-				<input type="radio" name="isstaff" value="0" tabindex="0" class="hidden" <if condition="$sone.sid eq 1"> checked="" </if>>
+				<input type="radio" name="isstaff" value="0" tabindex="0" class="hidden" <if condition="$sone.isstaff eq 0"> checked="" </if>>
 				<label>是</label>
 			</div>
 			<div class="ui radio checkbox mr15">
-				<input type="radio" name="isstaff" value="1" tabindex="0" class="hidden" <if condition="$sone.sid neq 1"> checked="" </if>>
+				<input type="radio" name="isstaff" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 0"> checked="" </if>>
 				<label>否</label>
 			</div>
         </div>
