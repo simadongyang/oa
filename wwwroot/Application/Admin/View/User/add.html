@@ -141,6 +141,7 @@
 				</div>
 				<input type="hidden" name="savestatus" value="基本信息">
 				<div class="form-item">
+
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
@@ -185,8 +186,8 @@
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="did">
-									<volist name="department" id="vo">
-										<option value="{$vo.did}">{$vo.dname}</option>
+									<volist name="project" id="vo">
+										<option value="{$vo.id}">{$vo.name}</option>
 									</volist>
 								</select>
 							</div>

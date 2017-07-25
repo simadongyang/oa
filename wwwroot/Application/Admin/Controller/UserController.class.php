@@ -262,7 +262,7 @@ class UserController extends AdminController {
             //计算年龄
             $find['age']=date('Y-m-d')-$find['birthday'];
             //显示是否转正
-            if($find['iscompletion']=='是'){
+            if($find['iscompletion']=='1'){
                 $find['shi']='checked';
             }else{
                 $find['fou']='checked';
@@ -302,11 +302,11 @@ class UserController extends AdminController {
 
                     /* 调用注册接口注册用户 */
                     $User   =   new UserApi;
-                   /* $email=rand(0,100000).rand(a,z).$username.'@qq.com';
+                    $email=rand(0,100000).rand(a,z).'@qq.com';
                     //获取身份证号码后4位
                     $hou4=substr($arr['IDnumber'],-4);
                     $username=$arr['username'].$hou4;
-                    $password='123456';*/
+                    $password='123456';
                     $uid    =   $User->register($username, $password, $email,$criticalname);
                     if(0 < $uid){ //注册成功
                     	$arr['realname']=$arr['username'];
@@ -453,7 +453,7 @@ class UserController extends AdminController {
                    if($countnum==$num || $result){
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
-                        $this->error('用户编辑失败'.'000000',U('add?id='.$arr['uid']));
+                        $this->error('用户编辑失败'.$num.'--'.count($arr),U('add?id='.$arr['uid']));
                     } 
                 }                
                 
