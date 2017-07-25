@@ -20,14 +20,23 @@ class UapiController extends AdminController {
        
         //获取传过来的员工名字
         $name=I('get.name');
-        $where['realname']=array('like','%'.$name.'%');
-        $list=M('member')->field('uid,realname')->where($where)->select();
-        if($list){  
-            die(json_encode($list));
-        }else{
-            $arr=array('error'=>'不存在满足条件的员工');
+        if(!$name){
+            $arr=array(
+                'status'=>0,//失败
+                'msg'=>'参数错误'
+                );             
             die(json_encode($arr));
         }
+        $where['realname']=array('like','%'.$name.'%');
+        $list=M('member')->field('uid,realname')->where($where)->select();
+
+        
+            $arr=array(
+                'status'=>1,//成功
+                'data'=>$list
+                ); 
+            die(json_encode($arr));      
+
     }
 
 }

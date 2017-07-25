@@ -7,7 +7,7 @@
 	</div>
 	<div class="toolbar">
 		<!--<a class="ui blue button" href="{:U('User/add')}">新 增</a>-->
-		<button class="ui blue button ajax-post confirm" url="{:U('Perappro/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
+		<!-- <button class="ui blue button ajax-post confirm" url="{:U('Perappro/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button> -->
 	</div>
 	<!-- 数据列表 -->
 	<table class="ui celled table">
@@ -35,11 +35,13 @@
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
 						<td>{$vo.time}</td>
-						<td>{$vo.atime}</td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['atime'])?></td>
 						<td><?php echo str_replace([0,1],['拒绝','通过'],$vo['status']);?></td>
 
 						<td>
-							<a href="{:U('Perappro/changeStatus?method=deleteUser&id='.$vo['id'])}" class="ajax-get">删除</a>
+							<?php
+									echo "<a href='".U("Perappro/info_mine?id=$vo[id]")."'>详情</a>";
+							 ?>
 						</td>
 					</tr>
 				</volist>

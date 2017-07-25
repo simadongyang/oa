@@ -69,7 +69,14 @@ class TeamController extends AdminController {
                         $this->error(json_encode($data));
                     }
                 }else{ // 新增
+
+                    if(empty($data['name']) || empty($data['area']) || empty($data['h_name']) || empty($data['depar']) || empty($data['charge'])) 
+                    {
+                        $this->error('请将数据填写完整');
+                    }
                      $id = $Pro->add();
+                    
+
                     if($id){
                         // S('DB_CONFIG_DATA',null);
                         //记录行为
