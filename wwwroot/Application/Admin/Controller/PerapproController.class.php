@@ -209,6 +209,9 @@ class PerapproController extends AdminController {
            }
         }
         $this->assign('_list', $nres);
+
+        
+
         $this->display();
     }
      public function his(){
@@ -389,7 +392,14 @@ class PerapproController extends AdminController {
        
 
         //审批流程数据
-        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        //审批信息id
+        $id = I('id');
+        //查询到被审批人id
+         $uidres=M('Appro')
+          ->field('uid')
+         ->where("id = $id")->find();
+         //var_dump($uidres);die;
+         $uid = $uidres['uid'];
         // 审批人的信息
          $ares=M('Appro')
           ->alias('a')
@@ -432,6 +442,23 @@ class PerapproController extends AdminController {
             }else{
                 $find['fou']='checked';
             }
+             //审批流程数据
+            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+            // 审批人的信息
+             $ares=M('Appro')
+              ->alias('a')
+              ->field('m.username,a.status')
+              ->join('onethink_ucenter_member m on a.aid = m.id')
+             ->where("a.uid = $uid")->select();
+             // 被审批人的信息
+             $res=M('Ucenter_member')
+             ->field('username')
+             ->where("id = $uid")->find();
+            //被审批人的名字
+            $data['username'] = $res['username'];
+            //审批人的信息
+            $data['info'] = $ares;
+            $this ->assign('appro',$data);
 
             $this->assign('find',$find);           
         } 
@@ -554,7 +581,32 @@ class PerapproController extends AdminController {
             }
         }
 
-
+        //审批流程数据
+        //审批信息id
+        $id = I('id');
+        //查询到被审批人id
+         $uidres=M('Appro')
+          ->field('uid')
+         ->where("id = $id")->find();
+         //var_dump($uidres);die;
+         $uid = $uidres['uid'];
+        // 审批人的信息
+         $ares=M('Appro')
+          ->alias('a')
+          ->field('m.username,a.status')
+          ->join('onethink_ucenter_member m on a.aid = m.id')
+         ->where("a.uid = $uid")->select();
+         // 被审批人的信息
+         $res=M('Ucenter_member')
+         ->field('username')
+         ->where("id = $uid")->find();
+        //被审批人的名字
+        $data['username'] = $res['username'];
+        //审批人的信息
+        $data['info'] = $ares;
+        //echo '<pre>';
+        //var_dump($data);die;
+        $this ->assign('appro',$data);
         $this->display();
     }
     //同意审批

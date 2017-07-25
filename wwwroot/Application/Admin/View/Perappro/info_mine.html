@@ -129,7 +129,10 @@
                     <p style="margin-top:30px;">
                         {$appro.username}[发起]
                                 <volist name='appro.info' id="vo">
-                                    ->{$vo.username}(<?php echo str_replace([0,1,-2],['拒绝','通过','等待审批'],$vo['status']);?>)
+                                 ->{$vo.username}(<?php echo str_replace([0,1,-2],['拒绝','通过','等待审批'],$vo['status']);?>)
+                                <neq name='vo.status' value='0'>
+                                   <?php $appro=[];?>
+                                </neq>
                                 </volist> 
                     </p>
                
