@@ -286,11 +286,22 @@ class UserController extends AdminController {
                     //作用修改(开始2).修改基本信息
                 
                 if($arr['uid']){//如果存在工号，说明是修改
+
+                    //用于查询数据对比是否进行了更改
+                     $findd=M('Member')->where('uid='.$arr['uid'])->find();
+                    if($findd){
+                        $ew=congruent($findd,$arr);
+                        if($ew==21){
+                            $this->success('您未作出任何编辑！',U('index'));
+                        }
+                    }
+
+
                     $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                     if($updat){
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
-                        $this->error('用户编辑失败！',U('update?id='.$arr['gonghao']));
+                        $this->error('用户编辑失败！',U('add?id='.$arr['gonghao']));
                     } 
 
                     //作用修改(结束2)

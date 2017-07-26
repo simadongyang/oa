@@ -418,3 +418,18 @@ function getTrees($arr,$pid=0,$step = 0){
     }
     return $tree;
 }
+
+//对比两个数组键和值是否完全一致
+function congruent($array1,$array2){//$array1、$array2是两个数组
+   
+    $num=0;
+    
+    foreach($array1 as $k=>$val){
+        if($array2[$k]==$val){
+            $num += 1;
+        }
+            
+    }
+   
+    return $num;//返回未修改的个数
+}
