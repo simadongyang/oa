@@ -161,7 +161,7 @@
 			<div class="fields">
 				<div class="field">
 					<label>说明<span class="check-tips">（菜单详细说明）</span></label>
-					<input type="text" name="group" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
+					<input type="text" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
 				</div>
 			</div>
 			<div class="form-item">
