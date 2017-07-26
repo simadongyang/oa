@@ -22,8 +22,9 @@ class UapiController extends AdminController {
         $name=I('get.name');
         if(!$name){
             $arr=array(
-                'status'=>0,//失败
-                'msg'=>'参数错误'
+                'status'=>1,//失败
+                'data'=>array(),
+                'msg'=>''
                 );             
             die(json_encode($arr));
         }
@@ -33,7 +34,8 @@ class UapiController extends AdminController {
         
             $arr=array(
                 'status'=>1,//成功
-                'data'=>$list
+                'data'=>$list,
+                'msg'=>''
                 ); 
             die(json_encode($arr));      
 

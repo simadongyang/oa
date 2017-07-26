@@ -102,13 +102,13 @@ class UcenterMemberModel extends Model{
 	 * @param  string $mobile   用户手机号码
 	 * @return integer          注册成功-用户信息，注册失败-错误编号
 	 */
-	public function register($username, $password, $email,$criticalname, $mobile){
+	public function register($username, $password, $email, $mobile){
 		$data = array(
 			'username' => $username,
 			'password' => $password,
 			'email'    => $email,
 			'mobile'   => $mobile,
-			'criticalname'=>$criticalname,
+			//'criticalname'=>$criticalname,
 		);
 
 		//验证手机
