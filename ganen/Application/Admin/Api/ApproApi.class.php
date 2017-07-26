@@ -39,22 +39,25 @@ class ApproApi{
     // 生成审批数据 
     // $nid 入职者的id
     // $did 本部门的id
-    public function appr($nid,$did)
+    public function appr($nid)
     {
               
-        if(empty($nid) || empty($did))
+        if(empty($nid))
         {
-            $this->error('审批生成失败');
+            return json_encode('-1');
         }
-        $res = M('Dss')
-            ->field('did')
-            ->where("uid = $nid")
-            ->find();
-        if(!empty($res)) die(json_encode('-1'));
-       // 判断是否为第一次添加
+        //判断是否申请过审批
+        if(M('Appro')->where("uid = $nid")->find())
+        {
+            return json_encode('1');
+        }
+        $res = M('Dss')->field('did')->where("uid = $nid")->find();
        
+        if(empty($res)) return json_encode('-1');
+       // 得到本部门id
+        $did = $res['did'];
         $pids = $this -> partment($did);
-        if(empty($pids)) $this->error('岗位信息有误');
+        if(empty($pids)) return json_encode('-1');
             //当前用户的uid
             $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
             $res=M('Department')
@@ -85,7 +88,7 @@ class ApproApi{
                 $data['status'] = -2;
                 $Appro->add($data);
             }
-          die(json_encode(1));
+          return json_encode('-1');
     }
     
 }

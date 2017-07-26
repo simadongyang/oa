@@ -31,11 +31,13 @@ class TestController extends AdminController {
     }
     public function ok()
     {
-       
+        return;
+       $nid =11;
        $Appro = new ApproApi;
-        $nid = 1;$did =2;
-        $uid = $Appro->appr($nid,$did);
-        var_dump($uid);die;
+        if($Appro->appr($nid) == -1)
+        {
+            $this->error('审批新增失败');die;
+        }
     }
     public function add(){
        if(IS_POST){
