@@ -27,11 +27,11 @@ class ApproApi{
             ->where("d.did = $pid")
             ->find();
             $data =$res['pd']; 
-            if(!empty($res['pid']))
+            if(!empty($res['pid'])  )
             {
                 $data=$data.','.sima($res['pid']);
             }  
-            return trim($data,',');
+           return trim(trim($data,','),'0');
         }
          
         return sima($did);
@@ -41,7 +41,6 @@ class ApproApi{
     // $did 本部门的id
     public function appr($nid)
     {
-              
         if(empty($nid))
         {
             return json_encode('-1');
@@ -76,11 +75,18 @@ class ApproApi{
             $name = '入职';
             // 申请原因
             $reason = '新人入职';
+            //得到人事信息
+            $perid =  $_SESSION['onethink_admin']['user_auth']['uid'];
+
+            $res = D('Member')->field('realname')->where("uid = $perid")->find();
+            $person = $res['realname'];
             foreach($arr_pids as $k => $v)
             {
                 $Appro = M("Appro"); // 实例化User对象
                 $data['uid'] = $nid;
                 $data['aids'] = $pids;
+                $data['perid'] = $perid;
+                $data['person'] = $person;
                 $data['aid'] = $v;
                 $data['name'] = $name;
                 $data['reason'] = $reason;

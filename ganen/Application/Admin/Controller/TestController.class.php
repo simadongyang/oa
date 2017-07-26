@@ -29,11 +29,37 @@ class TestController extends AdminController {
         $this->meta_title = '用户信息';
         $this->display();
     }
+      //递归得到pid
+    private function partment($did)
+    {
+        $data  = array();
+        function sima($pid)
+        {
+            $res = M('Department')
+            ->alias('d')
+            ->field('d.did did ,p.did pid , d.dperson dp , p.dperson pd')
+            ->join('ganen_department p on d.dpid = p.did ')
+            ->where("d.did = $pid ")
+            ->find();
+            $data =$res['pd']; 
+            if(!empty($res['pid']) )
+            {
+                $data=$data.','.sima($res['pid']);
+            }  
+            return trim(trim($data,','),'0');
+        }
+         
+        return sima($did);
+    }
     public function ok()
     {
-        return;
-       $nid =11;
+      
+       $nid =10;
+        var_dump($this->partment(11));die;
+        $res = M('Dss')->field('did')->where("uid = $nid")->find();
+       //var_dump($res);die;
        $Appro = new ApproApi;
+       var_dump($Appro->appr($nid));die;
         if($Appro->appr($nid) == -1)
         {
             $this->error('审批新增失败');die;

@@ -1,10 +1,7 @@
 <extend name="Public/base" />
 
 <block name="body">
-<<<<<<< HEAD
 
-=======
->>>>>>> efaaee2ce2446b9344a95285ee1fcc931fa3769d
 	<div id="userAdd">
 		<div class="ui top attached tabular menu">
 			<div class="item" data-tab="tab-name">基本信息</div>
@@ -15,7 +12,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>工号</label>
-						<input type="text" name="uid" value="{$find.uid}" disabled>
+                        <input type="text" name="uid" value="{$find.uid}" disabled>
 					</div>
 					<div class="field">
 						<label>姓名</label>
@@ -151,7 +148,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<select class="ui dropdown dropdown-init" name="did">
+						<select class="ui dropdown dropdown-init" disabled name="did">
 							<volist name="department" id="vo">
 								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
 							</volist>
@@ -167,8 +164,8 @@
 								<option value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
 							</volist>
 						</select>-->
-						<div class="ui selection dropdown" id="station">
-							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
+						<div class="ui selection disabled dropdown" id="station">
+							<input type="hidden" name="sid"  disabled value="{$sel[0]['sid']}">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
 							<div class="menu">
@@ -184,7 +181,7 @@
 						<div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
-								<select class="ui dropdown dropdown-init" name="newdid[]">
+								<select class="ui dropdown dropdown-init" disabled name="newdid[]">
 									<volist name="project" id="vo">
 										<option value="{$vo.id}">{$vo.name}</option>
 									</volist>
@@ -192,11 +189,9 @@
 							</div>
 							<div class="field">
 								<label>分摊工资</label>
-								<input type="text" name="newps1[]" value="" />
+								<input type="text" disabled name="newps1[]" value="" />
 							</div>
-							<div class="field field-icon">
-								<i class="minus square icon"></i>
-							</div>
+							
 						</div>
 						<else />
 						<volist name="sel" id="vos" key="k">
@@ -210,30 +205,50 @@
 									<label>分摊工资</label>
 									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
 								</div>
-								<div class="field field-icon">
-									<i class="add square icon"></i>
-									<i class="minus square icon"></i>
-								</div>
+								
 							</div>
 						</volist>
 					</empty>
-					<input type="button" class="ui blue button add mb20" value="添加所属项目" />
-					<div class="fields fields-hide">
-						<div class="field">
-							<label>试用薪资</label>
-							<input type="text" name="trysalary" value="{$salarychange.trysalary}">
-						</div>
-						<div class="field">
-							<label>正式薪资</label>
-							<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
-						</div>
-					</div>
-					<div class="fields fields-hide">
-						<div class="field field-textarea">
-							<label>绩效考核</label>
-							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
-						</div>
-					</div>
+                        <input type="hidden" name="id"   value="{$id}">
+                        <if condition="$is_first eq 1 ">  
+                            <div class="fields fields-hide">
+                            <div class="field">
+
+                                <label>试用薪资</label>
+                                <input type="text" name="trysalary"   value="{$salarychange.trysalary}">
+                                <input type="hidden" name="is_first"   value="{$is_first}">
+                               
+                            </div>
+                            <div class="field">
+                                <label>正式薪资</label>
+                                <input type="text" name="completionsalary"   value="{$salarychange.completionsalary}" />
+                            </div>
+                            </div>
+                            <div class="fields fields-hide">
+                                <div class="field field-textarea">
+                                    <label>绩效考核</label>
+                                    <textarea name="jixiao"   rows="3">{$salarychange.jixiao}</textarea>
+                                </div>
+                            </div>
+                        <else /> 
+                       
+        					<div class="fields fields-hide">
+        						<div class="field">
+        							<label>试用薪资</label>
+        							<input type="text" name="trysalary" disabled value="{$salarychange.trysalary}">
+        						</div>
+        						<div class="field">
+        							<label>正式薪资</label>
+        							<input type="text" name="completionsalary" disabled value="{$salarychange.completionsalary}" />
+        						</div>
+        					</div>
+        					<div class="fields fields-hide">
+        						<div class="field field-textarea">
+        							<label>绩效考核</label>
+        							<textarea name="jixiao" disabled rows="3">{$salarychange.jixiao}</textarea>
+        						</div>
+        					</div>
+                        </if>
 				</if>
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
@@ -250,7 +265,7 @@
 					<volist name='appro.info' id="vo">
 						->{$vo.realname} (
 						<if condition="($vo['status'] eq 1) "> 通过
-							<elseif condition="$vo['status'] eq 0" />拒绝
+							<elseif condition="$vo['status'] eq 0" />未通过
 							<elseif condition="$vo['status'] eq -2" />正在审核
 						</if>
 						)
@@ -259,10 +274,7 @@
 			</form>
 		</div>
 	</div>
-<<<<<<< HEAD
 
-=======
->>>>>>> efaaee2ce2446b9344a95285ee1fcc931fa3769d
 </block>
 
 <block name="script">
