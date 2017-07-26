@@ -34,22 +34,22 @@
 						<td>{$vo.name}</td>
 						<td>{$vo.area}</td>
 						<td>{$vo.h_name}</td>
-						<td>{$vo.depar}</td>	
+						<td>{$vo.depar}</td>
 						<td>{$vo.realname}</td>
 						<td>
-						<eq name="vo.status" value="1">
+							<eq name="vo.status" value="1">
 								<a href="{:U('Team/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get">禁用</a>
 								<else/>
 								<a href="{:U('Team/changeStatus?method=resumeUser&id='.$vo['id'])}" class="ajax-get">启用</a>
 							</eq>
-							<a href="{:U('Team/edit?id='.$vo['id'])}" >编辑</a>
+							<a href="{:U('Team/edit?id='.$vo['id'])}">编辑</a>
 							<a href="{:U('Team/changeStatus?method=deleteUser&id='.$vo['id'])}" class="confirm ajax-get">删除</a>
 						</td>
 					</tr>
 				</volist>
-					<else/>
-					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
-			</notempty>		
+				<else/>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+			</notempty>
 		</tbody>
 	</table>
 	<div class="page">
@@ -60,7 +60,6 @@
 <block name="script">
 	<script type="text/javascript">
 		//导航高亮
-		highlight_subnav('{:U('
-			User / index ')}');
+		highlight_subnav('{:U('User/index')}');
 	</script>
 </block>
