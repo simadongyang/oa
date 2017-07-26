@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/sima/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/sima/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/sima/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/sima/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/sima/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/sima/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -97,7 +97,7 @@
 				
 	<!-- 标题栏 -->
 	<div class="main-title">
-		<h2>审批历史</h2>
+		<h2>我的审批</h2>
 	</div>
 	<div class="toolbar">
 		<!--<a class="ui blue button" href="<?php echo U('User/add');?>">新 增</a>-->
@@ -147,9 +147,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/sima", //当前网站地址
-					"APP": "/sima/index.php?s=", //当前项目地址
-					"PUBLIC": "/sima/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]

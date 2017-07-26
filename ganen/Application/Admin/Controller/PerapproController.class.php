@@ -24,92 +24,12 @@ class PerapproController extends AdminController {
           ->group('update_time')
           ->field('m.username,a.*')
           ->join('ganen_ucenter_member m on a.aid = m.id')
-         ->where("a.uid = $uid")->select();
-          //->alias('a')
-           //->field('m.username,a.*')
-            //->join('onethink_ucenter_member m on a.uid = m.id')
-        //var_dump($res);die;      
+         ->where("a.uid = $uid")->select();    
 
         $this->assign('_list', $res);
         $this->display();
     }
-    //递归得到pid
-    public function partment($did)
-    {
-        $data  = array();
-        function sima($pid)
-        {
-            $res = M('Department')
-            ->alias('d')
-            ->field('d.did did ,p.did pid , d.dperson dp , p.dperson pd')
-            ->join('ganen_department p on d.dpid = p.did ')
-            ->where("d.did = $pid")
-            ->find();
-            $data =$res['pd']; 
-            if(!empty($res['pid']))
-            {
-                $data=$data.','.sima($res['pid']);
-            }  
-            return trim($data,',');
-        }
-         
-        return sima($did);
-    }
-    // 生成审批数据
-    public function appr($nid,$did)
-    {
-              
-        if(empty($nid) || empty($did))
-        {
-            $this->error('审批生成失败');
-        }
-        $res = M('Dss')
-            ->field('did')
-            ->where("uid = $nid")
-            ->find();
-        if(!empty($res)) return ;
-       // 判断是否为第一次添加
-       
-        $pids = $this -> partment($did);
-        if(empty($pids)) $this->error('岗位信息有误');
-            //当前用户的uid
-            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-            $res=M('Department')
-            ->field('dperson')
-             ->where("did = $did")
-             ->find();
-            // 判断是否为本部门的负责人
-            $dp = $res['dperson'];
-            if($uid != $dp)
-            {
-                $pids = $dp . ',' .$pids;
-            }
-            //生成 审批
-            $arr_pids = explode(',',$pids);
-            //审批名称
-            $name = '入职';
-            // 申请原因
-            $reason = '新人入职';
-            foreach($arr_pids as $k => $v)
-            {
-                $Appro = M("Appro"); // 实例化User对象
-                $data['uid'] = $nid;
-                $data['aids'] = $pids;
-                $data['aid'] = $v;
-                $data['name'] = $name;
-                $data['reason'] = $reason;
-                $data['time'] = time();
-                $data['status'] = -2;
-                $Appro->add($data);
-            }
-    }
-    public function test()
-    {
-        // $nid 新入职的id $did 本部门id\
-        $nid =144440;
-        $did = 7;
-         $this->appr($nid,$did);
-    }
+  
     public function waitbak(){
         die;
              //  xxx发起->第一个（通过-备注）->第二个（正在审批）->第三个

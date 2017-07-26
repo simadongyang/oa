@@ -3077,3 +3077,467 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
 
+[ 2017-07-26T08:29:20+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.019000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:29:21+08:00 ] 127.0.0.1 /index.php?s=/Admin/Test/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.016000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Test/index%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=123 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 123 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 123 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:29:23+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.018000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.018000s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:30:01+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.018000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:30:14+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.017000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.016000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.058000s ]
+
+[ 2017-07-26T08:30:17+08:00 ] 127.0.0.1 /index.php?s=/Admin/Test/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.012000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Test/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.012000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=123 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 123 )  [ RunTime:0.012000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 123 ) AND ( `hide` = 0 )  [ RunTime:0.021000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:30:18+08:00 ] 127.0.0.1 /index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.028000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.014000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.015000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:45:47+08:00 ] 127.0.0.1 /
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 144 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:45:50+08:00 ] 127.0.0.1 /index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.012000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.011000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=4 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.010000s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.014000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.010000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=3 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.025000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.013000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=2 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.010000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.011000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=1 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.010000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.010000s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status D:\xm\oa\ganen\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: status D:\xm\oa\ganen\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: status D:\xm\oa\ganen\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+NOTIC: [8] Undefined index: status D:\xm\oa\ganen\Runtime\Cache\Admin\65e605872ed5d34210f5b33beb13f5a3.php 第 140 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.017000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.018000s ]
+
+[ 2017-07-26T08:45:58+08:00 ] 127.0.0.1 /index.php?s=/Admin/Test/ok
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Test/ok%' ) LIMIT 1   [ RunTime:0.010000s ]
+
+[ 2017-07-26T08:47:35+08:00 ] 127.0.0.1 /index.php?s=/Admin/Test/ok
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.009000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Test/ok%' ) LIMIT 1   [ RunTime:0.008000s ]
+
+[ 2017-07-26T08:54:01+08:00 ] 127.0.0.1 /index.php
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.014000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.014000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 144 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:04+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.018000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.018000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.017000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.017000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on a.uid = m.id  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.017000s ]
+NOTIC: [8] Undefined variable: nres D:\xm\oa\ganen\Application\Admin\Controller\PerapproController.class.php 第 132 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:05+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/his.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/his%' ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=163 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.011000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on m.id = a.uid  WHERE ( a.status = 1 or a.status=0 )  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\240f95737700a847d8a0327017e521e3.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\240f95737700a847d8a0327017e521e3.php 第 146 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:07+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.018000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.017000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.018000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.018000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.016000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.016000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.022000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.018000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on a.uid = m.id  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.017000s ]
+NOTIC: [8] Undefined variable: nres D:\xm\oa\ganen\Application\Admin\Controller\PerapproController.class.php 第 132 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:09+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/index%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=165 ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.009000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.010000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on a.aid = m.id  WHERE ( a.uid = 1 ) GROUP BY update_time  [ RunTime:0.011000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.002000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\e42478b21c67632248c213ac7af9d8f9.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\e42478b21c67632248c213ac7af9d8f9.php 第 140 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:33+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.014000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/index%' ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=165 ) LIMIT 1   [ RunTime:0.014000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.013000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.013000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.013000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on a.aid = m.id  WHERE ( a.uid = 1 ) GROUP BY update_time  [ RunTime:0.014000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\e42478b21c67632248c213ac7af9d8f9.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\e42478b21c67632248c213ac7af9d8f9.php 第 140 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-07-26T08:54:36+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.016000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.015000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.017000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.015000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.015000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.018000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on a.uid = m.id  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.016000s ]
+NOTIC: [8] Undefined variable: nres D:\xm\oa\ganen\Application\Admin\Controller\PerapproController.class.php 第 132 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-07-26T08:54:38+08:00 ] 127.0.0.1 /index.php?s=/Admin/Perappro/his.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.011000s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/his%' ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=163 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.010000s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.010000s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.010000s ]
+SQL: SELECT m.username,a.* FROM ganen_appro a INNER JOIN ganen_ucenter_member m on m.id = a.uid  WHERE ( a.status = 1 or a.status=0 )  [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: meta_title D:\xm\oa\ganen\Runtime\Cache\Admin\240f95737700a847d8a0327017e521e3.php 第 6 行.
+NOTIC: [8] Undefined variable: _page D:\xm\oa\ganen\Runtime\Cache\Admin\240f95737700a847d8a0327017e521e3.php 第 146 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

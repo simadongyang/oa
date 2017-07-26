@@ -97,7 +97,7 @@
 				
 	<!-- 标题栏 -->
 	<div class="main-title">
-		<h2>项目信息</h2>
+		<h2>待我审批</h2>
 	</div>
 	<div class="toolbar">
 		<!--<a class="ui blue button" href="<?php echo U('User/add');?>">新 增</a>
