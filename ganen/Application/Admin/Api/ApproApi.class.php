@@ -15,7 +15,7 @@ class ApproApi{
 	}
 
 	  //递归得到pid
-    public function partment($did)
+    private function partment($did)
     {
         $data  = array();
         function sima($pid)
@@ -36,7 +36,9 @@ class ApproApi{
          
         return sima($did);
     }
-    // 生成审批数据
+    // 生成审批数据 
+    // $nid 入职者的id
+    // $did 本部门的id
     public function appr($nid,$did)
     {
               
@@ -48,7 +50,7 @@ class ApproApi{
             ->field('did')
             ->where("uid = $nid")
             ->find();
-        if(!empty($res)) return ;
+        if(!empty($res)) die(json_encode('-1'));
        // 判断是否为第一次添加
        
         $pids = $this -> partment($did);
@@ -83,12 +85,7 @@ class ApproApi{
                 $data['status'] = -2;
                 $Appro->add($data);
             }
+          die(json_encode(1));
     }
-    public function test()
-    {
-        // $nid 新入职的id $did 本部门id\
-        $nid =144440;
-        $did = 7;
-         $this->appr($nid,$did);
-    }
+    
 }

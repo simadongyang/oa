@@ -67,14 +67,7 @@ class PerapproController extends AdminController {
                 $Appro->add($data);
             }
            
-        //  var_dump($pids);die;
-         // var_dump($res);die;
-
-       // $find = [0,1];
-    // $replace = ['q','e'];
-      //  $arr = [3,2,4,1,0];
-   // print_r(str_replace($find,$replace,$arr));die;
-
+       
         //当前用户的uid
         //echo '<pre>';
         $map['id']  = array(' in',array('1','4','8'));

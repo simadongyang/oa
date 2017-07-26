@@ -31,10 +31,10 @@ class TestController extends AdminController {
     }
     public function ok()
     {
-       $arr = [1,2,3,4,5,6];
+       
        $Appro = new ApproApi;
-
-        $uid = $Appro->check($arr);
+        $nid = 1;$did =2;
+        $uid = $Appro->appr($nid,$did);
         var_dump($uid);die;
     }
     public function add(){
