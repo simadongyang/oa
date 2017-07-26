@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/oa/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/oa/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/oa/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/oa/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -135,16 +135,11 @@
 						<td><?php echo ($vo["iscompletion"]); ?></td>
 						<td><?php echo ($vo["entrytime"]); ?></td>
 						<td>
-<<<<<<< HEAD
 							<a href="<?php echo U('User/add?id='.$vo['uid']);?>">查看详情</a>
-							<?php if(($vo["status"]) == "1"): ?>=======
-							<a href="<?php echo U('User/update?id='.$vo['uid']);?>">查看详情</a>
-							<eq name="vo.status" value="1">
->>>>>>> 82671843591ac22d573cb65461f13872136521fc
-								<a href="<?php echo U('User/changeStatus?method=forbidUser&id='.$vo['uid']);?>" class="ajax-get">禁用</a>
+							<?php if(($vo["status"]) == "1"): ?><a href="<?php echo U('User/changeStatus?method=forbidUser&id='.$vo['uid']);?>" class="ajax-get">禁用</a>
 								<?php else: ?>
 								<a href="<?php echo U('User/changeStatus?method=resumeUser&id='.$vo['uid']);?>" class="ajax-get">启用</a><?php endif; ?>
-							<a href="<?php echo U('AuthManager/group?uid='.$vo['uid']);?>" class="confirm ajax-get">删除</a>
+							<a href="<?php echo U('User/changeStatus?method=deleteUser&id='.$vo['uid']);?>" class="confirm ajax-get">删除</a>
 						</td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					<?php else: ?>
@@ -162,9 +157,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/oa", //当前网站地址
-					"APP": "/oa/index.php?s=", //当前项目地址
-					"PUBLIC": "/oa/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]

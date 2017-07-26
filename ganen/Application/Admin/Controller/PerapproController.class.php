@@ -129,15 +129,12 @@ class PerapproController extends AdminController {
         $this->display();
     }
     //审批历史
-     public function his(){
+     public function his()
+     {
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-         $res=M('Appro')
-         ->alias('a')
-         ->field('m.realname,a.*')
-         ->join('ganen_member m on m.uid = a.uid')
-         ->where("a.aid = $uid")
-         ->where('a.status = 1 or a.status=0')
-         ->select();
+       // echo $uid;die;
+         $res=M('Appro')->where("aid = 27 and status !=-2")->select();
+
         $this->assign('_list', $res);
         $this->display();
     }
@@ -250,7 +247,6 @@ class PerapproController extends AdminController {
       $res=M('Appro')->field('uid')->where("id = $id")->find();
       $id = $res['uid'];
      
-      //var_dump($id);die;
             //显示所属部门信息
       //显示所属部门信息
       $department=M('department')->where('status>-1')->select();
@@ -276,7 +272,6 @@ class PerapproController extends AdminController {
         $this->assign('look',$deng['looksalary']);
 
         //查看员工基本信息
-        $id=I('get.id');
 
         if($id){
             //查询信息
@@ -454,7 +449,6 @@ class PerapproController extends AdminController {
         $this->assign('look',$deng['looksalary']);
 
         //查看员工基本信息
-        $id=I('get.id');
 
         if($id){
             //查询信息
@@ -693,10 +687,8 @@ class PerapproController extends AdminController {
 
         //审批流程数据
         //审批信息id
-        $id = I('id');
-        $data = $this->appro_list($id);
+        $data = $this->appro_list(I('get.id'));
         $this ->assign('appro',$data);
-        $id = 11;
         //判断是否为直接主管
          $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         // echo $id;die;
@@ -704,11 +696,14 @@ class PerapproController extends AdminController {
                ->alias('d')
                ->field('p.dperson')
                ->join('ganen_department p on d.did = p.did')
-               ->where("d.uid =$id")
+               ->where("d.uid =$uid")
                ->find();
         // 是否可更改薪资
         //满足条件  1 非普通岗位 2 审批人为直属上级时 
-        if(!empty($res['deperson']) && $res['deperson'] == $uid && $is_staff == 1)
+        //现在 默认管理岗位
+
+        $is_staff = 1;
+        if(!empty($res['dperson']) && $res['dperson'] == $uid && $is_staff == 1)
         {
           $this->assign('is_first',1);
         }
@@ -748,7 +743,20 @@ class PerapproController extends AdminController {
                      
                      $str=implode(',',$arr);
                      //判断是否为空
-                     if(empty($str)) $str = 0;
+                     //if(empty($str)) $str = 0;
+                     //当全部审批通过后 允许其登陆后台
+                     if(empty($str))
+                     {
+                        //设置状态
+                        $str = 0;
+                        //将用户加入权限组
+                        $Auth = M("Auth_group_access"); 
+                        // 要修改的数据对象属性赋值
+                        $data['uid'] = $uid;
+                        //默认组
+                        $data['group_id'] = 9;
+                        $Auth->add($data); // 添加记录
+                     }
                      //更改数据
                     $Ures = M("Appro"); 
                     // 要修改的数据对象属性赋值
@@ -769,40 +777,41 @@ class PerapproController extends AdminController {
     //拒绝审批
     public function forbid()
     {
-            $id = array_unique((array)I('id',0));
-        $id = is_array($id) ? implode(',',$id) : $id;
+
+        $id = array_unique((array)I('id',0));
+       $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
-        $map['id'] =   array('in',$id);
-         $res=M('Appro')
-                 ->where($map)
-                ->select();
-                foreach($res as $key=>$val)
-                {
-                    //删除后把 aids 改为 -1
-                    $str = -1;
-                     //更改数据
-                     //得到uid
-                    $uid = $val['uid'];
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['aids'] = $str;
-                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
-                
-                }
-                 //更新状态
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['status'] = 0;
-                    $data['atime'] = time();
-                    $res = $Ures->where($map)->save($data); // 根据条件更新记录
+      $map['id'] =   array('in',$id);
 
-                        if($res)
-                        {
-                             $this->success('已经拒绝审批',U('index')); 
-                        }
-                    
+       $res=M('Appro')->where($map)->select();
+
+      foreach($res as $key=>$val)
+      {
+          //删除后把 aids 改为 -1
+          $str = -1;
+           //更改数据
+           //得到uid
+          $uid = $val['uid'];
+          $Ures = M("Appro"); 
+          // 要修改的数据对象属性赋值
+          $data['aids'] = $str;
+          $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+      
+      }
+           //更新状态
+              $Ures = M("Appro"); 
+              // 要修改的数据对象属性赋值
+              $data['status'] = 0;
+              $data['atime'] = time();
+              $res = $Ures->where($map)->save($data); // 根据条件更新记录
+
+                  if($res)
+                  {
+                       $this->success('已经拒绝审批',U('index')); 
+                  }
+              
                     
     }
     /**

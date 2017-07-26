@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/oa/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/oa/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/oa/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/oa/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -122,14 +122,14 @@
 						<td><?php echo ($vo["id"]); ?> </td>
 						<td><?php echo ($vo["name"]); ?></td>
 						<td><?php echo ($vo["reason"]); ?></td>
-						<td><?php echo ($vo["time"]); ?></td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td>    <?php if(($vo['aids'] == 0) ): ?>通过
-    					<?php elseif($vo['aids'] == -1): ?>被拒
+    					<?php elseif($vo['aids'] == -1): ?>未通过
     					<?php else: ?> 正在审批中<?php endif; ?></td>
 
 						<td>
 							<?php
- echo "<a href='".U("Perappro/info_mine?id=$vo[uid]")."'>详情</a>"; ?>
+ echo "<a href='".U("Perappro/info_mine?id=$vo[id]")."'>详情</a>"; ?>
 						</td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					<?php else: ?>
@@ -147,9 +147,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/oa", //当前网站地址
-					"APP": "/oa/index.php?s=", //当前项目地址
-					"PUBLIC": "/oa/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]

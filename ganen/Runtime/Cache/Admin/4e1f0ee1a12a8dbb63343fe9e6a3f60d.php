@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/oa/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/oa/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/oa/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/oa/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -246,7 +246,7 @@
 					<div class="field">
 						<label>所属部门</label>
 						<select class="ui dropdown dropdown-init" name="did">
-							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if($vo["did"] == $sel[0]['did']): ?>selected<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if(($vo["did"]) == $sel[0]['did']): ?>selected="selected"<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
 					<div class="field">
@@ -258,7 +258,7 @@
 							<?php if(is_array($station)): $i = 0; $__LIST__ = $station;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["sid"]); ?>" isstaff='<?php echo ($vo["isstaff"]); ?>' <?php if($vo["sid"] == $sel[0]['sid']): ?>selected<?php endif; ?>><?php echo ($vo["stationname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>-->
 						<div class="ui selection dropdown" id="station">
-							<input type="hidden" name="sid">
+							<input type="hidden" name="sid" value="<?php echo ($sel[0]['sid']); ?>">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
 							<div class="menu">
@@ -270,13 +270,13 @@
 				<?php if(($look == 0 and $isstaff == 0) or ($look == 1)): if(empty($sel)): ?><div class="fields fields-xm">
 							<div class="field">
 								<label>所属项目</label>
-								<select class="ui dropdown dropdown-init" name="did">
-									<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>"><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+								<select class="ui dropdown dropdown-init" name="newdid[]">
+									<?php if(is_array($project)): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 								</select>
 							</div>
 							<div class="field">
 								<label>分摊工资</label>
-								<input type="text" name="ps1" value="" />
+								<input type="text" name="newps1[]" value="" />
 							</div>
 							<div class="field field-icon">
 								<i class="add square icon"></i>
@@ -288,7 +288,7 @@
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p<?php echo ($k); ?>" value="<?php echo ($vos["projectname"]); ?>" readonly>
-									<input type="hidden" name="prid<?php echo ($k); ?>" value="<?php echo ($vos["dssid"]); ?>">
+									<input type="hidden" name="prid[]" value="<?php echo ($vos["dssid"]); ?>">
 								</div>
 								<div class="field">
 									<label>分摊工资</label>
@@ -300,7 +300,7 @@
 								</div>
 							</div><?php endforeach; endif; else: echo "" ;endif; endif; ?> 
 					
-					<div class="fields">
+					<div class="fields fields-xm">
 						<div class="field">
 							<label>试用薪资</label>
 							<input type="text" name="trysalary" value="<?php echo ($salarychange["trysalary"]); ?>">
@@ -310,7 +310,7 @@
 							<input type="text" name="completionsalary" value="<?php echo ($salarychange["completionsalary"]); ?>" />
 						</div>
 					</div>
-					<div class="fields">
+					<div class="fields fields-xm">
 						<div class="field field-textarea">
 							<label>绩效考核</label>
 							<textarea name="jixiao" rows="3"><?php echo ($salarychange["jixiao"]); ?></textarea>
@@ -333,9 +333,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/oa", //当前网站地址
-					"APP": "/oa/index.php?s=", //当前项目地址
-					"PUBLIC": "/oa/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
@@ -385,30 +385,34 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown({
 				onChange: function(value, text, $selectedItem) {
-					console.log($selectedItem);
+					console.log($selectedItem.attr("isstaff"));
+					if($selectedItem.attr("isstaff") == 1){
+						$(".fields-hide").hide();
+					}else{
+						$(".fields-hide").show();
+					}
 				}
 			});
-			//增加项目
-			$(".form-horizontal2").delegate(".add.icon","click",function(){
-				var html = '<div class="fields fields-xm">' + 
+			//添加项目
+			$(".button.add").click(function(){
+				var html = '<div class="fields fields-xm fields-hide">' + 
 								'<div class="field">' + 
 									'<label>所属项目</label>' + 
-									'<select class="ui dropdown dropdown-init" name="did">' + 
-										'<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>' + 
-											'<option value="<?php echo ($vo["did"]); ?>"><?php echo ($vo["dname"]); ?></option>' + 
-										'<?php endforeach; endif; else: echo "" ;endif; ?>' + 
-									'</select>' + 
+									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
+					                    '<?php if(is_array($project)): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>' + 
+					                    	'<option value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></option>' + 
+					                    '<?php endforeach; endif; else: echo "" ;endif; ?>' + 
+					                '</select>' +
 								'</div>' + 
 								'<div class="field">' + 
 									'<label>分摊工资</label>' + 
-									'<input type="text" name="ps1" value="" />' + 
+									'<input type="text" name="newps1[]" value="" />' + 
 								'</div>' + 
 								'<div class="field field-icon">' + 
-									'<i class="add square icon"></i>' + 
 									'<i class="minus square icon"></i>' + 
 								'</div>' + 
 							'</div>';
-				$(this).closest(".fields").after(html);
+				$(this).before(html);
 				$('.dropdown-init').dropdown();
 			})
 			//删除项目
@@ -422,45 +426,6 @@
 		})
 		//导航高亮
 		highlight_subnav('<?php echo U('User/index');?>');
-
-		$(function() {
-			//增减项目
-			var a;
-			var html;
-			var clicknum;
-			var first;
-			$('.jia').click(function() {
-				clicknum = $(this).parents('div').find('.project').children('div').length;
-				a = $(this).attr('val');
-				if(a == '+') {
-					clicknum += 1;
-					html = "<div><input type='hidden' name='pridnew" + clicknum + "' value='-1'><label>所属项目：</label> <select name='p" + clicknum + "'><?php if(is_array($project)): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>" +
-						"<option value='<?php echo ($vo["id"]); ?>'><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?></select>" +
-						" <label>分摊工资：</label><input type='text' class='text' name='ps" + clicknum + "'/>";
-
-					$(this).parents('div').find('.project').append(html);
-				}
-				if(a == '-') {
-
-					//first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
-
-					$(this).parents('div').find('.project').children('div:last-child').remove();
-
-				}
-			})
-			//如果是非普通员工岗位，人事将无权查看                   
-			var isst;
-			$('select[name=sid]').change(function() {
-				isst = $(this).find("option:selected").attr('isstaff');
-				if(isst == 1) {
-					$('.hidd').hide();
-					$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
-				} else {
-					$('.hidd').show();
-
-				}
-			});
-		})
 	</script>
 
 	</body>
