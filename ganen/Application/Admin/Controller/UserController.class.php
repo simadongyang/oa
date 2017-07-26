@@ -9,6 +9,7 @@
 
 namespace Admin\Controller;
 use User\Api\UserApi;
+use Admin\Api\ApproApi;
 use Think\Controller;
 /**
  * 后台用户控制器
@@ -226,17 +227,17 @@ class UserController extends AdminController {
     	
 
     	//显示所属部门信息
-    	$department=M('department')->select();
+    	$department=M('department')->where('status>-1')->select();
         //$department=tree($department);
         $department=getTrees($department);
     	$this->assign('department',$department);
     	
     	//显示项目信息
-    	$project=M('project')->select();
+    	$project=M('project')->where('status>-1')->select();
     	$this->assign('project',$project);
     	
     	//显示岗位信息
-    	$station=M('station')->select();
+    	$station=M('station')->where('status>-1')->select();
     	$this->assign('station',$station);
 
 
@@ -458,6 +459,11 @@ class UserController extends AdminController {
                   
                    //如果$count的值等于项目的个数，说明操作成功
                    if($num==$newnum || $result){
+
+                        /* $Appro = new ApproApi;
+                         $Appro->appr($arr['uid']);*/
+
+
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
                         $this->error('用户编辑失败',U('add?id='.$arr['uid']));
