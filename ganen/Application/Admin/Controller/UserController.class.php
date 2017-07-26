@@ -445,17 +445,20 @@ class UserController extends AdminController {
                    //修改薪资部分
                   
                    $where=array('uid'=>$arr['uid']);
-                   $salaryone=M('salarychange')->where($where)->order('uid deac')->find();
+                   $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
 
-                   if($salaryone['trysalary']!=$arr['trysalary'] || $salaryone['completionsalary']!=$arr['completionsalary'] || $salaryone['jixiao']!=$arr['jixiao']){
-                     $arr['caozuorenid']=$denguid;
+                   if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
+
+                     
+
+                   }else{
+                    $arr['caozuorenid']=$denguid;
                      $result=M('salarychange')->add($arr);
-
                    }
                   
                    //如果$count的值等于项目的个数，说明操作成功
                    if($num==$newnum || $result){
-                        $this->success('用户编辑成功！'.$newarr[0]['status'],U('index'));                    
+                        $this->success('用户编辑成功！',U('index'));                    
                     } else {
                         $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                     } 
