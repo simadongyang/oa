@@ -24,10 +24,12 @@
 			<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 		</div>
 	</form>
-	<block>
-		<block name="script">
-			<script type="text/javascript" charset="utf-8">
-				//导航高亮
-				highlight_subnav('{:U('AuthManager/index')}');
-			</script>
-		</block>
+<block>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+			//导航高亮
+			highlight_subnav('{:U('AuthManager/index')}');
+		})
+	</script>
+</block>

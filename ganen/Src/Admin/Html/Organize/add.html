@@ -12,9 +12,9 @@
     	<div class="fields">
 	    	<div class="field">
 				<label>上级部门</label>
-				<select class="ui dropdown" name='did'>
+				<select class="ui dropdown" name='dpid'>
 	            	<volist name="department" id="vo">
-	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
+	            		<option class="child" value="{$vo.did}" <eq name="vo.did" value="$done['dpid']"> selected="selected" </eq>>{$vo.dname}</option>
 	            	</volist>
 	            </select>
 			</div>
@@ -23,21 +23,25 @@
 			<div class="field">
 				<label>部门名称</label>
 				<input type="text" name="dname" value="{$done.dname}">
+				<input type="hidden" name="did" value="{$done.did}">
 			</div>
 		</div>
 		<div class="fields">	
 			<div class="field">
 				<label>部门负责人</label>
 				<div class="ui search selection dropdown" id="searchUser">
-	                <input type="hidden" name="dperson">
+	                <input type="hidden" name="dperson" value="{$done.dperson}">
 	                <i class="dropdown icon"></i>
-	                <div class="default text">输入姓名搜索</div>
+	                <empty name="done.personname">
+	                	<div class="default text">输入姓名搜索</div>
+	                <else />
+	                	<div class="text">{$done.personname}</div>
+					</empty>
 	                <div class="menu"> </div>
 	            </div>
 				<!--<input type="text" name="dperson" value="{$done.dperson}">-->
 			</div>
 		</div>
-        <input type="hidden" name="did" value="{$done.did}"> 
         <div class="form-item mt20">
             <button class="ui blue button submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
@@ -55,15 +59,15 @@
 	                cache: false,
 	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
 	                onResponse:function(response){
-	                    if(!response.data.lists.length && !response.data.status){
-	                        return;
-	                    }
+//	                    if(!response.data.length && !response.status){
+//	                        return;
+//	                    }
 	                    var data = {
 	                        "success":true,
 	                        "results" : []
 	                    };
-	                    for(var i = 0; i < response.data.lists.length; i++){
-	                        data.results.push({"name":response.data.lists[i].member_name,"value":response.data.lists[i].member_id})
+	                    for(var i = 0; i < response.data.length; i++){
+	                        data.results.push({"name":response.data[i].realname,"value":response.data[i].uid})
 	                    }
 	                    return data;
 	                },

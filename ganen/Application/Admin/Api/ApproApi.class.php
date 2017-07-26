@@ -15,7 +15,7 @@ class ApproApi{
 	}
 
 	  //递归得到pid
-    public function partment($did)
+    private function partment($did)
     {
         $data  = array();
         function sima($pid)
@@ -27,32 +27,36 @@ class ApproApi{
             ->where("d.did = $pid")
             ->find();
             $data =$res['pd']; 
-            if(!empty($res['pid']))
+            if(!empty($res['pid'])  )
             {
                 $data=$data.','.sima($res['pid']);
             }  
-            return trim($data,',');
+           return trim(trim($data,','),'0');
         }
          
         return sima($did);
     }
-    // 生成审批数据
-    public function appr($nid,$did)
+    // 生成审批数据 
+    // $nid 入职者的id
+    // $did 本部门的id
+    public function appr($nid)
     {
-              
-        if(empty($nid) || empty($did))
+        if(empty($nid))
         {
-            $this->error('审批生成失败');
+            return json_encode('-1');
         }
-        $res = M('Dss')
-            ->field('did')
-            ->where("uid = $nid")
-            ->find();
-        if(!empty($res)) return ;
-       // 判断是否为第一次添加
+        //判断是否申请过审批
+        if(M('Appro')->where("uid = $nid")->find())
+        {
+            return json_encode('1');
+        }
+        $res = M('Dss')->field('did')->where("uid = $nid")->find();
        
+        if(empty($res)) return json_encode('-1');
+       // 得到本部门id
+        $did = $res['did'];
         $pids = $this -> partment($did);
-        if(empty($pids)) $this->error('岗位信息有误');
+        if(empty($pids)) return json_encode('-1');
             //当前用户的uid
             $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
             $res=M('Department')
@@ -71,11 +75,18 @@ class ApproApi{
             $name = '入职';
             // 申请原因
             $reason = '新人入职';
+            //得到人事信息
+            $perid =  $_SESSION['onethink_admin']['user_auth']['uid'];
+
+            $res = D('Member')->field('realname')->where("uid = $perid")->find();
+            $person = $res['realname'];
             foreach($arr_pids as $k => $v)
             {
                 $Appro = M("Appro"); // 实例化User对象
                 $data['uid'] = $nid;
                 $data['aids'] = $pids;
+                $data['perid'] = $perid;
+                $data['person'] = $person;
                 $data['aid'] = $v;
                 $data['name'] = $name;
                 $data['reason'] = $reason;
@@ -83,12 +94,7 @@ class ApproApi{
                 $data['status'] = -2;
                 $Appro->add($data);
             }
+          return json_encode('-1');
     }
-    public function test()
-    {
-        // $nid 新入职的id $did 本部门id\
-        $nid =144440;
-        $did = 7;
-         $this->appr($nid,$did);
-    }
+    
 }

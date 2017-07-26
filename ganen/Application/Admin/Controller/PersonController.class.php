@@ -20,14 +20,60 @@ class PersonController extends AdminController {
      * 用户管理首页
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
-    public function index(){
+    public function wait(){
        
 
-        $list   = $this->lists('Project');
-        int_to_string($list);
-        $this->assign('_list', $list);
-        $this->meta_title = '用户信息';
+         $res=M('Appro')->field('uid')->group('uid') ->where("aids !=0 and aids != -1")->select();    
+         if(!empty($res))
+         {
+            // 得到 id 集合
+            $str = '';
+            foreach($res as $k=>$v)
+            {
+                $str .= $v['uid'] . ',';
+            }
+            $ids = trim($str,',');
+            $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
+            $map['status']  =   array('egt',0);
+            $map['uid'] =   array('in',$ids);
+
+            $list   = $this->lists('Member', $map,'','',$field);
+
+            //根据获得的信息查询相关的信息
+            foreach($list as &$v){
+                //将数字转为文字
+                if($v['sex']==1){
+                    $v['sex']='男';
+                }else{
+                    $v['sex']='女';
+                }
+                //将是否转正数字转为文字
+                if($v['iscompletion']==1){
+                    $v['iscompletion']='正式';
+                }else{
+                    $v['iscompletion']='试用';
+                }
+                //显示年龄
+                $v['age']=date('Y-m-d')-$v['birthday'];
+                //查询员工所属部门
+                $dss=M('dss')->where('uid='.$v['uid'])->order('dssid desc')->find();            
+                $department=M('department')->where('did='.$dss['did'])->find();            
+                $v['dname']=$department['dname'];
+                //查询员工所属岗位
+                $station=M('station')->where('sid='.$dss['sid'])->find(); 
+                $v['stationname']=$station['stationname'];
+            }
+       
+            $this->assign('_list', $list);
+         }
+
+       
+        
         $this->display();
+    }
+    public function withdraw()
+    {
+        
     }
     public function add(){
        if(IS_POST){

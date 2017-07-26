@@ -23,9 +23,14 @@ class TeamController extends AdminController {
     public function index(){
        
 
-        $list   = $this->lists('Project');
-        int_to_string($list);
-        $this->assign('_list', $list);
+        $res=M('Project')
+          ->alias('p')
+          ->field('m.realname,p.*')
+          ->where('p.status != -1')
+          ->join(' left join ganen_member m on p.charge = m.uid')
+          ->select();    
+
+        $this->assign('_list', $res);
         $this->meta_title = '用户信息';
         $this->display();
     }
@@ -70,7 +75,7 @@ class TeamController extends AdminController {
                     }
                 }else{ // 新增
 
-                    if(empty($data['name']) || empty($data['area']) || empty($data['h_name']) || empty($data['depar']) || empty($data['charge'])) 
+                    if(empty($data['name']) || empty($data['area']) || empty($data['h_name']) || empty($data['depar']) ) 
                     {
                         $this->error('请将数据填写完整');
                     }
@@ -93,16 +98,13 @@ class TeamController extends AdminController {
         } else { //编辑页
             $info = array();
             /* 获取数据 */
-            $info = M('Project')->field(true)->find($id);
-            //$menus = M('Project')->field(true)->select();
-           // $menus = D('Common/Tree')->toFormatTree($menus);
-
-            //$menus = array_merge(array(0=>array('id'=>0,'title_show'=>'顶级菜单')), $menus);
-            //$this->assign('Menus', $menus);
-           // var_dump($info);die;
-            if(false === $info){
-                $this->error('获取后台菜单信息错误');
-            }
+             $info=M('Project')
+          ->alias('p')
+          ->field('m.realname,p.*')
+          ->join('left join ganen_member m on p.charge = m.uid')
+          ->find($id);  
+          //var_dump($res);die;
+            
             $this->assign('info', $info);
             $this->meta_title = '编辑';
             $this->display();
@@ -141,7 +143,31 @@ class TeamController extends AdminController {
         $this->display();
     }
 
-  
+   /**
+     * 项目状态修改
+     * @author sima <zhuyajie@topthink.net>
+     */
+    public function changeStatus($method=null){
+        $id = array_unique((array)I('id',0));
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $this->error('请选择要操作的数据!');
+        }
+        $map['id'] =   array('in',$id);
+        switch ( strtolower($method) ){
+            case 'forbiduser':
+                $this->forbid('Project', $map );
+                break;
+            case 'resumeuser':
+                $this->resume('Project', $map );
+                break;
+            case 'deleteuser':
+                $this->delete("Project", $map );
+                break;
+            default:
+                $this->error('参数非法');
+        }
+    }
 
     public function add_t()
     {

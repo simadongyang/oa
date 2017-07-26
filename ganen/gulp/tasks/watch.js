@@ -21,7 +21,10 @@ gulp.task('watch', function(){
         gulp.start('imagesmin');
     }).on('change', reload);
 
-    watch(config.html.src, function(){  //监听所有html-压缩
-        gulp.start('htmlmin');
+//  watch(config.html.src, function(){  //监听所有html-压缩
+//      gulp.start('htmlmin');
+//  }).on('change', reload);
+	watch('./Application/Admin/View/**/*.html', function(){  //监听所有html-压缩
+//      gulp.start('htmlmin');
     }).on('change', reload);
 })
