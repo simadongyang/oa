@@ -250,6 +250,7 @@ class UserController extends AdminController {
 
         //查看员工基本信息
         $id=I('get.id');
+
         if($id){
             //查询信息
             $find=M('Member')->where('uid='.$id)->find();
@@ -268,7 +269,8 @@ class UserController extends AdminController {
                 $find['fou']='checked';
             }
 
-            $this->assign('find',$find);           
+            $this->assign('find',$find);  
+
         } 
     	//作用修改(结束1)
 
@@ -349,33 +351,34 @@ class UserController extends AdminController {
         //作用修改(开始3)。部门岗位信息显示
 
         //显示员工的岗位及薪资信息
-        $id=I('get.id');        
+           //查询员工岗位信息等
+            $where=array('uid'=>$id);
+            $sel=M('dss')->where($where)->order('dssid desc')->select();
 
-        //查询员工岗位信息等
-        $where=array('uid'=>$id);
-        $sel=M('dss')->where($where)->order('dssid desc')->select();
-        //判断员工现在是否有所属项目
-        if($sel[0]['projectid']){
-            $where=array('uid'=>$id,'status'=>1);
-            $sel=M('dss')->where($where)->select();
+            //判断员工现在是否有所属项目
+            if($sel[0]['projectid']){
+                $where=array('uid'=>$id,'status'=>0);
+                $sel=M('dss')->where($where)->order('dssid desc')->select();
 
-            foreach($sel as &$v){
-                //获取员工所在项目名称
-                $find=M('project')->where('id='.$v['projectid'])->find();
-                $v['projectname']=$find['name'];            
+                foreach($sel as &$v){
+                    //获取员工所在项目名称
+                    $find=M('project')->where('id='.$v['projectid'])->find();
+                    $v['projectname']=$find['name'];            
+                }
             }
-        }
 
-        //根据员工的岗位等信息获取该岗位是否为普通岗
-        $isstaff=M('station')->where('sid='.$sel[0]['sid'])->find();
-        $this->assign('isstaff',$isstaff['isstaff']);        
+            //根据员工的岗位等信息获取该岗位是否为普通岗
+            $isstaff=M('station')->where('sid='.$sel[0]['sid'])->find();
+            $this->assign('isstaff',$isstaff['isstaff']);        
+            
+            //查询员工薪资
+            $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+            $this->assign('salarychange',$salarychange);
+
+            $this->assign('sel',$sel);
+            //作用修改(结束3)。             
+
         
-        //查询员工薪资
-        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
-        $this->assign('salarychange',$salarychange);
-
-        $this->assign('sel',$sel);
-        //作用修改(结束3)。
 
         
         if(IS_POST){
@@ -400,17 +403,33 @@ class UserController extends AdminController {
                         } 
 
                     }
+                    //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
+
+                    //获得员工项目原有的id是否还存在，
+                   $where=array('uid'=>$arr['uid'],'status'=>0);
+                   $sele=M('dss')->where($where)->select();
+                   $count=0;
+                   foreach($sele as $val){
+                        //如果不存在了说明该项目已经结束
+                        if(!in_array($val['dssid'],$arr['prid'])){
+                           $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',1);
+                           if($sta){
+                                $count += 1;
+                           }
+                        }                    
+                   }
+                   
                     //根据获得的数组newdid的数量确定新增项目数量
                    $num=count($arr['newdid']);
                    $newarr=array();
                    for($i=1;$i<=$num;$i++){
                         $k=$i-1;
-                        $newarr[$k]['status']=1;
+                        $newarr[$k]['status']=0;
                         $newarr[$k]['uid']=$arr['uid'];
                         $newarr[$k]['did']=$arr['did'];
                         $newarr[$k]['sid']=$arr['sid'];                        
                         $newarr[$k]['projectid']= $arr['newdid'][$k];//获取新增对应项目的id
-                        $newarr[$k]['projectsalary']=$arr['newps'][$k];//获取分摊的金额
+                        $newarr[$k]['projectsalary']=$arr['newps1'][$k];//获取分摊的金额
                         $newarr[$k]['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id                      
                    }
                    $newnum=0;
@@ -421,38 +440,24 @@ class UserController extends AdminController {
                         }
                    }
 
-                   //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
-
-                    //获得员工项目原有的id是否还存在，
-                   $where=array('uid'=>$arr['uid'],'status'=>1);
-                   $sel=M('dss')->where($where)->select();
-                   $count=0;
-                   foreach($sel as $val){
-                        //如果不存在了说明该项目已经结束
-                        if(!in_array($val['dssid'],$arr['prid'])){
-                           $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',0);
-                           if($sta){
-                                $count += 1;
-                           }
-                        }                    
-                   }
+                   
 
                    //修改薪资部分
                   
                    $where=array('uid'=>$arr['uid']);
                    $salaryone=M('salarychange')->where($where)->order('uid deac')->find();
 
-                   if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
-
-                   }else{//如果有任何变动都会按新增处理
+                   if($salaryone['trysalary']!=$arr['trysalary'] || $salaryone['completionsalary']!=$arr['completionsalary'] || $salaryone['jixiao']!=$arr['jixiao']){
+                     $arr['caozuorenid']=$denguid;
                      $result=M('salarychange')->add($arr);
+
                    }
                   
                    //如果$count的值等于项目的个数，说明操作成功
-                   if(($num+count($arr['prid']))==($newnum+$count) || $result){
-                        $this->success('用户编辑成功！'.$arr['prid'][0],U('index'));                    
+                   if($num==$newnum || $result){
+                        $this->success('用户编辑成功！'.$newarr[0]['status'],U('index'));                    
                     } else {
-                        $this->error('用户编辑失败'.$num.'--'.count($arr).'***'.$countnum,U('add?id='.$arr['uid']));
+                        $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                     } 
                 }                
                 
