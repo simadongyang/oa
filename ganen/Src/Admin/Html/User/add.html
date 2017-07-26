@@ -184,15 +184,15 @@
 						<div class="fields fields-xm">
 							<div class="field">
 								<label>所属项目</label>
-								<select class="ui dropdown dropdown-init" name="did">
-									<volist name="department" id="vo">
-										<option value="{$vo.did}">{$vo.dname}</option>
+								<select class="ui dropdown dropdown-init" name="newdid[]">
+									<volist name="project" id="vo">
+										<option value="{$vo.id}">{$vo.name}</option>
 									</volist>
 								</select>
 							</div>
 							<div class="field">
 								<label>分摊工资</label>
-								<input type="text" name="ps1" value="" />
+								<input type="text" name="newps1[]" value="" />
 							</div>
 							<div class="field field-icon">
 								<i class="add square icon"></i>
@@ -263,15 +263,15 @@
 				var html = '<div class="fields fields-xm">' + 
 								'<div class="field">' + 
 									'<label>所属项目</label>' + 
-									'<select class="ui dropdown dropdown-init" name="did">' + 
-										'<volist name="department" id="vo">' + 
-											'<option value="{$vo.did}">{$vo.dname}</option>' + 
-										'</volist>' + 
-									'</select>' + 
+									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
+					                    '<volist name="project" id="vo">' + 
+					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
+					                    '</volist>' + 
+					                '</select>' +
 								'</div>' + 
 								'<div class="field">' + 
 									'<label>分摊工资</label>' + 
-									'<input type="text" name="ps1" value="" />' + 
+									'<input type="text" name="newps1[]" value="" />' + 
 								'</div>' + 
 								'<div class="field field-icon">' + 
 									'<i class="add square icon"></i>' + 
@@ -292,44 +292,5 @@
 		})
 		//导航高亮
 		highlight_subnav('{:U('User/index')}');
-
-		$(function() {
-			//增减项目
-			var a;
-			var html;
-			var clicknum;
-			var first;
-			$('.jia').click(function() {
-				clicknum = $(this).parents('div').find('.project').children('div').length;
-				a = $(this).attr('val');
-				if(a == '+') {
-					clicknum += 1;
-					html = "<div><input type='hidden' name='pridnew" + clicknum + "' value='-1'><label>所属项目：</label> <select name='p" + clicknum + "'><volist name='project' id='vo'>" +
-						"<option value='{$vo.id}'>{$vo.name}</option></volist></select>" +
-						" <label>分摊工资：</label><input type='text' class='text' name='ps" + clicknum + "'/>";
-
-					$(this).parents('div').find('.project').append(html);
-				}
-				if(a == '-') {
-
-					//first=$(this).parents('div').find('.project').children('div:last-child').attr('val');
-
-					$(this).parents('div').find('.project').children('div:last-child').remove();
-
-				}
-			})
-			//如果是非普通员工岗位，人事将无权查看                   
-			var isst;
-			$('select[name=sid]').change(function() {
-				isst = $(this).find("option:selected").attr('isstaff');
-				if(isst == 1) {
-					$('.hidd').hide();
-					$('.tianjia').append('<input type="hidden" name="panduan" value="1">');
-				} else {
-					$('.hidd').show();
-
-				}
-			});
-		})
 	</script>
 </block>
