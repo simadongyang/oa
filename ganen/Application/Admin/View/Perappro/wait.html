@@ -27,15 +27,15 @@
 				<volist name="_list" id="vo">
 					<tr>
 						<td>{$vo.id} </td>
-						<td>{$vo.username} </td>
+						<td>{$vo.person} </td>
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
-						<td>{$vo.time}</td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td>
 							<!-- <a href="{:U('Perappro/changeStatus?method=resumeuser&id='.$vo['id'])}" class="ajax-get">同意</a>
 							<a href="{:U('Perappro/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get">拒绝</a> -->
 							<?php
-									echo "<a href='".U("Perappro/info?id=$vo[id]")."'>详情</a>";
+									echo "<a href='".U("Perappro/info?id=$vo[uid]")."'>详情</a>";
 							 ?>
 						</td>
 					</tr>

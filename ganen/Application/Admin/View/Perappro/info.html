@@ -1,6 +1,10 @@
 <extend name="Public/base" />
 
 <block name="body">
+<<<<<<< HEAD
+
+=======
+>>>>>>> efaaee2ce2446b9344a95285ee1fcc931fa3769d
 	<div id="userAdd">
 		<div class="ui top attached tabular menu">
 			<div class="item" data-tab="tab-name">基本信息</div>
@@ -194,7 +198,7 @@
 								<i class="minus square icon"></i>
 							</div>
 						</div>
-					<else />
+						<else />
 						<volist name="sel" id="vos" key="k">
 							<div class="fields fields-xm fields-hide">
 								<div class="field">
@@ -212,7 +216,7 @@
 								</div>
 							</div>
 						</volist>
-					</empty> 
+					</empty>
 					<input type="button" class="ui blue button add mb20" value="添加所属项目" />
 					<div class="fields fields-hide">
 						<div class="field">
@@ -234,12 +238,31 @@
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
 				<div class="form-item">
-					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal2">确 定</button>
-					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal2">同意</button>
+					<?php
+						echo "<a class='ui blue button' href='".U("Perappro/forbid?id=$find[uid]")."'>拒绝</a>";
+					?>
+				</div>
+				<h3>审批流程</h3>
+				<hr>
+				<div class="form-item pt10">
+					{$appro['info'][0]['person']}（发起）
+					<volist name='appro.info' id="vo">
+						->{$vo.realname} (
+						<if condition="($vo['status'] eq 1) "> 通过
+							<elseif condition="$vo['status'] eq 0" />拒绝
+							<elseif condition="$vo['status'] eq -2" />正在审核
+						</if>
+						)
+					</volist>
 				</div>
 			</form>
 		</div>
 	</div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> efaaee2ce2446b9344a95285ee1fcc931fa3769d
 </block>
 
 <block name="script">
@@ -250,32 +273,32 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown();
 			//添加项目
-			$(".button.add").click(function(){
-				var html = '<div class="fields fields-xm">' + 
-								'<div class="field">' + 
-									'<label>所属项目</label>' + 
-									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
-					                    '<volist name="project" id="vo">' + 
-					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
-					                    '</volist>' + 
-					                '</select>' +
-								'</div>' + 
-								'<div class="field">' + 
-									'<label>分摊工资</label>' + 
-									'<input type="text" name="newps1[]" value="" />' + 
-								'</div>' + 
-								'<div class="field field-icon">' + 
-									'<i class="minus square icon"></i>' + 
-								'</div>' + 
-							'</div>';
+			$(".button.add").click(function() {
+				var html = '<div class="fields fields-xm">' +
+					'<div class="field">' +
+					'<label>所属项目</label>' +
+					'<select class="ui dropdown dropdown-init" name="newdid[]">' +
+					'<volist name="project" id="vo">' +
+					'<option value="{$vo.id}">{$vo.name}</option>' +
+					'</volist>' +
+					'</select>' +
+					'</div>' +
+					'<div class="field">' +
+					'<label>分摊工资</label>' +
+					'<input type="text" name="newps1[]" value="" />' +
+					'</div>' +
+					'<div class="field field-icon">' +
+					'<i class="minus square icon"></i>' +
+					'</div>' +
+					'</div>';
 				$(this).before(html);
 				$('.dropdown-init').dropdown();
 			})
 			//删除项目
-			$(".form-horizontal2").delegate(".minus.icon","click",function(){
-				if($(".fields-xm").length > 1){
+			$(".form-horizontal2").delegate(".minus.icon", "click", function() {
+				if($(".fields-xm").length > 1) {
 					$(this).closest(".fields").remove();
-				}else{
+				} else {
 					alert("至少保留一个所属项目");
 				}
 			})
