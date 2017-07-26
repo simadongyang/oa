@@ -3031,3 +3031,1259 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTrace [ RunTime:0.000312s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000355s ]
 
+[ 2017-07-26T23:37:20+08:00 ] 222.222.23.130 /oa/
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000270s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000085s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.000068s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php 第 144 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008677s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008721s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000171s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000205s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000298s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000337s ]
+
+[ 2017-07-26T23:37:23+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000457s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000096s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.000076s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000302s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.000059s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.000061s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000297s ]
+SQL: SELECT m.realname,a.* FROM ganen_appro a INNER JOIN ganen_member m on a.uid = m.uid  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.000077s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 116 行.
+NOTIC: [8] Undefined variable: nres /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 125 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000074s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008053s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008092s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000166s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000201s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000306s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000346s ]
+
+[ 2017-07-26T23:37:25+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000447s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000100s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000092s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000293s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000087s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000392s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000088s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000286s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000095s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000278s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000248s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=17 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000059s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000128s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009686s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009727s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000162s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000200s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000347s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000391s ]
+
+[ 2017-07-26T23:37:26+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Team/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000484s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000087s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Team/index%' ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000272s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=159 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 159 )  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 159 ) AND ( `hide` = 0 )  [ RunTime:0.000077s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '项目信息' ) AND ( `pid` = 159 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000251s ]
+SQL: SELECT m.realname,p.* FROM ganen_project p  left join ganen_member m on p.charge = m.uid  WHERE ( p.status != -1 )  [ RunTime:0.000237s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000084s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000149s ]
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/54987056b783d0941793fefa50915f61.php 第 144 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009684s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009725s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000170s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000206s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000298s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000340s ]
+
+[ 2017-07-26T23:37:27+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000459s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000087s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000273s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000067s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000061s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.000277s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.000080s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000084s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009791s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009837s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000158s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000195s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000296s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000337s ]
+
+[ 2017-07-26T23:37:29+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000449s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000093s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000286s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.000076s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000297s ]
+SQL: SELECT m.realname,a.* FROM ganen_appro a INNER JOIN ganen_member m on a.uid = m.uid  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.000088s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 116 行.
+NOTIC: [8] Undefined variable: nres /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 125 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000073s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000116s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008921s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008963s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000159s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000193s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000293s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000330s ]
+
+[ 2017-07-26T23:37:31+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Perappro/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000453s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000091s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/index%' ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000287s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=165 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.000062s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.000078s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000301s ]
+SQL: SELECT m.realname,a.* FROM ganen_appro a INNER JOIN ganen_member m on a.aid = m.uid  WHERE ( a.uid = 1 ) GROUP BY update_time  [ RunTime:0.000562s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000088s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000143s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/e42478b21c67632248c213ac7af9d8f9.php 第 6 行.
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/e42478b21c67632248c213ac7af9d8f9.php 第 140 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009051s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009097s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000172s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000208s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000317s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000356s ]
+
+[ 2017-07-26T23:37:33+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Perappro/his.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000496s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000086s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/his%' ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000340s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=163 ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000326s ]
+SQL: SELECT m.realname,a.* FROM ganen_appro a INNER JOIN ganen_member m on m.uid = a.uid  WHERE ( a.status = 1 or a.status=0 )  [ RunTime:0.000265s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000089s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000135s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/240f95737700a847d8a0327017e521e3.php 第 6 行.
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/240f95737700a847d8a0327017e521e3.php 第 146 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009309s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009352s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000159s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000193s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000293s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000331s ]
+
+[ 2017-07-26T23:37:38+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000441s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000096s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000270s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000085s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000075s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000062s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000386s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000268s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000087s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000244s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000254s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000082s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000083s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=17 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000092s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000138s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009865s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009905s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000166s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000202s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000302s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000343s ]
+
+[ 2017-07-26T23:37:47+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index/p/2.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000472s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000095s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000287s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000071s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000093s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000391s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 10,10   [ RunTime:0.000243s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000291s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=16 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000230s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000301s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000252s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=15 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000150s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=5 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000144s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=3 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=4 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=4 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000146s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=7 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=3 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.000073s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000062s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=1 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000129s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1   [ RunTime:0.000081s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_department` WHERE ( did= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000071s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000076s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009718s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009760s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000173s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000207s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000300s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000341s ]
+
+[ 2017-07-26T23:38:01+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/add.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000434s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000093s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000294s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000059s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000097s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000082s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000410s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( status>-1 )  [ RunTime:0.000082s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000311s ]
+SQL: SELECT * FROM `ganen_project` WHERE ( status>-1 )  [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000272s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( status>-1 )  [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000425s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.000099s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000319s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 0 ) ORDER BY dssid desc  [ RunTime:0.000238s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000073s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_salarychange` [ RunTime:0.000294s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1   [ RunTime:0.000073s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY said desc LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000173s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 6 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 108 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 112 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 131 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 137 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 141 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 147 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 151 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 157 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 161 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 167 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 171 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 177 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 181 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 188 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 189 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 190 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 191 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 196 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 202 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 206 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 212 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 216 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 223 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 227 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 233 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 320 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014913s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014960s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000176s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000213s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000297s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000356s ]
+
+[ 2017-07-26T23:38:06+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000473s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000099s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000079s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000294s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000074s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000076s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000383s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000091s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000279s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000091s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000262s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000093s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000248s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000087s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=17 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000062s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000133s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009792s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009833s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000165s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000202s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000359s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000404s ]
+
+[ 2017-07-26T23:38:10+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Config/group.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000450s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000096s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Config/group%' ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000277s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000075s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_config` [ RunTime:0.000295s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ganen_config` WHERE ( `status` = 1 ) AND ( `group` = 1 ) ORDER BY sort  [ RunTime:0.000083s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000139s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010773s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010821s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000172s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000320s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000362s ]
+
+[ 2017-07-26T23:38:14+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000440s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000105s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000295s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000078s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000074s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `ganen_auth_group` [ RunTime:0.000260s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `ganen_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.000085s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000124s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010408s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010455s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000158s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000193s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000292s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000332s ]
+
+[ 2017-07-26T23:38:27+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/AuthManager/createGroup.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000447s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000094s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%AuthManager/creategroup%' ) LIMIT 1   [ RunTime:0.000173s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000325s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=31 ) LIMIT 1   [ RunTime:0.000142s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000097s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000071s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000115s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.007251s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007298s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000174s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000211s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000301s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000340s ]
+
+[ 2017-07-26T23:38:45+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/AuthManager/writeGroup.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000455s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000094s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%AuthManager/writegroup%' ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000278s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=33 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000084s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_auth_group` [ RunTime:0.000288s ]
+SQL: INSERT INTO `ganen_auth_group` (`title`,`description`,`id`,`module`,`type`) VALUES ('测试组','this is a test',0,'admin',1) [ RunTime:0.000177s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000089s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003506s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003559s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000180s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000218s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000358s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000403s ]
+
+[ 2017-07-26T23:38:46+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000469s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000085s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000268s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=68 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 68 )  [ RunTime:0.000058s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 68 ) AND ( `hide` = 0 )  [ RunTime:0.000062s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '权限管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000061s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '系统设置' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '数据备份' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 68 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000061s ]
+SQL: SHOW COLUMNS FROM `ganen_auth_group` [ RunTime:0.000252s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.000187s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `ganen_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.000181s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000074s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000126s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.010135s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010183s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000158s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000192s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000300s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000341s ]
+
+[ 2017-07-26T23:38:54+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/Perappro/wait.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000451s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000096s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%Perappro/wait%' ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000288s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=162 ) LIMIT 1   [ RunTime:0.000082s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 162 )  [ RunTime:0.000058s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 162 ) AND ( `hide` = 0 )  [ RunTime:0.000059s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '审批管理' ) AND ( `pid` = 162 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000295s ]
+SQL: SELECT m.realname,a.* FROM ganen_appro a INNER JOIN ganen_member m on a.uid = m.uid  WHERE ( a.aid=1 and a.status = -2 )  [ RunTime:0.000074s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 116 行.
+NOTIC: [8] Undefined variable: nres /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/PerapproController.class.php 第 125 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000074s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000127s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 6 行.
+NOTIC: [8] Undefined variable: _page /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/2649126840d23acaadeddb06cc46b7c1.php 第 138 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008874s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008916s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000157s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000203s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000350s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000391s ]
+
+[ 2017-07-26T23:38:56+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000448s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000095s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000322s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000085s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000073s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000073s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000074s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000088s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000404s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000093s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000290s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000092s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000270s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000260s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000079s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000076s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000154s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=17 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000068s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000128s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009860s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009904s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000163s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000199s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000313s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000411s ]
+
+[ 2017-07-26T23:38:58+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/add.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000458s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000093s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000300s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000062s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000076s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000255s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( status>-1 )  [ RunTime:0.000078s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000259s ]
+SQL: SELECT * FROM `ganen_project` WHERE ( status>-1 )  [ RunTime:0.000077s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000248s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( status>-1 )  [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000374s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.000100s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000272s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 0 ) ORDER BY dssid desc  [ RunTime:0.000080s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000077s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_salarychange` [ RunTime:0.000284s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1   [ RunTime:0.000075s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY said desc LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000158s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 6 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 108 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 112 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 131 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 137 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 141 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 147 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 151 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 157 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 161 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 167 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 171 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 177 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 181 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 188 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 189 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 190 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 191 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 196 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 202 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 206 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 212 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 216 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 223 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 227 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 233 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 320 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013847s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013901s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000172s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000209s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000323s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000363s ]
+
+[ 2017-07-26T23:39:18+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/add.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000506s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000092s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000272s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000061s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000061s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000246s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( status>-1 )  [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000260s ]
+SQL: SELECT * FROM `ganen_project` WHERE ( status>-1 )  [ RunTime:0.000072s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000235s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( status>-1 )  [ RunTime:0.000077s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000368s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.000097s ]
+SQL: SHOW COLUMNS FROM `ganen_ucenter_member` [ RunTime:0.000347s ]
+NOTIC: [8] Use of undefined constant a - assumed 'a' /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/UserController.class.php 第 319 行.
+NOTIC: [8] Use of undefined constant z - assumed 'z' /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/UserController.class.php 第 319 行.
+NOTIC: [2] rand() expects parameter 1 to be long, string given /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/UserController.class.php 第 319 行.
+SQL: SELECT * FROM `ganen_ucenter_member` WHERE ( `username` = 'zhang' ) LIMIT 1   [ RunTime:0.000194s ]
+SQL: SELECT * FROM `ganen_ucenter_member` WHERE ( `email` = '9920@qq.com' ) LIMIT 1   [ RunTime:0.000131s ]
+SQL: INSERT INTO `ganen_ucenter_member` (`username`,`password`,`email`,`reg_time`,`reg_ip`,`update_time`,`status`) VALUES ('zhang','2251d7e075ff7447a5138c8947de877a','9920@qq.com',1501083558,'3739096962',1501083558,1) [ RunTime:0.000181s ]
+SQL: INSERT INTO `ganen_member` (`uid`,`sex`,`phone`,`qq`,`criticalname`,`criticalphone`,`birthday`,`nation`,`political`,`IDnumber`,`major`,`topeducation`,`matrimonial`,`nativeplace`,`nowliveplace`,`hobbies`,`entrytime`,`trydate`,`completiontime`,`realname`,`nickname`,`status`) VALUES (27,1,'','','','','','','','','','','未婚','','','','','','','zhang','zhang',1) [ RunTime:0.000205s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000035s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000082s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003325s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003377s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000160s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000192s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000315s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 0 ) ORDER BY dssid desc  [ RunTime:0.000084s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000078s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_salarychange` [ RunTime:0.000274s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1   [ RunTime:0.000070s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY said desc LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1  
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.010593s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 6 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 108 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 112 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 131 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 137 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 141 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 147 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 151 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 157 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 161 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 167 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 171 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 177 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 181 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 188 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 189 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 190 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 191 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 196 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 202 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 206 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 212 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 216 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 223 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 227 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 233 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 320 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.012209s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001764s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.013821s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000302s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000342s ]
+
+[ 2017-07-26T23:39:19+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/add/id/27.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000461s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000094s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000285s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000066s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000073s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000073s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000258s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( status>-1 )  [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000263s ]
+SQL: SELECT * FROM `ganen_project` WHERE ( status>-1 )  [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000270s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( status>-1 )  [ RunTime:0.000079s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000381s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.000226s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=27 ) LIMIT 1   [ RunTime:0.000150s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000288s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 27 ) ORDER BY dssid desc  [ RunTime:0.000197s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000077s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_salarychange` [ RunTime:0.000264s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( uid=27 ) ORDER BY said desc LIMIT 1   [ RunTime:0.000150s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000105s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000152s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 6 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined index: nv /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined index: shi /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 223 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013611s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013655s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000189s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000224s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000299s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000343s ]
+
+[ 2017-07-26T23:39:34+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/add.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000470s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000090s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/add%' ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000289s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=18 ) LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000066s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000264s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( status>-1 )  [ RunTime:0.000082s ]
+SQL: SHOW COLUMNS FROM `ganen_project` [ RunTime:0.000260s ]
+SQL: SELECT * FROM `ganen_project` WHERE ( status>-1 )  [ RunTime:0.000082s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000245s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( status>-1 )  [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000376s ]
+SQL: SELECT * FROM `ganen_member` WHERE ( uid=1 ) LIMIT 1   [ RunTime:0.000098s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000270s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 0 ) ORDER BY dssid desc  [ RunTime:0.000083s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000088s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SHOW COLUMNS FROM `ganen_salarychange` [ RunTime:0.000262s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1   [ RunTime:0.000073s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY said desc LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_salarychange` WHERE ( uid= ) ORDER BY said desc LIMIT 1  
+SQL: SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1   [ RunTime:0.000062s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `ganen_station` WHERE ( sid= ) LIMIT 1  
+SQL: SELECT * FROM `ganen_dss` WHERE ( `uid` = 27 ) AND ( `status` = 0 )  [ RunTime:0.000201s ]
+NOTIC: [2] Invalid argument supplied for foreach() /home/wwwroot/default/jinpai/oa/ganen/Application/Admin/Controller/UserController.class.php 第 424 行.
+SQL: INSERT INTO `ganen_dss` (`status`,`uid`,`did`,`sid`,`projectid`,`projectsalary`,`caozuorenid`) VALUES (0,27,11,0,7,'',1) [ RunTime:0.004177s ]
+SQL: SELECT * FROM `ganen_salarychange` WHERE ( `uid` = 27 ) ORDER BY uid desc LIMIT 1   [ RunTime:0.000184s ]
+SQL: SHOW COLUMNS FROM `ganen_appro` [ RunTime:0.000345s ]
+SQL: SELECT * FROM `ganen_appro` WHERE ( uid = 27 ) LIMIT 1   [ RunTime:0.000160s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000288s ]
+SQL: SELECT `did` FROM `ganen_dss` WHERE ( uid = 27 ) LIMIT 1   [ RunTime:0.000137s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000292s ]
+SQL: SELECT d.did did,p.did pid,d.dperson dp,p.dperson pd FROM ganen_department d INNER JOIN ganen_department p on d.dpid = p.did   WHERE ( d.did = 11 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT d.did did,p.did pid,d.dperson dp,p.dperson pd FROM ganen_department d INNER JOIN ganen_department p on d.dpid = p.did   WHERE ( d.did = 9 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT d.did did,p.did pid,d.dperson dp,p.dperson pd FROM ganen_department d INNER JOIN ganen_department p on d.dpid = p.did   WHERE ( d.did = 3 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT d.did did,p.did pid,d.dperson dp,p.dperson pd FROM ganen_department d INNER JOIN ganen_department p on d.dpid = p.did   WHERE ( d.did = 2 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT d.did did,p.did pid,d.dperson dp,p.dperson pd FROM ganen_department d INNER JOIN ganen_department p on d.dpid = p.did   WHERE ( d.did = 1 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT `dperson` FROM `ganen_department` WHERE ( did = 11 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000404s ]
+SQL: SELECT `realname` FROM `ganen_member` WHERE ( uid = 1 ) LIMIT 1   [ RunTime:0.000149s ]
+SQL: INSERT INTO `ganen_appro` (`uid`,`aids`,`perid`,`person`,`aid`,`name`,`reason`,`time`,`status`) VALUES (27,'10,8,13,1',1,'管理员',10,'入职','新人入职',1501083574,-2) [ RunTime:0.000163s ]
+SQL: INSERT INTO `ganen_appro` (`uid`,`aids`,`perid`,`person`,`aid`,`name`,`reason`,`time`,`status`) VALUES (27,'10,8,13,1',1,'管理员',8,'入职','新人入职',1501083574,-2) [ RunTime:0.000116s ]
+SQL: INSERT INTO `ganen_appro` (`uid`,`aids`,`perid`,`person`,`aid`,`name`,`reason`,`time`,`status`) VALUES (27,'10,8,13,1',1,'管理员',13,'入职','新人入职',1501083574,-2) [ RunTime:0.000109s ]
+SQL: INSERT INTO `ganen_appro` (`uid`,`aids`,`perid`,`person`,`aid`,`name`,`reason`,`time`,`status`) VALUES (27,'10,8,13,1',1,'管理员',1,'入职','新人入职',1501083574,-2) [ RunTime:0.000108s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000079s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003226s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003275s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000156s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000189s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000113s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.009179s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 6 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 108 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 112 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 121 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: sone /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 125 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 131 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 137 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 141 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 147 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 151 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 157 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 161 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 167 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 171 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 177 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 181 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 188 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 189 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 190 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 191 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 196 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 202 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 206 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 212 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 216 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 223 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 227 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 233 行.
+NOTIC: [8] Undefined variable: find /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php 第 320 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011761s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000326s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.011934s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000304s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000347s ]
+
+[ 2017-07-26T23:39:35+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000459s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000095s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000288s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000064s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000065s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000071s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000070s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000370s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000193s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000219s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000290s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=27 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000174s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000274s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000245s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000102s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000182s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000137s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000078s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000127s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000141s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000137s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000125s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000130s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000131s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000133s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000069s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009768s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009810s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000192s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000229s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000301s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000342s ]
+
+[ 2017-07-26T23:40:23+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/changeStatus/method/resumeUser/id/27.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000470s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000087s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/changestatus%' ) LIMIT 1   [ RunTime:0.000216s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000421s ]
+SQL: UPDATE `ganen_member` SET `status`=1 WHERE ( `uid` IN ('27') ) [ RunTime:0.000170s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000054s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000114s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003377s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003426s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000155s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000190s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000351s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000392s ]
+
+[ 2017-07-26T23:40:24+08:00 ] 222.222.23.130 /oa/index.php?s=/Admin/User/index.html
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000450s ]
+SQL: SELECT * FROM `ganen_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000089s ]
+SQL: SELECT `id` FROM `ganen_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SHOW COLUMNS FROM `ganen_menu` [ RunTime:0.000286s ]
+SQL: SELECT `id`,`pid`,`title` FROM `ganen_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT DISTINCT  `group` FROM `ganen_menu` WHERE ( pid = 16 )  [ RunTime:0.000063s ]
+SQL: SELECT `id`,`url` FROM `ganen_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.000065s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '人事档案' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000072s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '组织机构' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ganen_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000067s ]
+SQL: SHOW COLUMNS FROM `ganen_member` [ RunTime:0.000378s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ganen_member` WHERE ( `status` >= 0 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT `uid`,`realname`,`sex`,`birthday`,`phone`,`iscompletion`,`entrytime` FROM `ganen_member` WHERE ( `status` >= 0 ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.000082s ]
+SQL: SHOW COLUMNS FROM `ganen_dss` [ RunTime:0.000271s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=27 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000085s ]
+SQL: SHOW COLUMNS FROM `ganen_department` [ RunTime:0.000248s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `ganen_station` [ RunTime:0.000237s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=26 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=2 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=25 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000069s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=24 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000074s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=9 ) LIMIT 1   [ RunTime:0.000063s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=23 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=22 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000068s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000065s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=21 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000072s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=13 ) LIMIT 1   [ RunTime:0.000061s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=20 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=11 ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000057s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=19 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000060s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=1 ) LIMIT 1   [ RunTime:0.000056s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=3 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_dss` WHERE ( uid=18 ) ORDER BY dssid desc LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `ganen_department` WHERE ( did=6 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT * FROM `ganen_station` WHERE ( sid=0 ) LIMIT 1   [ RunTime:0.000058s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000123s ]
+NOTIC: [8] Undefined variable: meta_title /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 6 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+NOTIC: [8] Undefined index: status /home/wwwroot/default/jinpai/oa/ganen/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php 第 139 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009674s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009713s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000159s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000196s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000294s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000334s ]
+

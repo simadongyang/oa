@@ -122,9 +122,9 @@
 						<td><?php echo ($vo["id"]); ?> </td>
 						<td><?php echo ($vo["name"]); ?></td>
 						<td><?php echo ($vo["reason"]); ?></td>
-						<td><?php echo ($vo["time"]); ?></td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td>    <?php if(($vo['aids'] == 0) ): ?>通过
-    					<?php elseif($vo['aids'] == -1): ?>被拒
+    					<?php elseif($vo['aids'] == -1): ?>未通过
     					<?php else: ?> 正在审批中<?php endif; ?></td>
 
 						<td>

@@ -126,18 +126,18 @@
 						<td><?php echo ($vo["name"]); ?></td>
 						<td><?php echo ($vo["area"]); ?></td>
 						<td><?php echo ($vo["h_name"]); ?></td>
-						<td><?php echo ($vo["depar"]); ?></td>	
-						<td><?php echo ($vo["charge"]); ?></td>
+						<td><?php echo ($vo["depar"]); ?></td>
+						<td><?php echo ($vo["realname"]); ?></td>
 						<td>
-						<?php if(($vo["status"]) == "1"): ?><a href="<?php echo U('Team/changeStatus?method=forbidUser&id='.$vo['id']);?>" class="ajax-get">禁用</a>
+							<?php if(($vo["status"]) == "1"): ?><a href="<?php echo U('Team/changeStatus?method=forbidUser&id='.$vo['id']);?>" class="ajax-get">禁用</a>
 								<?php else: ?>
 								<a href="<?php echo U('Team/changeStatus?method=resumeUser&id='.$vo['id']);?>" class="ajax-get">启用</a><?php endif; ?>
-							<a href="<?php echo U('Team/edit?id='.$vo['id']);?>" >编辑</a>
-							<a href="<?php echo U('Team/changeStatus?method=deleteUser&id='.$vo['id']);?>" class="ajax-get">删除</a>
+							<a href="<?php echo U('Team/edit?id='.$vo['id']);?>">编辑</a>
+							<a href="<?php echo U('Team/changeStatus?method=deleteUser&id='.$vo['id']);?>" class="confirm ajax-get">删除</a>
 						</td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-					<?php else: ?>
-					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>		
+				<?php else: ?>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
 		</tbody>
 	</table>
 	<div class="page">
@@ -198,8 +198,7 @@
 		
 	<script type="text/javascript">
 		//导航高亮
-		highlight_subnav('<?php echo U('
-			User / index ');?>');
+		highlight_subnav('<?php echo U('User/index');?>');
 	</script>
 
 	</body>

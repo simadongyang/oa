@@ -135,16 +135,11 @@
 						<td><?php echo ($vo["iscompletion"]); ?></td>
 						<td><?php echo ($vo["entrytime"]); ?></td>
 						<td>
-<<<<<<< HEAD
 							<a href="<?php echo U('User/add?id='.$vo['uid']);?>">查看详情</a>
-							<?php if(($vo["status"]) == "1"): ?>=======
-							<a href="<?php echo U('User/update?id='.$vo['uid']);?>">查看详情</a>
-							<eq name="vo.status" value="1">
->>>>>>> 82671843591ac22d573cb65461f13872136521fc
-								<a href="<?php echo U('User/changeStatus?method=forbidUser&id='.$vo['uid']);?>" class="ajax-get">禁用</a>
+							<?php if(($vo["status"]) == "1"): ?><a href="<?php echo U('User/changeStatus?method=forbidUser&id='.$vo['uid']);?>" class="ajax-get">禁用</a>
 								<?php else: ?>
 								<a href="<?php echo U('User/changeStatus?method=resumeUser&id='.$vo['uid']);?>" class="ajax-get">启用</a><?php endif; ?>
-							<a href="<?php echo U('AuthManager/group?uid='.$vo['uid']);?>" class="confirm ajax-get">删除</a>
+							<a href="<?php echo U('User/changeStatus?method=deleteUser&id='.$vo['uid']);?>" class="confirm ajax-get">删除</a>
 						</td>
 					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 					<?php else: ?>

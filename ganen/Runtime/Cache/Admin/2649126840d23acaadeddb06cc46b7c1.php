@@ -119,10 +119,10 @@
 		<tbody>
 			<?php if(!empty($_list)): if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 						<td><?php echo ($vo["id"]); ?> </td>
-						<td><?php echo ($vo["username"]); ?> </td>
+						<td><?php echo ($vo["person"]); ?> </td>
 						<td><?php echo ($vo["name"]); ?></td>
 						<td><?php echo ($vo["reason"]); ?></td>
-						<td><?php echo ($vo["time"]); ?></td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td>
 							<!-- <a href="<?php echo U('Perappro/changeStatus?method=resumeuser&id='.$vo['id']);?>" class="ajax-get">同意</a>
 							<a href="<?php echo U('Perappro/changeStatus?method=forbidUser&id='.$vo['id']);?>" class="ajax-get">拒绝</a> -->
