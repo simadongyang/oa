@@ -287,14 +287,14 @@ class UserController extends AdminController {
                 
                 if($arr['uid']){//如果存在工号，说明是修改
 
-                    /*//用于查询数据对比是否进行了更改
-                     $findd=M('station')->where('sid='.$a['sid'])->find();
+                    //用于查询数据对比是否进行了更改
+                     $findd=M('Member')->where('uid='.$arr['uid'])->find();
                     if($findd){
-                        $ew=array_diff($findd,$a);
-                        if($ew){
+                        $ew=congruent($findd,$arr);
+                        if($ew==21){
                             $this->success('您未作出任何编辑！',U('index'));
                         }
-                    }*/
+                    }
 
 
                     $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 

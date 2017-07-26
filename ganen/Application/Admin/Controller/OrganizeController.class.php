@@ -57,8 +57,8 @@ class OrganizeController extends AdminController {
 
                     $ew=congruent($findd,$a);
                     
-                    if($ew){
-                        $this->success('您未作出任何编辑！'.$ew,U('index'));
+                    if($ew==4){
+                        $this->success('您未作出任何编辑！',U('index'));
                     }
                 }
                 //用于编辑修改
@@ -168,14 +168,15 @@ class OrganizeController extends AdminController {
             //判断是否进行修改
             if($a['sid']){
 
-                /*//用于查询数据对比是否进行了更改
+                //用于查询数据对比是否进行了更改
                  $findd=M('station')->where('sid='.$a['sid'])->find();
                 if($findd){
-                    $ew=array_diff($findd,$a);
-                    if($ew){
-                        $this->success('您未作出任何编辑！',U('index'));
+                     $ew=congruent($findd,$a);
+                    
+                    if($ew==3){
+                        $this->success('您未作出任何编辑！',U('station'));
                     }
-                }*/
+                }
 
             //用于进行修改                
                 $result=M('station')->where('sid='.$a['sid'])->save($a);
