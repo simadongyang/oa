@@ -29,7 +29,7 @@ class OrganizeController extends AdminController {
     }
     public function add(){
     	//显示所属部门信息
-    	$department=M('department')->select();
+    	$department=M('department')->where('status>-1')->select();
         //构造新数组       
         $department=getTrees($department);
     	$this->assign('department',$department);    	
@@ -43,6 +43,9 @@ class OrganizeController extends AdminController {
                 $this->error('不存在该员工，请核对！');
             }*/
             if($a['did']){//确定是否编辑
+                if($a['did']==1){
+                    $a['dpid']=0;
+                }
                 $result=M('department')->where('did='.$a['did'])->save($a);
                 if(!$result){
                     $this->error('部门编辑失败！');
@@ -73,7 +76,7 @@ class OrganizeController extends AdminController {
     public function changeStatus($method=null){
         $id = array_unique((array)I('id',0));
         if( in_array(C('USER_ADMINISTRATOR'), $id)){
-            $this->error("不允许对超级管理员执行该操作!");
+            $this->error("不允许对集团执行该操作!");
         }
         $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
@@ -123,7 +126,7 @@ class OrganizeController extends AdminController {
     //新增岗位信息
     public function addstation(){
     	//显示所属部门信息
-    	$department=M('department')->select();
+    	$department=M('department')->where('status>-1')->select();
         //构造新数组       
         $department=getTrees($department);
     	$this->assign('department',$department);
@@ -163,7 +166,7 @@ class OrganizeController extends AdminController {
 
         $id = array_unique((array)I('id',0));
         if( in_array(C('USER_ADMINISTRATOR'), $id)){
-            $this->error("不允许对超级管理员执行该操作!");
+            $this->error("不允许对总经理执行该操作!");
         }
         $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
