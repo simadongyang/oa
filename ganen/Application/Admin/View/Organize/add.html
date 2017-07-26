@@ -14,7 +14,7 @@
 				<label>上级部门</label>
 				<select class="ui dropdown" name='dpid'>
 	            	<volist name="department" id="vo">
-	            		<option class="child" value="{$vo.did}" <eq name="vo.did" value="$sone['did']"> selected="selected" </eq>>{$vo.dname}</option>
+	            		<option class="child" value="{$vo.did}" <eq name="vo.did" value="$done['dpid']"> selected="selected" </eq>>{$vo.dname}</option>
 	            	</volist>
 	            </select>
 			</div>
@@ -32,7 +32,7 @@
 				<div class="ui search selection dropdown" id="searchUser">
 	                <input type="hidden" name="dperson" value="{$done.dperson}">
 	                <i class="dropdown icon"></i>
-	                <div class="default text">输入姓名搜索</div>
+	                <div class="default text"><if condition="$done.personname neq ''">{$done.personname}<else/>输入姓名搜索</if></div>
 	                <div class="menu"> </div>
 	            </div>
 				<!--<input type="text" name="dperson" value="{$done.personname}">-->
