@@ -122,7 +122,7 @@
 				<div class="field">
 					<label>上级菜单<span class="check-tips">（所属的上级菜单）</span></label>
 					<select class="ui dropdown w204" name="pid">
-						<?php if(is_array($Menus)): $i = 0; $__LIST__ = $Menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["id"]); ?>" <?php if($info["pid"] == $menu.id): ?>checked=""<?php endif; ?>><?php echo ($menu["title_show"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						<?php if(is_array($Menus)): $i = 0; $__LIST__ = $Menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["id"]); ?>" <?php if($info["pid"] == $menu.id): ?>selected="selected"<?php endif; ?>><?php echo ($menu["title_show"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 					</select>
 				</div>
 			</div>
@@ -161,7 +161,7 @@
 			<div class="fields">
 				<div class="field">
 					<label>说明<span class="check-tips">（菜单详细说明）</span></label>
-					<input type="text" name="tip" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
+					<input type="text" name="group" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
 				</div>
 			</div>
 			<div class="form-item">
@@ -226,8 +226,8 @@
 		
 	<script type="text/javascript">
 		$(function() {
-			$('.ui.radio.checkbox')
-				.checkbox();
+			$('.ui.radio.checkbox').checkbox();
+			$('.ui.dropdown').dropdown();
 		})
 		//		Think.setValue("pid", <?php echo ((isset($info["pid "]) && ($info["pid "] !== ""))?($info["pid "]): 0); ?>);
 		//		Think.setValue("hide", <?php echo ((isset($info["hide "]) && ($info["hide "] !== ""))?($info["hide "]): 0); ?>);
