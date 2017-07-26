@@ -257,15 +257,15 @@
 				onChange: function(value, text, $selectedItem) {
 					console.log($selectedItem.attr("isstaff"));
 					if($selectedItem.attr("isstaff") == 1){
-						$(".fields-xm").hide();
+						$(".fields-hide").hide();
 					}else{
-						$(".fields-xm").show();
+						$(".fields-hide").show();
 					}
 				}
 			});
-			//增加项目
-			$(".form-horizontal2").delegate(".add.icon","click",function(){
-				var html = '<div class="fields fields-xm">' + 
+			//添加项目
+			$(".button.add").click(function(){
+				var html = '<div class="fields fields-xm fields-hide">' + 
 								'<div class="field">' + 
 									'<label>所属项目</label>' + 
 									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
@@ -279,11 +279,10 @@
 									'<input type="text" name="newps1[]" value="" />' + 
 								'</div>' + 
 								'<div class="field field-icon">' + 
-									'<i class="add square icon"></i>' + 
 									'<i class="minus square icon"></i>' + 
 								'</div>' + 
 							'</div>';
-				$(this).closest(".fields").after(html);
+				$(this).before(html);
 				$('.dropdown-init').dropdown();
 			})
 			//删除项目
