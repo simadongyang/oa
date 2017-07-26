@@ -338,7 +338,7 @@ class UserController extends AdminController {
                         if(!M('Member')->add($user)){
                             $this->error('用户添加失败！');
                         } else {
-                            $this->success('用户添加成功！',U('index'));
+                            $this->success('用户添加成功！',U('add?id='.$arr['uid']));
                         }
                     
                     } else { //注册失败，显示错误信息
@@ -398,7 +398,7 @@ class UserController extends AdminController {
                         $arr['caozuorenid']=$denguid;
                         $resul=M('dss')->add($arr);
                         if($resul){
-                            $this->success('用户编辑成功！',U('index'));                    
+                            $this->success('用户编辑成功！',U('add?id='.$arr['uid']));                    
                         } else {
                             $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                         } 
@@ -460,9 +460,11 @@ class UserController extends AdminController {
                    //如果$count的值等于项目的个数，说明操作成功
                    if($num==$newnum || $result){
 
-                        /* $Appro = new ApproApi;
-                         $Appro->appr($arr['uid']);*/
-
+                         $Appro = new ApproApi;
+                            if($Appro->appr($arr['uid']) == -1)
+                            {
+                                $this->error('审批新增失败');die;
+                            }
 
                         $this->success('用户编辑成功！',U('index'));                    
                     } else {
