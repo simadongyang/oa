@@ -50,15 +50,23 @@ class OrganizeController extends AdminController {
                 if($a['did']==1){
                     $a['dpid']=0;
                 }
+
+                //用于查询数据是否发生改变
                 $findd=M('department')->where('did='.$a['did'])->find();
                 if($findd){
 
+                    $ew=congruent($findd,$a);
+                    
+                    if($ew){
+                        $this->success('您未作出任何编辑！'.$ew,U('index'));
+                    }
                 }
+                //用于编辑修改
                 $result=M('department')->where('did='.$a['did'])->save($a);
                 
 
                 if(!$result){
-                    $this->error('部门编辑失败！');
+                    $this->error('部门编辑失败！'.$ew);
                 } else {
                     $this->success('部门编辑成功！',U('index'));
                 }
@@ -123,13 +131,19 @@ class OrganizeController extends AdminController {
     //岗位信息
     public function station(){
     	$station=M('station')->where('status>-1')->select();
+        
         foreach($station as &$v){
+            $v['dpid']=$v['spid'];
+            $v['dname']=$v['stationname'];
+            $v['did']=$v['sid'];
             if ($v['isstaff']==1) {
                 $v['isstaff']='否';
             }else{
                 $v['isstaff']='是';
             }
         }
+        //构造新数组       
+        $station=getTrees($station);
     	$this->assign('station',$station);    	
     	$this->display();
     }
@@ -151,15 +165,26 @@ class OrganizeController extends AdminController {
     	$a=I('post.');
         //var_dump($a);exit;
     	if(!empty($a)){
+            //判断是否进行修改
             if($a['sid']){
-            //var_dump($a);exit;                
+
+                /*//用于查询数据对比是否进行了更改
+                 $findd=M('station')->where('sid='.$a['sid'])->find();
+                if($findd){
+                    $ew=array_diff($findd,$a);
+                    if($ew){
+                        $this->success('您未作出任何编辑！',U('index'));
+                    }
+                }*/
+
+            //用于进行修改                
                 $result=M('station')->where('sid='.$a['sid'])->save($a);
                 if(!$result){
                     $this->error('岗位编辑失败！');
                 } else {
                     $this->success('岗位编辑成功！',U('station'));
                 }
-            }else{
+            }else{//进行添加数据
         		$result=M('station')->add($a);
         		if(!$result){
         			$this->error('岗位添加失败！');
