@@ -29,6 +29,11 @@ class TestController extends AdminController {
         $this->meta_title = '用户信息';
         $this->display();
     }
+    public function ok()
+    {
+       // die;
+      return  $this -> display();
+    }
     public function add(){
        if(IS_POST){
             $Menu = D('Project');
