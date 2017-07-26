@@ -50,7 +50,13 @@ class OrganizeController extends AdminController {
                 if($a['did']==1){
                     $a['dpid']=0;
                 }
+                $findd=M('department')->where('did='.$a['did'])->find();
+                if($findd){
+
+                }
                 $result=M('department')->where('did='.$a['did'])->save($a);
+                
+
                 if(!$result){
                     $this->error('部门编辑失败！');
                 } else {
@@ -130,10 +136,17 @@ class OrganizeController extends AdminController {
     //新增岗位信息
     public function addstation(){
     	//显示所属部门信息
-    	$department=M('department')->where('status>-1')->select();
+    	$station=M('station')->where('status>-1')->select();
+        foreach($station as &$value){
+            $value['dpid']=$value['spid'];
+            $value['dname']=$value['stationname'];
+            $value['did']=$value['sid'];
+        }
+
         //构造新数组       
-        $department=getTrees($department);
-    	$this->assign('department',$department);
+        $station=getTrees($station);
+        //var_dump($station);exit;
+    	$this->assign('station',$station);
     	
     	$a=I('post.');
         //var_dump($a);exit;

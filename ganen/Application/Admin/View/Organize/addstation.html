@@ -13,8 +13,8 @@
 	    	<div class="field">
 				<label>上级岗位</label>
 				<select class="ui dropdown" name='did'>
-	            	<volist name="department" id="vo">
-	            		<option class="child" value="{$vo.did}" <if condition="$vo.did eq $sone['did']"> selected </if>>{$vo.dname}</option>
+	            	<volist name="station" id="vo">
+	            		<option class="child" value="{$vo.did}" <if condition="$vo.sid eq $sone['spid']"> selected </if>>{$vo.dname}</option>
 	            	</volist>
 	            </select>
 			</div>
