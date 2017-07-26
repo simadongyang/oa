@@ -26,7 +26,8 @@ class TeamController extends AdminController {
         $res=M('Project')
           ->alias('p')
           ->field('m.realname,p.*')
-          ->join('ganen_member m on p.charge = m.uid')
+          ->where('p.status != -1')
+          ->join(' left join ganen_member m on p.charge = m.uid')
           ->select();    
 
         $this->assign('_list', $res);
