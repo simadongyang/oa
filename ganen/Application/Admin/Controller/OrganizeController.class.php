@@ -36,12 +36,12 @@ class OrganizeController extends AdminController {
     	$a=I('post.');    	
     	if(!empty($a)){
             //查询指定的部门负责人是否存在           
-            $res=M('Member')->where("realname='%s'",$a['dperson'])->find();
+           /* $res=M('Member')->where("realname='%s'",$a['dperson'])->find();
             if($res){
                 $a['dperson']=$res['uid'];
             }else{
                 $this->error('不存在该员工，请核对！');
-            }
+            }*/
             if($a['did']){//确定是否编辑
                 $result=M('department')->where('did='.$a['did'])->save($a);
                 if(!$result){
