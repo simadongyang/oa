@@ -29,7 +29,9 @@
 					<label>上级菜单<span class="check-tips">（所属的上级菜单）</span></label>
 					<select class="ui dropdown w204" name="pid">
 						<volist name="Menus" id="menu">
-							<option value="{$menu.id}" <if condition="$info.pid eq $menu.id"> selected="selected" </if>>{$menu.title_show}</option>
+							<option value="{$menu.id}" <eq name="menu.id" value="$info.pid"> selected="selected" </eq>>
+								{$menu.title_show}
+							</option>
 						</volist>
 					</select>
 				</div>
