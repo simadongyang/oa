@@ -153,7 +153,7 @@
 						<label>所属部门</label>
 						<select class="ui dropdown dropdown-init" name="did">
 							<volist name="department" id="vo">
-								<option value="{$vo.did}" <if condition="$vo.did eq $sel[0]['did']"> selected </if>>{$vo.dname}</option>
+								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
 							</volist>
 						</select>
 					</div>
@@ -205,7 +205,7 @@
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
-									<input type="hidden" name="prid{$k}" value="{$vos.dssid}">
+									<input type="hidden" name="prid[]" value="{$vos.dssid}">
 								</div>
 								<div class="field">
 									<label>分摊工资</label>
