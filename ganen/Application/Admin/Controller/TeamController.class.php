@@ -23,9 +23,13 @@ class TeamController extends AdminController {
     public function index(){
        
 
-        $list   = $this->lists('Project');
-        int_to_string($list);
-        $this->assign('_list', $list);
+        $res=M('Project')
+          ->alias('p')
+          ->field('m.realname,p.*')
+          ->join('ganen_member m on p.charge = m.uid')
+          ->select();    
+
+        $this->assign('_list', $res);
         $this->meta_title = '用户信息';
         $this->display();
     }
@@ -93,10 +97,13 @@ class TeamController extends AdminController {
         } else { //编辑页
             $info = array();
             /* 获取数据 */
-            $info = M('Project')->field(true)->find($id);
-            if(false === $info){
-                $this->error('获取后台菜单信息错误');
-            }
+             $info=M('Project')
+          ->alias('p')
+          ->field('m.realname,p.*')
+          ->join('ganen_member m on p.charge = m.uid')
+          ->find($id);  
+          //var_dump($res);die;
+            
             $this->assign('info', $info);
             $this->meta_title = '编辑';
             $this->display();
