@@ -24,6 +24,10 @@ class OrganizeController extends AdminController {
       	$department=M('department')->where('status>-1')->select(); 
         //构造新数组       
         $department=getTrees($department);
+        foreach($department as &$val){
+            $person=M('Member')->where("uid='%d'",$val['dperson'])->find();
+            $val['personname']=$person['realname'];
+        }
       	$this->assign('department',$department);      	
         $this->display();
     }
@@ -67,7 +71,7 @@ class OrganizeController extends AdminController {
             $done=M('department')->where('did='.$did)->find();
             //获取负责人姓名
             $findone=M('Member')->where('uid='.$done['dperson'])->find();            
-            $done['dperson']=$findone['realname'];
+            $done['personname']=$findone['realname'];
             $this->assign('done',$done);
         }
     	$this->display();

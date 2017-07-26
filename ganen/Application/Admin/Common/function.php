@@ -406,7 +406,7 @@ function getTrees($arr,$pid=0,$step = 0){
     global $tree;
     foreach($arr as $val) {
         if($val['dpid'] == $pid) {
-            $flag = str_repeat('&nbsp;&nbsp;',$step);
+            $flag = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$step);
             if($pid==0){
                 $val['dname'] = $flag.$val['dname'];
             }else{
