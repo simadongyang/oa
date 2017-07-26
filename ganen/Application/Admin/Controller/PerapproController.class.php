@@ -523,6 +523,20 @@ class PerapproController extends AdminController {
         $id = I('id');
         $data = $this->appro_list($id);
         $this ->assign('appro',$data);
+        $id = 11;
+        //判断是否为直接主管
+         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        // echo $id;die;
+        $res = D('Dss')
+               ->alias('d')
+               ->field('p.dperson')
+               ->join('ganen_department p on d.did = p.did')
+               ->where("d.uid =$id")
+               ->find();
+        if(!empty($res['deperson']) && $res['deperson'] == $uid)
+        {
+          $this->assign('is_frst','true');
+        }
         $this->display();
     }
     //同意审批  

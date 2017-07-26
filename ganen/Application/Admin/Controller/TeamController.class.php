@@ -101,7 +101,7 @@ class TeamController extends AdminController {
              $info=M('Project')
           ->alias('p')
           ->field('m.realname,p.*')
-          ->join('ganen_member m on p.charge = m.uid')
+          ->join('left join ganen_member m on p.charge = m.uid')
           ->find($id);  
           //var_dump($res);die;
             
