@@ -32,10 +32,14 @@
 				<div class="ui search selection dropdown" id="searchUser">
 	                <input type="hidden" name="dperson" value="{$done.dperson}">
 	                <i class="dropdown icon"></i>
-	                <div class="default text"><if condition="$done.personname neq ''">{$done.personname}<else/>输入姓名搜索</if></div>
+	                <empty name="done.personname">
+	                	<div class="default text">输入姓名搜索</div>
+	                <else />
+	                	<div class="text">{$done.personname}</div>
+					</empty>
 	                <div class="menu"> </div>
 	            </div>
-				<!--<input type="text" name="dperson" value="{$done.personname}">-->
+				<!--<input type="text" name="dperson" value="{$done.dperson}">-->
 			</div>
 		</div>
         <div class="form-item mt20">

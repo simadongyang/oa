@@ -34,7 +34,7 @@
 								{$vo.dname}
 							</td>
 							<td>
-								{$vo.dname}
+								{$vo.personname}
 							</td>
 							<td>
 								<a href="{:U('Organize/add?did='.$vo['did'])}">编辑</a>
@@ -62,6 +62,6 @@
 <block name="script">
 	<script type="text/javascript">
 		//导航高亮
-		highlight_subnav('{:U('User/index')}');
+		highlight_subnav('{:U('Organize/index')}');
 	</script>
 </block>

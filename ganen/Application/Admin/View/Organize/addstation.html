@@ -52,7 +52,12 @@
     		$('.ui.dropdown').dropdown();
 			$('.ui.radio.checkbox').checkbox();
 		})
+    	<if condition="$sone.sid neq ''">
+	        highlight_subnav('{:U('Organize/station')}');
+	    <else/>
+	    	highlight_subnav('{:U('Organize/addstation')}');
+	    </if>
         //导航高亮
-        highlight_subnav('{:U('User/index')}');
+        
     </script>
 </block>

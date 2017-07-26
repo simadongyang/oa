@@ -119,6 +119,9 @@ input {
 .ui.form .fields .field textarea.w204 {
   width: 204px; }
 
+.ui.form .disabled.field, .ui.form .disabled.fields, .ui.form .field :disabled {
+  opacity: 1; }
+
 .main-title {
   margin-top: 5px;
   margin-bottom: 25px; }
