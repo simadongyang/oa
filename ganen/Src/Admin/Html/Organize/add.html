@@ -12,7 +12,7 @@
     	<div class="fields">
 	    	<div class="field">
 				<label>上级部门</label>
-				<select class="ui dropdown" name='did'>
+				<select class="ui dropdown" name='dpid'>
 	            	<volist name="department" id="vo">
 	            		<option class="child" value="{$vo.did}" <eq name="vo.did" value="$sone['did']"> selected="selected" </eq>>{$vo.dname}</option>
 	            	</volist>
@@ -23,6 +23,7 @@
 			<div class="field">
 				<label>部门名称</label>
 				<input type="text" name="dname" value="{$done.dname}">
+				<input type="hidden" name="did" value="{$done.did}">
 			</div>
 		</div>
 		<div class="fields">	
