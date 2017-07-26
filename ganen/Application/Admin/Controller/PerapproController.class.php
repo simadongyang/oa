@@ -22,8 +22,8 @@ class PerapproController extends AdminController {
          $res=M('Appro')
           ->alias('a')
           ->group('update_time')
-          ->field('m.username,a.*')
-          ->join('ganen_ucenter_member m on a.aid = m.id')
+          ->field('m.realname,a.*')
+          ->join('ganen_member m on a.aid = m.uid')
          ->where("a.uid = $uid")->select();    
 
         $this->assign('_list', $res);
@@ -108,8 +108,8 @@ class PerapproController extends AdminController {
         //var_dump($uid);
         $res=M('Appro')
             ->alias('a')
-            ->field('m.username,a.*')
-            ->join('ganen_ucenter_member m on a.uid = m.id')
+            ->field('m.realname,a.*')
+            ->join('ganen_member m on a.uid = m.uid')
             ->where("a.aid=$uid and a.status = -2")
             ->select();
         //判断是否为当前审批人
@@ -129,16 +129,14 @@ class PerapproController extends AdminController {
         $this->display();
     }
      public function his(){
-       // echo '<pre>';
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
          $res=M('Appro')
          ->alias('a')
-         ->field('m.username,a.*')
-         ->join('ganen_ucenter_member m on m.id = a.uid')
+         ->field('m.realname,a.*')
+         ->join('ganen_member m on m.uid = a.uid')
          ->where("a.aid = $uid")
          ->where('a.status = 1 or a.status=0')
          ->select();
-         //var_dump($res);die;
         $this->assign('_list', $res);
         $this->display();
     }
@@ -245,8 +243,7 @@ class PerapproController extends AdminController {
     */
     public function info_mine()
     {
-		 
-        // $this->redirect('User/update', array('id' => 9));die;
+
         //查看员工基本信息
         $id=I('get.id');
         if(empty($id))  $this->error('查询失败！');
@@ -309,6 +306,15 @@ class PerapproController extends AdminController {
         //审批流程数据
         //审批信息id
         $id = I('id');
+        $data = $this->appro_list($id);
+        $this ->assign('appro',$data);
+        $this->display();
+    }
+    public function appro_list($id)
+    {
+      //审批流程数据
+        //审批信息id
+
         //查询到被审批人id
          $uidres=M('Appro')
           ->field('uid')
@@ -318,15 +324,11 @@ class PerapproController extends AdminController {
         // 审批人的信息
          $ares=M('Appro')
           ->alias('a')
-          ->field('m.username,a.status')
-          ->join('ganen_ucenter_member m on a.aid = m.id')
+          ->field('m.realname,a.status,a.person')
+          ->join('ganen_member m on a.aid = m.uid')
          ->where("a.uid = $uid")->select();
-         // 被审批人的信息
-         $res=M('Ucenter_member')
-         ->field('username')
-         ->where("id = $uid")->find();
-        //被审批人的名字
-        $data['username'] = $res['username'];
+         
+     
         //审批人的信息
         $data['info'] = $ares;
         // 去掉拒绝之后的
@@ -337,12 +339,13 @@ class PerapproController extends AdminController {
               $data['info']=array_slice($data['info'],0,$k+1);
             }
         }
-        $this ->assign('appro',$data);
-        $this->display();
+
+        return $data;
     }
      public function info(){
        // $this->redirect('User/update', array('id' => 9));die;
         //查看员工基本信息
+    
 		// 得到的是记录id
         $id=I('get.id');
 		$res=M('Appro')->field('uid')->where('id='.$id)->find();
@@ -518,28 +521,7 @@ class PerapproController extends AdminController {
         //审批流程数据
         //审批信息id
         $id = I('id');
-        //查询到被审批人id
-         $uidres=M('Appro')
-          ->field('uid')
-         ->where("id = $id")->find();
-         //var_dump($uidres);die;
-         $uid = $uidres['uid'];
-        // 审批人的信息
-         $ares=M('Appro')
-          ->alias('a')
-          ->field('m.username,a.status')
-          ->join('ganen_ucenter_member m on a.aid = m.id')
-         ->where("a.uid = $uid")->select();
-         // 被审批人的信息
-         $res=M('Ucenter_member')
-         ->field('username')
-         ->where("id = $uid")->find();
-        //被审批人的名字
-        $data['username'] = $res['username'];
-        //审批人的信息
-        $data['info'] = $ares;
-        //echo '<pre>';
-        //var_dump($data);die;
+        $data = $this->appro_list($id);
         $this ->assign('appro',$data);
         $this->display();
     }
@@ -591,249 +573,7 @@ class PerapproController extends AdminController {
 				//$this->success('用户编辑成功！',U('Perappro/wait'));   
                // $this->resume('Appro', $map );
     }
-    public function info_(){
-       // $this->redirect('User/update', array('id' => 9));die;
-        //查看员工基本信息
-        $id=I('get.id');
-        if($id){
-            //查询信息
-            $find=M('Member')->where('uid='.$id)->find();
-            //显示性别
-            if($find['sex']==1){
-                $find['nan']='checked';
-            }else{
-                $find['nv']='checked';
-            }
-            //计算年龄
-            $find['age']=date('Y-m-d')-$find['birthday'];
-            //显示是否转正
-            if($find['iscompletion']=='是'){
-                $find['shi']='checked';
-            }else{
-                $find['fou']='checked';
-            }
-             //审批流程数据
-            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-            // 审批人的信息
-             $ares=M('Appro')
-              ->alias('a')
-              ->field('m.username,a.status')
-              ->join('ganen_ucenter_member m on a.aid = m.id')
-             ->where("a.uid = $uid")->select();
-             // 被审批人的信息
-             $res=M('Ucenter_member')
-             ->field('username')
-             ->where("id = $uid")->find();
-            //被审批人的名字
-            $data['username'] = $res['username'];
-            //审批人的信息
-            $data['info'] = $ares;
-            // 去掉拒绝之后的
-            foreach($data['info'] as $k => $v)
-            {
-                if($v['status'] == 0)
-                {
-                  $data['info']=array_slice($data['info'],0,$k+1);
-                }
-            }
-                $this ->assign('appro',$data);
-
-                $this->assign('find',$find);           
-            } 
-
-        
-        if(IS_POST){
-            $arr=I('post.');
-
-            //编辑员工基本信息
-            if($arr['leixing1']=='基本信息'){ 
-                            
-                $updat=M('Member')->where('uid='.$arr['gonghao'])->save($arr); 
-                if($updat){
-                    $this->success('用户编辑成功！',U('index'));                    
-                } else {
-                    $this->error('用户编辑失败！',U('update?id='.$arr['gonghao']));
-                } 
-            }           
-
-        } 
-
-
-
-        //显示员工的岗位及薪资信息
-        $id=I('get.id');
-        
-        
-        //显示项目信息
-        $project=M('project')->select();
-        $this->assign('project',$project);
-        
-        //显示岗位信息
-        $station=M('station')->select();
-        $this->assign('station',$station);
-
-        //查询员工岗位信息等
-        $where=array('uid'=>$id,'status'=>1);
-        $sel=M('dss')->where($where)->select();
-        foreach($sel as &$v){
-            //获取员工所在项目名称
-            $find=M('project')->where('id='.$v['projectid'])->find();
-            $v['projectname']=$find['name'];            
-        }
-
-        //显示所属部门信息及员工所属部门
-        $department=M('department')->select();
-        //$department=tree($department,$sel[0]['did']);
-        $department=getTrees($department);
-        $this->assign('department',$department);
-        //查询员工薪资
-        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
-        $this->assign('salarychange',$salarychange);
-
-        $this->assign('sel',$sel);
-       
-
-
-        if(IS_POST){
-            $arr=I('post.');
-            //编辑员工的岗位、薪资等信息
-            if($arr['leixing2']=='岗位'){
-                //获取提交数组的个数并判断有几个项目
-               $num=(count($arr)-31)/3;
-               $newarr=array();
-               for($i=1;$i<=$num;$i++){
-                    $k=$i-1;
-                    $newarr[$k]['status']=1;
-                    $newarr[$k]['uid']=$arr['uid'];
-                    $newarr[$k]['did']=$arr['did'];
-                    $newarr[$k]['sid']=$arr['sid'];
-                    $newarr[$k]['dssid']=$arr['prid'.$i]?$arr['prid'.$i]:$arr['pridnew'.$i];
-                    $newarr[$k]['projectid']= $arr['p'.$i];
-                    $newarr[$k]['projectsalary']=$arr['ps'.$i];
-                    $idarr[$k]=$arr['prid'.$i];//用于判断
-               }
-                //获得员工项目原有的id是否还存在，
-               $where=array('uid'=>$arr['uid'],'status'=>1);
-               $sel=M('dss')->where($where)->select();
-               foreach($sel as $val){
-                    //如果不存在了说明该项目已经结束
-                    if(!in_array($val['dssid'],$idarr)){
-                        M('dss')->where('dssid='.$val['dssid'])->setField('status',0);
-                    }                    
-               }
-               $countnum=0;
-               foreach($newarr as $v){
-                //如果dssid不为-1说明原有记录没有变动
-                   if($v['dssid']!='-1'){                         
-                        $countnum += 1;
-                         
-                   }else{//如果dissid为-1时表示添加
-                        $find=M('dss')->order('dssid desc')->find();
-                        $v['dssid']=$find['dssid']+1;
-                         $ra=M('dss')->add($v);
-                         if($ra){
-                            $countnum += 1;
-                         }
-                   } 
-               }
-               //修改薪资部分
-              
-               $where=array('uid'=>$arr['uid']);
-               $salaryone=M('salarychange')->where($where)->order('uid deac')->find();
-
-               if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
-
-               }else{//如果有任何变动都会按新增处理
-                 $result=M('salarychange')->add($arr);
-               }
-              //处理 审批状态
-              //$this->success(I($arr['uid']),U('index'));
-              $this->resume(I('post.'));
-               //如果$count的值等于项目的个数，说明操作成功
-               if($countnum==$num || $result){
-                    $this->success('用户编辑成功！',U('index'));                    
-                } else {
-                    $this->error('用户编辑失败',U('update?id='.$arr['gonghao']));
-                } 
-
-               
-            }
-        }
-
-        //审批流程数据
-        //审批信息id
-        $id = I('id');
-        //查询到被审批人id
-         $uidres=M('Appro')
-          ->field('uid')
-         ->where("id = $id")->find();
-         //var_dump($uidres);die;
-         $uid = $uidres['uid'];
-        // 审批人的信息
-         $ares=M('Appro')
-          ->alias('a')
-          ->field('m.username,a.status')
-          ->join('ganen_ucenter_member m on a.aid = m.id')
-         ->where("a.uid = $uid")->select();
-         // 被审批人的信息
-         $res=M('Ucenter_member')
-         ->field('username')
-         ->where("id = $uid")->find();
-        //被审批人的名字
-        $data['username'] = $res['username'];
-        //审批人的信息
-        $data['info'] = $ares;
-        //echo '<pre>';
-        //var_dump($data);die;
-        $this ->assign('appro',$data);
-        $this->display();
-    }
-    //同意审批
-    public function resume_ ($id)
-    {
-         $id = array_unique((array)$id);
-        $id = is_array($id) ? implode(',',$id) : $id;
-        if ( empty($id) ) {
-            $this->error('请选择要操作的数据!');
-        }
-        $map['id'] =   array('in',$id);
-		$this->error($map['id']);
-         // 删除 aids 里面的id
-                $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
-                $res=M('Appro')
-                 ->where($map)
-                ->select();
-                foreach($res as $key=>$val)
-                {
-                    //查到要改的数据
-                    $uid = $val['uid'];
-                     $nres=M('Appro')->where("uid = $uid")->select();
-                     $arr = explode(',',$nres[0]['aids']);
-                     //删除第一个元素
-                     if($arr[0] == $suid)
-                     {
-                        array_shift($arr);
-                     }else{
-                        return false;
-                     }
-                     
-                     $str=implode(',',$arr);
-                     //判断是否为空
-                     if(empty($str)) $str = 0;
-                     //更改数据
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['aids'] = $str;
-                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
-                    //更新状态
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['status'] = 1;
-                    $data['atime'] = time();
-                    $Ures->where($map)->save($data); // 根据条件更新记录
-                }
-               // $this->resume('Appro', $map );
-    }
+    
     //拒绝审批
     public function forbid()
     {

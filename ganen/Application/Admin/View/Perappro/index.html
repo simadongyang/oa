@@ -30,7 +30,7 @@
 						<td>{$vo.id} </td>
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
-						<td>{$vo.time}</td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td>    <if condition="($vo['aids'] eq 0) "> 通过
     					<elseif condition="$vo['aids'] eq -1"/>被拒
     					<else /> 正在审批中

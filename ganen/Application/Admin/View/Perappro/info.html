@@ -131,9 +131,16 @@
             <div class="form-item">             
                 
                     <p style="margin-top:30px;">
-                        {$appro.username}[发起]
+                        <?php echo $appro['info'][0]['person']?>（发起）
                                 <volist name='appro.info' id="vo">
-                              
+                                 ->{$vo.realname}
+                                 (
+                                      
+                                    <if condition="($vo['status'] eq 1) "> 通过
+                                        <elseif condition="$vo['status'] eq 0"/>拒绝
+                                        <elseif condition="$vo['status'] eq -2"/>正在审核
+                                    </if>
+                                 )
                                 </volist> 
                     </p>
                
