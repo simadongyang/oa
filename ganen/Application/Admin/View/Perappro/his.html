@@ -13,7 +13,6 @@
 	<table class="ui celled table">
 		<thead>
 			<tr>
-				<th><input class="check-all" type="checkbox" /></th>
 				<th>id</th>
 				<th>发起人</th>
 				<th>申请事由</th>
@@ -28,7 +27,6 @@
 			<notempty name="_list">
 				<volist name="_list" id="vo">
 					<tr>
-						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
 						<td>{$vo.id} </td>
 						<td>{$vo.person} 
 						</td>

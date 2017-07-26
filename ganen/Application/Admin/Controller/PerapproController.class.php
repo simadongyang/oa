@@ -132,8 +132,7 @@ class PerapproController extends AdminController {
      public function his()
      {
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-       // echo $uid;die;
-         $res=M('Appro')->where("aid = 27 and status !=-2")->select();
+         $res=M('Appro')->where("aid = $uid and status !=-2")->select();
 
         $this->assign('_list', $res);
         $this->display();
@@ -236,16 +235,59 @@ class PerapproController extends AdminController {
     }
      /*
     * 查看员工信息或修改信息
-
-
     */
-    public function info_mine()
+    public function appro_list($id)
     {
- //得到用户id
+      //审批流程数据
+        //审批信息id
+
+        //查询到被审批人id
+         $uidres=M('Appro')
+          ->field('uid')
+         ->where("id = $id")->find();
+         //var_dump($uidres);die;
+         $uid = $uidres['uid'];
+        // 审批人的信息
+         $ares=M('Appro')
+          ->alias('a')
+          ->field('m.realname,a.status,a.person')
+          ->join('ganen_member m on a.aid = m.uid')
+         ->where("a.uid = $uid")->select();
+         
+     
+        //审批人的信息
+        $data['info'] = $ares;
+        // 去掉拒绝之后的
+        foreach($data['info'] as $k => $v)
+        {
+            if($v['status'] == 0)
+            {
+              $data['info']=array_slice($data['info'],0,$k+1);
+            }
+        }
+
+        return $data;
+    }
+
+
+
+
+          //待我审批详细信息
+     public function info_mine(){
+      //得到用户id
       $id = I('id');
        $this->assign('id',$id);
       $res=M('Appro')->field('uid')->where("id = $id")->find();
       $id = $res['uid'];
+      // 是否为普通岗位
+    
+      $res = M('Dss')->alias('d')
+      ->field('s.isstaff')
+      ->join('ganen_station s on s.sid = d.sid')
+      ->where("d.uid = $id")
+      ->find();
+      // 如果没有默认为普通岗位
+      $is_staff = $res['isstaff']?$res['isstaff']:0;
      
             //显示所属部门信息
       //显示所属部门信息
@@ -324,89 +366,17 @@ class PerapproController extends AdminController {
             $this->assign('salarychange',$salarychange);
 
             $this->assign('sel',$sel);
-            //作用修改(结束3)。             
-        
-      
 
-
-        //显示员工的岗位及薪资信息
-        
-        
-        //显示项目信息
-        $project=M('project')->select();
-        $this->assign('project',$project);
-        
-        //显示岗位信息
-        $station=M('station')->select();
-        $this->assign('station',$station);
-
-        //查询员工岗位信息等
-        $where=array('uid'=>$id,'status'=>1);
-        $sel=M('dss')->where($where)->select();
-        foreach($sel as &$v){
-            //获取员工所在项目名称
-            $find=M('project')->where('id='.$v['projectid'])->find();
-            $v['projectname']=$find['name'];            
-        }
-
-        //显示所属部门信息及员工所属部门
-        $department=M('department')->select();
-        //$department=tree($department,$sel[0]['did']);
-        $department=getTrees($department);
-        $this->assign('department',$department);
-        //查询员工薪资
-        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
-        $this->assign('salarychange',$salarychange);
-
-        $this->assign('sel',$sel);
        
+///////////////////////////////////////
 
         //审批流程数据
         //审批信息id
-        $id = I('id');
-        $data = $this->appro_list($id);
+        $data = $this->appro_list(I('get.id'));
         $this ->assign('appro',$data);
+
         $this->display();
     }
-    public function appro_list($id)
-    {
-      //审批流程数据
-        //审批信息id
-
-        //查询到被审批人id
-         $uidres=M('Appro')
-          ->field('uid')
-         ->where("id = $id")->find();
-         //var_dump($uidres);die;
-         $uid = $uidres['uid'];
-        // 审批人的信息
-         $ares=M('Appro')
-          ->alias('a')
-          ->field('m.realname,a.status,a.person')
-          ->join('ganen_member m on a.aid = m.uid')
-         ->where("a.uid = $uid")->select();
-         
-     
-        //审批人的信息
-        $data['info'] = $ares;
-        // 去掉拒绝之后的
-        foreach($data['info'] as $k => $v)
-        {
-            if($v['status'] == 0)
-            {
-              $data['info']=array_slice($data['info'],0,$k+1);
-            }
-        }
-
-        return $data;
-    }
-
-
-
-     public function base_info()
-     {
-
-     }
      //待我审批详细信息
      public function info(){
       //得到用户id

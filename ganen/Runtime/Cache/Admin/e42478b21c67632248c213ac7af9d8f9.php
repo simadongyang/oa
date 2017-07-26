@@ -107,7 +107,6 @@
 	<table class="ui celled table">
 		<thead>
 			<tr>
-				<th><input class="check-all" type="checkbox" /></th>
 				<th>id</th>
 				<th>申请事由</th>
 				<th>申请原因</th>
@@ -118,7 +117,6 @@
 		</thead>
 		<tbody>
 			<?php if(!empty($_list)): if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-						<td><input class="ids" type="checkbox" name="id[]" value="<?php echo ($vo["id"]); ?>" /></td>
 						<td><?php echo ($vo["id"]); ?> </td>
 						<td><?php echo ($vo["name"]); ?></td>
 						<td><?php echo ($vo["reason"]); ?></td>
