@@ -173,7 +173,7 @@ class OrganizeController extends AdminController {
                 if($findd){
                      $ew=congruent($findd,$a);
                     
-                    if($ew==3){
+                    if($ew==4){
                         $this->success('您未作出任何编辑！',U('station'));
                     }
                 }
