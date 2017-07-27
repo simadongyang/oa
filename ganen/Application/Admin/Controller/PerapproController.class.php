@@ -128,15 +128,12 @@ class PerapproController extends AdminController {
 
         $this->display();
     }
-     public function his(){
+    //审批历史
+     public function his()
+     {
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-         $res=M('Appro')
-         ->alias('a')
-         ->field('m.realname,a.*')
-         ->join('ganen_member m on m.uid = a.uid')
-         ->where("a.aid = $uid")
-         ->where('a.status = 1 or a.status=0')
-         ->select();
+         $res=M('Appro')->where("aid = $uid and status !=-2")->select();
+
         $this->assign('_list', $res);
         $this->display();
     }
@@ -238,78 +235,7 @@ class PerapproController extends AdminController {
     }
      /*
     * 查看员工信息或修改信息
-
-
     */
-    public function info_mine()
-    {
-
-        //查看员工基本信息
-        $id=I('get.id');
-        if(empty($id))  $this->error('查询失败！');
-            //查询信息
-            $find=M('Member')->where('uid='.$id)->find();
-            //显示性别
-            if($find['sex']==1){
-                $find['nan']='checked';
-            }else{
-                $find['nv']='checked';
-            }
-            //计算年龄
-            $find['age']=date('Y-m-d')-$find['birthday'];
-            //显示是否转正
-            if($find['iscompletion']=='是'){
-                $find['shi']='checked';
-            }else{
-                $find['fou']='checked';
-            }
-
-            $this->assign('find',$find);           
-      
-
-        
-      
-
-
-        //显示员工的岗位及薪资信息
-        
-        
-        //显示项目信息
-        $project=M('project')->select();
-        $this->assign('project',$project);
-        
-        //显示岗位信息
-        $station=M('station')->select();
-        $this->assign('station',$station);
-
-        //查询员工岗位信息等
-        $where=array('uid'=>$id,'status'=>1);
-        $sel=M('dss')->where($where)->select();
-        foreach($sel as &$v){
-            //获取员工所在项目名称
-            $find=M('project')->where('id='.$v['projectid'])->find();
-            $v['projectname']=$find['name'];            
-        }
-
-        //显示所属部门信息及员工所属部门
-        $department=M('department')->select();
-        //$department=tree($department,$sel[0]['did']);
-        $department=getTrees($department);
-        $this->assign('department',$department);
-        //查询员工薪资
-        $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
-        $this->assign('salarychange',$salarychange);
-
-        $this->assign('sel',$sel);
-       
-
-        //审批流程数据
-        //审批信息id
-        $id = I('id');
-        $data = $this->appro_list($id);
-        $this ->assign('appro',$data);
-        $this->display();
-    }
     public function appro_list($id)
     {
       //审批流程数据
@@ -343,19 +269,26 @@ class PerapproController extends AdminController {
         return $data;
     }
 
-     //$id = I('id');
-     // $res=M('Appro')->field('uid')->where("id = $id")->find();
-     // $id = $res['id'];
 
 
-     public function info(){
+
+          //待我审批详细信息
+     public function info_mine(){
       //得到用户id
       $id = I('id');
        $this->assign('id',$id);
       $res=M('Appro')->field('uid')->where("id = $id")->find();
       $id = $res['uid'];
+      // 是否为普通岗位
+    
+      $res = M('Dss')->alias('d')
+      ->field('s.isstaff')
+      ->join('ganen_station s on s.sid = d.sid')
+      ->where("d.uid = $id")
+      ->find();
+      // 如果没有默认为普通岗位
+      $is_staff = $res['isstaff']?$res['isstaff']:0;
      
-      //var_dump($id);die;
             //显示所属部门信息
       //显示所属部门信息
       $department=M('department')->where('status>-1')->select();
@@ -381,7 +314,111 @@ class PerapproController extends AdminController {
         $this->assign('look',$deng['looksalary']);
 
         //查看员工基本信息
-        $id=I('get.id');
+
+        if($id){
+            //查询信息
+            $find=M('Member')->where('uid='.$id)->find();
+            //显示性别
+            if($find['sex']==1){
+                $find['nan']='checked';
+            }else{
+                $find['nv']='checked';
+            }
+            //计算年龄
+            $find['age']=date('Y-m-d')-$find['birthday'];
+            //显示是否转正
+            if($find['iscompletion']=='1'){
+                $find['shi']='checked';
+            }else{
+                $find['fou']='checked';
+            }
+
+            $this->assign('find',$find);  
+
+        } 
+      //作用修改(结束1)
+
+        //作用修改(开始3)。部门岗位信息显示
+
+        //显示员工的岗位及薪资信息
+           //查询员工岗位信息等
+            $where=array('uid'=>$id);
+            $sel=M('dss')->where($where)->order('dssid desc')->select();
+
+            //判断员工现在是否有所属项目
+            if($sel[0]['projectid']){
+                $where=array('uid'=>$id,'status'=>0);
+                $sel=M('dss')->where($where)->order('dssid desc')->select();
+
+                foreach($sel as &$v){
+                    //获取员工所在项目名称
+                    $find=M('project')->where('id='.$v['projectid'])->find();
+                    $v['projectname']=$find['name'];            
+                }
+            }
+
+            //根据员工的岗位等信息获取该岗位是否为普通岗
+            $isstaff=M('station')->where('sid='.$sel[0]['sid'])->find();
+            $this->assign('isstaff',$isstaff['isstaff']);        
+            
+            //查询员工薪资
+            $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+            $this->assign('salarychange',$salarychange);
+
+            $this->assign('sel',$sel);
+
+       
+///////////////////////////////////////
+
+        //审批流程数据
+        //审批信息id
+        $data = $this->appro_list(I('get.id'));
+        $this ->assign('appro',$data);
+
+        $this->display();
+    }
+     //待我审批详细信息
+     public function info(){
+      //得到用户id
+      $id = I('id');
+       $this->assign('id',$id);
+      $res=M('Appro')->field('uid')->where("id = $id")->find();
+      $id = $res['uid'];
+      // 是否为普通岗位
+    
+      $res = M('Dss')->alias('d')
+      ->field('s.isstaff')
+      ->join('ganen_station s on s.sid = d.sid')
+      ->where("d.uid = $id")
+      ->find();
+      // 如果没有默认为普通岗位
+      $is_staff = $res['isstaff']?$res['isstaff']:0;
+     
+            //显示所属部门信息
+      //显示所属部门信息
+      $department=M('department')->where('status>-1')->select();
+        //$department=tree($department);
+        $department=getTrees($department);
+      $this->assign('department',$department);
+      
+      //显示项目信息
+      $project=M('project')->where('status>-1')->select();
+      $this->assign('project',$project);
+      
+      //显示岗位信息
+      $station=M('station')->where('status>-1')->select();
+      $this->assign('station',$station);
+
+
+        //该部分是作用修改(开始1)
+
+        //查询登录用户能否他人查看薪资
+        $user = session('user_auth');
+        $denguid=$user['uid'];
+        $deng=M('Member')->where('uid='.$denguid)->find();
+        $this->assign('look',$deng['looksalary']);
+
+        //查看员工基本信息
 
         if($id){
             //查询信息
@@ -452,19 +489,6 @@ class PerapproController extends AdminController {
 
 
 
-
-
-                       /* $su=D('Member')->create($user);
-                        if(!$su){
-                             echo $User->getError();exit;
-                           //$this->error('用户添加失败！'.'8888');
-                       }  */                  
-                       
-
-
-
-
-
                        
                         if(!M('Member')->add($user)){
                             $this->error('用户添加失败！');
@@ -519,7 +543,6 @@ class PerapproController extends AdminController {
              if(empty($arr['is_first']))
              {
                 //直接提交
-               
                 if(!empty($arr['id']))
                 {
                   if($this->resume($arr['id']))
@@ -586,7 +609,7 @@ class PerapproController extends AdminController {
                         }
                    }
 
-                   
+   
 
                    //修改薪资部分
                   
@@ -634,10 +657,8 @@ class PerapproController extends AdminController {
 
         //审批流程数据
         //审批信息id
-        $id = I('id');
-        $data = $this->appro_list($id);
+        $data = $this->appro_list(I('get.id'));
         $this ->assign('appro',$data);
-        $id = 11;
         //判断是否为直接主管
          $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         // echo $id;die;
@@ -645,13 +666,17 @@ class PerapproController extends AdminController {
                ->alias('d')
                ->field('p.dperson')
                ->join('ganen_department p on d.did = p.did')
-               ->where("d.uid =$id")
+               ->where("d.uid =$uid")
                ->find();
-        if(!empty($res['deperson']) && $res['deperson'] == $uid)
+        // 是否可更改薪资
+        //满足条件  1 非普通岗位 2 审批人为直属上级时 
+        //现在 默认管理岗位
+
+        $is_staff = 1;
+        if(!empty($res['dperson']) && $res['dperson'] == $uid && $is_staff == 1)
         {
           $this->assign('is_first',1);
         }
-         $this->assign('is_first',1);
         $this->display();
     }
     //同意审批  
@@ -688,7 +713,20 @@ class PerapproController extends AdminController {
                      
                      $str=implode(',',$arr);
                      //判断是否为空
-                     if(empty($str)) $str = 0;
+                     //if(empty($str)) $str = 0;
+                     //当全部审批通过后 允许其登陆后台
+                     if(empty($str))
+                     {
+                        //设置状态
+                        $str = 0;
+                        //将用户加入权限组
+                        $Auth = M("Auth_group_access"); 
+                        // 要修改的数据对象属性赋值
+                        $data['uid'] = $uid;
+                        //默认组
+                        $data['group_id'] = 9;
+                        $Auth->add($data); // 添加记录
+                     }
                      //更改数据
                     $Ures = M("Appro"); 
                     // 要修改的数据对象属性赋值
@@ -709,40 +747,41 @@ class PerapproController extends AdminController {
     //拒绝审批
     public function forbid()
     {
-            $id = array_unique((array)I('id',0));
-        $id = is_array($id) ? implode(',',$id) : $id;
+
+        $id = array_unique((array)I('id',0));
+       $id = is_array($id) ? implode(',',$id) : $id;
         if ( empty($id) ) {
             $this->error('请选择要操作的数据!');
         }
-        $map['id'] =   array('in',$id);
-         $res=M('Appro')
-                 ->where($map)
-                ->select();
-                foreach($res as $key=>$val)
-                {
-                    //删除后把 aids 改为 -1
-                    $str = -1;
-                     //更改数据
-                     //得到uid
-                    $uid = $val['uid'];
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['aids'] = $str;
-                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
-                
-                }
-                 //更新状态
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['status'] = 0;
-                    $data['atime'] = time();
-                    $res = $Ures->where($map)->save($data); // 根据条件更新记录
+      $map['id'] =   array('in',$id);
 
-                        if($res)
-                        {
-                             $this->success('已经拒绝审批',U('index')); 
-                        }
-                    
+       $res=M('Appro')->where($map)->select();
+
+      foreach($res as $key=>$val)
+      {
+          //删除后把 aids 改为 -1
+          $str = -1;
+           //更改数据
+           //得到uid
+          $uid = $val['uid'];
+          $Ures = M("Appro"); 
+          // 要修改的数据对象属性赋值
+          $data['aids'] = $str;
+          $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+      
+      }
+           //更新状态
+              $Ures = M("Appro"); 
+              // 要修改的数据对象属性赋值
+              $data['status'] = 0;
+              $data['atime'] = time();
+              $res = $Ures->where($map)->save($data); // 根据条件更新记录
+
+                  if($res)
+                  {
+                       $this->success('已经拒绝审批',U('index')); 
+                  }
+              
                     
     }
     /**

@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/oa/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/oa/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/oa/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/oa/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -122,7 +122,9 @@
 				<div class="field">
 					<label>上级菜单<span class="check-tips">（所属的上级菜单）</span></label>
 					<select class="ui dropdown w204" name="pid">
-						<?php if(is_array($Menus)): $i = 0; $__LIST__ = $Menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["id"]); ?>" <?php if($info["pid"] == $menu.id): ?>checked=""<?php endif; ?>><?php echo ($menu["title_show"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+						<?php if(is_array($Menus)): $i = 0; $__LIST__ = $Menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["id"]); ?>" <?php if(($menu["id"]) == $info["pid"]): ?>selected="selected"<?php endif; ?>>
+								<?php echo ($menu["title_show"]); ?>
+							</option><?php endforeach; endif; else: echo "" ;endif; ?>
 					</select>
 				</div>
 			</div>
@@ -161,7 +163,7 @@
 			<div class="fields">
 				<div class="field">
 					<label>说明<span class="check-tips">（菜单详细说明）</span></label>
-					<input type="text" name="tip" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
+					<input type="text" name="tip" value="<?php echo ((isset($info["tip"]) && ($info["tip"] !== ""))?($info["tip"]):''); ?>">
 				</div>
 			</div>
 			<div class="form-item">
@@ -179,9 +181,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/oa", //当前网站地址
-					"APP": "/oa/index.php?s=", //当前项目地址
-					"PUBLIC": "/oa/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
@@ -226,8 +228,8 @@
 		
 	<script type="text/javascript">
 		$(function() {
-			$('.ui.radio.checkbox')
-				.checkbox();
+			$('.ui.radio.checkbox').checkbox();
+			$('.ui.dropdown').dropdown();
 		})
 		//		Think.setValue("pid", <?php echo ((isset($info["pid "]) && ($info["pid "] !== ""))?($info["pid "]): 0); ?>);
 		//		Think.setValue("hide", <?php echo ((isset($info["hide "]) && ($info["hide "] !== ""))?($info["hide "]): 0); ?>);

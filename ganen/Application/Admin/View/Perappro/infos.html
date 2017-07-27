@@ -12,7 +12,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>工号</label>
-						<input type="text" name="uid" value="{$find.uid}" disabled>
+                        <input type="text" name="uid" value="{$find.uid}" disabled>
 					</div>
 					<div class="field">
 						<label>姓名</label>
@@ -148,7 +148,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<select class="ui dropdown disabled dropdown-init" name="did">
+						<select class="ui dropdown dropdown-init" disabled name="did">
 							<volist name="department" id="vo">
 								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
 							</volist>
@@ -165,7 +165,7 @@
 							</volist>
 						</select>-->
 						<div class="ui selection disabled dropdown" id="station">
-							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
+							<input type="hidden" name="sid"  disabled value="{$sel[0]['sid']}">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
 							<div class="menu">
@@ -176,76 +176,12 @@
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="id"   value="{$id}">
-				<input type="hidden" name="is_first"   value="{$is_first}">
-				<if condition="($is_first  eq 1 ) ">
-					<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
-						<empty name="sel">
-							<div class="fields fields-xm fields-hide">
-								<div class="field">
-									<label>所属项目</label>
-									<select class="ui dropdown dropdown-init" name="newdid[]">
-										<volist name="project" id="vo">
-											<option value="{$vo.id}">{$vo.name}</option>
-										</volist>
-									</select>
-								</div>
-								<div class="field">
-									<label>分摊工资</label>
-									<input type="text" name="newps1[]" value="" />
-									
-								</div>
-								<div class="field field-icon">
-									<i class="minus square icon"></i>
-								</div>
-							</div>
-						<else />
-							<volist name="sel" id="vos" key="k">
-								<div class="fields fields-xm fields-hide">
-									<div class="field">
-										<label>所属项目</label>
-										<input type="text" name="p{$k}" value="{$vos.projectname}" >
-										<input type="hidden" name="prid[]" value="{$vos.dssid}">
-									</div>
-									<div class="field">
-										<label>分摊工资</label>
-										<input type="text" name="ps{$k}" value="{$vos.projectsalary}" />
-									</div>
-									<div class="field field-icon">
-										<i class="add square icon"></i>
-										<i class="minus square icon"></i>
-									</div>
-								</div>
-							</volist>
-						</empty> 
-						<input type="button" class="ui blue button add mb20" value="添加所属项目" />
-						<div class="fields fields-hide">
-							<div class="field">
-								<label>试用薪资</label>
-								<input type="text" name="trysalary" value="{$salarychange.trysalary}">
-								<input type="hidden" name="id"   value="{$id}">
-							</div>
-							<div class="field">
-								<label>正式薪资</label>
-								<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
-							</div>
-						</div>
-						<div class="fields fields-hide">
-							<div class="field field-textarea">
-								<label>绩效考核</label>
-								<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
-							</div>
-						</div>
-					</if>
-				
-				<else />
-
-					<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
+				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
 					<empty name="sel">
 						<div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
-								<select class="ui dropdown disabled dropdown-init" name="newdid[]">
+								<select class="ui dropdown dropdown-init" disabled name="newdid[]">
 									<volist name="project" id="vo">
 										<option value="{$vo.id}">{$vo.name}</option>
 									</volist>
@@ -254,54 +190,51 @@
 							<div class="field">
 								<label>分摊工资</label>
 								<input type="text" disabled name="newps1[]" value="" />
-								<input type="hidden" name="is_first"   value="{$is_first}">
 							</div>
-							<div class="field field-icon">
 							
-							</div>
 						</div>
-					<else />
+						<else />
 						<volist name="sel" id="vos" key="k">
 							<div class="fields fields-xm fields-hide">
 								<div class="field">
 									<label>所属项目</label>
-									<input type="text" name="p{$k}" value="{$vos.projectname}" disabled readonly>
+									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
 									<input type="hidden" name="prid[]" value="{$vos.dssid}">
 								</div>
 								<div class="field">
 									<label>分摊工资</label>
-									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" disabled readonly/>
+									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
 								</div>
 								
 							</div>
 						</volist>
-					</empty> 
-					<input type="button" class="ui blue disabled button add mb20" value="添加所属项目" />
-					<div class="fields fields-hide">
-						<div class="field">
-							<label>试用薪资</label>
-							<input type="text" name="trysalary" disabled value="{$salarychange.trysalary}">
-							<input type="hidden" name="id"   value="{$id}">
-						</div>
-						<div class="field">
-							<label>正式薪资</label>
-							<input type="text" name="completionsalary" disabled value="{$salarychange.completionsalary}" />
-						</div>
-					</div>
-					<div class="fields fields-hide">
-						<div class="field field-textarea">
-							<label>绩效考核</label>
-							<textarea name="jixiao" disabled rows="3">{$salarychange.jixiao}</textarea>
-						</div>
-					</div>
-				</if>
+					</empty>
+                        <input type="hidden" name="id"   value="{$id}">
+                       
+        					<div class="fields fields-hide">
+        						<div class="field">
+        							<label>试用薪资</label>
+        							<input type="text" name="trysalary" disabled value="{$salarychange.trysalary}">
+        						</div>
+        						<div class="field">
+        							<label>正式薪资</label>
+        							<input type="text" name="completionsalary" disabled value="{$salarychange.completionsalary}" />
+        						</div>
+        					</div>
+        					<div class="fields fields-hide">
+        						<div class="field field-textarea">
+        							<label>绩效考核</label>
+        							<textarea name="jixiao" disabled rows="3">{$salarychange.jixiao}</textarea>
+        						</div>
+        					</div>
+                        
 				</if>
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
 				<div class="form-item">
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal2">同意</button>
 					<?php
-						echo "<a class='ui blue button' href='".U("Perappro/forbid?id=$id")."'>拒绝</a>";
+						echo "<a class='ui blue button' href='".U("Perappro/forbid?id=$find[uid]")."'>拒绝</a>";
 					?>
 				</div>
 				<h3>审批流程</h3>
@@ -331,32 +264,32 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown();
 			//添加项目
-			$(".button.add").click(function(){
-				var html = '<div class="fields fields-xm">' + 
-								'<div class="field">' + 
-									'<label>所属项目</label>' + 
-									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
-					                    '<volist name="project" id="vo">' + 
-					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
-					                    '</volist>' + 
-					                '</select>' +
-								'</div>' + 
-								'<div class="field">' + 
-									'<label>分摊工资</label>' + 
-									'<input type="text" name="newps1[]" value="" />' + 
-								'</div>' + 
-								'<div class="field field-icon">' + 
-									'<i class="minus square icon"></i>' + 
-								'</div>' + 
-							'</div>';
+			$(".button.add").click(function() {
+				var html = '<div class="fields fields-xm">' +
+					'<div class="field">' +
+					'<label>所属项目</label>' +
+					'<select class="ui dropdown dropdown-init" name="newdid[]">' +
+					'<volist name="project" id="vo">' +
+					'<option value="{$vo.id}">{$vo.name}</option>' +
+					'</volist>' +
+					'</select>' +
+					'</div>' +
+					'<div class="field">' +
+					'<label>分摊工资</label>' +
+					'<input type="text" name="newps1[]" value="" />' +
+					'</div>' +
+					'<div class="field field-icon">' +
+					'<i class="minus square icon"></i>' +
+					'</div>' +
+					'</div>';
 				$(this).before(html);
 				$('.dropdown-init').dropdown();
 			})
 			//删除项目
-			$(".form-horizontal2").delegate(".minus.icon","click",function(){
-				if($(".fields-xm").length > 1){
+			$(".form-horizontal2").delegate(".minus.icon", "click", function() {
+				if($(".fields-xm").length > 1) {
 					$(this).closest(".fields").remove();
-				}else{
+				} else {
 					alert("至少保留一个所属项目");
 				}
 			})

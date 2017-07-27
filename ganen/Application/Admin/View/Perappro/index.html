@@ -13,7 +13,6 @@
 	<table class="ui celled table">
 		<thead>
 			<tr>
-				<th><input class="check-all" type="checkbox" /></th>
 				<th>id</th>
 				<th>申请事由</th>
 				<th>申请原因</th>
@@ -26,7 +25,6 @@
 			<notempty name="_list">
 				<volist name="_list" id="vo">
 					<tr>
-						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
 						<td>{$vo.id} </td>
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
@@ -38,7 +36,7 @@
 
 						<td>
 							<?php
-									echo "<a href='".U("Perappro/info_mine?id=$vo[uid]")."'>详情</a>";
+									echo "<a href='".U("Perappro/info_mine?id=$vo[id]")."'>详情</a>";
 							 ?>
 						</td>
 					</tr>
