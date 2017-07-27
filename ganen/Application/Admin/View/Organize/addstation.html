@@ -34,12 +34,12 @@
 	    	<div class="field">
 				<label>岗位权限</label>
 				<div class="ui selection dropdown">
-					<input type="hidden" name="spid" value="{$sone['spid']}">
+					<input type="hidden" name="auth_group_id" value="{$auth_group['id']}">
 					<i class="dropdown icon"></i>
 					<div class="default text"></div>
 					<div class="menu">
-						<volist name="station" id="vo">
-							<div class="item" data-value="{$vo.did}">{$vo.dname}</div>
+						<volist name="auth_group" id="vo">
+							<div class="item" data-value="{$vo.id}">{$vo.title}</div>
 						</volist>
 					</div>
 				</div>
