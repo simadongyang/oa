@@ -58,6 +58,17 @@ class TeamController extends AdminController {
     }
     public function ok()
     {
+
+        $id = 24;
+         $res=M('Appro')
+                         ->alias('a')
+                         ->field('s.auth_group_id')
+                         ->join('ganen_dss d on a.uid = d.uid')
+                         ->join('ganen_station s on s.sid = d.sid')
+                         ->where("a.id = $id")->find();
+        echo '<pre>';
+        var_dump($res);
+        die;
       
        // $nid = 10;
        // echo '<pre>';

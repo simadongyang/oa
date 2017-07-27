@@ -710,14 +710,28 @@ class PerapproController extends AdminController {
                      //当全部审批通过后 允许其登陆后台
                      if(empty($str))
                      {
+
                         //设置状态
                         $str = 0;
+                        //查找默认组
+                        $res=M('Appro')
+                         ->alias('a')
+                         ->field('s.auth_group_id')
+                         ->join('ganen_dss d on a.uid = d.uid')
+                         ->join('ganen_station s on s.sid = d.sid')
+                         ->where("a.id = $id")
+                         ->find();
+                         $group_id = $res['auth_group_id'];
+                         if(empty($res))
+                         {
+                            $group_id = 0;
+                         }
                         //将用户加入权限组
                         $Auth = M("Auth_group_access"); 
                         // 要修改的数据对象属性赋值
                         $data['uid'] = $uid;
                         //默认组
-                        $data['group_id'] = 9;
+                        $data['group_id'] = $group_id;
                         $Auth->add($data); // 添加记录
                      }
                      //更改数据
