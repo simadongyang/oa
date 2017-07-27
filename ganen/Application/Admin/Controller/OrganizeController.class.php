@@ -132,10 +132,7 @@ class OrganizeController extends AdminController {
     public function station(){
     	$station=M('station')->where('status>-1')->select();
         
-        foreach($station as &$v){
-            $v['dpid']=$v['spid'];
-            $v['dname']=$v['stationname'];
-            $v['did']=$v['sid'];
+        foreach($station as &$v){           
             if ($v['isstaff']==1) {
                 $v['isstaff']='否';
             }else{
@@ -143,7 +140,7 @@ class OrganizeController extends AdminController {
             }
         }
         //构造新数组       
-        $station=getTrees($station);
+        $station=stationtrees($station);
     	$this->assign('station',$station);    	
     	$this->display();
     }
@@ -151,13 +148,9 @@ class OrganizeController extends AdminController {
     public function addstation(){
     	//显示所属部门信息
     	$station=M('station')->where('status>-1')->select();
-        foreach($station as &$value){
-            $value['dpid']=$value['spid'];
-            $value['dname']=$value['stationname'];
-            $value['did']=$value['sid'];
-        }
+        
         //构造新数组       
-        $station=getTrees($station);
+        $station=stationtrees($station);        
         //var_dump($station);exit;
     	$this->assign('station',$station);
     	
