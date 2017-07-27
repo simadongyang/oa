@@ -12,6 +12,7 @@
 		<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
 	</div>
 	<!-- 数据列表 -->
+	<?php  var_dump($appro); ?>
 	<table class="ui celled table">
 		<thead>
 			<tr>
@@ -43,7 +44,7 @@
 						<td>{$vo.iscompletion}</td>
 						<td>{$vo.entrytime}</td>
 						<td>
-							<a href="{:U('User/add?id='.$vo['uid'])}">查看详情</a>
+							<a href="{:U('User/update?id='.$vo['uid'])}">查看详情</a>
 							<eq name="vo.status" value="1">
 								<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 								<else/>
