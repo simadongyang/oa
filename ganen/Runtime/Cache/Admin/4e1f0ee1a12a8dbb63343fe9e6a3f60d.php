@@ -38,9 +38,9 @@
 					<li>
 						<a href="<?php echo U('User/updatePassword');?>">修改密码</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo U('User/updateNickname');?>">修改昵称</a>
-					</li>
+					</li>-->
 					<li>
 						<a href="<?php echo U('Public/logout');?>">退出</a>
 					</li>
@@ -246,7 +246,7 @@
 					<div class="field">
 						<label>所属部门</label>
 						<select class="ui dropdown dropdown-init" name="did">
-							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if(($vo["did"]) == $sel[0]['did']): ?>selected="selected"<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if(($vo["did"]) == $findds['did']): ?>selected="selected"<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
 					<div class="field">
@@ -258,7 +258,7 @@
 							<?php if(is_array($station)): $i = 0; $__LIST__ = $station;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["sid"]); ?>" isstaff='<?php echo ($vo["isstaff"]); ?>' <?php if($vo["sid"] == $sel[0]['sid']): ?>selected<?php endif; ?>><?php echo ($vo["stationname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>-->
 						<div class="ui selection dropdown" id="station">
-							<input type="hidden" name="sid" value="<?php echo ($sel[0]['sid']); ?>">
+							<input type="hidden" name="sid" value="<?php echo ($findds['sid']); ?>">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
 							<div class="menu">
