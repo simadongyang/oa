@@ -383,8 +383,7 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown({
 				onChange: function(value, text, $selectedItem) {
-					console.log($selectedItem.attr("isstaff"));
-					if($selectedItem.attr("isstaff") == 1){
+					if($selectedItem.attr("isstaff") == 1 && !<?php echo ($look); ?>){
 						$(".fields-hide").hide();
 					}else{
 						$(".fields-hide").show();
