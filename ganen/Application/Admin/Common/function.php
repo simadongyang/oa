@@ -450,3 +450,14 @@ function congruent($array1,$array2){//$array1、$array2是两个数组
    
     return $num;//返回未修改的个数
 }
+
+//查询我部门下所有员工
+function  mydown($uid){
+    $where=array('uid'=>$uid);
+    //查询我当前所在的部门did和岗位
+    $myde=M('dss')->where($where)->order('dssid desc')->find();
+
+    //先根据我的
+
+
+}
