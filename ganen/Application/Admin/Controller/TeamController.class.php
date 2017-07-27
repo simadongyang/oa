@@ -22,6 +22,11 @@ class TeamController extends AdminController {
      */
     public function index(){
        
+        echo '<pre>';
+        $Appro = new ApproApi;
+       var_dump($Appro->appr(44));die;
+
+
         $res=M('Project')
           ->alias('p')
           ->field('m.realname,p.*')
