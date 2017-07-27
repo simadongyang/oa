@@ -166,7 +166,7 @@ class OrganizeController extends AdminController {
                      $ew=congruent($findd,$a);
                     
                     if($ew==4){
-                        $this->success('您未作出任何编辑！',U('station'));
+                      //  $this->success('您未作出任何编辑！',U('station'));
                     }
                 }
 
@@ -190,12 +190,11 @@ class OrganizeController extends AdminController {
         $sid=I('get.sid');
         if($sid){
             $sone=M('station')->where('sid='.$sid)->find();
-            
             $this->assign('sone',$sone);
 
         }
         //显示所有岗位权限
-        $auth_group=M('auth_group')->field('id,title')->where('status != -1')->select();
+        $auth_group=M('auth_group')->field('id,title')->where('status = 1')->select();
             
         $this->assign('auth_group',$auth_group);
 

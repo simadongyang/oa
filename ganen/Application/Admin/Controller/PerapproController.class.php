@@ -71,22 +71,20 @@ class PerapproController extends AdminController {
         //当前用户的uid
         //echo '<pre>';
         $map['id']  = array(' in',array('1','4','8'));
-         $res=M('Appro')
-                 ->where($map)
-                ->select();
-                foreach($res as $key=>$val)
-                {
-                    //删除后把 aids 改为 -1
-                    $str = -1;
-                     //更改数据
-                     //得到uid
-                     $uid = $val['uid'];
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['aids'] = $str;
-                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
-                
-                }
+        $res=M('Appro')->where($map)->select();
+        foreach($res as $key=>$val)
+        {
+            //删除后把 aids 改为 -1
+            $str = -1;
+             //更改数据
+             //得到uid
+             $uid = $val['uid'];
+            $Ures = M("Appro"); 
+            // 要修改的数据对象属性赋值
+            $data['aids'] = $str;
+            $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+        
+        }
                 die;
 
         //判断是否为当前审批人
@@ -273,7 +271,8 @@ class PerapproController extends AdminController {
 
 
           //待我审批详细信息
-     public function info_mine(){
+     public function info_mine()
+     {
       //得到用户id
       $id = I('id');
        $this->assign('id',$id);
@@ -684,19 +683,17 @@ class PerapproController extends AdminController {
     public function resume ($id)
     {
 
-         $id = array_unique((array)$id);
-        $id = is_array($id) ? implode(',',$id) : $id;
-        if ( empty($id) ) {
-            $this->error('请选择要操作的数据!');
+      $id = array_unique((array)$id);
+      $id = is_array($id) ? implode(',',$id) : $id;
+      if ( empty($id) ) {
+          $this->error('请选择要操作的数据!');
         }
         $map['id'] =   array('in',$id);
 
-         // 删除 aids 里面的id
-                $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
-                $res=M('Appro')
-                 ->where($map)
-                ->select();
-               
+        // 删除 aids 里面的id
+        $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        $res=M('Appro')->where($map)->select();
+         
                 foreach($res as $key=>$val)
                 {
                     //查到要改的数据
