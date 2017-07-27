@@ -501,9 +501,9 @@ class UserController extends AdminController {
                                 $this->error('审批新增失败');die;
                             }
 
-                        $this->success('用户编辑成功！'.$dssnow[0]['sid'],U('index'));                    
+                        $this->success('用户编辑成功！',U('index'));                    
                     } else {
-                        $this->error('用户编辑失败'.$dssnow[0]['sid'],U('add?id='.$arr['uid']));
+                        $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                     } 
                 }                
                 
