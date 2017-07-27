@@ -238,6 +238,11 @@ class UserController extends AdminController {
     	
     	//显示岗位信息
     	$station=M('station')->where('status>-1')->select();
+        
+        //构造新数组       
+        $station=stationtrees($station);
+        
+
     	$this->assign('station',$station);
 
 

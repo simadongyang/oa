@@ -419,6 +419,23 @@ function getTrees($arr,$pid=0,$step = 0){
     return $tree;
 }
 
+function stationtrees($arr,$sid=0,$step = 0){
+    global $trees;
+    foreach($arr as $val) {
+        if($val['spid'] == $sid) {
+            $flag = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$step);
+            if($sid==0){
+                $val['stationname'] = $flag.$val['stationname'];
+            }else{
+                $val['stationname'] = $flag.'|-'.$val['stationname'];
+            }
+            $trees[] = $val;
+            stationtrees($arr , $val['sid'] ,$step+1);
+        }
+    }
+    return $trees;
+}
+
 //对比两个数组键和值是否完全一致
 function congruent($array1,$array2){//$array1、$array2是两个数组
    

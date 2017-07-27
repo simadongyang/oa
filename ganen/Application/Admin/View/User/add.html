@@ -163,12 +163,12 @@
 							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
-							<div class="menu">
+							<div class="menu">							
 								<volist name="station" id="vo">
 									<div class="item" data-value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</div>
 								</volist>
 							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
