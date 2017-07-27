@@ -228,6 +228,21 @@
 						</div>
 					</div>
 				</if>
+				<div class="fields">
+					<div class="field">
+						<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
+						<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
+			                <input type="hidden" name="dperson" value="{$done.dperson}">
+			                <i class="dropdown icon"></i>
+			                <empty name="done.personname">
+			                	<div class="default text">输入姓名搜索</div>
+			                <else />
+			                	<div class="text">{$done.personname}</div>
+							</empty>
+			                <div class="menu"> </div>
+			            </div>
+					</div>
+				</div>
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
 				<div class="form-item">
@@ -296,6 +311,27 @@
 	            startView:4,
 	            autoclose: true,
 	        })
+	        //审批人
+	        $('#searchUser').dropdown({
+	            forceSelection: false,
+	            apiSettings: {
+	                cache: false,
+	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
+	                onResponse:function(response){
+	                    var data = {
+	                        "success":true,
+	                        "results" : []
+	                    };
+	                    for(var i = 0; i < response.data.length; i++){
+	                        data.results.push({"name":response.data[i].realname,"value":response.data[i].uid})
+	                    }
+	                    return data;
+	                },
+	            },
+	            message: {
+	                noResults: '未找到搜索结果'
+	            }
+	        });
 		})
 	</script>
 </block>
