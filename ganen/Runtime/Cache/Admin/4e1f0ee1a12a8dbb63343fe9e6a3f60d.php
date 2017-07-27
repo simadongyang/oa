@@ -245,17 +245,9 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<div class="ui selection dropdown dropdown-init">
-							<input type="hidden" name="did" value="$sel[0]['did']">
-							<i class="dropdown icon"></i>
-							<div class="default text"></div>
-							<div class="menu">
-								<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="item" data-value="<?php echo ($vo["did"]); ?>"><?php echo ($vo["dname"]); ?></div><?php endforeach; endif; else: echo "" ;endif; ?>
-							</div>
-						</div>
-						<!--<select class="ui dropdown dropdown-init" name="did">
+						<select class="ui dropdown dropdown-init" name="did">
 							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if(($vo["did"]) == $sel[0]['did']): ?>selected="selected"<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-						</select>-->
+						</select>
 					</div>
 					<div class="field">
 						<label>所属岗位</label>

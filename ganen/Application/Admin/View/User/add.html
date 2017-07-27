@@ -151,21 +151,11 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<div class="ui selection dropdown dropdown-init">
-							<input type="hidden" name="did" value="$sel[0]['did']">
-							<i class="dropdown icon"></i>
-							<div class="default text"></div>
-							<div class="menu">
-								<volist name="department" id="vo">
-									<div class="item" data-value="{$vo.did}">{$vo.dname}</div>
-								</volist>
-							</div>
-						</div>
-						<!--<select class="ui dropdown dropdown-init" name="did">
+						<select class="ui dropdown dropdown-init" name="did">
 							<volist name="department" id="vo">
 								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
 							</volist>
-						</select>-->
+						</select>
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
