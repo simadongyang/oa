@@ -531,7 +531,7 @@ class UserController extends AdminController {
     /*
         显示员工通讯录
     */
-    public function mestaff(){
+    public function mestafflist(){
 
         //查询所有已经审批通过的员工的id
         $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
@@ -545,10 +545,10 @@ class UserController extends AdminController {
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);
         $map['uid'] = array('in',$uids);
-        
+
         $list   = $this->lists('Member', $map,'','',$field);
 
-        $this->assgin('list',$list);
+        $this->assign('list',$list);
 
         $this->display();
     }
