@@ -4,12 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo ($meta_title); ?>-内部办公系统</title>
-		<link href="/oa/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-		<link rel="stylesheet" type="text/css" href="/oa/Public/static/semantic-ui/semantic.min.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/oa/Build/Admin/Style/style.css" media="all">
-		<script type="text/javascript" src="/oa/Public/static/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/semantic-ui/semantic.min.js"></script>
-		<script type="text/javascript" src="/oa/Public/static/jquery.mousewheel.js"></script>
+		<link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/Public/static/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/Build/Admin/Style/style.css" media="all">
+		<script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/Public/static/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Public/static/jquery.mousewheel.js"></script>
 		
 	</head>
 
@@ -101,10 +101,10 @@
 			<h2>部门列表</h2>
 		</div>
 		<div class="toolbar">
-			<a class="ui blue button" href="<?php echo U('Organize/add');?>">新 增</a>
-			<button class="ui blue button ajax-post" url="<?php echo U('User/changeStatus',array('method'=>'resumeUser'));?>" target-form="ids">启 用</button>
-			<button class="ui blue button ajax-post" url="<?php echo U('User/changeStatus',array('method'=>'forbidUser'));?>" target-form="ids">禁 用</button>
-			<button class="ui blue button ajax-post confirm" url="<?php echo U('User/changeStatus',array('method'=>'deleteUser'));?>" target-form="ids">删 除</button>
+			<!--<a class="ui blue button" href="<?php echo U('Organize/add');?>">新 增</a>-->
+			<button class="ui blue button ajax-post" url="<?php echo U('Organize/changeStatus',array('method'=>'resumeUser'));?>" target-form="ids">启 用</button>
+			<button class="ui blue button ajax-post" url="<?php echo U('Organize/changeStatus',array('method'=>'forbidUser'));?>" target-form="ids">禁 用</button>
+			<button class="ui blue button ajax-post confirm" url="<?php echo U('Organize/changeStatus',array('method'=>'deleteUser'));?>" target-form="ids">删 除</button>
 		</div>
 		<!-- 数据列表 -->
 		<table class="ui celled table">
@@ -113,6 +113,7 @@
 					<th class="row-selected row-selected"><input class="check-all" type="checkbox" /></th>
 					<th>部门id</th>
 					<th>部门名称</th>
+					<th>部门负责人</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -122,6 +123,9 @@
 							<td><?php echo ($vo["did"]); ?> </td>
 							<td>
 								<?php echo ($vo["dname"]); ?>
+							</td>
+							<td>
+								<?php echo ($vo["personname"]); ?>
 							</td>
 							<td>
 								<a href="<?php echo U('Organize/add?did='.$vo['did']);?>">编辑</a>
@@ -147,9 +151,9 @@
 		<script type="text/javascript">
 			(function() {
 				var ThinkPHP = window.Think = {
-					"ROOT": "/oa", //当前网站地址
-					"APP": "/oa/index.php?s=", //当前项目地址
-					"PUBLIC": "/oa/Public", //项目公共目录地址
+					"ROOT": "", //当前网站地址
+					"APP": "/index.php?s=", //当前项目地址
+					"PUBLIC": "/Public", //项目公共目录地址
 					"DEEP": "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
 					"MODEL": ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
 					"VAR": ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
@@ -194,7 +198,7 @@
 		
 	<script type="text/javascript">
 		//导航高亮
-		highlight_subnav('<?php echo U('User/index');?>');
+		highlight_subnav('<?php echo U('Organize/index');?>');
 	</script>
 
 	</body>
