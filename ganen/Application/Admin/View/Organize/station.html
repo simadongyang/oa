@@ -18,6 +18,7 @@
 				<th class="row-selected row-selected"><input class="check-all" type="checkbox" /></th>
 				<th class="">岗位id</th>
 				<th class="">岗位名称</th>
+				<th class="">所属权限组</th>
 				<th class="">是否普通岗</th>
 				<th class="">操作</th>
 			</tr>
@@ -31,6 +32,9 @@
 						<td>{$vo.sid} </td>
 						<td>
 							{$vo.stationname}
+						</td>
+						<td>
+							{$vo.auth_group_id}
 						</td>
 						<td>
 							{$vo.isstaff}

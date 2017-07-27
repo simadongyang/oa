@@ -279,11 +279,7 @@
 			})
 			//删除项目
 			$(".form-horizontal2").delegate(".minus.icon","click",function(){
-				if($(".fields-xm").length > 1){
-					$(this).closest(".fields").remove();
-				}else{
-					alert("至少保留一个所属项目");
-				}
+				$(this).closest(".fields").remove();
 			})
 			$(".form_datetime").datetimepicker({
 				format: 'yyyy-mm-dd',
@@ -301,7 +297,5 @@
 	            autoclose: true,
 	        })
 		})
-		//导航高亮
-		highlight_subnav('{:U('User/index')}');
 	</script>
 </block>

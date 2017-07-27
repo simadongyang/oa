@@ -180,7 +180,7 @@
 				<input type="hidden" name="is_first"   value="{$is_first}">
 				<if condition="($is_first  eq 1 ) ">
 					<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
-						<empty name="sel">
+						<!--<empty name="sel">
 							<div class="fields fields-xm fields-hide">
 								<div class="field">
 									<label>所属项目</label>
@@ -199,25 +199,26 @@
 									<i class="minus square icon"></i>
 								</div>
 							</div>
-						<else />
+						<else />-->
 							<volist name="sel" id="vos" key="k">
-								<div class="fields fields-xm fields-hide">
-									<div class="field">
-										<label>所属项目</label>
-										<input type="text" name="p{$k}" value="{$vos.projectname}" >
-										<input type="hidden" name="prid[]" value="{$vos.dssid}">
+								<if condition="$vos.projectid neq 0">
+									<div class="fields fields-xm fields-hide">
+										<div class="field">
+											<label>所属项目</label>
+											<input type="text" name="p{$k}" value="{$vos.projectname}" >
+											<input type="hidden" name="prid[]" value="{$vos.dssid}">
+										</div>
+										<div class="field">
+											<label>分摊工资</label>
+											<input type="text" name="ps{$k}" value="{$vos.projectsalary}" />
+										</div>
+										<div class="field field-icon">
+											<i class="minus square icon"></i>
+										</div>
 									</div>
-									<div class="field">
-										<label>分摊工资</label>
-										<input type="text" name="ps{$k}" value="{$vos.projectsalary}" />
-									</div>
-									<div class="field field-icon">
-										<i class="add square icon"></i>
-										<i class="minus square icon"></i>
-									</div>
-								</div>
+								</if>
 							</volist>
-						</empty> 
+						<!--</empty>--> 
 						<input type="button" class="ui blue button add mb20" value="添加所属项目" />
 						<div class="fields fields-hide">
 							<div class="field">
@@ -354,11 +355,7 @@
 			})
 			//删除项目
 			$(".form-horizontal2").delegate(".minus.icon","click",function(){
-				if($(".fields-xm").length > 1){
-					$(this).closest(".fields").remove();
-				}else{
-					alert("至少保留一个所属项目");
-				}
+				$(this).closest(".fields").remove();
 			})
 		})
 		//导航高亮
