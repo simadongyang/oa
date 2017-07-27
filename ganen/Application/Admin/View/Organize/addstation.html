@@ -31,6 +31,21 @@
 			</div>
 		</div>
 		<div class="fields">
+	    	<div class="field">
+				<label>岗位权限</label>
+				<div class="ui selection dropdown">
+					<input type="hidden" name="auth_group_id" value="{$auth_group['id']}">
+					<i class="dropdown icon"></i>
+					<div class="default text"></div>
+					<div class="menu">
+						<volist name="auth_group" id="vo">
+							<div class="item" data-value="{$vo.id}">{$vo.title}</div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fields">
 	        <div class="field">
 	            <label class="item-label">是否为普通员工岗位</label>
 	            <div class="ui radio checkbox mr15">

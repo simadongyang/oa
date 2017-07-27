@@ -43,4 +43,76 @@ class UapiController extends AdminController {
 
     }
 
+    // author sima
+    // 拒绝申请
+    public function resume($id)
+    {
+        //得到传过来的id
+        
+        $id = array_unique((array)$id);
+        $id = is_array($id) ? implode(',',$id) : $id;
+        if ( empty($id) ) {
+            $arr=array(
+                'status'=>-1,//失败
+                'msg'=>'数据错误'
+                ); 
+            die(json_encode($arr));      
+        }
+        $map['id'] =   array('in',$id);
+
+         // 删除 aids 里面的id
+        $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        $res=M('Appro')
+        ->where($map)
+        ->select();
+               
+        foreach($res as $key=>$val)
+        {
+            //查到要改的数据
+            $uid = $val['uid'];
+            $nres=M('Appro')->where("uid = $uid")->select();
+            $arr = explode(',',$nres[0]['aids']);
+            //删除第一个元素
+            if($arr[0] == $suid)
+            {
+              array_shift($arr);
+            }else{
+               return false;
+            }
+             
+            $str=implode(',',$arr);
+            //判断是否为空
+            //if(empty($str)) $str = 0;
+            //当全部审批通过后 允许其登陆后台
+            if(empty($str))
+             {
+                //设置状态
+                $str = 0;
+                //将用户加入权限组
+                $Auth = M("Auth_group_access"); 
+                // 要修改的数据对象属性赋值
+                $data['uid'] = $uid;
+                //默认组
+                $data['group_id'] = 9;
+                $Auth->add($data); // 添加记录
+             }
+             //更改数据
+            $Ures = M("Appro"); 
+            // 要修改的数据对象属性赋值
+            $data['aids'] = $str;
+            $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+            //更新状态
+            $Ures = M("Appro"); 
+            // 要修改的数据对象属性赋值
+            $data['status'] = 1;
+            $data['atime'] = time();
+            $Ures->where($map)->save($data); // 根据条件更新记录
+        }
+        $arr=array(
+                'status'=>1,//成功
+                'msg'=>'您已经成功拒绝'
+                ); 
+            die(json_encode($arr));    
+    }
+
 }
