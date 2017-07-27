@@ -722,17 +722,17 @@ class PerapproController extends AdminController {
                          ->where("a.id = $id")
                          ->find();
                          $group_id = $res['auth_group_id'];
-                         if(empty($res))
+                         if(!empty($res))
                          {
-                            $group_id = 0;
+                            //将用户加入权限组
+                            $Auth = M("Auth_group_access"); 
+                            // 要修改的数据对象属性赋值
+                            $data['uid'] = $uid;
+                            //默认组
+                            $data['group_id'] = $group_id;
+                            $Auth->add($data); // 添加记录
                          }
-                        //将用户加入权限组
-                        $Auth = M("Auth_group_access"); 
-                        // 要修改的数据对象属性赋值
-                        $data['uid'] = $uid;
-                        //默认组
-                        $data['group_id'] = $group_id;
-                        $Auth->add($data); // 添加记录
+                       
                      }
                      //更改数据
                     $Ures = M("Appro"); 
