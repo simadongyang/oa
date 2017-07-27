@@ -83,7 +83,9 @@ class ApproApi{
                  ->join('ganen_station s on s.sid = d.sid')
                  ->where("d.uid = $nid")
                  ->find();
+
                  $group_id = $res['auth_group_id'];
+                 if(empty($group_id)) $group_id =10;
               } 
             
             if(empty($res))
