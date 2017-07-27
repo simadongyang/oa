@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Admin\Controller;
-
+use Admin\Api\ApproApi;
 
 /**
  * 后台用户控制器
@@ -22,7 +22,6 @@ class TeamController extends AdminController {
      */
     public function index(){
        
-
         $res=M('Project')
           ->alias('p')
           ->field('m.realname,p.*')
@@ -33,6 +32,20 @@ class TeamController extends AdminController {
         $this->assign('_list', $res);
         $this->meta_title = '用户信息';
         $this->display();
+    }
+    public function ok()
+    {
+      
+       $nid =10;
+        var_dump($this->partment(11));die;
+        $res = M('Dss')->field('did')->where("uid = $nid")->find();
+       //var_dump($res);die;
+       $Appro = new ApproApi;
+       var_dump($Appro->appr($nid));die;
+        if($Appro->appr($nid) == -1)
+        {
+            $this->error('审批新增失败');die;
+        }
     }
     public function add(){
        if(IS_POST){

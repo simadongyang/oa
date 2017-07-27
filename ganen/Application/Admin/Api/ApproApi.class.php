@@ -41,6 +41,18 @@ class ApproApi{
     // $did 本部门的id
     public function appr($nid)
     {
+        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        //判断当前是否为admin
+        if($uid == 1)
+        {
+             $Auth = M("Auth_group_access"); 
+            // 要修改的数据对象属性赋值
+            $data['uid'] = $nid;
+            //默认组
+            $data['group_id'] = 9;
+            $Auth->add($data); // 添加记录
+            return json_encode('1');
+        }
         if(empty($nid))
         {
             return json_encode('-1');
@@ -56,9 +68,10 @@ class ApproApi{
        // 得到本部门id
         $did = $res['did'];
         $pids = $this -> partment($did);
+        return  $pids;
         if(empty($pids)) return json_encode('-1');
             //当前用户的uid
-            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+            
             $res=M('Department')
             ->field('dperson')
              ->where("did = $did")
