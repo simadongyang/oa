@@ -159,7 +159,7 @@
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
-						<div class="ui selection dropdown" id="station">
+						<div class="ui selection dropdown" id="station">						
 							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
@@ -192,6 +192,7 @@
 						</div>
 					<else />-->
 						<volist name="sel" id="vos" key="k">
+						<if condition="$vos.projectid neq 0">
 							<div class="fields fields-xm fields-hide">
 								<div class="field">
 									<label>所属项目</label>
@@ -206,6 +207,7 @@
 									<i class="minus square icon"></i>
 								</div>
 							</div>
+						</if>
 						</volist>
 					<!--</empty>--> 
 					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />

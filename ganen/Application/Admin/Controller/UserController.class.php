@@ -364,7 +364,7 @@ class UserController extends AdminController {
 
         //显示员工的岗位及薪资信息
            //查询员工岗位信息等
-            $where=array('uid'=>$id);
+            $where=array('uid'=>$id,'status'=>0);
             $sel=M('dss')->where($where)->order('dssid desc')->select();
 
             //判断员工现在是否有所属项目
@@ -374,8 +374,10 @@ class UserController extends AdminController {
 
                 foreach($sel as &$v){
                     //获取员工所在项目名称
+                    
                     $find=M('project')->where('id='.$v['projectid'])->find();
-                    $v['projectname']=$find['name'];            
+                    $v['projectname']=$find['name'];
+                        
                 }
             }
 
@@ -451,7 +453,29 @@ class UserController extends AdminController {
                             $newnum += 1;//每天加成功一次记录一次，用于后面的判断
                         }
                    }
+                   //查询员工现有的岗位项目薪资信息等
+                   $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
 
+                   //判断岗位或着部门发生变化时。
+                   if($num==0){//说明没有进行新增，然后判断部门或岗位是否发生变化
+                        if($dssnow[0]['sid']!=$arr['sid'] || $dssnow[0]['did']!=$arr['did']){
+                            M('dss')->where('uid='.$arr['uid'].' and status=0')->setField('status',1);
+                            if($dssnow){
+                                foreach($dssnow as $va){
+
+                                    $va['sid']=$arr['sid'];
+                                    $va['did']=$arr['did'];
+                                    $va['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id  
+                                    unset($va['dssid']);
+                                    M('dss')->add($va);                                
+                                }
+                            }else{
+                                M('dss')->add($arr);
+                            }
+                            
+                           
+                        }
+                   }
                    
 
                    //修改薪资部分
