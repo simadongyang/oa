@@ -151,11 +151,21 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<select class="ui dropdown dropdown-init" name="did">
+						<div class="ui selection dropdown dropdown-init">
+							<input type="hidden" name="did" value="$sel[0]['did']">
+							<i class="dropdown icon"></i>
+							<div class="default text"></div>
+							<div class="menu">
+								<volist name="department" id="vo">
+									<div class="item" data-value="{$vo.did}">{$vo.dname}</div>
+								</volist>
+							</div>
+						</div>
+						<!--<select class="ui dropdown dropdown-init" name="did">
 							<volist name="department" id="vo">
 								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
 							</volist>
-						</select>
+						</select>-->
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
@@ -181,7 +191,7 @@
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
 					<empty name="sel">
-						<div class="fields fields-xm">
+						<div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="newdid[]">
@@ -200,7 +210,7 @@
 						</div>
 					<else />
 						<volist name="sel" id="vos" key="k">
-							<div class="fields fields-xm">
+							<div class="fields fields-xm fields-hide">
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
@@ -216,8 +226,8 @@
 							</div>
 						</volist>
 					</empty> 
-					<input type="button" class="ui blue button add mb20" value="添加所属项目" />
-					<div class="fields fields-xm">
+					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
+					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>试用薪资</label>
 							<input type="text" name="trysalary" value="{$salarychange.trysalary}">
@@ -227,7 +237,7 @@
 							<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
 						</div>
 					</div>
-					<div class="fields fields-xm">
+					<div class="fields fields-xm fields-hide">
 						<div class="field field-textarea">
 							<label>绩效考核</label>
 							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>

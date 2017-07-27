@@ -245,9 +245,17 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<select class="ui dropdown dropdown-init" name="did">
+						<div class="ui selection dropdown dropdown-init">
+							<input type="hidden" name="did" value="$sel[0]['did']">
+							<i class="dropdown icon"></i>
+							<div class="default text"></div>
+							<div class="menu">
+								<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="item" data-value="<?php echo ($vo["did"]); ?>"><?php echo ($vo["dname"]); ?></div><?php endforeach; endif; else: echo "" ;endif; ?>
+							</div>
+						</div>
+						<!--<select class="ui dropdown dropdown-init" name="did">
 							<?php if(is_array($department)): $i = 0; $__LIST__ = $department;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["did"]); ?>" <?php if(($vo["did"]) == $sel[0]['did']): ?>selected="selected"<?php endif; ?>><?php echo ($vo["dname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-						</select>
+						</select>-->
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
@@ -267,7 +275,7 @@
 						</div>
 					</div>
 				</div>
-				<?php if(($look == 0 and $isstaff == 0) or ($look == 1)): if(empty($sel)): ?><div class="fields fields-xm">
+				<?php if(($look == 0 and $isstaff == 0) or ($look == 1)): if(empty($sel)): ?><div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
 								<select class="ui dropdown dropdown-init" name="newdid[]">
@@ -283,7 +291,7 @@
 							</div>
 						</div>
 					<?php else: ?>
-						<?php if(is_array($sel)): $k = 0; $__LIST__ = $sel;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vos): $mod = ($k % 2 );++$k;?><div class="fields fields-xm">
+						<?php if(is_array($sel)): $k = 0; $__LIST__ = $sel;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vos): $mod = ($k % 2 );++$k;?><div class="fields fields-xm fields-hide">
 								<div class="field">
 									<label>所属项目</label>
 									<input type="text" name="p<?php echo ($k); ?>" value="<?php echo ($vos["projectname"]); ?>" readonly>
@@ -297,8 +305,8 @@
 									<i class="minus square icon"></i>
 								</div>
 							</div><?php endforeach; endif; else: echo "" ;endif; endif; ?> 
-					<input type="button" class="ui blue button add mb20" value="添加所属项目" />
-					<div class="fields fields-xm">
+					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
+					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>试用薪资</label>
 							<input type="text" name="trysalary" value="<?php echo ($salarychange["trysalary"]); ?>">
@@ -308,7 +316,7 @@
 							<input type="text" name="completionsalary" value="<?php echo ($salarychange["completionsalary"]); ?>" />
 						</div>
 					</div>
-					<div class="fields fields-xm">
+					<div class="fields fields-xm fields-hide">
 						<div class="field field-textarea">
 							<label>绩效考核</label>
 							<textarea name="jixiao" rows="3"><?php echo ($salarychange["jixiao"]); ?></textarea>
