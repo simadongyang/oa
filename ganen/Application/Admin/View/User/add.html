@@ -11,7 +11,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>工号</label>
-						<input type="text" name="uid" value="{$find.uid}" readonly>
+						<input type="text" name="uid" value="{$find.uid}" readonly placeholder="自动生成">
 					</div>
 					<div class="field">
 						<label>姓名</label>
@@ -54,7 +54,7 @@
 					</div>
 					<div class="field">
 						<label>出生日期</label>
-						<input type="text" name="birthday" value="{$find.birthday}">
+						<input type="text" name="birthday" value="{$find.birthday}" id="birthday">
 					</div>
 				</div>
 				<div class="fields">
@@ -115,7 +115,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>入职时间</label>
-						<input type="text" name="entrytime" value="{$find.entrytime}">
+						<input type="text" name="entrytime" value="{$find.entrytime}" class="form_datetime">
 					</div>
 					<div class="field">
 						<label>试用期</label>
@@ -130,13 +130,13 @@
 							<label>正式</label>
 						</div>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="iscompletion" value="0" tabindex="0" class="hidden" {$find.fou}>
+							<input type="radio" name="iscompletion" value="0" tabindex="0" class="hidden" <empty name="find.fou && find.shi">checked=""<else />{find.fou}</empty>>
 							<label>试用</label>
 						</div>
 					</div>
 					<div class="field">
 						<label>转正日期</label>
-						<input type="text" name="completiontime" value="{$find.completiontime}">
+						<input type="text" name="completiontime" value="{$find.completiontime}" class="form_datetime">
 					</div>
 				</div>
 				<input type="hidden" name="savestatus" value="基本信息">
@@ -159,14 +159,6 @@
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
-						<!--
-							isstaff = 1 则是非普通员工，隐藏薪资内容
-						-->
-						<!--<select class="ui dropdown" name="sid" id="station">
-							<volist name="station" id="vo">
-								<option value="{$vo.sid}" isstaff='{$vo.isstaff}' <if condition="$vo.sid eq $sel[0]['sid']">selected </if>>{$vo.stationname}</option>
-							</volist>
-						</select>-->
 						<div class="ui selection dropdown" id="station">
 							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 							<i class="dropdown icon"></i>
@@ -180,7 +172,7 @@
 					</div>
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
-					<empty name="sel">
+					<!--<empty name="sel">
 						<div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
@@ -198,7 +190,7 @@
 								<i class="minus square icon"></i>
 							</div>
 						</div>
-					<else />
+					<else />-->
 						<volist name="sel" id="vos" key="k">
 							<div class="fields fields-xm fields-hide">
 								<div class="field">
@@ -215,7 +207,7 @@
 								</div>
 							</div>
 						</volist>
-					</empty> 
+					<!--</empty>--> 
 					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
 					<div class="fields fields-xm fields-hide">
 						<div class="field">
@@ -253,6 +245,7 @@
 			$('.dropdown-init').dropdown();
 			$("#station").dropdown({
 				onChange: function(value, text, $selectedItem) {
+					//isstaff = 1 则是非普通员工   {$look} = 0则代无权限查看非普通员工信息
 					if($selectedItem.attr("isstaff") == 1 && !{$look}){
 						$(".fields-hide").hide();
 					}else{
@@ -290,6 +283,21 @@
 					alert("至少保留一个所属项目");
 				}
 			})
+			$(".form_datetime").datetimepicker({
+				format: 'yyyy-mm-dd',
+				language: "zh-CN",
+	            minView: 2,
+	            startView: 2,
+	            autoclose: true,
+			});
+			//出生日期
+	        $('#birthday').datetimepicker({
+	            format: 'yyyy-mm-dd',
+	            language: "zh-CN",
+	            minView: 2,
+	            startView:4,
+	            autoclose: true,
+	        })
 		})
 		//导航高亮
 		highlight_subnav('{:U('User/index')}');

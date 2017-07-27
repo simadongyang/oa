@@ -4,12 +4,12 @@
   padding: 0px; }
 
 html, body {
+  height: auto;
   font-size: 14;
   min-width: 1280px;
   color: #666666;
   font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
-  overflow-x: auto;
-  position: relative; }
+  overflow-x: auto; }
 
 a {
   text-decoration: none; }
@@ -235,10 +235,8 @@ h3 {
         font-size: 12px; }
 
 #main-content {
-  position: absolute;
-  top: 50px;
-  left: 200px;
-  right: 0px;
+  margin-top: 50px;
+  margin-left: 200px;
   padding: 20px; }
 
 .toolbar {
