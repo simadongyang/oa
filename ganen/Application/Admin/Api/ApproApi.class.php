@@ -68,7 +68,7 @@ class ApproApi{
         if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
         {
             $res = M('Auth_group_access')->where("uid = $nid")->find();
-           ;
+     
             if(empty($res))
             {
 
@@ -104,12 +104,13 @@ class ApproApi{
              ->find();
             // 判断是否为本部门的负责人
             $dp = $res['dperson'];
-            if($uid != $dp)
+            if($uid != $dp && !empty($dp))
             {
                 $pids = $dp . ',' .$pids;
             }
+
             //生成 审批
-            $arr_pids = explode(',',$pids);
+            $arr_pids = explode(',',trim($pids));
             //审批名称
             $name = '入职';
             // 申请原因
