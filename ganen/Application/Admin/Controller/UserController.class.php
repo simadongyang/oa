@@ -22,11 +22,21 @@ class UserController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){       
-
+        //查询所有已经审批通过的员工的id
+        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
+        $uids = '';
+        foreach($appro as $ap){
+            $uids .= $ap['uid'].',';
+        }
+        $uids=trim($uids,',');
         
-        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
+        //查询审批通过且未被删除的员工
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);
+        $map['uid'] = array('in',$uids);
+
         $list   = $this->lists('Member', $map,'','',$field);
+        
         
 
         //根据获得的信息查询相关的信息
@@ -515,6 +525,30 @@ class UserController extends AdminController {
             }
         }
 
+        $this->display();
+    }
+
+    /*
+        显示员工通讯录
+    */
+    public function mestaff(){
+
+        //查询所有已经审批通过的员工的id
+        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
+        $uids = '';
+        foreach($appro as $ap){
+            $uids .= $ap['uid'].',';
+        }
+        $uids=trim($uids,',');
+        
+        //查询审批通过且未被删除的员工
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
+        $map['status']  =   array('egt',0);
+        $map['uid'] = array('in',$uids);
+        
+        $list   = $this->lists('Member', $map,'','',$field);
+
+        $this->assgin('list',$list);
 
         $this->display();
     }
