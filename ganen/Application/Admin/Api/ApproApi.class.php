@@ -41,22 +41,49 @@ class ApproApi{
     // $did 本部门的id
     public function appr($nid)
     {
-        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
-        //判断当前是否为admin
-        if($uid == 1)
-        {
-             $Auth = M("Auth_group_access"); 
-            // 要修改的数据对象属性赋值
-            $data['uid'] = $nid;
-            //默认组
-            $data['group_id'] = 9;
-            $Auth->add($data); // 添加记录
-            return json_encode('1');
-        }
         if(empty($nid))
         {
             return json_encode('-1');
         }
+
+
+         //自动权限 登陆者的id
+        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        //判断入职者的父级
+         $res = M('Dss')
+                ->alias('d')
+                ->field('p.dpid')
+                ->join('ganen_department p on d.did = p.did')
+                ->where("uid = $nid")
+                ->find();
+         //判断添加者的父级
+
+         $tres = M('Dss')
+                ->alias('d')
+                ->field('p.dpid')
+                ->join('ganen_department p on d.did = p.did')
+                ->where("uid = $uid")
+                ->find();
+            
+        if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
+        {
+            $res = M('Auth_group_access')->where("uid = $nid")->find();
+           ;
+            if(empty($res))
+            {
+
+             $Auth = M("Auth_group_access"); 
+             $data['uid'] = $nid;
+            //默认组
+            $data['group_id'] = 10;
+            $Auth->add($data); // 添加记录
+            return json_encode('1');
+            }
+            // 要修改的数据对象属性赋值
+            
+        }
+
+
         //判断是否申请过审批
         if(M('Appro')->where("uid = $nid")->find())
         {
@@ -68,10 +95,9 @@ class ApproApi{
        // 得到本部门id
         $did = $res['did'];
         $pids = $this -> partment($did);
-        return  $pids;
         if(empty($pids)) return json_encode('-1');
             //当前用户的uid
-            
+            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
             $res=M('Department')
             ->field('dperson')
              ->where("did = $did")

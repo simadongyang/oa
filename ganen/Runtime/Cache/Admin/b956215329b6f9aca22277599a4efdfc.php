@@ -38,9 +38,9 @@
 					<li>
 						<a href="<?php echo U('User/updatePassword');?>">修改密码</a>
 					</li>
-					<li>
+					<!--<li>
 						<a href="<?php echo U('User/updateNickname');?>">修改昵称</a>
-					</li>
+					</li>-->
 					<li>
 						<a href="<?php echo U('Public/logout');?>">退出</a>
 					</li>
