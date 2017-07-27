@@ -12,11 +12,21 @@
     	<div class="fields">
 	    	<div class="field">
 				<label>上级岗位</label>
-				<select class="ui dropdown" name='did'>
+				<div class="ui selection dropdown">
+					<input type="hidden" name="spid" value="{$sone['spid']}">
+					<i class="dropdown icon"></i>
+					<div class="default text"></div>
+					<div class="menu">
+						<volist name="station" id="vo">
+							<div class="item" data-value="{$vo.did}">{$vo.dname}</div>
+						</volist>
+					</div>
+				</div>
+				<!--<select class="ui dropdown" name='did'>
 	            	<volist name="station" id="vo">
 	            		<option class="child" value="{$vo.did}" <if condition="$vo.sid eq $sone['spid']"> selected </if>>{$vo.dname}</option>
 	            	</volist>
-	            </select>
+	            </select>-->
 			</div>
 		</div>
 		<div class="fields">
