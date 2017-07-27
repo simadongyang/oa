@@ -156,7 +156,6 @@ class OrganizeController extends AdminController {
             $value['dname']=$value['stationname'];
             $value['did']=$value['sid'];
         }
-
         //构造新数组       
         $station=getTrees($station);
         //var_dump($station);exit;
@@ -202,6 +201,11 @@ class OrganizeController extends AdminController {
             $this->assign('sone',$sone);
 
         }
+        //显示所有岗位权限
+        $auth_group=M('auth_group')->field('id,title')->where('status != -1')->select();
+            
+        $this->assign('auth_group',$auth_group);
+
     	$this->display();
     }
     //操作
