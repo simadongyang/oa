@@ -402,11 +402,11 @@ function tree($sorts,$selected=0,$dpid=0,$leven=0)
     }
 
 //将无限极分类重新组成新的数组
-function getTrees($arr,$pid=0,$step = 0){
+function getTrees($arr,$pid=0,$step = 0,$nbsp="&nbsp;&nbsp;&nbsp;&nbsp;"){
     global $tree;
     foreach($arr as $val) {
         if($val['dpid'] == $pid) {
-            $flag = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$step);
+            $flag = str_repeat($nbsp,$step);
             if($pid==0){
                 $val['dname'] = $flag.$val['dname'];
             }else{
@@ -419,11 +419,11 @@ function getTrees($arr,$pid=0,$step = 0){
     return $tree;
 }
 
-function stationtrees($arr,$sid=0,$step = 0){
+function stationtrees($arr,$sid=0,$step = 0,$nbsp="&nbsp;&nbsp;&nbsp;&nbsp;"){
     global $trees;
     foreach($arr as $val) {
         if($val['spid'] == $sid) {
-            $flag = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$step);
+            $flag = str_repeat($nbsp,$step);
             if($sid==0){
                 $val['stationname'] = $flag.$val['stationname'];
             }else{
@@ -451,13 +451,17 @@ function congruent($array1,$array2){//$array1、$array2是两个数组
     return $num;//返回未修改的个数
 }
 
+
 //查询我部门下所有员工
 function  mydown($uid){
     $where=array('uid'=>$uid);
     //查询我当前所在的部门did和岗位
-    $myde=M('dss')->where($where)->order('dssid desc')->find();
+    $myde=M('dss')->where($where)->order('dssid desc')->find();    
 
-    //先根据我的
+    //先根据我的岗位查询
+    $arr=M('station')->where('sid='.$myde['sid'])->find();
+    stationtrees($arr);
+
 
 
 }
