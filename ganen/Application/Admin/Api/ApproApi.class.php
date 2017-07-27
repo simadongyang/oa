@@ -41,6 +41,7 @@ class ApproApi{
     // $did 本部门的id
     public function appr($nid)
     {
+        return 1;
         if(empty($nid))
         {
             return json_encode('-1');
@@ -154,6 +155,129 @@ class ApproApi{
                 $Appro->add($data);
             }
           return json_encode('-1');
+    }
+
+    //得到审批id
+    public  function  appr_arr($nid,$ids)
+    {
+        //判断是否需要自动生成权限
+        $this->atuo_group($nid);
+
+         //判断是否申请过审批
+        if(M('Appro')->where("uid = $nid")->find())
+        {
+            return json_encode('1');
+        }
+        $res = M('Dss')->field('did')->where("uid = $nid")->find();
+       
+        if(empty($res)) return json_encode('-1');
+       // 得到本部门id
+        $did = $res['did'];
+        /*//$pids = $this -> partment($did);
+        if(empty($pids)) return json_encode('-1');
+            //当前用户的uid
+            $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+            $res=M('Department')
+            ->field('dperson')
+             ->where("did = $did")
+             ->find();
+            // 判断是否为本部门的负责人
+            $dp = $res['dperson'];
+            if($uid != $dp && !empty($dp))
+            {
+                $pids = $dp . ',' .$pids;
+            }
+
+*/         //审批id不可为空
+          if(empty($ids)) return json_encode('-1');
+            //生成 审批
+            $arr_pids = explode(',',trim($pids));
+            //$arr_pids = $ids;
+            //得到字符串id
+            $pids = $pids
+            //审批名称
+            $name = '入职';
+            // 申请原因
+            $reason = '新人入职';
+            //得到人事信息
+            $perid =  $_SESSION['onethink_admin']['user_auth']['uid'];
+
+            $res = D('Member')->field('realname')->where("uid = $perid")->find();
+            $person = $res['realname'];
+            foreach($arr_pids as $k => $v)
+            {
+                $Appro = M("Appro"); // 实例化User对象
+                $data['uid'] = $nid;
+                $data['aids'] = $pids;
+                $data['perid'] = $perid;
+                $data['person'] = $person;
+                $data['aid'] = $v;
+                $data['name'] = $name;
+                $data['reason'] = $reason;
+                $data['time'] = time();
+                $data['status'] = -2;
+                $Appro->add($data);
+            }
+          return json_encode('-1');
+    }
+    //自动进入审批组
+    public function auto_group($nid)
+    {
+          //自动权限 
+        $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
+        //判断入职者的父级
+         $res = M('Dss')
+                ->alias('d')
+                ->field('p.dpid')
+                ->join('ganen_department p on d.did = p.did')
+                ->where("uid = $nid")
+                ->find();
+         //判断添加者的父级
+
+         $tres = M('Dss')
+                ->alias('d')
+                ->field('p.dpid')
+                ->join('ganen_department p on d.did = p.did')
+                ->where("uid = $uid")
+                ->find();
+            
+        if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
+        {
+            $res = M('Auth_group_access')->where("uid = $nid")->find();
+            
+            //如果为admin 则添加的都进入 总经理组
+            if($uid == 1)
+              {
+                $group_id =10;
+              }else{
+                //如果为总经理 或 最高级以及的人 添加的都进入默认组
+                //
+                // //查找默认组
+                  $res =M('Dss')
+                 ->alias('d')
+                 ->field('s.auth_group_id')
+                 ->join('ganen_station s on s.sid = d.sid')
+                 ->where("d.uid = $nid")
+                 ->find();
+
+                 $group_id = $res['auth_group_id'];
+                 if(empty($group_id)) $group_id =10;
+              } 
+            
+            if(empty($res))
+            {
+             //
+             $Auth = M("Auth_group_access"); 
+             $data['uid'] = $nid;
+            //默认组
+            $data['group_id'] = $group_id;
+            $Auth->add($data); // 添加记录
+            return json_encode('1');
+            }
+            // 要修改的数据对象属性赋值
+            
+        }
+
     }
     
 }
