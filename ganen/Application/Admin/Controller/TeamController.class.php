@@ -59,16 +59,7 @@ class TeamController extends AdminController {
     public function ok()
     {
 
-        $nid = 73;
-         $res =M('Dss')
-                 ->alias('d')
-                 ->field('s.auth_group_id')
-                 ->join('ganen_station s on s.sid = d.sid')
-                 ->where("d.uid = $nid")
-                 ->find();
-        echo '<pre>';
-        var_dump($res);
-        die;
+       
       
        // $nid = 10;
        // echo '<pre>';
@@ -77,7 +68,7 @@ class TeamController extends AdminController {
        //var_dump($res);die;
        $nid = 66;
        $Appro = new ApproApi;
-       var_dump($Appro->appr($nid));die;
+       var_dump($Appro->appr_arr($nid,'1,2,3,4'));die;
         if($Appro->appr($nid) == -1)
         {
             $this->error('审批新增失败');die;

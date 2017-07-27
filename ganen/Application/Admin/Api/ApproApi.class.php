@@ -161,7 +161,7 @@ class ApproApi{
     public  function  appr_arr($nid,$ids)
     {
         //判断是否需要自动生成权限
-        $this->atuo_group($nid);
+        $this->auto_group($nid);
 
          //判断是否申请过审批
         if(M('Appro')->where("uid = $nid")->find())
@@ -194,7 +194,7 @@ class ApproApi{
             $arr_pids = explode(',',trim($pids));
             //$arr_pids = $ids;
             //得到字符串id
-            $pids = $pids
+            $pids = $pids;
             //审批名称
             $name = '入职';
             // 申请原因

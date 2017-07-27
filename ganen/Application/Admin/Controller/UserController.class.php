@@ -511,7 +511,7 @@ class UserController extends AdminController {
                    if($num==$newnum || $result){
 
                          $Appro = new ApproApi;
-                            if($Appro->appr($arr['uid']) == -1)
+                            if($Appro->appr_arr($arr['uid'],$arr['deperson']) == -1)
                             {
                                 $this->error('审批新增失败');die;
                             }
