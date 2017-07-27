@@ -104,12 +104,7 @@ class PerapproController extends AdminController {
         //当前用户的uid
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         //var_dump($uid);
-        $res=M('Appro')
-            ->alias('a')
-            ->field('m.realname,a.*')
-            ->join('ganen_member m on a.uid = m.uid')
-            ->where("a.aid=$uid and a.status = -2")
-            ->select();
+        $res=M('Appro')->where("aid=$uid and status = -2")->select();
         //判断是否为当前审批人
         foreach($res as $key=>$val)
         {
@@ -120,6 +115,7 @@ class PerapproController extends AdminController {
             $nres[] = $res[$key];
            }
         }
+
         $this->assign('_list', $nres);
 
         
@@ -198,7 +194,7 @@ class PerapproController extends AdminController {
             /* 获取数据 */
             $info = M('Project')->field(true)->find($id);
             //$menus = M('Project')->field(true)->select();
-           // $menus = D('Common/Tree')->toFormatTree($menus);
+           // $menus = D('Common/Tree')->toFormatTree($menus);34
 
             //$menus = array_merge(array(0=>array('id'=>0,'title_show'=>'顶级菜单')), $menus);
             //$this->assign('Menus', $menus);
@@ -415,7 +411,8 @@ class PerapproController extends AdminController {
         $user = session('user_auth');
         $denguid=$user['uid'];
         $deng=M('Member')->where('uid='.$denguid)->find();
-        $this->assign('look',$deng['looksalary']);
+       // $this->assign('look',$deng['looksalary']);
+        $this->assign('look',1);
 
         //查看员工基本信息
 
@@ -670,7 +667,6 @@ class PerapproController extends AdminController {
         // 是否可更改薪资
         //满足条件  1 非普通岗位 2 审批人为直属上级时 
         //现在 默认管理岗位
-
         $is_staff = 1;
         if(!empty($res['dperson']) && $res['dperson'] == $uid && $is_staff == 1)
         {
@@ -714,14 +710,28 @@ class PerapproController extends AdminController {
                      //当全部审批通过后 允许其登陆后台
                      if(empty($str))
                      {
+
                         //设置状态
                         $str = 0;
+                        //查找默认组
+                        $res=M('Appro')
+                         ->alias('a')
+                         ->field('s.auth_group_id')
+                         ->join('ganen_dss d on a.uid = d.uid')
+                         ->join('ganen_station s on s.sid = d.sid')
+                         ->where("a.id = $id")
+                         ->find();
+                         $group_id = $res['auth_group_id'];
+                         if(empty($res))
+                         {
+                            $group_id = 0;
+                         }
                         //将用户加入权限组
                         $Auth = M("Auth_group_access"); 
                         // 要修改的数据对象属性赋值
                         $data['uid'] = $uid;
                         //默认组
-                        $data['group_id'] = 9;
+                        $data['group_id'] = $group_id;
                         $Auth->add($data); // 添加记录
                      }
                      //更改数据
