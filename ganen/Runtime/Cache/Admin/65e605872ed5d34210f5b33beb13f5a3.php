@@ -17,7 +17,9 @@
 		<!-- 头部 -->
 		<div class="header">
 			<!-- Logo -->
-			<span class="logo"></span>
+			<span class="logo">
+				<img src="/Build/Admin/Img/logo.png" alt="" />
+			</span>
 			<!-- /Logo -->
 
 			<!-- 主导航 -->

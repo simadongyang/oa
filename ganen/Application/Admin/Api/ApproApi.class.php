@@ -47,7 +47,7 @@ class ApproApi{
         }
 
 
-         //自动权限 登陆者的id
+         //自动权限 
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         //判断入职者的父级
          $res = M('Dss')
