@@ -68,14 +68,31 @@ class ApproApi{
         if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
         {
             $res = M('Auth_group_access')->where("uid = $nid")->find();
-     
+            
+            //如果为admin 则添加的都进入 总经理组
+            if($uid == 1)
+              {
+                $group_id =10;
+              }else{
+                //如果为总经理 或 最高级以及的人 添加的都进入默认组
+                //
+                // //查找默认组
+                  $res =M('Dss')
+                 ->alias('d')
+                 ->field('s.auth_group_id')
+                 ->join('ganen_station s on s.sid = d.sid')
+                 ->where("d.uid = $nid")
+                 ->find();
+                 $group_id = $res['auth_group_id'];
+              } 
+            
             if(empty($res))
             {
-
+             //
              $Auth = M("Auth_group_access"); 
              $data['uid'] = $nid;
             //默认组
-            $data['group_id'] = 10;
+            $data['group_id'] = $group_id;
             $Auth->add($data); // 添加记录
             return json_encode('1');
             }
