@@ -529,9 +529,9 @@ class UserController extends AdminController {
     }
 
     /*
-        显示员工通讯录
+        显示我的员工信息
     */
-    public function mestaff(){
+    public function mestafflist(){
 
         //查询所有已经审批通过的员工的id
         $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
@@ -545,14 +545,65 @@ class UserController extends AdminController {
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);
         $map['uid'] = array('in',$uids);
-        
+
         $list   = $this->lists('Member', $map,'','',$field);
 
-        $this->assgin('list',$list);
+        $this->assign('list',$list);
 
         $this->display();
     }
 
+    /*
+        显示通讯录信息
+    */
+    public function mestaffinfo(){
+
+        //查询所有已经审批通过的员工的id
+        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
+        $uids = '';
+        foreach($appro as $ap){
+            $uids .= $ap['uid'].',';
+        }
+        $uids=trim($uids,',');
+        
+        //查询审批通过且未被删除的员工
+        $field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
+        $map['status']  =   array('egt',0);
+        $map['uid'] = array('in',$uids);
+
+        $list   = $this->lists('Member', $map,'','',$field);
+        foreach($list as &$val){
+            if($val['sex']==1){
+                $val['sex']='男';
+            }else{
+                $val['sex']='女';
+            }
+            if($val['iscompletion']==1){
+                $val['iscompletion']='是';
+            }else{
+                $val['iscompletion']='否';
+            }
+            //查询员工所在部门、岗位
+            $dss=M('dss')->where('uid='.$val['uid'])->order('dssid desc')->find();
+            //岗位
+            $department=M('department')->where('did='.$dss['did'])->find();            
+            $val['dname']=$department['dname'];
+            //查询员工所属岗位
+            $station=M('station')->where('sid='.$dss['sid'])->find(); 
+            $val['stationname']=$station['stationname'];
+
+            //查询员工薪资情况
+            $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
+            $val['trysalary']=$salarychange['trysalary'];
+            $val['completionsalary']=$salarychange['completionsalary'];
+            $val['jixiao']=$salarychange['jixiao'];
+        }
+
+
+        $this->assign('list',$list);
+
+        $this->display();
+    }
     
 
 
