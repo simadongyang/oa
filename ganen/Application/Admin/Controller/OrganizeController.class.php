@@ -156,7 +156,6 @@ class OrganizeController extends AdminController {
             $value['dname']=$value['stationname'];
             $value['did']=$value['sid'];
         }
-
         //构造新数组       
         $station=getTrees($station);
         //var_dump($station);exit;
