@@ -23,14 +23,14 @@ class UserController extends AdminController {
 
      */
     
-    }
+    
     public function index(){   
        
         
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);        
-        $map['iscompletion']=array('neq',-1)
+        $map['iscompletion']=array('neq',-1);
 
         $list   = $this->lists('Member', $map,'','',$field);
         
@@ -540,7 +540,7 @@ class UserController extends AdminController {
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
         $map['status']  =   array('egt',0);
-        $map['iscompletion']=array('neq',-1)
+        $map['iscompletion']=array('neq',-1);
 
         $list   = $this->lists('Member', $map,'','',$field);
         if($val['iscompletion']==1){
