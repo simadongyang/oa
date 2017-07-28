@@ -59,8 +59,8 @@ class TeamController extends AdminController {
     public function ok()
     {
 
-       
-      
+      // echo C('IS_APPRO');
+        //die;
        // $nid = 10;
        // echo '<pre>';
         //var_dump($this->partment($nid));die;

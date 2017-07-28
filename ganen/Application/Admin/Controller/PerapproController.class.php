@@ -710,7 +710,11 @@ class PerapproController extends AdminController {
                      //当全部审批通过后 允许其登陆后台
                      if(empty($str))
                      {
-
+                          //更改入职状态为
+                        $Member = M("Member"); // 实例化User对象
+                        // 要修改的数据对象属性赋值
+                        $Member->isadopt = '1';
+                        $Member->where("uid = $uid")->save(); // 根据条件更新记录
                         //设置状态
                         $str = 0;
                         //查找默认组
@@ -744,13 +748,7 @@ class PerapproController extends AdminController {
                     // 要修改的数据对象属性赋值
                     $data['status'] = 1;
                     $data['atime'] = time();
-                    $Ures->where($map)->save($data); // 根据条件更新记录
-
-                      //更改入职状态为
-                  $Member = M("Member"); // 实例化User对象
-                  // 要修改的数据对象属性赋值
-                  $Member->isadopt = '1';
-                  $Member->where("uid = $uid")->save(); // 根据条件更新记录
+                    $Ures->where($map)->save($data); // 根据条件更新记录              
                 }
 				return 1;
 				//$this->success('用户编辑成功！',U('Perappro/wait'));   
