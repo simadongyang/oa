@@ -215,6 +215,7 @@ class ApproApi{
             $res = D('Member')->field('realname')->where("uid = $perid")->find();
             $person = $res['realname'];
             //return $arr_pids;
+            $data = array();
             foreach($arr_pids as $k => $v)
             {
                 $Appro = M("Appro"); // 实例化User对象
@@ -254,30 +255,30 @@ class ApproApi{
            
         if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 || $is_appro == 0)
         {
-            $res = M('Auth_group_access')->where("uid = $nid")->find();
-            
-           
                 //如果为总经理 或 最高级以及的人 添加的都进入默认组
                 //
                 // //查找默认组
+              // return $nid;
+               //return json_encode($nid);
                   $res =M('Dss')
                  ->alias('d')
                  ->field('s.auth_group_id')
                  ->join('ganen_station s on s.sid = d.sid')
                  ->where("d.uid = $nid")
                  ->find();
+                  //return json_encode($res['auth_group_id']);
                 //如果有默认组 则 进默认组，没有就进总经理组
- 
+                  //$res = M('Dss')->where("uid = $nid")->select();
+                 //  return json_encode($res);
                  if(!empty($res['auth_group_id']))
                  {
+                   //return json_encode(122);
                      $group_id = $res['auth_group_id'];
                  }else if($is_appro == 0){
                     return json_encode('岗位信息有误,请重新注册');
                  }else{
                     $group_id = 10;
                  }
-              
-                 // return json_encode($group_id);
              // 判断是否进组
             $res =M('Auth_group_access')->where("uid = $nid")->find();
             if(!empty($res))
@@ -286,18 +287,32 @@ class ApproApi{
                 $Auth->where("uid=$nid")->delete(); // 删除id为5的用户数据
             }
              $Auth = M("Auth_group_access"); 
+             $data = array();
              $data['uid'] = $nid;
             //默认组
             $data['group_id'] = $group_id;
             $res =  $Auth->add($data); // 添加记录
-            if($res)
+            if(!$res)
             {
-                //更改入职状态为
+               return json_encode('错误号：10');
+            }
+            return json_encode($res);
+            if(!empty($res))
+            {
+              //更改入职状态为
                 $Member = M("Member"); // 实例化User对象
                 // 要修改的数据对象属性赋值
-                $Member->isadopt = '1';
-                $Member->where("uid = $nid")->save(); // 根据条件更新记录
-              return json_encode('1');
+                $data = array();
+                $data['isadopt'] = 1;
+
+                $res = $Member->where("uid = $nid")->save($data); // 根据条件更新记录
+                if(empty($res))
+                {
+                  return json_encode('错误号：11');
+                }else{
+                  return json_encode(1);
+                }
+              
             }else{
               return json_encode('未知错误');
             }

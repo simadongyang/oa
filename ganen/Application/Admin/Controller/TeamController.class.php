@@ -58,7 +58,15 @@ class TeamController extends AdminController {
     }
     public function ok()
     {
+      $Member = M("Member"); // 实例化User对象
+      // 要修改的数据对象属性赋值
+      $data = array();
+      $nid = 138;
+      $data['isadopt'] = 1;
 
+      $res = $Member->where("uid = $nid")->save(); // 根据条件更新记录
+      if(empty($res)) echo 1;
+      var_dump($res);die;
       // echo C('IS_APPRO');
         //die;
        // $nid = 10;
@@ -66,7 +74,7 @@ class TeamController extends AdminController {
         //var_dump($this->partment($nid));die;
        // $res = M('Dss')->field('did')->where("uid = $nid")->find();
        //var_dump($res);die;
-       $nid = 74;
+       $nid = 126;
        $ids = '1,2,3,4';; 
        $ids = ''; 
        $Appro = new ApproApi;  
