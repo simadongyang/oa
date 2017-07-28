@@ -499,3 +499,6 @@ function  mydown($uid){
 
 
 }
+
+//author sima 打印数据
+

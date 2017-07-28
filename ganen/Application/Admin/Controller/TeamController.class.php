@@ -141,12 +141,14 @@ class TeamController extends AdminController {
             $info = array();
             /* 获取数据 */
              $info=M('Project')
-          ->alias('p')
-          ->field('m.realname,p.*')
-          ->join('left join ganen_member m on p.charge = m.uid')
-          ->find($id);  
-          //var_dump($res);die;
-            
+              ->alias('p')
+              ->field('m.realname,p.*')
+              ->join('left join ganen_member m on p.charge = m.uid')
+              ->find($id);  
+             //var_dump($res);die;
+            $res = M('Department')->field('dname,dperson')->where('is_pro = 1')->select();
+          
+            $this->assign('pro', $res);
             $this->assign('info', $info);
             $this->meta_title = '编辑';
             $this->display();

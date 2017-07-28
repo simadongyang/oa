@@ -34,9 +34,9 @@
 				<div class="field">
 					<label>项目部门</label>
 					<div class="ui selection dropdown">
-		                <input type="hidden" name="charge" value="{$info.charge|default=''}">
+		                <input type="hidden" name="pro_id" value="{$pro.dperson|default=''}">
 		                <i class="dropdown icon"></i>
-		                <empty name="info.realname">
+		                <empty name="$pro.dname">
 		                	<div class="default text"></div>
 		                <else />
 		                	<div class="text">{$info.realname}</div>
