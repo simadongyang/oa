@@ -12,13 +12,13 @@
 		<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
 		
 		<div class="ui selection dropdown" id="department">						
-			<input type="hidden" name="depar">
+			<input type="hidden" name="depar" value="{$depar}">
 			<i class="dropdown icon"></i>
 			<div class="default text">按照部门筛选</div>
 			<div class="menu">					
-				<div class="item" data-value="0" >全部</div>
-				<volist name="station" id="vo">
-					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
+				<div class="item" data-value="-1" >全部</div>
+				<volist name="department" id="vo">
+					<div class="item" data-value="{$vo.did}" >{$vo.dname}</div>
 				</volist>
 			</div>
 		</div>
@@ -27,9 +27,9 @@
 			<i class="dropdown icon"></i>
 			<div class="default text">按照项目筛选</div>
 			<div class="menu">					
-				<div class="item" data-value="0" >全部</div>
-				<volist name="station" id="vo">
-					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
+				<div class="item" data-value="-1" >全部</div>
+				<volist name="project" id="vo">
+					<div class="item" data-value="{$vo.id}" >{$vo.name}</div>
 				</volist>
 			</div>
 		</div>
