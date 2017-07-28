@@ -455,7 +455,7 @@ function congruent($array1,$array2){//$array1、$array2是两个数组
 //查询我部门下所有员工
 function  mydown($uid){
     $where=array('uid'=>$uid);
-    //查询我当前所在的部门did和岗位
+    //查询我当前所在的部门did和岗位，所属项目
     $myde=M('dss')->where($where)->order('dssid desc')->find();  
 
 
@@ -487,9 +487,17 @@ function  mydown($uid){
     $sidall=$childsid;
     
     //return $sidall;
+    if($myde['projectid']){
+        $whereds['projectid']=$myde['projectid'];
+    }
 
     //查询该子部门下的员工部门、岗位情况
-    $whereds=array('did'=>array('in',$didall),'sid'=>array('in',$sidall),'_logic'=>'and','status'=>0);
+    $whereds['did']=array('in',$didall);
+    $whereds['sid']=array('in',$sidall);
+    $whereds['_logic']='and';
+    $whereds['status']=0;
+    
+    
     $mydsall=M('dss')->field('uid')->where($whereds)->select();
 
    // return $mydsall;

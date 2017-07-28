@@ -21,8 +21,19 @@ class MemberModel extends Model {
         array('nickname', '1,16', '昵称长度为1-16个字符', self::EXISTS_VALIDATE, 'length'),
         array('nickname', '', '昵称被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
 
+        array('IDnumber', '', '身份证号不能为空', self::MUST_VALIDATE),
+        array('IDnumber', '18', '身份证号长度必须为18位', self::MUST_VALIDATE, 'length'),
+        array('IDnumber', '/^\d{18}$/', '身份证号必须是数字', self::MUST_VALIDATE),
+        array('iscompletion', '/^(0|1)$/', '请选择状态', self::MUST_VALIDATE)
         
-        array('criticalname', '1,16', '昵称长度为1-16个字符', self::EXISTS_VALIDATE, 'length'),
+
+
+
+
+
+
+
+
     );
 
     public function lists($status = 1, $order = 'uid DESC', $field = true){

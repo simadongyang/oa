@@ -280,8 +280,8 @@ class UserController extends AdminController {
         //该部分是作用修改(开始1)
 
         //查询登录用户能否他人查看薪资
-        $user = session('user_auth');
-        $denguid=$user['uid'];
+        
+        $denguid=UID;
         $deng=M('Member')->where('uid='.$denguid)->find();
         $this->assign('look',$deng['looksalary']);
 
@@ -350,6 +350,16 @@ class UserController extends AdminController {
                         $this->error('密码和重复密码不一致！');
                     }
 
+                        if(!$arr['IDnumber']){
+                            $this->error('请输入身份证号码！');
+                        }
+                        if(strlen($arr['IDnumber'])!=18 || !preg_match('/^([\d]{17}[xX\d])$/',$arr['IDnumber'])){
+                            $this->error('请输入正确身份证号码！');
+                        }
+                        if(!preg_match('/^(0|1)$/',$arr['iscompletion'])){
+                            $this->error('请选择状态！');
+                        }
+
                     /* 调用注册接口注册用户 */
                     $User   =   new UserApi;
                     $email=rand(0,100000).rand(a,z).'@qq.com';
@@ -359,6 +369,7 @@ class UserController extends AdminController {
                     $password='123456';
                     $uid    =   $User->register($username, $password, $email);
                     if(0 < $uid){ //注册成功
+                        
                     	$arr['realname']=$arr['username'];
                     	$arr['uid']=$uid;
                     	$arr['nickname']=$username;
@@ -366,23 +377,21 @@ class UserController extends AdminController {
                         $user = $arr;
 
 
-
-
-
-
-                       /* $su=D('Member')->create($user);
-                        if(!$su){
-                             echo $User->getError();exit;
-                           //$this->error('用户添加失败！'.'8888');
-                       }  */                  
+                                                          
                        
+                      /* $member=D('Member')->create();
 
+                       if(!$member){
+                            echo $member->getError();exit;
 
+                           $this->error('用户添加失败！'.'8888');
+
+                       }   */
 
 
 
                        
-                        if(!M('Member')->add($user)){
+                        if(!M('Member')->add($arr)){
                             $this->error('用户添加失败！');
                         } else {
                             $this->success('用户添加成功！',U('add?id='.$arr['uid']));
@@ -439,6 +448,13 @@ class UserController extends AdminController {
                 if(!$arr['uid']){
                      $this->error('请先填写基本信息，然后通过查看详情信息进行添加岗位等信息');
                 }
+
+                if($arr['did']==1){
+                        $this->error('请选择部门！');
+                }
+                if($arr['sid']<=1){
+                        $this->error('请选择岗位！');
+                }
                 //如果获得了uid说明是编辑修改信息
                 if($arr['uid']){
                     //判断是否为普通岗
@@ -452,6 +468,10 @@ class UserController extends AdminController {
                             $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                         } 
 
+                    }
+
+                    if(!$arr['trysalary'] || !$arr['completionsalary']){
+                            $this->error('请输入薪资！');
                     }
                     //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
 
@@ -532,7 +552,7 @@ class UserController extends AdminController {
                    if($num==$newnum || $result){
 
                          $Appro = new ApproApi;
-                        $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
+                            $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
                             if($res !=1)
                             {
                               
@@ -557,8 +577,8 @@ class UserController extends AdminController {
     public function mestafflist(){
        
         //获得登录人的id
-        $user = session('user_auth');
-        $denguid=$user['uid'];
+        
+        $denguid=UID;
         $uids=mydown($denguid);
 
        $this->assign('list',$uids);
