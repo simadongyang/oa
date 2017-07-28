@@ -17,8 +17,8 @@
 			<div class="default text">按照部门筛选</div>
 			<div class="menu">					
 				<div class="item" data-value="-1" >全部</div>
-				<volist name="station" id="vo">
-					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
+				<volist name="department" id="vo">
+					<div class="item" data-value="{$vo.did}" >{$vo.dname}</div>
 				</volist>
 			</div>
 		</div>
@@ -28,8 +28,8 @@
 			<div class="default text">按照项目筛选</div>
 			<div class="menu">					
 				<div class="item" data-value="-1" >全部</div>
-				<volist name="station" id="vo">
-					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
+				<volist name="project" id="vo">
+					<div class="item" data-value="{$vo.id}" >{$vo.name}</div>
 				</volist>
 			</div>
 		</div>

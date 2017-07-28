@@ -64,7 +64,27 @@ class UserController extends AdminController {
 
         //根据获得的信息查询相关的信息
         $list=$this->memberlist($list);
-       
+
+        //显示所属部门信息
+        $department=M('department')->where('status>-1')->select();
+        //$department=tree($department);
+        $department=getTrees($department);
+        $this->assign('department',$department);
+        
+        //显示项目信息
+        $project=M('project')->where('status>-1')->select();
+
+        $this->assign('project',$project);
+        
+        //显示岗位信息
+        $station=M('station')->where('status>-1')->select();
+        
+        //构造新数组       
+        $station=stationtrees($station);
+        
+
+        $this->assign('station',$station);
+
         $this->assign('_list', $list);
         
         $this->display();
