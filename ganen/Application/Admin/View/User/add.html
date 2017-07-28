@@ -228,7 +228,7 @@
 						</div>
 					</div>
 				</if>
-				<if condition="C('IS_APPRO') eq 1">
+				<if condition="C('IS_APPRO') neq 0">
 				<div class="fields">
 					<div class="field">
 						<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
@@ -249,7 +249,7 @@
 						<div class="field">
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
-				                <input type="hidden" name="dperson"  value="{$done.dperson}">
+				                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
 				                <i class="dropdown icon"></i>
 				                <empty name="done.personname">
 				                	<div class="default text">输入姓名搜索</div>

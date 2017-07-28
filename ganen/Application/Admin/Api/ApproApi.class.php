@@ -292,11 +292,6 @@ class ApproApi{
             //默认组
             $data['group_id'] = $group_id;
             $res =  $Auth->add($data); // 添加记录
-            if(!$res)
-            {
-               return json_encode('错误号：10');
-            }
-            return json_encode($res);
             if(!empty($res))
             {
               //更改入职状态为
