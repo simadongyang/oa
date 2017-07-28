@@ -558,7 +558,7 @@ class UserController extends AdminController {
         }
         
 
-        $this->assign('list',$list);
+        $this->assign('_list',$list);
 
         $this->display();
     }
@@ -604,7 +604,7 @@ class UserController extends AdminController {
         }
 
 
-        $this->assign('list',$list);
+        $this->assign('_list',$list);
 
         $this->display();
     }
