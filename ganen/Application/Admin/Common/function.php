@@ -483,8 +483,8 @@ function  mydown($uid){
     foreach($sarr as $sv){
         $childsid .= $sv['sid'].',';
     }
-    //将本部门id和子部门id结合起来
-    $sidall=$childsid.$arrs['sid'];
+    //子岗位id结合起来
+    $sidall=$childsid;
     
     //return $sidall;
 
