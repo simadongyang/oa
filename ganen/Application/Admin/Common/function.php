@@ -461,6 +461,7 @@ function  mydown($uid){
 
     //先根据我的部门查询
     $arrd=M('department')->where('did='.$myde['did'])->find();
+    
     $ar=M('department')->where('status>-1')->select();
     $darr=getTrees($ar,$arrd['did']);//查询该部门下的子部门
     //获取子部门的did
@@ -471,6 +472,7 @@ function  mydown($uid){
     //将本部门id和子部门id结合起来
     $didall=$childdid.$arrd['did'];
 
+    //return $didall;
     //再根据我的岗位查询
     $arrs=M('station')->where('sid='.$myde['sid'])->find();
     $ar=M('station')->where('status>-1')->select();
@@ -481,13 +483,16 @@ function  mydown($uid){
     foreach($sarr as $sv){
         $childsid .= $sv['sid'].',';
     }
-    //将本部门id和子部门id结合起来
-    $sidall=$childsid.$arrs['sid'];
+    //子岗位id结合起来
+    $sidall=$childsid;
     
+    //return $sidall;
 
     //查询该子部门下的员工部门、岗位情况
     $whereds=array('did'=>array('in',$didall),'sid'=>array('in',$sidall),'_logic'=>'and','status'=>0);
     $mydsall=M('dss')->field('uid')->where($whereds)->select();
+
+   // return $mydsall;
     //对查询出来的信息进行过滤，只要员工的uid
     $uids='';
     foreach($mydsall as $k=>$val){
@@ -497,10 +502,8 @@ function  mydown($uid){
     }
     $uids=trim($uids,',');
 
+
     return $uids;
-
-
-
 
 }
 

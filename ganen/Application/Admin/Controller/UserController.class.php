@@ -540,11 +540,16 @@ class UserController extends AdminController {
         $user = session('user_auth');
         $denguid=$user['uid'];
         $uids=mydown($denguid);
-       
+
+       $this->assign('list',$uids);
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
-        $map['status']  =   array('egt',0);        
-        $map['isadopt']=array('eq',1);
+        $map['status']  =  array('egt',0);        
+        $map['isadopt'] =array('eq',1);
+        if($denguid != 1){
+            $map['uid'] = array('in',$uids);
+        }
+        
 
         $list   = $this->lists('Member', $map,'','',$field);
 
@@ -556,7 +561,7 @@ class UserController extends AdminController {
     }
 
     /*
-        显示通讯录信息
+        显示我的员工信息的个人信息详情
     */
     public function mestaffinfo(){
 
