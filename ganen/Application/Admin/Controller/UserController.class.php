@@ -533,14 +533,17 @@ class UserController extends AdminController {
     */
     public function mestafflist(){
 
-        //查询所有已经审批通过的员工的id
+        /*//查询所有已经审批通过的员工的id
         $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
         $uids = '';
         foreach($appro as $ap){
             $uids .= $ap['uid'].',';
         }
-        $uids=trim($uids,',');
-        
+        $uids=trim($uids,',');*/
+        //获得登录人的id
+        $user = session('user_auth');
+        $denguid=$user['uid'];
+        $uids=mydown($denguid);
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);
