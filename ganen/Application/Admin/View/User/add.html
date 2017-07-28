@@ -130,7 +130,7 @@
 							<label>正式</label>
 						</div>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="iscompletion" value="0" tabindex="0" class="hidden" <empty name="find.fou && find.shi">checked=""<else />{find.fou}</empty>>
+							<input type="radio" name="iscompletion" <if condition="$find.uid eq ''">value="-1"<else/>value="0"</if> tabindex="0" class="hidden" <empty name="find.fou && find.shi">checked=""<else />{find.fou}</empty>>
 							<label>试用</label>
 						</div>
 					</div>

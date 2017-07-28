@@ -456,11 +456,13 @@ function congruent($array1,$array2){//$array1、$array2是两个数组
 function  mydown($uid){
     $where=array('uid'=>$uid);
     //查询我当前所在的部门did和岗位
-    $myde=M('dss')->where($where)->order('dssid desc')->find();    
+    $myde=M('dss')->where($where)->order('dssid desc')->find();  
+
 
     //先根据我的部门查询
     $arrd=M('department')->where('did='.$myde['did'])->find();
-    $darr=getTrees($arr,$arrd['did']);//查询该部门下的子部门
+    $ar=M('department')->where('status>-1')->select();
+    $darr=getTrees($ar,$arrd['did']);//查询该部门下的子部门
     //获取子部门的did
     $childdid='';
     foreach($darr as $dv){
@@ -471,19 +473,21 @@ function  mydown($uid){
 
     //再根据我的岗位查询
     $arrs=M('station')->where('sid='.$myde['sid'])->find();
-    $sarr=stationtrees($arrs,$arrs['sid']);//查询该岗位下的字岗位
-    //获取子岗位的sid
+    $ar=M('station')->where('status>-1')->select();
+    $sarr=stationtrees($ar,$arrs['sid']);//查询该岗位下的字岗位
 
+    //获取子岗位的sid
     $childsid='';
     foreach($sarr as $sv){
         $childsid .= $sv['sid'].',';
     }
     //将本部门id和子部门id结合起来
     $sidall=$childsid.$arrs['sid'];
+    
 
     //查询该子部门下的员工部门、岗位情况
     $whereds=array('did'=>array('in',$didall),'sid'=>array('in',$sidall),'_logic'=>'and','status'=>0);
-    $mydsall=M('dss')->where($whereds)->select();
+    $mydsall=M('dss')->field('uid')->where($whereds)->select();
     //对查询出来的信息进行过滤，只要员工的uid
     $uids='';
     foreach($mydsall as $k=>$val){

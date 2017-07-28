@@ -20,20 +20,17 @@ class UserController extends AdminController {
     /**
      * 用户管理首页
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+
      */
-    public function index(){       
-        //查询所有已经审批通过的员工的id
-        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
-        $uids = '';
-        foreach($appro as $ap){
-            $uids .= $ap['uid'].',';
-        }
-        $uids=trim($uids,',');
+    
+    }
+    public function index(){   
+       
         
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
-        $map['status']  =   array('egt',0);
-        $map['uid'] = array('in',$uids);
+        $map['status']  =   array('egt',0);        
+        $map['iscompletion']=array('neq',-1)
 
         $list   = $this->lists('Member', $map,'','',$field);
         
@@ -50,7 +47,7 @@ class UserController extends AdminController {
             //将是否转正数字转为文字
             if($v['iscompletion']==1){
                 $v['iscompletion']='正式';
-            }else{
+            }else if($v['iscompletion']==0){
                 $v['iscompletion']='试用';
             }
             //显示年龄
@@ -532,24 +529,24 @@ class UserController extends AdminController {
         显示我的员工信息
     */
     public function mestafflist(){
-
-        /*//查询所有已经审批通过的员工的id
-        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
-        $uids = '';
-        foreach($appro as $ap){
-            $uids .= $ap['uid'].',';
-        }
-        $uids=trim($uids,',');*/
+       
         //获得登录人的id
         $user = session('user_auth');
         $denguid=$user['uid'];
         $uids=mydown($denguid);
+       
         //查询审批通过且未被删除的员工
-        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
         $map['status']  =   array('egt',0);
-        $map['uid'] = array('in',$uids);
+        $map['iscompletion']=array('neq',-1)
 
         $list   = $this->lists('Member', $map,'','',$field);
+        if($val['iscompletion']==1){
+                $val['iscompletion']='是';
+            }else if($val['iscompletion']==0){
+                $val['iscompletion']='否';
+            }
+        }
 
         $this->assign('list',$list);
 
@@ -561,18 +558,12 @@ class UserController extends AdminController {
     */
     public function mestaffinfo(){
 
-        //查询所有已经审批通过的员工的id
-        $appro=M('appro')->field('uid')->where('status=1 and aids=0')->select();
-        $uids = '';
-        foreach($appro as $ap){
-            $uids .= $ap['uid'].',';
-        }
-        $uids=trim($uids,',');
+        
         
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
         $map['status']  =   array('egt',0);
-        $map['uid'] = array('in',$uids);
+        $map['iscompletion']=array('neq',-1)
 
         $list   = $this->lists('Member', $map,'','',$field);
         foreach($list as &$val){
@@ -583,7 +574,7 @@ class UserController extends AdminController {
             }
             if($val['iscompletion']==1){
                 $val['iscompletion']='是';
-            }else{
+            }else if($val['iscompletion']==0){
                 $val['iscompletion']='否';
             }
             //查询员工所在部门、岗位
