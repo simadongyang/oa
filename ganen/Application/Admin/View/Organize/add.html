@@ -39,7 +39,19 @@
 					</empty>
 	                <div class="menu"> </div>
 	            </div>
-				<!--<input type="text" name="dperson" value="{$done.dperson}">-->
+			</div>
+		</div>
+		<div class="fields">	
+			<div class="field">
+				<label>是否属于项目部门</label>
+				<div class="ui radio checkbox mr15">
+					<input type="radio" name="sex" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff eq 1"> checked="" </if>>
+					<label>是</label>
+				</div>
+				<div class="ui radio checkbox mr15">
+					<input type="radio" name="sex" value="0" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 1"> checked="" </if>>
+					<label>否</label>
+				</div>
 			</div>
 		</div>
         <div class="form-item mt20">
@@ -52,6 +64,7 @@
 <block name="script">
     <script type="text/javascript">
     	$(function(){
+    		$('.ui.radio.checkbox').checkbox();
     		$('.ui.dropdown').dropdown();
     		$('#searchUser').dropdown({
 	            forceSelection: false,
