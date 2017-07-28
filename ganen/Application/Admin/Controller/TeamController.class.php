@@ -26,11 +26,11 @@ class TeamController extends AdminController {
 
         $res=M('Project')
           ->alias('p')
-          ->field('m.realname,p.*')
+          ->field('m.realname,p.*,d.dname')
           ->where('p.status != -1')
           ->join(' left join ganen_member m on p.charge = m.uid')
+          ->join(' left join ganen_department d on p.pro_id = d.did')
           ->select();    
-
         $this->assign('_list', $res);
         $this->meta_title = '用户信息';
         $this->display();
@@ -146,8 +146,8 @@ class TeamController extends AdminController {
               ->join('left join ganen_member m on p.charge = m.uid')
               ->find($id);  
              //var_dump($res);die;
-            $res = M('Department')->field('dname,dperson')->where('is_pro = 1')->select();
-          
+            $res = M('Department')->field('dname,did')->where('is_pro = 1')->select();
+
             $this->assign('pro', $res);
             $this->assign('info', $info);
             $this->meta_title = '编辑';
