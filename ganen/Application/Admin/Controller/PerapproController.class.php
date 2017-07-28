@@ -104,7 +104,7 @@ class PerapproController extends AdminController {
         //当前用户的uid
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         //var_dump($uid);
-        $res=M('Appro')->where("aid=$uid and status = -2")->select();
+        $res=M('Appro')->where("aid=$uid and status = -2")->order("id desc")->select();
         //判断是否为当前审批人
         foreach($res as $key=>$val)
         {
