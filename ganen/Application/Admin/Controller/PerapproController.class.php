@@ -658,17 +658,14 @@ class PerapproController extends AdminController {
         //判断是否为直接主管
          $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         // echo $id;die;
-        $res = D('Dss')
-               ->alias('d')
-               ->field('p.dperson')
-               ->join('ganen_department p on d.did = p.did')
-               ->where("d.uid =$uid")
-               ->find();
+        //判断是否是第一个审批人
+        $appro = M('Appro')->where("uid =$id")->order('id asc')->limit('1')->find();
         // 是否可更改薪资
-        //满足条件  1 非普通岗位 2 审批人为直属上级时 
+        //满足条件  1 非普通岗位 2 审批人为第一个
         //现在 默认管理岗位
         $is_staff = 1;
-        if(!empty($res['dperson']) && $res['dperson'] == $uid && $is_staff == 1)
+        
+        if(!empty($appro['aid']) && $appro['aid'] == $uid )
         {
           $this->assign('is_first',1);
         }
@@ -690,66 +687,67 @@ class PerapproController extends AdminController {
         $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
         $res=M('Appro')->where($map)->select();
                 //得到的id只有一个
-                foreach($res as $key=>$val)
-                {
-                    //查到要改的数据
-                    $uid = $val['uid'];
-                     $nres=M('Appro')->where("uid = $uid")->select();
-                     $arr = explode(',',$nres[0]['aids']);
-                     //删除第一个元素
-                     if($arr[0] == $suid)
-                     {
-                        array_shift($arr);
-                     }else{
-                        return false;
-                     }
-                     
-                     $str=implode(',',$arr);
-                     //判断是否为空
-                     //if(empty($str)) $str = 0;
-                     //当全部审批通过后 允许其登陆后台
-                     if(empty($str))
-                     {
-                          //更改入职状态为
-                        $Member = M("Member"); // 实例化User对象
-                        // 要修改的数据对象属性赋值
-                        $Member->isadopt = '1';
-                        $Member->where("uid = $uid")->save(); // 根据条件更新记录
-                        //设置状态
-                        $str = 0;
-                        //查找默认组
-                        $res=M('Appro')
-                         ->alias('a')
-                         ->field('s.auth_group_id')
-                         ->join('ganen_dss d on a.uid = d.uid')
-                         ->join('ganen_station s on s.sid = d.sid')
-                         ->where("a.id = $id")
-                         ->find();
-                         $group_id = $res['auth_group_id'];
-                         if(!empty($res))
-                         {
-                            //将用户加入权限组
-                            $Auth = M("Auth_group_access"); 
-                            // 要修改的数据对象属性赋值
-                            $data['uid'] = $uid;
-                            //默认组
-                            $data['group_id'] = $group_id;
-                            $Auth->add($data); // 添加记录
-                         }
-                       
-                     }
-                     //更改数据
-                    $Ures = M("Appro"); 
+        foreach($res as $key=>$val)
+        {
+            //查到要改的数据
+            $uid = $val['uid'];
+             $nres=M('Appro')->where("uid = $uid")->select();
+             $arr = explode(',',$nres[0]['aids']);
+             //删除第一个元素
+             if($arr[0] == $suid)
+             {
+                array_shift($arr);
+             }else{
+                return false;
+             }
+             
+             $str=implode(',',$arr);
+             //判断是否为空
+             //if(empty($str)) $str = 0;
+             //当全部审批通过后 允许其登陆后台
+             if(empty($str))
+             {
+                  //更改入职状态为
+                $Member = M("Member"); // 实例化User对象
+                // 要修改的数据对象属性赋值
+                $data = array();
+                $data['isadopt'] =1;
+                $Member->where("uid = $uid")->save($data); // 根据条件更新记录
+                //设置状态
+                $str = 0;
+                //查找默认组
+                $res=M('Appro')
+                 ->alias('a')
+                 ->field('s.auth_group_id')
+                 ->join('ganen_dss d on a.uid = d.uid')
+                 ->join('ganen_station s on s.sid = d.sid')
+                 ->where("a.id = $id")
+                 ->find();
+                 $group_id = $res['auth_group_id'];
+                 if(!empty($res))
+                 {
+                    //将用户加入权限组
+                    $Auth = M("Auth_group_access"); 
                     // 要修改的数据对象属性赋值
-                    $data['aids'] = $str;
-                    $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
-                    //更新状态
-                    $Ures = M("Appro"); 
-                    // 要修改的数据对象属性赋值
-                    $data['status'] = 1;
-                    $data['atime'] = time();
-                    $Ures->where($map)->save($data); // 根据条件更新记录              
-                }
+                    $data['uid'] = $uid;
+                    //默认组
+                    $data['group_id'] = $group_id;
+                    $Auth->add($data); // 添加记录
+                 }
+               
+             }
+             //更改数据
+            $Ures = M("Appro"); 
+            // 要修改的数据对象属性赋值
+            $data['aids'] = $str;
+            $Ures->where("uid = $uid")->save($data); // 根据条件更新记录
+            //更新状态
+            $Ures = M("Appro"); 
+            // 要修改的数据对象属性赋值
+            $data['status'] = 1;
+            $data['atime'] = time();
+            $Ures->where($map)->save($data); // 根据条件更新记录              
+        }
 				return 1;
 				//$this->success('用户编辑成功！',U('Perappro/wait'));   
                // $this->resume('Appro', $map );

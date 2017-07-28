@@ -58,15 +58,15 @@ class TeamController extends AdminController {
     }
     public function ok()
     {
-
-      // echo C('IS_APPRO');
-        //die;
+     
+       echo C('IS_APPRO');
+      die;
        // $nid = 10;
        // echo '<pre>';
         //var_dump($this->partment($nid));die;
        // $res = M('Dss')->field('did')->where("uid = $nid")->find();
        //var_dump($res);die;
-       $nid = 74;
+       $nid = 126;
        $ids = '1,2,3,4';; 
        $ids = ''; 
        $Appro = new ApproApi;  
