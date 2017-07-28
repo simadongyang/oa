@@ -34,12 +34,12 @@
 				<div class="field">
 					<label>项目部门</label>
 					<div class="ui selection dropdown dropdown-init">
-		                <input type="hidden" name="pro_id" value="{$pro.dperson}">
+		                <input type="hidden" name="pro_id" value="{$info.pro_id}">
 		                <i class="dropdown icon"></i>
 	                	<div class="default text"></div>
 		                <div class="menu">
 		                	<volist name="pro" id="vo">
-		                		<div class="item" data-value="{$vo.dperson}">{$vo.dname}</div>
+		                		<div class="item" data-value="{$vo.did}">{$vo.dname}</div>
 			            	</volist>
 		                </div>
 		            </div>
