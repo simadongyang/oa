@@ -170,6 +170,8 @@ class ApproApi{
        
         //return json_encode('444');
          //判断是否申请过审批
+          $res =M('Dss')->field('sid')->where("uid = $nid")->find();
+          if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
         if(M('Appro')->where("uid = $nid")->find())
         {
             return json_encode('1');
@@ -198,8 +200,8 @@ class ApproApi{
           //if(empty($ids)) return json_encode('审批人不可为空');
           //return json_encode('444');
             // //判断岗位信息
-            $res =M('Dss')->field('sid')->where("uid = $nid")->find();
-            if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
+           // $res =M('Dss')->field('sid')->where("uid = $nid")->find();
+            //if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
             //生成 审批
             $arr_pids = explode(',',$ids);
             //$arr_pids = $ids;
@@ -318,5 +320,69 @@ class ApproApi{
         }
 
     }
+
+    //查询我部门下所有员工
+function  mydown($uid){
+    $where=array('uid'=>$uid);
+    //查询我当前所在的部门did和岗位，所属项目
+    $myde=M('dss')->where($where)->order('dssid desc')->find();  
+
+
+    //先根据我的部门查询
+    $arrd=M('department')->where('did='.$myde['did'])->find();
+    
+    $ar=M('department')->where('status>-1')->select();
+    $darr=getTrees($ar,$arrd['did']);//查询该部门下的子部门
+    //获取子部门的did
+    $childdid='';
+    foreach($darr as $dv){
+        $childdid .= $dv['did'].',';
+    }
+    //将本部门id和子部门id结合起来
+    $didall=$childdid.$arrd['did'];
+
+    //return $didall;
+    //再根据我的岗位查询
+    $arrs=M('station')->where('sid='.$myde['sid'])->find();
+    $ar=M('station')->where('status>-1')->select();
+    $sarr=stationtrees($ar,$arrs['sid']);//查询该岗位下的字岗位
+
+    //获取子岗位的sid
+    $childsid='';
+    foreach($sarr as $sv){
+        $childsid .= $sv['sid'].',';
+    }
+    //子岗位id结合起来
+    $sidall=$childsid;
+    
+    //return $sidall;
+    if($myde['projectid']){
+        $whereds['projectid']=$myde['projectid'];
+    }
+
+    //查询该子部门下的员工部门、岗位情况
+    $whereds['did']=array('in',$didall);
+    $whereds['sid']=array('in',$sidall);
+    $whereds['_logic']='and';
+    $whereds['status']=0;
+    
+    
+    $mydsall=M('dss')->field('uid')->where($whereds)->select();
+
+   // return $mydsall;
+    //对查询出来的信息进行过滤，只要员工的uid
+    $uids='';
+    foreach($mydsall as $k=>$val){
+        if($val['uid']!=$mydsall[$k+1]['uid']){
+            $uids .= $val['uid'].',';
+        }
+    }
+    $uids=trim($uids,',');
+
+
+    return $uids;
+
+}
+
     
 }

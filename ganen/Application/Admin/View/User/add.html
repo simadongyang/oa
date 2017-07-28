@@ -208,13 +208,13 @@
 						</div>
 					</div>
 				</if>
-<<<<<<< HEAD
 
-				<if condition="C('IS_APPRO') neq 0">
+
+				<if condition="C('IS_APPRO') neq 1">
 				<div class="fields">
 					<div class="field">
 						<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
-						<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
+						<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
 			                <input type="hidden" name="dperson" value="{$done.dperson}">
 			                <i class="dropdown icon"></i>
 			                <empty name="done.personname">
@@ -232,15 +232,6 @@
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
 				                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
-
-=======
-				<if condition="C('IS_APPRO') eq 1">
-					<div class="fields">
-						<div class="field">
-							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
-							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
-				                <input type="hidden" name="dperson" value="{$done.dperson}">
->>>>>>> 8543c217bfe4a602d98dec39467c0a07c2a3f668
 				                <i class="dropdown icon"></i>
 				                <empty name="done.personname">
 				                	<div class="default text">输入姓名搜索</div>

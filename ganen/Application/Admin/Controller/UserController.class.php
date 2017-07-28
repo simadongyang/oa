@@ -47,11 +47,116 @@ class UserController extends AdminController {
 
         return $list;
     }
-
+     //递归得到pid
+    private function partment($did)
+    {
+        $data  = array();
+        function sima($pid)
+        {
+            $res = M('Department')
+            ->alias('d')
+            ->field('d.did did ,p.did pid , d.dperson dp , p.dperson pd')
+            ->join('ganen_department p on p.dpid = d.did ')
+            ->where("d.did = $pid")
+            ->find();
+            $data =$res['']; 
+            if(!empty($res['pid'])  )
+            {
+                $data=$data.','.sima($res['did']);
+            }  
+           return trim(trim($data,','),'0');
+        }
+         
+        return sima($did);
+    }
     //显示人事列表页
     public function index(){   
        
-        
+       
+        //查询审批通过且未被删除的员工
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
+        $map['status']  =  array('egt',0);        
+        $map['isadopt'] =array('eq',1);
+        if($denguid != 1){
+            $map['uid'] = array('in',$uids);
+        }
+       // echo '<pre>';
+        //分类显示
+        //部门
+        //
+        //
+        //$ids = $this->partment('2');
+        //echo '<pre>';
+       //$did = 2;
+        function sima($did)
+        {
+             $res = M('Department')
+                ->alias('d')
+                ->field('d.did d_did ,p.did p_did,p.dpid p_dpid ')
+                ->join('ganen_department p on p.dpid = d.did ')
+                ->where("d.did = $did")
+                ->select();
+               
+            foreach($res as $k=>$v)
+            {
+                $ids .= $v['p_did'].','.sima($v['p_did']);
+                
+               
+            }
+            return $ids;
+         }
+        // var_dump(sima(2));
+        //echo $ids;
+        //var_dump($res);die;
+        $did = I('get.depar');
+        if(!empty($did))
+        {
+            $this->assign('depar',$did);
+            $ids = trim($did.','.sima($did),',');
+            $uids= "p.did in ($ids)";
+
+        }else{
+            $uids = 1;
+        }
+        //var_dump($uids);die;
+       // $uids = 1;
+        //echo $did;
+        //var_dump($uids);die;
+        $pro = I('get.pro');
+        //项目
+        if(!empty($pro))
+        {
+            $this->assign('pro',$pro);
+            $pro = 'd.projectid = '.$pro;
+        }else{
+            $pro = 1;
+        }
+        //岗位
+        $sid = I('get.stat');
+        if(!empty($sid))
+        {
+            $this->assign('stat',$sid);
+            $sid = 'd.sid = ' .$sid;
+        }else{
+            $sid = 1;
+        }
+        $where = $sid.' and '.$pro.' and '.$uids;
+       /* $res=M('Dss')->alias('d')
+                    ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
+                    ->join('ganen_member m on d.uid = m.uid')
+                    ->where(" $sid and $pro $uids and m.status = 0 and m.isadopt = 1")
+                    ->select();*/
+       // $list   = $this->lists('Member', $map,'','',$field);
+       //var_dump($where);die;
+       $res=M('Dss')->alias('d')
+                    ->field('m.*,s.*,d.*,p.*')
+                    ->join('ganen_member m on d.uid = m.uid')
+                    ->join('ganen_department p on p.did = d.did')
+                    ->join('ganen_station s on s.sid = d.sid')
+                    ->group('d.uid')
+                    ->where($where)->select();
+       // echo '<pre>';
+        //var_dump($res);die;
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0); 
@@ -61,7 +166,7 @@ class UserController extends AdminController {
         $list   = $this->lists('Member', $map,'','',$field);
         
         
-
+        $this->assign('_list',$res);
         //根据获得的信息查询相关的信息
         $list=$this->memberlist($list);
 
@@ -85,7 +190,7 @@ class UserController extends AdminController {
 
         $this->assign('station',$station);
 
-        $this->assign('_list', $list);
+        //$this->assign('_list', $list);
         
         $this->display();
     }
