@@ -174,12 +174,40 @@
 							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
 						</div>
 					</div>
+<<<<<<< HEAD
+				</if>
+
+
+				<if condition="C('IS_APPRO') neq 1">
+				<div class="fields">
+					<div class="field">
+						<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
+						<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
+			                <input type="hidden" name="dperson" value="{$done.dperson}">
+			                <i class="dropdown icon"></i>
+			                <empty name="done.personname">
+			                	<div class="default text">输入姓名搜索</div>
+			                <else />
+			                	<div class="text">{$done.personname}</div>
+							</empty>
+			                <div class="menu"> </div>
+			            </div>
+					</div>
+				</div>
+				<else />
+					<div class="fields">
+						<div class="field">
+							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
+							<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
+				                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
+=======
 				<else />
 					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
 				                <input type="hidden" name="dperson" value="{$done.dperson}">
+>>>>>>> c8137302b257f74f1d3ced2f9a83b9899556ea27
 				                <i class="dropdown icon"></i>
 				                <empty name="done.personname">
 				                	<div class="default text">输入姓名搜索</div>
