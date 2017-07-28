@@ -116,7 +116,7 @@
 						</div>
 					</div>
 				</div>
-				<if condition="C('IS_APPRO') eq 1">
+				<if condition="C('IS_APPRO') eq 0">
 					<div class="ui divider"></div>
 					<div class="fields">
 						<div class="field">
@@ -173,6 +173,9 @@
 							<label>绩效考核</label>
 							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
 						</div>
+					</div>
+				<else />
+					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
