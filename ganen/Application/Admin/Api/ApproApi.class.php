@@ -160,17 +160,18 @@ class ApproApi{
     //得到审批id
     public  function  appr_arr($nid,$ids)
     {
+
         //判断是否需要自动生成权限
         if(empty($ids))
         {
-             $this->auto_group($nid);
+            return  $this->auto_group($nid);
         }
        
-
+        //return json_encode('444');
          //判断是否申请过审批
         if(M('Appro')->where("uid = $nid")->find())
         {
-           $this->error('审批新增失败');die;
+            return json_encode('1');
         }
        /* $res = M('Dss')->field('did')->where("uid = $nid")->find();
        
@@ -193,7 +194,11 @@ class ApproApi{
             }
 
 */         //审批id不可为空
-          if(empty($ids)) return json_encode('1');
+          //if(empty($ids)) return json_encode('审批人不可为空');
+          //return json_encode('444');
+            // //判断岗位信息
+            $res =M('Dss')->field('sid')->where("uid = $nid")->find();
+            if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
             //生成 审批
             $arr_pids = explode(',',$ids);
             //$arr_pids = $ids;
@@ -228,6 +233,7 @@ class ApproApi{
     //自动进入审批组
     public function auto_group($nid)
     {
+
           //自动权限 
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         //判断入职者的父级
@@ -245,16 +251,12 @@ class ApproApi{
                 ->join('ganen_department p on d.did = p.did')
                 ->where("uid = $uid")
                 ->find();
-            
+           
         if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
         {
             $res = M('Auth_group_access')->where("uid = $nid")->find();
             
-            //如果为admin 则添加的都进入 总经理组
-            if($uid == 1)
-              {
-                $group_id =10;
-              }else{
+           
                 //如果为总经理 或 最高级以及的人 添加的都进入默认组
                 //
                 // //查找默认组
@@ -264,23 +266,33 @@ class ApproApi{
                  ->join('ganen_station s on s.sid = d.sid')
                  ->where("d.uid = $nid")
                  ->find();
-
-                 $group_id = $res['auth_group_id'];
-                 if(empty($group_id)) $group_id =10;
-              } 
-            
-            if(empty($res))
+                //如果有默认组 则 进默认组，没有就进总经理组
+ 
+                 if(!empty($res['auth_group_id']))
+                 {
+                     $group_id = $res['auth_group_id'];
+                 }else{
+                    $group_id = 10;
+                 }
+              
+                 // return json_encode($group_id);
+             // 判断是否进组
+            $res =M('Auth_group_access')->where("uid = $nid")->find();
+            if(!empty($res))
             {
-             //
+                $Auth = M("Auth_group_access"); // 实例化User对象
+                $Auth->where("uid=$nid")->delete(); // 删除id为5的用户数据
+            }
              $Auth = M("Auth_group_access"); 
              $data['uid'] = $nid;
             //默认组
             $data['group_id'] = $group_id;
-            $Auth->add($data); // 添加记录
-            return json_encode('1');
-            }
+             $Auth->add($data); // 添加记录
+             return json_encode('1');
             // 要修改的数据对象属性赋值
             
+        }else{
+             return json_encode('请完善审批人信息');
         }
 
     }
