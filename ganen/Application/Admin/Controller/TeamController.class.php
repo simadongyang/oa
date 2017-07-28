@@ -66,9 +66,11 @@ class TeamController extends AdminController {
         //var_dump($this->partment($nid));die;
        // $res = M('Dss')->field('did')->where("uid = $nid")->find();
        //var_dump($res);die;
-       $nid = 66;
-       $Appro = new ApproApi;
-       var_dump($Appro->appr_arr($nid,'1,2,3,4'));die;
+       $nid = 74;
+       $ids = '1,2,3,4';; 
+       $ids = ''; 
+       $Appro = new ApproApi;  
+       var_dump($Appro->appr_arr($nid,$ids ));die;
         if($Appro->appr($nid) == -1)
         {
             $this->error('审批新增失败');die;

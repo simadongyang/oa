@@ -161,18 +161,22 @@ class ApproApi{
     public  function  appr_arr($nid,$ids)
     {
         //判断是否需要自动生成权限
-        $this->auto_group($nid);
+        if(empty($ids))
+        {
+             $this->auto_group($nid);
+        }
+       
 
          //判断是否申请过审批
         if(M('Appro')->where("uid = $nid")->find())
         {
-            return json_encode('1');
+           $this->error('审批新增失败');die;
         }
-        $res = M('Dss')->field('did')->where("uid = $nid")->find();
+       /* $res = M('Dss')->field('did')->where("uid = $nid")->find();
        
-        if(empty($res)) return json_encode('-1');
+        if(empty($res)) return json_encode('-1');*/
        // 得到本部门id
-        $did = $res['did'];
+       // $did = $res['did'];
         /*//$pids = $this -> partment($did);
         if(empty($pids)) return json_encode('-1');
             //当前用户的uid
@@ -189,12 +193,12 @@ class ApproApi{
             }
 
 */         //审批id不可为空
-          if(empty($ids)) return json_encode('-1');
+          if(empty($ids)) return json_encode('1');
             //生成 审批
-            $arr_pids = explode(',',trim($pids));
+            $arr_pids = explode(',',$ids);
             //$arr_pids = $ids;
             //得到字符串id
-            $pids = $pids;
+            $pids = $ids;
             //审批名称
             $name = '入职';
             // 申请原因
@@ -204,6 +208,7 @@ class ApproApi{
 
             $res = D('Member')->field('realname')->where("uid = $perid")->find();
             $person = $res['realname'];
+            //return $arr_pids;
             foreach($arr_pids as $k => $v)
             {
                 $Appro = M("Appro"); // 实例化User对象
@@ -218,7 +223,7 @@ class ApproApi{
                 $data['status'] = -2;
                 $Appro->add($data);
             }
-          return json_encode('-1');
+          return json_encode('1');
     }
     //自动进入审批组
     public function auto_group($nid)

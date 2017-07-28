@@ -509,9 +509,9 @@ class UserController extends AdminController {
                   
                    //如果$count的值等于项目的个数，说明操作成功
                    if($num==$newnum || $result){
-
+                    
                          $Appro = new ApproApi;
-                            if($Appro->appr_arr($arr['uid'],$arr['deperson']) == -1)
+                            if($Appro->appr_arr($arr['uid'],$arr['dperson']) == -1)
                             {
                                 $this->error('审批新增失败');die;
                             }
