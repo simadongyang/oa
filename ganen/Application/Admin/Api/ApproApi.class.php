@@ -167,7 +167,7 @@ class ApproApi{
             return  $this->auto_group($nid);
         }
        
-
+        //return json_encode('444');
          //判断是否申请过审批
         if(M('Appro')->where("uid = $nid")->find())
         {
@@ -194,7 +194,11 @@ class ApproApi{
             }
 
 */         //审批id不可为空
-          if(empty($ids)) return json_encode('审批人不可为空');
+          //if(empty($ids)) return json_encode('审批人不可为空');
+          //return json_encode('444');
+            // //判断岗位信息
+            $res =M('Dss')->field('sid')->where("uid = $nid")->find();
+            if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
             //生成 审批
             $arr_pids = explode(',',$ids);
             //$arr_pids = $ids;
@@ -273,7 +277,7 @@ class ApproApi{
               
                  // return json_encode($group_id);
              // 判断是否进组
-              $res =M('Auth_group_access')->where("uid = $nid")->find();
+            $res =M('Auth_group_access')->where("uid = $nid")->find();
             if(!empty($res))
             {
                 $Auth = M("Auth_group_access"); // 实例化User对象
@@ -287,6 +291,8 @@ class ApproApi{
              return json_encode('1');
             // 要修改的数据对象属性赋值
             
+        }else{
+             return json_encode('请完善审批人信息');
         }
 
     }
