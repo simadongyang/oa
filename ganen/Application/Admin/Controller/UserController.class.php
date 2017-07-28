@@ -17,25 +17,9 @@ use Think\Controller;
  */
 class UserController extends AdminController {
 
-    /**
-     * 用户管理首页
-     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
-
-     */
-    
-    
-    public function index(){   
-       
-        
-        //查询审批通过且未被删除的员工
-        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
-        $map['status']  =   array('egt',0);        
-        $map['iscompletion']=array('neq',-1);
-
-        $list   = $this->lists('Member', $map,'','',$field);
-        
-        
-
+  
+    //用于显示转化信息
+    public function memberlist($list){
         //根据获得的信息查询相关的信息
         foreach($list as &$v){
             //将数字转为文字
@@ -47,7 +31,7 @@ class UserController extends AdminController {
             //将是否转正数字转为文字
             if($v['iscompletion']==1){
                 $v['iscompletion']='正式';
-            }else if($v['iscompletion']==0){
+            }else{
                 $v['iscompletion']='试用';
             }
             //显示年龄
@@ -60,6 +44,26 @@ class UserController extends AdminController {
             $station=M('station')->where('sid='.$dss['sid'])->find(); 
             $v['stationname']=$station['stationname'];
         }
+
+        return $list;
+    }
+
+    //显示人事列表页
+    public function index(){   
+       
+        
+        //查询审批通过且未被删除的员工
+        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
+        $map['status']  =   array('egt',0); 
+        $map['isadopt']=array('eq',1);
+            
+
+        $list   = $this->lists('Member', $map,'','',$field);
+        
+        
+
+        //根据获得的信息查询相关的信息
+        $list=$this->memberlist($list);
        
         $this->assign('_list', $list);
         
@@ -539,24 +543,12 @@ class UserController extends AdminController {
        
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
-        $map['status']  =   array('egt',0);
-        $map['iscompletion']=array('neq',-1);
+        $map['status']  =   array('egt',0);        
+        $map['isadopt']=array('eq',1);
 
         $list   = $this->lists('Member', $map,'','',$field);
-        foreach($list as $val){
-            if($val['sex']==1){
-                $val['sex']='男';
-            }else{
-                $val['sex']='女';
-            }
-            if($val['iscompletion']==1){
-                $val['iscompletion']='是';
-            }else if($val['iscompletion']==0){
-                $val['iscompletion']='否';
-            }
-        
-        }
-        
+
+        $list=$this->memberlist($list);       
 
         $this->assign('_list',$list);
 
@@ -569,42 +561,42 @@ class UserController extends AdminController {
     public function mestaffinfo(){
 
         
-        
+        $uid=I('get.id');
         //查询审批通过且未被删除的员工
-        $field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
+        //$field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
         $map['status']  =   array('egt',0);
-        $map['iscompletion']=array('neq',-1);
+        $map['isadopt']=array('eq',1);
+        $map['uid']=$uid;
 
-        $list   = $this->lists('Member', $map,'','',$field);
-        foreach($list as &$val){
-            if($val['sex']==1){
-                $val['sex']='男';
-            }else{
-                $val['sex']='女';
-            }
-            if($val['iscompletion']==1){
-                $val['iscompletion']='是';
-            }else if($val['iscompletion']==0){
-                $val['iscompletion']='否';
-            }
-            //查询员工所在部门、岗位
-            $dss=M('dss')->where('uid='.$val['uid'])->order('dssid desc')->find();
-            //岗位
-            $department=M('department')->where('did='.$dss['did'])->find();            
-            $val['dname']=$department['dname'];
-            //查询员工所属岗位
-            $station=M('station')->where('sid='.$dss['sid'])->find(); 
-            $val['stationname']=$station['stationname'];
-
-            //查询员工薪资情况
-            $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
-            $val['trysalary']=$salarychange['trysalary'];
-            $val['completionsalary']=$salarychange['completionsalary'];
-            $val['jixiao']=$salarychange['jixiao'];
+        $findone=M('Member')->where($map)->find();
+        if($findone['sex']==1){
+            $findone['sex']='男';
+        }else{
+             $findone['sex']='女';
         }
+        if($findone['iscompletion']==1){
+            $findone['iscompletion']='正式';
+        }else{
+            $findone['iscompletion']='试用';
+        }
+        
+        $dssone=M('dss')->where('uid='.$uid)->order('dssid desc')->find();
+        $department=M('department')->where('did='.$dssone['did'])->find();            
+        $findone['dname']=$department['dname'];
+        //查询员工所属岗位
+        $station=M('station')->where('sid='.$dssone['sid'])->find(); 
+        $findone['stationname']=$station['stationname'];
+            
+            //查询员工薪资情况
+        $salarychange=M('salarychange')->where('uid='.$uid)->order('said desc')->find();
+
+        $findone['trysalary']=$salarychange['trysalary'];
+        $findone['completionsalary']=$salarychange['completionsalary'];
+        $findone['jixiao']=$salarychange['jixiao'];
+        
 
 
-        $this->assign('_list',$list);
+        $this->assign('find',$findone);
 
         $this->display();
     }

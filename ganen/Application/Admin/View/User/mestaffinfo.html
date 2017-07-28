@@ -15,7 +15,7 @@
 						<td>姓名</td>
 						<td>{$find.realname}</td>
 						<td>性别</td>
-						<td>{$find.nan}{$find.nv}</td>
+						<td>{$find.sex}</td>
 					</tr>
 					<tr>
 						<td>联系电话</td>
@@ -51,11 +51,11 @@
 					</tr>
 					<tr>
 						<td>籍贯</td>
-						<td>{$find.nativeplace}</td>
+						<td>{$find.matrimonial}</td>
 						<td>现居地址</td>
 						<td>{$find.nowliveplace}</td>
 						<td>状态</td>
-						<td>{$find.shi}</td>
+						<td>{$find.iscompletion}</td>
 					</tr>
 					<tr>
 						<td>入职时间</td>
@@ -71,19 +71,19 @@
 				<tbody>
 					<tr>
 						<td>所属部门</td>
-						<td></td>
+						<td>{$find.dname}</td>
 						<td>所属岗位</td>
-						<td></td>
+						<td>{$find.stationname}</td>
 					</tr>
 					<tr>
 						<td>试用薪资</td>
-						<td></td>
+						<td>{$find.trysalary}</td>
 						<td>正式薪资</td>
-						<td></td>
+						<td>{$find.completionsalary}</td>
 					</tr>
 					<tr>
 						<td>绩效考核</td>
-						<td colspan="3"></td>
+						<td colspan="3">{$find.jixiao}</td>
 					</tr>
 				</tbody>
 			</table>
