@@ -160,11 +160,12 @@ class ApproApi{
     //得到审批id
     public  function  appr_arr($nid,$ids)
     {
-
+       //判断是否开启审批模式
+        $is_appro = C('IS_APPRO');
         //判断是否需要自动生成权限
-        if(empty($ids))
+        if(empty($ids) || $is_appro == 0)
         {
-            return  $this->auto_group($nid);
+            return  $this->auto_group($nid,$is_appro);
         }
        
         //return json_encode('444');
@@ -231,9 +232,8 @@ class ApproApi{
           return json_encode('1');
     }
     //自动进入审批组
-    public function auto_group($nid)
+    public function auto_group($nid,$is_appro)
     {
-
           //自动权限 
         $uid = $_SESSION['onethink_admin']['user_auth']['uid'];
         //判断入职者的父级
@@ -252,7 +252,7 @@ class ApproApi{
                 ->where("uid = $uid")
                 ->find();
            
-        if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 )
+        if( $uid == 1 || $res['dpid'] == 1 || $tres['dpid'] ==1 || $is_appro == 0)
         {
             $res = M('Auth_group_access')->where("uid = $nid")->find();
             
@@ -271,6 +271,8 @@ class ApproApi{
                  if(!empty($res['auth_group_id']))
                  {
                      $group_id = $res['auth_group_id'];
+                 }else if($is_appro == 0){
+                    return json_encode('岗位信息有误,请重新注册');
                  }else{
                     $group_id = 10;
                  }
@@ -287,8 +289,18 @@ class ApproApi{
              $data['uid'] = $nid;
             //默认组
             $data['group_id'] = $group_id;
-             $Auth->add($data); // 添加记录
-             return json_encode('1');
+            $res =  $Auth->add($data); // 添加记录
+            if($res)
+            {
+                //更改入职状态为
+                $Member = M("Member"); // 实例化User对象
+                // 要修改的数据对象属性赋值
+                $Member->isadopt = '1';
+                $Member->where("uid = $nid")->save(); // 根据条件更新记录
+              return json_encode('1');
+            }else{
+              return json_encode('未知错误');
+            }
             // 要修改的数据对象属性赋值
             
         }else{
