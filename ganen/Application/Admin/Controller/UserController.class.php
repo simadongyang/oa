@@ -552,7 +552,7 @@ class UserController extends AdminController {
                    if($num==$newnum || $result){
 
                          $Appro = new ApproApi;
-                        $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
+                            $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
                             if($res !=1)
                             {
                               
