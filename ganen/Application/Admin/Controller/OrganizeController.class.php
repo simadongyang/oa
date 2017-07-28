@@ -131,6 +131,7 @@ class OrganizeController extends AdminController {
     //岗位信息
     public function station(){
     	$station=M('station')->where('status>-1')->select();
+             
         
         foreach($station as &$v){           
             if ($v['isstaff']==1) {
@@ -138,9 +139,12 @@ class OrganizeController extends AdminController {
             }else{
                 $v['isstaff']='是';
             }
+            $find=M('auth_group')->field('title')->where('id='.$v['auth_group_id'])->find();
+            $v['groupname']=$find['title'];
         }
         //构造新数组       
         $station=stationtrees($station);
+        
     	$this->assign('station',$station);    	
     	$this->display();
     }
