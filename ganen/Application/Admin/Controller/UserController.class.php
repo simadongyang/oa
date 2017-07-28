@@ -563,7 +563,7 @@ class UserController extends AdminController {
         
         $uid=I('get.id');
         //查询审批通过且未被删除的员工
-        //$field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
+        //$field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
         $map['status']  =   array('egt',0);
         $map['isadopt']=array('eq',1);
         $map['uid']=$uid;
