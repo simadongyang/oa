@@ -33,15 +33,15 @@
 			<div class="fields">
 				<div class="field">
 					<label>项目部门</label>
-					<div class="ui selection dropdown">
-		                <input type="hidden" name="pro_id" value="{$pro.dperson|default=''}">
+					<div class="ui selection dropdown dropdown-init">
+		                <input type="hidden" name="pro_id" value="{$pro.dperson}">
 		                <i class="dropdown icon"></i>
-		                <empty name="$pro.dname">
-		                	<div class="default text"></div>
-		                <else />
-		                	<div class="text">{$info.realname}</div>
-						</empty>
-		                <div class="menu"> </div>
+	                	<div class="default text"></div>
+		                <div class="menu">
+		                	<volist name="pro" id="vo">
+		                		<div class="item" data-value="{$vo.dperson}">{$vo.dname}</div>
+			            	</volist>
+		                </div>
 		            </div>
 				</div>
 			</div>
@@ -72,6 +72,7 @@
 <block name="script">
 	<script type="text/javascript">
 		$(function(){
+			$('.dropdown-init').dropdown();
 			$('#searchUser').dropdown({
 	            forceSelection: false,
 	            apiSettings: {
