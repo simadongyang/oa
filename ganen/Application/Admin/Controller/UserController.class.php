@@ -354,7 +354,7 @@ class UserController extends AdminController {
                             $this->error('请输入身份证号码！');
                         }
                         if(strlen($arr['IDnumber'])!=18 || !preg_match('/^([\d]{17}[xX\d])$/',$arr['IDnumber'])){
-                            $this->error('请输入正确身份证号码！');
+                            $this->error('请输入18位身份证号码！');
                         }
                         if(!preg_match('/^(0|1)$/',$arr['iscompletion'])){
                             $this->error('请选择状态！');
