@@ -12,33 +12,33 @@
 		<button class="ui blue button ajax-post confirm" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" target-form="ids">删 除</button>
 		
 		<div class="ui selection dropdown" id="department">						
-			<input type="hidden" name="sid">
+			<input type="hidden" name="depar">
 			<i class="dropdown icon"></i>
 			<div class="default text">按照部门筛选</div>
 			<div class="menu">					
-				<div class="item" data-value="-1" >全部</div>
+				<div class="item" data-value="0" >全部</div>
 				<volist name="station" id="vo">
 					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
 				</volist>
 			</div>
 		</div>
 		<div class="ui selection dropdown" id="project">				
-			<input type="hidden" name="sid">
+			<input type="hidden" name="pro">
 			<i class="dropdown icon"></i>
 			<div class="default text">按照项目筛选</div>
 			<div class="menu">					
-				<div class="item" data-value="-1" >全部</div>
+				<div class="item" data-value="0" >全部</div>
 				<volist name="station" id="vo">
 					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
 				</volist>
 			</div>
 		</div>
 		<div class="ui selection dropdown" id="post">						
-			<input type="hidden" name="sid">
+			<input type="hidden" name="stat">
 			<i class="dropdown icon"></i>
 			<div class="default text">按照岗位筛选</div>
 			<div class="menu">					
-				<div class="item" data-value="-1" >全部</div>
+				<div class="item" data-value="0">全部</div>
 				<volist name="station" id="vo">
 					<div class="item" data-value="{$vo.sid}" >{$vo.stationname}</div>
 				</volist>
@@ -102,7 +102,13 @@
 		$(function(){
 			$("#department,#project,#post").dropdown({
 				onChange: function(value, text, $selectedItem) {
-					console.log(window.location);
+					var url = window.location.href;
+					url = url.substring(0,url.indexOf("User")+4)+"/index"
+					var depar = $("input[name='depar']").val()?$("input[name='depar']").val():0;
+					var pro  = $("input[name='pro']").val()?$("input[name='pro']").val():0;
+					var stat  = $("input[name='stat']").val()?$("input[name='stat']").val():0;
+					url = url + "/depar/" + depar + "/pro/" + pro + "/stat/" +stat;
+					window.location.href = url;
 				}
 			});
 		})
