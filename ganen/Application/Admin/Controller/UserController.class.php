@@ -23,14 +23,14 @@ class UserController extends AdminController {
 
      */
     
-    }
+    
     public function index(){   
        
         
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0);        
-        $map['iscompletion']=array('neq',-1)
+        $map['iscompletion']=array('neq',-1);
 
         $list   = $this->lists('Member', $map,'','',$field);
         
@@ -540,15 +540,23 @@ class UserController extends AdminController {
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
         $map['status']  =   array('egt',0);
-        $map['iscompletion']=array('neq',-1)
+        $map['iscompletion']=array('neq',-1);
 
         $list   = $this->lists('Member', $map,'','',$field);
-        if($val['iscompletion']==1){
+        foreach($list as $val){
+            if($val['sex']==1){
+                $val['sex']='男';
+            }else{
+                $val['sex']='女';
+            }
+            if($val['iscompletion']==1){
                 $val['iscompletion']='是';
             }else if($val['iscompletion']==0){
                 $val['iscompletion']='否';
             }
+        
         }
+        
 
         $this->assign('list',$list);
 
@@ -565,7 +573,7 @@ class UserController extends AdminController {
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,phone,qq,criticalname,criticalphone,birthday,nation,political,IDnumber,major,school,topeducation,matrimonial,matrimonial,nowliveplace,iscompletion,entrytime,completiontime';
         $map['status']  =   array('egt',0);
-        $map['iscompletion']=array('neq',-1)
+        $map['iscompletion']=array('neq',-1);
 
         $list   = $this->lists('Member', $map,'','',$field);
         foreach($list as &$val){
