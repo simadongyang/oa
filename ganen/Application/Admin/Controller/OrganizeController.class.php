@@ -57,7 +57,7 @@ class OrganizeController extends AdminController {
 
                     $ew=congruent($findd,$a);
                     
-                    if($ew==4){
+                    if($ew==5){
                         $this->success('您未作出任何编辑！',U('index'));
                     }
                 }
