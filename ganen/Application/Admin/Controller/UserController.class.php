@@ -459,7 +459,7 @@ class UserController extends AdminController {
                             $this->error('请输入身份证号码！');
                         }
                         if(strlen($arr['IDnumber'])!=18 || !preg_match('/^([\d]{17}[xX\d])$/',$arr['IDnumber'])){
-                            $this->error('请输入正确身份证号码！');
+                            $this->error('请输入18位身份证号码！');
                         }
                         if(!preg_match('/^(0|1)$/',$arr['iscompletion'])){
                             $this->error('请选择状态！');
@@ -499,7 +499,7 @@ class UserController extends AdminController {
                         if(!M('Member')->add($arr)){
                             $this->error('用户添加失败！');
                         } else {
-                            $this->success('用户添加成功！',U('add?id='.$arr['uid']));
+                            $this->success('用户基本信息添加成功请点击部门与薪资继续编写！',U('add?id='.$arr['uid']),5);
                         }
                     
                     } else { //注册失败，显示错误信息
@@ -577,6 +577,9 @@ class UserController extends AdminController {
 
                     if(!$arr['trysalary'] || !$arr['completionsalary']){
                             $this->error('请输入薪资！');
+                    }
+                    if(!preg_match('/^(\d+(.)?\d+)$/',$arr['trysalary']) || !preg_match('/^(\d+(.)?\d+)$/',$arr['completionsalary'])){
+                        $this->error('薪资部分请输入数字！');
                     }
                     //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
 
