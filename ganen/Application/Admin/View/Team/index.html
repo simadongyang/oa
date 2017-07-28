@@ -39,12 +39,12 @@
 						<td>{$vo.dname}</td>
 						<td>{$vo.realname}</td>
 						<td>
+							<a href="{:U('Team/edit?id='.$vo['id'])}">编辑</a>
 							<eq name="vo.status" value="1">
 								<a href="{:U('Team/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get">禁用</a>
 								<else/>
 								<a href="{:U('Team/changeStatus?method=resumeUser&id='.$vo['id'])}" class="ajax-get">启用</a>
 							</eq>
-							<a href="{:U('Team/edit?id='.$vo['id'])}">编辑</a>
 							<a href="{:U('Team/changeStatus?method=deleteUser&id='.$vo['id'])}" class="confirm ajax-get">删除</a>
 						</td>
 					</tr>
