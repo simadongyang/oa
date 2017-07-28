@@ -689,7 +689,7 @@ class PerapproController extends AdminController {
         // 删除 aids 里面的id
         $suid = $_SESSION['onethink_admin']['user_auth']['uid'];
         $res=M('Appro')->where($map)->select();
-         
+                //得到的id只有一个
                 foreach($res as $key=>$val)
                 {
                     //查到要改的数据
@@ -745,6 +745,12 @@ class PerapproController extends AdminController {
                     $data['status'] = 1;
                     $data['atime'] = time();
                     $Ures->where($map)->save($data); // 根据条件更新记录
+
+                      //更改入职状态为
+                  $Member = M("Member"); // 实例化User对象
+                  // 要修改的数据对象属性赋值
+                  $Member->isadopt = '1';
+                  $Member->where("uid = $uid")->save(); // 根据条件更新记录
                 }
 				return 1;
 				//$this->success('用户编辑成功！',U('Perappro/wait'));   

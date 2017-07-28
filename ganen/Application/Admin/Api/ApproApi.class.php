@@ -287,8 +287,18 @@ class ApproApi{
              $data['uid'] = $nid;
             //默认组
             $data['group_id'] = $group_id;
-             $Auth->add($data); // 添加记录
-             return json_encode('1');
+            $res =  $Auth->add($data); // 添加记录
+            if($res)
+            {
+                //更改入职状态为
+                $Member = M("Member"); // 实例化User对象
+                // 要修改的数据对象属性赋值
+                $Member->isadopt = '1';
+                $Member->where("uid = $nid")->save(); // 根据条件更新记录
+              return json_encode('1');
+            }else{
+              return json_encode('未知错误');
+            }
             // 要修改的数据对象属性赋值
             
         }else{
