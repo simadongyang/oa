@@ -172,44 +172,24 @@
 					</div>
 				</div>
 				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
-					<!--<empty name="sel">
-						<div class="fields fields-xm fields-hide">
-							<div class="field">
-								<label>所属项目</label>
-								<select class="ui dropdown dropdown-init" name="newdid[]">
-									<volist name="project" id="vo">
-										<option value="{$vo.id}">{$vo.name}</option>
-									</volist>
-								</select>
-							</div>
-							<div class="field">
-								<label>分摊工资</label>
-								<input type="text" name="newps1[]" value="" />
-							</div>
-							<div class="field field-icon">
-								<i class="minus square icon"></i>
-							</div>
-						</div>
-					<else />-->
 						<volist name="sel" id="vos" key="k">
-						<if condition="$vos.projectid neq 0">
-							<div class="fields fields-xm fields-hide">
-								<div class="field">
-									<label>所属项目</label>
-									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
-									<input type="hidden" name="prid[]" value="{$vos.dssid}">
+							<if condition="$vos.projectid neq 0">
+								<div class="fields fields-xm fields-hide">
+									<div class="field">
+										<label>所属项目</label>
+										<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
+										<input type="hidden" name="prid[]" value="{$vos.dssid}">
+									</div>
+									<div class="field">
+										<label>分摊工资</label>
+										<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
+									</div>
+									<div class="field field-icon">
+										<i class="minus square icon"></i>
+									</div>
 								</div>
-								<div class="field">
-									<label>分摊工资</label>
-									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
-								</div>
-								<div class="field field-icon">
-									<i class="minus square icon"></i>
-								</div>
-							</div>
-						</if>
+							</if>
 						</volist>
-					<!--</empty>--> 
 					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
 					<div class="fields fields-xm fields-hide">
 						<div class="field">
@@ -228,6 +208,7 @@
 						</div>
 					</div>
 				</if>
+<<<<<<< HEAD
 				<if condition="C('IS_APPRO') neq 0">
 				<div class="fields">
 					<div class="field">
@@ -250,6 +231,14 @@
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
 				                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
+=======
+				<if condition="C('IS_APPRO') eq 1">
+					<div class="fields">
+						<div class="field">
+							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
+							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
+				                <input type="hidden" name="dperson" value="{$done.dperson}">
+>>>>>>> 28c6fc5a4fdd94eea0372888219416030a413f2f
 				                <i class="dropdown icon"></i>
 				                <empty name="done.personname">
 				                	<div class="default text">输入姓名搜索</div>
@@ -258,8 +247,8 @@
 								</empty>
 				                <div class="menu"> </div>
 				            </div>
+						</div>
 					</div>
-				</div>
 				</if>
 				<input type="hidden" name="savestatus" value="岗位">
 				<input type="hidden" name="uid" value="{$find.uid}">
