@@ -1,9 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html style="padding: 0px; overflow: hidden; min-height: auto;">
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/semantic-ui/semantic.min.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+		<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/semantic-ui/semantic.min.js"></script>
+		<script type="text/javascript" src="/Build/Admin/Js/all.js"></script>
 	</head>
-	<body>
+	<body style="padding: 0px; overflow: hidden; min-height: auto;">
+		<form id="userAdd" action="" method="post" class="form-horizontal ui form">
+			<div class="fields">
+				<div class="field">
+					<label>试用薪资</label>
+					<input type="text" name="trysalary" value="{$salarychange.trysalary}">
+				</div>
+				<div class="field">
+					<label>正式薪资</label>
+					<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
+				</div>
+			</div>
+			<volist name="sel" id="vos" key="k">
+				<if condition="$vos.projectid neq 0">
+					<div class="fields fields-xm fields-hide">
+						<div class="field">
+							<label>所属项目</label>
+							<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
+							<input type="hidden" name="prid[]" value="{$vos.dssid}">
+						</div>
+						<div class="field">
+							<label>分摊工资</label>
+							<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
+						</div>
+						<div class="field field-icon">
+							<i class="minus square icon"></i>
+						</div>
+					</div>
+				</if>
+			</volist>
+			<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
+			<div class="fields fields-xm fields-hide">
+				<div class="field field-textarea">
+					<label>绩效考核</label>
+					<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
+				</div>
+			</div>
+			<button class="ui blue button submit-btn ajax-post" type="submit" id="submit" target-form="form-horizontal">确 定</button>
+		</form>
+		<script type="text/javascript">
+			$('.dropdown-init').dropdown();
+			//添加项目
+			$(".button.add").click(function(){
+				var html = '<div class="fields fields-xm fields-hide">' + 
+								'<div class="field">' + 
+									'<label>所属项目</label>' + 
+									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
+					                    '<volist name="project" id="vo">' + 
+					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
+					                    '</volist>' + 
+					                '</select>' +
+								'</div>' + 
+								'<div class="field">' + 
+									'<label>分摊工资</label>' + 
+									'<input type="text" name="newps1[]" value="" />' + 
+								'</div>' + 
+								'<div class="field field-icon">' + 
+									'<i class="minus square icon"></i>' + 
+								'</div>' + 
+							'</div>';
+				$(this).before(html);
+				$('.dropdown-init').dropdown();
+			})
+			//删除项目
+			$(".form-horizontal").delegate(".minus.icon","click",function(){
+				$(this).closest(".fields").remove();
+			})
+		</script>
 	</body>
 </html>
