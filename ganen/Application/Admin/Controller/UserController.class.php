@@ -134,7 +134,22 @@ class UserController extends AdminController {
         }else{
             $sid = 1;
         }
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 ';
+        //查到所有的有效dss id 
+        $dss = M('Dss')->field('max(dssid) m_dssid')->group('uid')->order('uid desc')->select();
+        //echo '<pre>';
+        //得到id数组
+        $ids = array_column($dss, 'm_dssid');
+        //将数组变为字符串
+        $ids = implode($ids,',');
+        if(!empty($ids))
+        {
+            $dssid = "( $ids )";
+        }else{
+            $dssid = 1;
+        }
+        //$names = array_column($msg, 'name');
+       // var_dump($ids);die;
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 '.' and d.dssid in '.$dssid;
        /* $res=M('Dss')->alias('d')
                     ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
                     ->join('ganen_member m on d.uid = m.uid')
@@ -143,11 +158,10 @@ class UserController extends AdminController {
        // $list   = $this->lists('Member', $map,'','',$field);
        //var_dump($where);die;
        $res=M('Dss')->alias('d')
-                    ->field('m.uid,max(d.dssid) dssid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
+                    ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->join('ganen_department p on p.did = d.did')
                     ->join('ganen_station s on s.sid = d.sid')
-                    ->group('d.uid')
                     ->order('d.dssid desc')
                     ->where($where)->select();
         //echo '<pre>';
