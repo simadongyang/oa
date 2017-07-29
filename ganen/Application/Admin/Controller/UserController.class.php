@@ -381,10 +381,10 @@ public function jibenyanzheng($arr){
             $this->error('请选择状态！');
         }
         if($arr['did']==1){
-            $this->error('请选择部门！');
+          //  $this->error('请选择部门！');
         }
         if($arr['sid']<=1){
-            $this->error('请选择岗位！');
+          //  $this->error('请选择岗位！');
         }
     }
 
