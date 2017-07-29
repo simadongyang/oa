@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="/Build/Admin/Js/all.js"></script>
 	</head>
 	<body style="padding: 0px; overflow: hidden; min-height: auto;">
-		<form id="userAdd" action="__URL__/salarychange" method="post" class="form-horizontal ui form">
+		<form id="userAdd" action="{:U('User/salarychange')}" method="post" class="form-horizontal ui form">
 			<div class="fields">
 				<div class="field">
 					<label>试用薪资</label>
@@ -26,7 +26,7 @@
 					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>所属项目</label>
-							<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
+							<input type="text" name="p{$k}" value="{$vos.name}" readonly>
 							<input type="hidden" name="prid[]" value="{$vos.dssid}">
 						</div>
 						<div class="field">
@@ -46,6 +46,8 @@
 					<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
 				</div>
 			</div>
+			<input type="hidden" name="uid" value="{$sel[0]['uid']}">
+			<input type="submit" value="提交">
 			<button class="ui blue button submit-btn ajax-post" type="submit" id="submit" target-form="form-horizontal">确 定</button>
 		</form>
 		<script type="text/javascript">
