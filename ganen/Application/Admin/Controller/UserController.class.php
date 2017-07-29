@@ -354,8 +354,8 @@ class UserController extends AdminController {
         }
     }
 
-//基本信息验证
-public function jibenyanzheng($arr){
+    //基本信息验证
+    public function jibenyanzheng($arr){
 
         if(!$arr['username']){
             $this->error('请输入员工姓名！');
@@ -534,13 +534,6 @@ public function jibenyanzheng($arr){
             $this->assign('sel',$sel);
         } 
         
-
-        //查询登录用户能否他人查看薪资
-        
-        $denguid=UID;
-        $deng=M('Member')->where('uid='.$denguid)->find();
-        $this->assign('look',$deng['looksalary']);
-        
         if(IS_POST){
         	$arr=I('post.');                      
 
@@ -556,7 +549,7 @@ public function jibenyanzheng($arr){
                        // $this->jibenyanzheng($arr);
                         $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                         if(!$updat){                            
-                            $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
+                            $this->error('用户编辑失败！'.'adfsafda',U('edit?id='.$arr['uid']));
                         }else{
                            $gangwei=ture;//岗位信息没有发生改变
                         }
@@ -577,7 +570,7 @@ public function jibenyanzheng($arr){
                         $st=congruent($findst,$ds); 
                         if($st!=3){
                            // $this->jibenyanzheng($arr);
-                            $arr['caozuorenid']=$denguid;
+                            $arr['caozuorenid']=UID;
                             $resul=M('dss')->add($arr);                            
                             if(!$resul){                                
                                 $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
