@@ -187,8 +187,8 @@
 			$('.dropdown-init,#sid').dropdown();
 			$("#department").dropdown({
 				onChange: function(value, text, $selectedItem) {
-					console.log(departmentJosn);
 					for (var i = 0; i < departmentJosn.length; i++) {
+						$("#sid").dropdown('clear');
 						if(value == departmentJosn[i].did){
 							if(departmentJosn[i].sid){
 								var html = '';
