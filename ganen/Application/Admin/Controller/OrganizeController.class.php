@@ -32,6 +32,14 @@ class OrganizeController extends AdminController {
         $this->display();
     }
     public function add(){
+
+        //显是所有岗位信息
+        $station=M('station')->where('status>-1')->select();
+        
+        //构造新数组       
+        $station=stationtrees($station);        
+        //var_dump($station);exit;
+        $this->assign('station',$station);
     	//显示所属部门信息
     	$department=M('department')->where('status>-1')->select();
         //构造新数组       

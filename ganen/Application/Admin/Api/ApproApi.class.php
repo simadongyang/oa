@@ -169,9 +169,9 @@ class ApproApi{
         }
        
         //return json_encode('444');
-         //判断是否申请过审批
-          $res =M('Dss')->field('sid')->where("uid = $nid")->find();
-          if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
+         //判断是否申请过审批 审批模式不填岗位
+         // $res =M('Dss')->field('sid')->where("uid = $nid")->find();
+         // if(empty($res['sid'])) return json_encode('岗位信息有误,请重新注册');
         if(M('Appro')->where("uid = $nid")->find())
         {
             return json_encode('1');

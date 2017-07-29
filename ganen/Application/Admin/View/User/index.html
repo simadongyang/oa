@@ -69,12 +69,20 @@
 						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
 						<td>{$vo.uid} </td>
 						<td>{$vo.realname}</td>
-						<td>{$vo.sex}</td>
+						<td>    
+							<if condition="($vo.sex eq 1) "> 男
+    						<else /> 女
+    						</if>
+    					</td>
 						<td>{$vo.age}</td>
 						<td>{$vo.phone}</td>
 						<td>{$vo.dname}</td>
 						<td>{$vo.stationname}</td>
-						<td>{$vo.iscompletion}</td>
+						<td>    
+							<if condition="($vo.iscompletion eq 1) "> 正式
+    						<else /> 试用
+    						</if>
+    					</td>
 						<td>{$vo.entrytime}</td>
 						<td>
 							<a href="{:U('User/add?id='.$vo['uid'])}">查看详情</a>
