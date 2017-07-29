@@ -9,6 +9,7 @@
 
 namespace Admin\Controller;
 use User\Api\UserApi;
+
 use Admin\Api\ApproApi;
 use Think\Controller;
 /**
@@ -367,7 +368,9 @@ public function jibenyanzheng($arr){
         if(!$arr['username']){
             $this->error('请输入员工姓名！');
         }
-
+        if(mb_strlen($arr['username'],"utf-8")>12){
+            $this->error('员工姓名长度须在12字以内！');
+        } 
         if(!$arr['IDnumber']){
             $this->error('请输入身份证号码！');
         }
@@ -433,21 +436,30 @@ public function xinziyanzheng($arr){
                 //获取身份证号码后4位
                 $hou4=substr($arr['IDnumber'],-4);
                 $ad['username']=$arr['username'].$hou4;
-                $ad['password']=md5(123456);
-                $find=M('ucenter_member')->where("username='%s'",$ad['username'])->find($add);
+                
+                $ad['password']=123456;//123456789987456123
+
+                $User   =   new UserApi();
+                $addone['id']=$User->register($ad['username'],$ad['password']);
+                
+
+
+
+                //$find=M('ucenter_member')->where("username='%s'",$ad['username'])->find($add);
                // $this->success('员工添加成功！'.$ad['username']);
-                if($find){
+                /*if($find){
                     $this->error('该员工已经存在！');
                 }else{
                   //添加员工中心
                     $addone=M('ucenter_member')->add($ad); 
 
-                    if($addone){
+                    if($addone){*/
+                    if($addone['id']>0){
                        
-                        $findone=M('ucenter_member')->where("username='%s'",$ad['username'])->find();
+                        //$findone=M('ucenter_member')->where("username='%s'",$ad['username'])->find();
                         
                         $arr['realname']=$arr['username'];
-                        $arr['uid']=$findone['id'];
+                        $arr['uid']=$addone['id'];
                         $arr['nickname']=$arr['username'];
                         $arr['status']=1;
                         $user = $arr;
@@ -466,24 +478,24 @@ public function xinziyanzheng($arr){
                                       
                                         $this->error($res);die;
                                     }
-                                    
+
                                  $this->success('员工添加成功！',U('index'));die;                    
                             } else {
-                                M('ucenter_member')->where("username='%s'",$ad['username'])->delete();
+                                M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
 
                                 $this->error('员工添加失败！');die;
                             }               
                         }else{
-                            $re=M('ucenter_member')->where("username='%s'",$ad['username'])->delete();
+                            $re=M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
                             if($re){
                                 $this->error('员工添加失败！');die;
                             }
                              
                         }             
-                    }else{
-                        $this->error('员工添加失败！');die;  
+                    }elseif($addone['id']==0){
+                        $this->error('该员工已存在！');die;  
                     }
-                }
+                //}
 
             }
 
@@ -565,7 +577,7 @@ public function xinziyanzheng($arr){
                 if($findd){
                     $ew=congruent($findd,$arr); 
                     if($ew!=21){
-                        $this->jibenyanzheng($arr);
+                       // $this->jibenyanzheng($arr);
                         $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                         if(!$updat){
                             
@@ -582,7 +594,7 @@ public function xinziyanzheng($arr){
                                 $arr['caozuorenid']=$denguid;
                                 $resul=M('dss')->add($arr);
                                 if($resul){
-                                    $this->success('用户编辑成功！',U('add?id='.$arr['uid']));                    
+                                    $this->success('用户编辑成功！'.'999',U('add?id='.$arr['uid']));                    
                                 } else {
                                     $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                                 } 
