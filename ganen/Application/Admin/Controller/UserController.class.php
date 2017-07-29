@@ -428,13 +428,12 @@ public function jibenyanzheng($arr){
         $department=M('department')->where('status>-1')->select();
         //$department=tree($department);
         $department=getTrees($department);
+
         $depar = $this->get_stat($department);
 //      $depar = json_encode($depar);
         $this->assign('department',$depar);
+
         
-        //显示项目信息
-        $project=M('project')->where('status>-1')->select();
-        $this->assign('project',$project);
         
         //显示岗位信息
         $station=M('station')->where('status>-1')->select();        
@@ -444,8 +443,8 @@ public function jibenyanzheng($arr){
         $this->assign('station',$station);
 
 
+    }
 
-}
     //传入部门信息 返回部门和岗位信息
     public function get_stat($depar)
     {
@@ -492,15 +491,21 @@ public function jibenyanzheng($arr){
             //添加员工信息
             if(!$arr['uid']){
                
-                $this->jibenyanzheng($arr);
+                //$this->jibenyanzheng($arr);
                
                 //获取身份证号码后4位
                 $hou4=substr($arr['IDnumber'],-4);
                 $ad['username']=$arr['username'].$hou4;                
                 $ad['password']=123456;
+                $ad['email']=rand(0,100000).rand(99,9999).'@qq.com';
                 //注册到员工中心，用于登录
-                $User   =   new UserApi();
-                $addone['id']=$User->register($ad['username'],$ad['password']);
+                $User   =   new UserApi();                
+                $addone['id']=$User->register($ad['username'],$ad['password'],$ad['email']);
+
+                //注册二级密码
+                $pass['password']=password_md5($ad['password']);                
+                $pass['uid']=$addone['id'];
+                M('secondary_password')->add($pass);       
 
                 //根据员工中心注册成功返回员工id
                 if($addone['id']>0){                   
@@ -660,10 +665,49 @@ public function jibenyanzheng($arr){
         $this->display();
     }
 
-    public function salary4(){
+    public function showselfsalary($uid){
+        //显示项目信息
+                $project=M('project')->where('status>-1')->select();
+                $this->assign('project',$project);
+
+                //查询项目情况
+                $where['status']=array('eq',0);
+                $where['uid']=$uid;
+                $projectslef=M('dss')
+                ->alias('d')
+                ->join('ganen_project as p ON p.id=d.projectid')
+                ->field('p.name')
+                ->where($where)
+                ->order('dssid desc')
+                ->select();
+
+                var_dump($projectslef);
+                $this->assign('sel',$projectslef);
+
+                //查询薪资情况
+                $where=array('uid'=>$uid);
+                $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
+                $this->assign('salarychange',$salaryone);
+    }
+
+    //验证二级密码查看薪资
+    public function salary(){
+
+        
+            if($result){
+                $this->showselfsalary($uid);
+            }else{
+                 $this->error('您没有权限！',U('edit?id='.$arr['uid']));
+            }            
+
+        $this->display();
+    }
+
+    //编辑薪资信息
+    public function salarychange(){
                                 //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
 
-                                //获得员工项目原有的id是否还存在，
+                           /*     //获得员工项目原有的id是否还存在，
                                $where=array('uid'=>$arr['uid'],'status'=>0);
                                $sele=M('dss')->where($where)->select();
                                $count=0;
@@ -739,9 +783,7 @@ public function jibenyanzheng($arr){
 
                            //修改薪资部分
                           
-                           $where=array('uid'=>$arr['uid']);
-                           $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
-
+                           
                            if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
 
                              
@@ -760,9 +802,9 @@ public function jibenyanzheng($arr){
                                 $this->success('用户编辑成功！'.$ew,U('index'));                    
                             } else {
                                 $this->error('用户编辑失败',U('add?id='.$arr['uid']));
-                            } 
+                            } */
                                        
-            $this->display();
+            $this->display('salary');
      }                    
                                      
                 

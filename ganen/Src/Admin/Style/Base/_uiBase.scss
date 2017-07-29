@@ -1,4 +1,7 @@
 .ui{
+    .header{
+        position: initial;
+    }
     &.form{
         .field>label{
             font-weight: normal;
@@ -13,7 +16,7 @@
                 }
             }
         }
-        .disabled.field,.disabled.fields,.field :disabled{
+        .disabled.field,.disabled.fields,.field :disabled,.disabled.dropdown, .ui.dropdown .menu>.disabled.item{
             opacity: 1;
         }
     }
