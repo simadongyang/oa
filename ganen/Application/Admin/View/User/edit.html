@@ -4,6 +4,7 @@
 	<div id="userAdd">
 		<div class="ui top attached tabular menu">
 			<div class="item active" data-tab="tab-name">基本信息</div>
+			<div class="item" data-tab="tab-name" style="cursor: pointer;" id="salary">薪资信息</div>
 		</div>
 		<div class="ui bottom attached segment tab active" data-tab="tab-name">
 			<form action="{:U()}" method="post" class="form-horizontal ui form">
@@ -151,7 +152,7 @@
 						<input type="password" name="password" placeholder="输入二级密码查看薪资" autocomplete="off">
 					</div>
 				</div>
-				<button class="ui blue button" type="submit">确 定</button>
+				<button class="ui blue button" type="submit" >确 定</button>
 			</div>
 			<iframe src="{:U('User/salary')}" width="100%" height="300px" border="0" style="border: 0px; overflow: hidden;"></iframe>
 		</div>
@@ -161,8 +162,13 @@
 <block name="script">
 	<script type="text/javascript">
 		$(function() {
+			//薪资接口
+			$("#salary").click(function(){
+				$.post("__APP__/Admin/Uapi/salary",{uid:"{$find.uid}",password:"password"},function(data){
+					
+				})
+			})
 			var departmentJosn = <?php echo json_encode($department)?>;
-			$('.menu .item').tab();
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init,#sid').dropdown();
 			$("#department").dropdown({
@@ -203,6 +209,8 @@
 	            startView:4,
 	            autoclose: true,
 	        })
+
+
 		})
 	</script>
 </block>
