@@ -577,7 +577,7 @@ public function xinziyanzheng($arr){
                 if($findd){
                     $ew=congruent($findd,$arr); 
                     if($ew!=21){
-                        $this->jibenyanzheng($arr);
+                       // $this->jibenyanzheng($arr);
                         $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                         if(!$updat){
                             
@@ -594,7 +594,7 @@ public function xinziyanzheng($arr){
                                 $arr['caozuorenid']=$denguid;
                                 $resul=M('dss')->add($arr);
                                 if($resul){
-                                    $this->success('用户编辑成功！',U('add?id='.$arr['uid']));                    
+                                    $this->success('用户编辑成功！'.'999',U('add?id='.$arr['uid']));                    
                                 } else {
                                     $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                                 } 
