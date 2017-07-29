@@ -4,7 +4,7 @@
 	<div id="userAdd">
 		<div class="ui top attached tabular menu">
 			<div class="item active" data-tab="tab-name">基本信息</div>
-			<div class="item" data-tab="tab-name" style="cursor: pointer;" id="salary">薪资信息</div>
+			<div class="item" data-tab="tab-name" style="cursor: pointer;" id="salaryModal">薪资信息</div>
 		</div>
 		<div class="ui bottom attached segment tab active" data-tab="tab-name">
 			<form action="{:U()}" method="post" class="form-horizontal ui form">
@@ -157,15 +157,44 @@
 			<iframe src="{:U('User/salary')}" width="100%" height="300px" border="0" style="border: 0px; overflow: hidden;"></iframe>
 		</div>
 	</div>
+	<div class="ui modal small user-edit-modal">
+		<div class="header">
+			薪资查看二级密码验证
+		</div>
+		<div class="content">
+			<div class="ui form">
+				<div class="field">
+				<label>请输入你6位数的二级密码</label>
+				<input type="password" id="salaryPassword" placeholder="">
+				<p>密码错误</p>
+			</div>
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui button cancel">取消</div>
+			<div class="ui blue button" id="salaryPost">确定</div>
+		</div>
+	</div>
 </block>
 
 <block name="script">
 	<script type="text/javascript">
 		$(function() {
 			//薪资接口
-			$("#salary").click(function(){
-				$.post("__APP__/Admin/Uapi/salary",{uid:"{$find.uid}",password:"password"},function(data){
-					
+			$("#salaryModal").click(function(){
+				$('.ui.modal').modal('show');
+			})
+			$("#salaryPost").click(function(){
+				var password = $("#salaryPassword").val();
+				if(password.length != 6){
+					return;
+				}
+				$.post("__APP__/Admin/Uapi/salary",{uid:"{$find.uid}",password:password},function(data){
+					if(data.status){
+						alert("返回成功");
+					}else{
+						alert("返回失败,密码错误或者权限不对或者接口有问题");
+					}
 				})
 			})
 			var departmentJosn = <?php echo json_encode($department)?>;

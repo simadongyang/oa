@@ -115,6 +115,9 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.ui .header {
+  position: initial; }
+
 .ui.form .field > label {
   font-weight: normal; }
 
@@ -124,7 +127,7 @@ input {
 .ui.form .fields .field textarea.w204 {
   width: 204px; }
 
-.ui.form .disabled.field, .ui.form .disabled.fields, .ui.form .field :disabled {
+.ui.form .disabled.field, .ui.form .disabled.fields, .ui.form .field :disabled, .ui.form .disabled.dropdown, .ui.form .ui.dropdown .menu > .disabled.item {
   opacity: 1; }
 
 .main-title {
@@ -302,19 +305,19 @@ h3 {
       opacity: 0.2;
       filter: alpha(opacity=20); }
 
-.page {
+.pages {
   margin: 10px 0;
   *zoom: 1; }
-  .page div {
+  .pages div {
     border: 1px solid #CCCCCC;
     border-radius: 4px;
     display: inline-block; }
-    .page div:before, .page div:after {
+    .pages div:before, .pages div:after {
       display: table;
       content: ""; }
-    .page div:after {
+    .pages div:after {
       clear: both; }
-    .page div a, .page div span {
+    .pages div a, .pages div span {
       float: left;
       margin-left: -1px;
       padding: 0 14px;
@@ -322,15 +325,15 @@ h3 {
       line-height: 30px;
       color: #686868;
       border-right: 1px solid #CCCCCC; }
-    .page div a:hover {
+    .pages div a:hover {
       text-decoration: none;
       background: #E1E1E1; }
-    .page div .current {
+    .pages div .current {
       border-right: 1px solid #CCCCCC;
       color: #2185d0; }
-    .page div .next, .page div .prev {
+    .pages div .next, .pages div .prev {
       font-weight: bold; }
-    .page div .rows {
+    .pages div .rows {
       border-right: none; }
 
 #authManagerManagerGroup {
@@ -380,3 +383,11 @@ h3 {
 
 #userAdd .field-textarea {
   width: 512px; }
+
+.user-edit-modal {
+  width: 320px !important;
+  left: 50% !important;
+  margin-left: -160px !important; }
+  .user-edit-modal .content p {
+    margin-top: 5px;
+    color: crimson; }
