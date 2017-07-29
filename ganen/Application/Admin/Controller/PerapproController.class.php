@@ -605,7 +605,12 @@ class PerapproController extends AdminController {
                         }
                    }
 
-   
+                  if($arr['did']==1){
+                      $this->error('请选择部门！');
+                  }
+                  if($arr['sid']<=1){
+                      $this->error('请选择岗位！');
+                  }
 
                    //修改薪资部分
                   
