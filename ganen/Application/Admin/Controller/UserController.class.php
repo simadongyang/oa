@@ -390,30 +390,33 @@ public function xinziyanzheng($arr){
     }
 
 }
+//显示部门岗位项目选择项
+public function dps(){
+    //显示所属部门信息
+        $department=M('department')->where('status>-1')->select();
+        //$department=tree($department);
+        $department=getTrees($department);
+        $this->assign('department',$department);
+        
+        //显示项目信息
+        $project=M('project')->where('status>-1')->select();
+        $this->assign('project',$project);
+        
+        //显示岗位信息
+        $station=M('station')->where('status>-1')->select();        
+        //构造新数组       
+        $station=stationtrees($station);  
 
+        $this->assign('station',$station);
+
+
+}
 
 
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	
-
-    	//显示所属部门信息
-    	$department=M('department')->where('status>-1')->select();
-        //$department=tree($department);
-        $department=getTrees($department);
-    	$this->assign('department',$department);
-    	
-    	//显示项目信息
-    	$project=M('project')->where('status>-1')->select();
-    	$this->assign('project',$project);
-    	
-    	//显示岗位信息
-    	$station=M('station')->where('status>-1')->select();
-        
-        //构造新数组       
-        $station=stationtrees($station);   
-
-    	$this->assign('station',$station);
-
+        //显示部门岗位选项
+        $this->dps();    	
 
         //添加员工信息
         if(IS_POST){
@@ -422,74 +425,63 @@ public function xinziyanzheng($arr){
             if(!$arr['uid']){
                
                 $this->jibenyanzheng($arr);
-
                
                 //获取身份证号码后4位
                 $hou4=substr($arr['IDnumber'],-4);
-                $ad['username']=$arr['username'].$hou4;
-                
-                $ad['password']=123456;//123456789987456123
-
+                $ad['username']=$arr['username'].$hou4;                
+                $ad['password']=123456;
+                //注册到员工中心，用于登录
                 $User   =   new UserApi();
                 $addone['id']=$User->register($ad['username'],$ad['password']);
-                
 
+                //根据员工中心注册成功返回员工id
+                if($addone['id']>0){                   
+                    
+                    $arr['realname']=$arr['username'];
+                    $arr['uid']=$addone['id'];
+                    $arr['nickname']=$arr['username'];                        
+                    $user = $arr;
+                    //添加员工基本信息
+                    $add=M('Member')->add($user); 
+                    if($add){                            
+                        //添加部门岗位信息                            
+                        $sele=M('dss')->add($arr);
+                        if($sele){
+                            //审批
+                            $Appro = new ApproApi;
+                                $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
+                                if($res !=1)
+                                {
+                                  
+                                    $this->error($res);die;
+                                }
 
+                             $this->success('员工添加成功！',U('index'));die;                    
+                        } else {
+                            M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
 
-                //$find=M('ucenter_member')->where("username='%s'",$ad['username'])->find($add);
-               // $this->success('员工添加成功！'.$ad['username']);
-                /*if($find){
-                    $this->error('该员工已经存在！');
-                }else{
-                  //添加员工中心
-                    $addone=M('ucenter_member')->add($ad); 
-
-                    if($addone){*/
-                    if($addone['id']>0){
-                       
-                        //$findone=M('ucenter_member')->where("username='%s'",$ad['username'])->find();
-                        
-                        $arr['realname']=$arr['username'];
-                        $arr['uid']=$addone['id'];
-                        $arr['nickname']=$arr['username'];                        
-                        $user = $arr;
-
-                        $add=M('Member')->add($user); 
-                        if($add){                            
-                            //添加部门岗位信息                            
-                            $sele=M('dss')->add($arr);
-
-                            if($sele){
-                                //审批
-                                $Appro = new ApproApi;
-                                    $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
-                                    if($res !=1)
-                                    {
-                                      
-                                        $this->error($res);die;
-                                    }
-
-                                 $this->success('员工添加成功！',U('index'));die;                    
-                            } else {
-                                M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
-
-                                $this->error('员工添加失败！');die;
-                            }               
-                        }else{
-                            $re=M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
-                            if($re){
-                                $this->error('员工添加失败！');die;
-                            }
-                             
-                        }             
-                    }elseif($addone['id']==0){
-                        $this->error('该员工已存在！');die;  
-                    }
-                //}
-
+                            $this->error('员工添加失败！');die;
+                        }               
+                    }else{
+                        $re=M('ucenter_member')->where("id='%d'",$addone['id'])->delete();
+                        if($re){
+                            $this->error('员工添加失败！');die;
+                        }                         
+                    }             
+                }elseif($addone['id']==0){
+                    $this->error('该员工已存在！');die;  
+                }  
             }
-
         }
+
+        $this->display();
+    }
+
+    //修改员工信息
+    public function edit(){
+
+        //显示部门岗位
+
       //显示员工信息
         $id=I('get.id');
 
@@ -509,11 +501,9 @@ public function xinziyanzheng($arr){
                 $find['shi']='checked';
             }else{
                 $find['fou']='checked';
-            }
-            
+            }            
 
             $this->assign('find',$find);
-
 
             //查询员工岗位信息等
             $where=array('uid'=>$id,'status'=>0);
@@ -539,10 +529,7 @@ public function xinziyanzheng($arr){
             //查询员工薪资
             $salarychange=M('salarychange')->where('uid='.$id)->order('said desc')->find();
             $this->assign('salarychange',$salarychange);
-
             $this->assign('sel',$sel);
-
-
         } 
         
 
