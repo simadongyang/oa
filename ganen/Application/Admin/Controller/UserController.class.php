@@ -649,13 +649,13 @@ public function xinziyanzheng($arr){
                            //如果$count的值等于项目的个数，说明操作成功
                            if($num==$newnum || $result){
 
-                                 /*$Appro = new ApproApi;
+                                 $Appro = new ApproApi;
                                     $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
                                     if($res !=1)
                                     {
                                       
                                         $this->error($res);die;
-                                    }*/
+                                    }
 
                                 $this->success('用户编辑成功！',U('index'));                    
                             } else {
