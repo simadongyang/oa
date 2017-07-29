@@ -114,5 +114,44 @@ class UapiController extends AdminController {
                 ); 
             die(json_encode($arr));    
     }
+    //核对查看薪资二级密码，返回值
+
+    public function salary(){
+
+        if(IS_POST){
+            $shuju=I('post.');
+            $p2 = password2($shuju['uid'],$shuju['password']);
+           // $p2=1;
+            if($p2>0){
+               // $arr['uid']=240;                 
+                $arr=array(
+                    'status'=>1,//成功
+                    'data'=>$shuju['uid'],
+                    'msg'=>''
+                    );             
+                die(json_encode($arr));
+
+            }elseif($p2=='-2'){
+                $arr=array(
+                    'status'=>0,//失败
+                    'data'=>array(),
+                    'msg'=>'密码错误'
+                    );             
+                die(json_encode($arr));
+                    
+            }else{
+                $arr=array(
+                    'status'=>0,//失败
+                    'data'=>array(),
+                    'msg'=>'用户不存在或被禁用'
+                    );             
+                die(json_encode($arr));
+                    
+            }
+        }
+    }
+
+
+
 
 }

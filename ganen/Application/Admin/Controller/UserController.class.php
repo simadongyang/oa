@@ -398,11 +398,8 @@ class UserController extends AdminController {
         //$department=tree($department);
         $department=getTrees($department);
         $department = $this->get_stat($department);
-        $this->assign('department',$department);
+        $this->assign('department',$department);        
         
-        //显示项目信息
-        $project=M('project')->where('status>-1')->select();
-        $this->assign('project',$project);
         
         //显示岗位信息
         $station=M('station')->where('status>-1')->select();        
@@ -621,10 +618,55 @@ class UserController extends AdminController {
         $this->display();
     }
 
-    public function salary4(){
+    public function showselfsalary($uid){
+        //显示项目信息
+                $project=M('project')->where('status>-1')->select();
+                $this->assign('project',$project);
+
+                //查询项目情况
+                $where['status']=array('eq',0);
+                $where['uid']=$uid;
+                $projectslef=M('dss')->join('ganen_project on ganen_project.id=ganen_dss.projectid')->field('')->where($where)->order('dssid desc')->select();
+               // var_dump($projectslef);
+                $this->assign('sel',$projectslef);
+
+                //查询薪资情况
+                $where=array('uid'=>$uid);
+                $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
+                $this->assign('salarychange',$salaryone);
+    }
+
+    //验证二级密码查看薪资
+    public function salary(){
+
+        //if(IS_POST){
+            $uid=I('post.uid');
+            $uid=241;
+            $this->showselfsalary($uid);
+
+            //获取查看薪资信息对应的权限的id
+            $where['name']='Admin/User/salary';
+            $where['status']=array('eq',1);
+            $auth_ruleid=M('auth_rule')->field('id')->where($where)->find();
+
+            //获取员工id所在的组
+            $userwhere['uid']=$uid;
+            $file=M('auth_group_access')->alias('ac')->join('ganen_auth_group as ag ON ag.id=ac.group_id')->field('ag.rules')->where($userwhere)->select();
+
+            foreach($file as $val){
+                
+            }
+
+        //}
+
+            
+
+        $this->display();
+    }
+    public function salarychange(){
                                 //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
 
-                                //获得员工项目原有的id是否还存在，
+                           /*     //获得员工项目原有的id是否还存在，
                                $where=array('uid'=>$arr['uid'],'status'=>0);
                                $sele=M('dss')->where($where)->select();
                                $count=0;
@@ -700,9 +742,7 @@ class UserController extends AdminController {
 
                            //修改薪资部分
                           
-                           $where=array('uid'=>$arr['uid']);
-                           $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
-
+                           
                            if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
 
                              
@@ -721,9 +761,9 @@ class UserController extends AdminController {
                                 $this->success('用户编辑成功！'.$ew,U('index'));                    
                             } else {
                                 $this->error('用户编辑失败',U('add?id='.$arr['uid']));
-                            } 
+                            } */
                                        
-            $this->display();
+            $this->display('salary');
      }                    
                                      
                 

@@ -514,6 +514,22 @@ function  mydown($uid){
     return $uids;
 
 }
+//二级密码的验证
+function password2($uid, $password){
+        $map['uid']=$uid;        
 
-//author sima 打印数据
+        /* 获取用户数据 */
+        $user2 = $this->where($map)->find();
+        if(is_array($user2) && $user2['status']==1){
+            /* 验证用户密码 */
+            if(think_ucenter_md5($password, UC_AUTH_KEY) === $user2['password']){
+                
+                return $user2['id']; //登录成功，返回用户ID
+            } else {
+                return -2; //密码错误
+            }
+        } else {
+            return -1; //用户不存在或被禁用
+        }
+    }
 
