@@ -396,6 +396,7 @@ public function dps(){
         $department=M('department')->where('status>-1')->select();
         //$department=tree($department);
         $department=getTrees($department);
+        $department = $this->get_stat($department);
         $this->assign('department',$department);
         
         //显示项目信息
@@ -411,7 +412,37 @@ public function dps(){
 
 
 }
+    //传入部门信息 返回部门和岗位信息
+    public function get_stat($depar)
+    {
+        $arr = array();
+        if(empty($depar)) return 1;
 
+        foreach($depar as $k => $v)
+        {
+            $sid = $v['sid'];
+            if(!empty($sid))
+            {
+                //组建where 语句
+                $where = " sid in ( $sid ) and status > -1 ";
+                $stat = M('station')->field('sid,stationname')->where($where)->select();  
+                if(!empty($stat))
+                {
+                    foreach($stat as $key => $val)
+                    {
+                        $arr[$val['sid']] = $val['stationname'];
+                    }
+                    $depar[$k]['sid'] =  $arr;
+                }else{
+                    $depar[$k]['sid'] = 0;
+                }    
+            }else{
+
+                $depar[$k]['sid'] = 0;
+            }
+        }
+        return $depar;
+    }
 
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	
