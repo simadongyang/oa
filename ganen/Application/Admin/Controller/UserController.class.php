@@ -412,7 +412,7 @@ public function jibenyanzheng($arr){
         $this->assign('station',$station);
 
 
-<<<<<<< HEAD
+
 }
     //传入部门信息 返回部门和岗位信息
     public function get_stat($depar)
@@ -445,11 +445,9 @@ public function jibenyanzheng($arr){
         }
         return $depar;
     }
-=======
-    }
 
-    //添加操作
->>>>>>> 1b91e1687f25a280025aa9b3451b2de2ba670218
+
+
 
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	
