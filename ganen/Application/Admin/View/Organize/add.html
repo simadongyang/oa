@@ -45,13 +45,13 @@
 			<div class="field">
 				<label>部门下属岗位<span class="check-tips">（可多选）</span></label>
 				<div class="ui search multiple selection dropdown " id="searchUser">
-	                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
+	                <input type="hidden" name="sid" value="{$sel[0]['sid']}">
 	                <i class="dropdown icon"></i>
                 	<div class="default text"></div>
 	                <div class="menu">
-	                	<div class="item" data-value=""></div>
-	                	<div class="item" data-value=""></div>
-	                	<div class="item" data-value=""></div>
+	                	<volist name="station" id="vo">
+							<div class="item" data-value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</div>
+						</volist>
 	                </div>
 	            </div>
 			</div>
