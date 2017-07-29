@@ -134,22 +134,23 @@ class UserController extends AdminController {
         }else{
             $sid = 1;
         }
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0';
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 ';
        /* $res=M('Dss')->alias('d')
                     ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->where(" $sid and $pro $uids and m.status = 0 and m.isadopt = 1")
                     ->select();*/
        // $list   = $this->lists('Member', $map,'','',$field);
-      // var_dump($where);die;
+       //var_dump($where);die;
        $res=M('Dss')->alias('d')
-                    ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
+                    ->field('m.uid,max(d.dssid) dssid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->join('ganen_department p on p.did = d.did')
                     ->join('ganen_station s on s.sid = d.sid')
-                    ->order('m.uid desc')
+                    ->group('d.uid')
+                    ->order('d.dssid desc')
                     ->where($where)->select();
-       // echo '<pre>';
+        //echo '<pre>';
         //var_dump($res);die;
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
@@ -353,8 +354,8 @@ class UserController extends AdminController {
         }
     }
 
-    //基本信息验证
-    public function jibenyanzheng($arr){
+//基本信息验证
+public function jibenyanzheng($arr){
 
         if(!$arr['username']){
             $this->error('请输入员工姓名！');
@@ -568,6 +569,13 @@ class UserController extends AdminController {
             $this->assign('sel',$sel);
         } 
         
+
+        //查询登录用户能否他人查看薪资
+        
+        $denguid=UID;
+        $deng=M('Member')->where('uid='.$denguid)->find();
+        $this->assign('look',$deng['looksalary']);
+        
         if(IS_POST){
         	$arr=I('post.');                      
 
@@ -583,7 +591,7 @@ class UserController extends AdminController {
                        // $this->jibenyanzheng($arr);
                         $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                         if(!$updat){                            
-                            $this->error('用户编辑失败！'.'adfsafda',U('edit?id='.$arr['uid']));
+                            $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
                         }else{
                            $gangwei=ture;//岗位信息没有发生改变
                         }
@@ -604,7 +612,7 @@ class UserController extends AdminController {
                         $st=congruent($findst,$ds); 
                         if($st!=3){
                            // $this->jibenyanzheng($arr);
-                            $arr['caozuorenid']=UID;
+                            $arr['caozuorenid']=$denguid;
                             $resul=M('dss')->add($arr);                            
                             if(!$resul){                                
                                 $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
