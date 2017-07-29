@@ -10,24 +10,24 @@
 				<div class="fields">
 					<div class="field">
 						<label>工号</label>
-						<input type="text" name="uid" value="{$find.uid}" readonly placeholder="自动生成">
+						<input type="text" name="uid" readonly placeholder="自动生成">
 					</div>
 					<div class="field">
 						<label>姓名</label>
-						<input type="text" name="username" value="{$find.realname}">
+						<input type="text" name="username">
 					</div>
 					<div class="field">
 						<label>联系电话</label>
-						<input type="text" name="phone" value="{$find.phone}">
+						<input type="text" name="phone">
 					</div>
 					<div class="field">
 						<label>性别</label>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="sex" value="1" tabindex="0" class="hidden" {$find.nan} <if condition="$sone.isstaff eq 0"> checked="" </if>>
+							<input type="radio" name="sex" value="1" tabindex="0" class="hidden" checked="">
 							<label>男</label>
 						</div>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="sex" value="0" tabindex="0" class="hidden" {$find.nv} <if condition="$sone.isstaff neq 0"> checked="" </if>>
+							<input type="radio" name="sex" value="0" tabindex="0" class="hidden">
 							<label>女</label>
 						</div>
 					</div>
@@ -35,83 +35,83 @@
 				<div class="fields">
 					<div class="field">
 						<label>QQ号</label>
-						<input type="text" name="qq" value="{$find.qq}">
+						<input type="text" name="qq">
 					</div>
 					<div class="field">
 						<label>紧急联系人姓名</label>
-						<input type="text" name="criticalname" value="{$find.criticalname}">
+						<input type="text" name="criticalname">
 					</div>
 					<div class="field">
 						<label>紧急联系人电话</label>
-						<input type="text" name="criticalphone" value="{$find.criticalphone}">
+						<input type="text" name="criticalphone">
 					</div>
 					<div class="field">
 						<label>出生日期</label>
-						<input type="text" name="birthday" value="{$find.birthday}" id="birthday">
+						<input type="text" name="birthday" id="birthday">
 					</div>
 				</div>
 				<div class="fields">
 					<div class="field">
 						<label>民族</label>
-						<input type="text" name="nation" value="{$find.nation}">
+						<input type="text" name="nation">
 					</div>
 					<div class="field">
 						<label>政治面貌</label>
-						<input type="text" name="political" value="{$find.political}">
+						<input type="text" name="political">
 					</div>
 					<div class="field">
 						<label>身份证号</label>
-						<input type="text" name="IDnumber" value="{$find.IDnumber}">
+						<input type="text" name="IDnumber">
 					</div>
 					<div class="field">
 						<label>专业</label>
-						<input type="text" name="major" value="{$find.major}">
+						<input type="text" name="major">
 					</div>
 				</div>
 				<div class="fields">
 					<div class="field">
 						<label>毕业学校</label>
-						<input type="text" name="school" value="{$find.school}">
+						<input type="text" name="school">
 					</div>
 					<div class="field">
 						<label>最高学历</label>
-						<input type="text" name="topeducation" value="{$find.topeducation}">
+						<input type="text" name="topeducation">
 					</div>
 					<div class="field">
 						<label>婚姻状况</label>
 						<select class="ui dropdown dropdown-init" name="matrimonial">
-							<option value="未婚" <if condition="$find.matrimonial eq '未婚'"> selected </if>>未婚</option>
-							<option value="已婚" <if condition="$find.matrimonial eq '已婚'"> selected </if>>已婚</option>
-							<option value="离异" <if condition="$find.matrimonial eq '离异'"> selected </if>>离异</option>
-							<option value="丧偶" <if condition="$find.matrimonial eq '丧偶'"> selected </if>>丧偶</option>
+							<option value="未婚" selected="selected">未婚</option>
+							<option value="已婚">已婚</option>
+							<option value="离异">离异</option>
+							<option value="丧偶">丧偶</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>籍贯</label>
-						<input type="text" name="nativeplace" value="{$find.nativeplace}">
+						<input type="text" name="nativeplace">
 					</div>
 				</div>
 				<div class="fields">
 					<div class="field">
 						<label>现居地址</label>
-						<input type="text" name="nowliveplace" value="{$find.nowliveplace}">
+						<input type="text" name="nowliveplace">
 					</div>
 					<div class="field">
 						<label>入职时间</label>
-						<input type="text" name="entrytime" value="{$find.entrytime}" class="form_datetime">
+						<input type="text" name="entrytime" class="form_datetime">
 					</div>
 					<div class="field">
 						<label>转正日期</label>
-						<input type="text" name="completiontime" value="{$find.completiontime}" class="form_datetime">
+						<input type="text" name="completiontime" class="form_datetime">
 					</div>
 					<div class="field">
 						<label>状态</label>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="iscompletion" value="1" tabindex="0" class="hidden" {$find.shi}>
+							<input type="radio" name="iscompletion" value="1" tabindex="0" class="hidden">
 							<label>正式</label>
 						</div>
 						<div class="ui radio checkbox mr15">
-							<input type="radio" name="iscompletion" value="0" tabindex="0" class="hidden" <empty name="find.fou && find.shi">checked=""<else />{find.fou}</empty>>
+							<input type="radio" name="iscompletion" value="0" tabindex="0" class="hidden" checked="">
 							<label>试用</label>
 						</div>
 					</div>
@@ -119,22 +119,19 @@
 				<div class="fields">
 					<div class="field">
 						<label>所属部门</label>
-						<select class="ui dropdown dropdown-init" name="did">
+						<select class="ui dropdown" name="did" id="department">
 							<volist name="department" id="vo">
-								<option value="{$vo.did}" <eq name="vo.did" value="$sel[0]['did']"> selected="selected" </eq>>{$vo.dname}</option>
+								<option value="{$vo.did}">{$vo.dname}</option>
 							</volist>
 						</select>
 					</div>
 					<div class="field">
 						<label>所属岗位</label>
-						<div class="ui selection dropdown dropdown-init">						
-							<input type="hidden" name="sid" value="{$sel[0]['sid']}">
+						<div class="ui selection dropdown" id="sid">						
+							<input type="hidden" name="sid">
 							<i class="dropdown icon"></i>
 							<div class="default text"></div>
 							<div class="menu">							
-								<volist name="station" id="vo">
-									<div class="item" data-value="{$vo.sid}" isstaff='{$vo.isstaff}'>{$vo.stationname}</div>
-								</volist>
 							</div>
 						</div>						
 					</div>
@@ -144,36 +141,18 @@
 					<div class="fields">
 						<div class="field">
 							<label>试用薪资</label>
-							<input type="text" name="trysalary" value="{$salarychange.trysalary}">
+							<input type="text" name="trysalary">
 						</div>
 						<div class="field">
 							<label>正式薪资</label>
-							<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
+							<input type="text" name="completionsalary" />
 						</div>
 					</div>
-					<volist name="sel" id="vos" key="k">
-						<if condition="$vos.projectid neq 0">
-							<div class="fields fields-xm fields-hide">
-								<div class="field">
-									<label>所属项目</label>
-									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
-									<input type="hidden" name="prid[]" value="{$vos.dssid}">
-								</div>
-								<div class="field">
-									<label>分摊工资</label>
-									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
-								</div>
-								<div class="field field-icon">
-									<i class="minus square icon"></i>
-								</div>
-							</div>
-						</if>
-					</volist>
 					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
 					<div class="fields fields-xm fields-hide">
 						<div class="field field-textarea">
 							<label>绩效考核</label>
-							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
+							<textarea name="jixiao" rows="3"></textarea>
 						</div>
 					</div>
 				<else />
@@ -181,13 +160,9 @@
 						<div class="field">
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
 							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
-				                <input type="hidden" name="dperson" value="{$done.dperson}">
+				                <input type="hidden" name="dperson">
 				                <i class="dropdown icon"></i>
-				                <empty name="done.personname">
-				                	<div class="default text">输入姓名搜索</div>
-				                <else />
-				                	<div class="text">{$done.personname}</div>
-								</empty>
+			                	<div class="default text">输入姓名搜索</div>
 				                <div class="menu"> </div>
 				            </div>
 						</div>
@@ -206,9 +181,27 @@
 <block name="script">
 	<script type="text/javascript">
 		$(function() {
-			$('.menu .item').tab();
+			var departmentJosn = <?php echo json_encode($department)?>;
 			$('.ui.radio.checkbox').checkbox();
-			$('.dropdown-init').dropdown();
+			$('.dropdown-init,#sid').dropdown();
+			$("#department").dropdown({
+				onChange: function(value, text, $selectedItem) {
+					for (var i = 0; i < departmentJosn.length; i++) {
+						$("#sid").dropdown('clear');
+						if(value == departmentJosn[i].did){
+							if(departmentJosn[i].sid){
+								var html = '';
+								for(var j in departmentJosn[i].sid){
+									html += '<div class="item" data-value="'+j+'">'+departmentJosn[i].sid[j]+'</div>';
+								}
+								$("#sid .menu").html(html);
+							}else{
+								alert("此部门出错，请联系管理员");
+							}
+						}
+					}
+				}
+			})
 			//添加项目
 			$(".button.add").click(function(){
 				var html = '<div class="fields fields-xm fields-hide">' + 
