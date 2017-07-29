@@ -134,7 +134,7 @@ class UserController extends AdminController {
         }else{
             $sid = 1;
         }
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1';
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0';
        /* $res=M('Dss')->alias('d')
                     ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
                     ->join('ganen_member m on d.uid = m.uid')
