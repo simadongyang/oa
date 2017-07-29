@@ -116,7 +116,7 @@
 						</div>
 					</div>
 				</div>
-
+				<if condition="C('IS_APPRO') neq 1">
 					<div class="ui divider"></div>
 					<div class="fields">
 						<div class="field">
@@ -129,7 +129,7 @@
 						</div>
 						<div class="field">
 							<label>所属岗位</label>
-							<div class="ui selection dropdown" id="station">						
+							<div class="ui selection dropdown dropdown-init">						
 								<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 								<i class="dropdown icon"></i>
 								<div class="default text"></div>
@@ -174,32 +174,12 @@
 							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
 						</div>
 					</div>
-
-
-
-				<if condition="C('IS_APPRO') eq 1">
-				<div class="fields">
-					<div class="field">
-						<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
-						<div class="ui search multiple selection  dropdown field-textarea" id="searchUser">
-			                <input type="hidden" name="dperson" value="{$done.dperson}">
-			                <i class="dropdown icon"></i>
-			                <empty name="done.personname">
-			                	<div class="default text">输入姓名搜索</div>
-			                <else />
-			                	<div class="text">{$done.personname}</div>
-							</empty>
-			                <div class="menu"> </div>
-			            </div>
-					</div>
-				</div>
 				<else />
 					<div class="fields">
 						<div class="field">
 							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
-							<div class="ui search multiple selection disabled dropdown field-textarea" id="searchUser">
-				                <input type="hidden" name="dperson" disabled value="{$done.dperson}">
-
+							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
+				                <input type="hidden" name="dperson" value="{$done.dperson}">
 				                <i class="dropdown icon"></i>
 				                <empty name="done.personname">
 				                	<div class="default text">输入姓名搜索</div>
@@ -218,26 +198,6 @@
 				</div>
 			</form>
 		</div>
-		
-		<!--<div class="ui bottom attached segment tab" data-tab="tab-name2">
-			<form action="{:U()}" method="post" class="form-horizontal2 ui form">
-				
-				<if condition="($look eq 0 and $isstaff eq 0) or ($look eq 1)">
-						
-				</if>
-
-
-				<if condition="C('IS_APPRO') neq 1">
-					
-				</if>
-				<input type="hidden" name="savestatus" value="岗位">
-				<input type="hidden" name="uid" value="{$find.uid}">
-				<div class="form-item">
-					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal2">确 定</button>
-					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-				</div>
-			</form>
-		</div>-->
 	</div>
 </block>
 
@@ -247,16 +207,6 @@
 			$('.menu .item').tab();
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init').dropdown();
-			$("#station").dropdown({
-				onChange: function(value, text, $selectedItem) {
-					//isstaff = 1 则是非普通员工   {$look} = 0则代无权限查看非普通员工信息
-//					if($selectedItem.attr("isstaff") == 1 && !{$look}){
-//						$(".fields-hide").hide();
-//					}else{
-//						$(".fields-hide").show();
-//					}
-				}
-			});
 			//添加项目
 			$(".button.add").click(function(){
 				var html = '<div class="fields fields-xm fields-hide">' + 
