@@ -359,6 +359,44 @@ class UserController extends AdminController {
         }
     }
 
+//基本信息验证
+public function jibenyanzheng($arr){
+
+        if(!$arr['username']){
+            $this->error('请输入员工姓名！');
+        }
+
+        if(!$arr['IDnumber']){
+            $this->error('请输入身份证号码！');
+        }
+        if(strlen($arr['IDnumber'])!=18 || !preg_match('/^([\d]{17}[xX\d])$/',$arr['IDnumber'])){
+            $this->error('请输入18位身份证号码！');
+        }
+        if(!preg_match('/^(0|1)$/',$arr['iscompletion'])){
+            $this->error('请选择状态！');
+        }
+        if($arr['did']==1){
+            $this->error('请选择部门！');
+        }
+        if($arr['sid']<=1){
+            $this->error('请选择岗位！');
+        }
+    }
+
+//薪资信息验证
+public function xinziyanzheng($arr){
+
+    if(!$arr['trysalary'] || !$arr['completionsalary']){
+        $this->error('请输入薪资！');
+    }
+    if(!preg_match('/^(\d+(.)?\d+)$/',$arr['trysalary']) || !preg_match('/^(\d+(.)?\d+)$/',$arr['completionsalary'])){
+        $this->error('薪资部分请输入数字！');
+    }
+
+}
+
+
+
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	
 
@@ -376,21 +414,60 @@ class UserController extends AdminController {
     	$station=M('station')->where('status>-1')->select();
         
         //构造新数组       
-        $station=stationtrees($station);
-        
+        $station=stationtrees($station);   
 
     	$this->assign('station',$station);
 
 
-        //该部分是作用修改(开始1)
+        //添加员工信息
+        if(IS_POST){
+             $arr=I('post.');
+            //添加员工信息
+            if(!$arr['uid']){
+               
+                $this->jibenyanzheng($arr);
 
-        //查询登录用户能否他人查看薪资
-        
-        $denguid=UID;
-        $deng=M('Member')->where('uid='.$denguid)->find();
-        $this->assign('look',$deng['looksalary']);
+               
+                //获取身份证号码后4位
+                $hou4=substr($arr['IDnumber'],-4);
+                $ad['username']=$arr['username'].$hou4;
+                $ad['password']=md5(123456);
+                $find=M('ucenter_member')->where("username='%s'",$ad['username'])->find($add);
+               // $this->success('员工添加成功！'.$ad['username']);
+                if($find){
+                    $this->error('该员工已经存在！');
+                }else{
+                  //添加员工中心
+                    $addone=M('ucenter_member')->add($ad); 
 
-        //查看员工基本信息
+                    if($addone){
+                       
+                        $findone=M('ucenter_member')->where("username='%s'",$ad['username'])->find();
+                        
+                        $arr['realname']=$arr['username'];
+                        $arr['uid']=$findone['id'];
+                        $arr['nickname']=$arr['username'];
+                        $arr['status']=1;
+                        $user = $arr;
+
+                        $add=M('Member')->add($user); //222222222222222222
+                        if($add){                            
+                            //添加部门岗位信息                            
+                            $sele=M('dss')->add($arr);
+
+                            if($sele){
+                                 $this->success('员工添加成功！',U('index'));                    
+                            } else {
+                                $this->error('员工添加失败！');
+                            }               
+                        }              
+                    }
+                }
+
+            }
+
+        }
+      //显示员工信息
         $id=I('get.id');
 
         if($id){
@@ -410,110 +487,12 @@ class UserController extends AdminController {
             }else{
                 $find['fou']='checked';
             }
-
-            $this->assign('find',$find);  
-
-        } 
-    	//作用修改(结束1)
-
-
-        //获取基本信息新增
-        if(IS_POST){
-        	$arr=I('post.');
-
             
-            if($arr['savestatus']=='基本信息'){                 
 
-                    //作用修改(开始2).修改基本信息
-                
-                if($arr['uid']){//如果存在工号，说明是修改
-
-                    //用于查询数据对比是否进行了更改
-                     $findd=M('Member')->where('uid='.$arr['uid'])->find();
-                    if($findd){
-                        $ew=congruent($findd,$arr);
-                        if($ew==21){
-                            $this->success('您未作出任何编辑！',U('index'));
-                        }
-                    }
+            $this->assign('find',$find);
 
 
-                    $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
-                    if($updat){
-                        $this->success('用户编辑成功！',U('index'));                    
-                    } else {
-                        $this->error('用户编辑失败！',U('add?id='.$arr['gonghao']));
-                    } 
-
-                    //作用修改(结束2)
-                }else{
-
-                    //注册信息
-
-                    /* 检测密码 */
-                    if($password != $repassword){
-                        $this->error('密码和重复密码不一致！');
-                    }
-
-                        if(!$arr['IDnumber']){
-                            $this->error('请输入身份证号码！');
-                        }
-                        if(strlen($arr['IDnumber'])!=18 || !preg_match('/^([\d]{17}[xX\d])$/',$arr['IDnumber'])){
-                            $this->error('请输入18位身份证号码！');
-                        }
-                        if(!preg_match('/^(0|1)$/',$arr['iscompletion'])){
-                            $this->error('请选择状态！');
-                        }
-
-                    /* 调用注册接口注册用户 */
-                    $User   =   new UserApi;
-                    $email=rand(0,100000).rand(a,z).'@qq.com';
-                    //获取身份证号码后4位
-                    $hou4=substr($arr['IDnumber'],-4);
-                    $username=$arr['username'].$hou4;
-                    $password='123456';
-                    $uid    =   $User->register($username, $password, $email);
-                    if(0 < $uid){ //注册成功
-                        
-                    	$arr['realname']=$arr['username'];
-                    	$arr['uid']=$uid;
-                    	$arr['nickname']=$username;
-                    	$arr['status']=1;
-                        $user = $arr;
-
-
-                                                          
-                       
-                      /* $member=D('Member')->create();
-
-                       if(!$member){
-                            echo $member->getError();exit;
-
-                           $this->error('用户添加失败！'.'8888');
-
-                       }   */
-
-
-
-                       
-                        if(!M('Member')->add($arr)){
-                            $this->error('用户添加失败！');
-                        } else {
-                            $this->success('用户基本信息添加成功请点击部门与薪资继续编写！',U('add?id='.$arr['uid']),5);
-                        }
-                    
-                    } else { //注册失败，显示错误信息
-                        $this->error($this->showRegError($uid));
-                    }
-                }
-            }
-        }
-
-
-        //作用修改(开始3)。部门岗位信息显示
-
-        //显示员工的岗位及薪资信息
-           //查询员工岗位信息等
+            //查询员工岗位信息等
             $where=array('uid'=>$id,'status'=>0);
             $sel=M('dss')->where($where)->order('dssid desc')->select();
 
@@ -529,8 +508,7 @@ class UserController extends AdminController {
                     $v['projectname']=$find['name'];
                         
                 }
-            }
-
+            } 
             //根据员工的岗位等信息获取该岗位是否为普通岗
             $isstaff=M('station')->where('sid='.$sel[0]['sid'])->find();
             $this->assign('isstaff',$isstaff['isstaff']);        
@@ -540,141 +518,157 @@ class UserController extends AdminController {
             $this->assign('salarychange',$salarychange);
 
             $this->assign('sel',$sel);
-            //作用修改(结束3)。             
 
+
+        } 
         
 
+        //查询登录用户能否他人查看薪资
         
+        $denguid=UID;
+        $deng=M('Member')->where('uid='.$denguid)->find();
+        $this->assign('look',$deng['looksalary']);
+
+
+        //获取基本信息新增
         if(IS_POST){
-            $arr=I('post.');
-            if($arr['savestatus']=='岗位'){
-                
-                //如果没有填写基本信息而进行岗位信息的提交时，提示
-                if(!$arr['uid']){
-                     $this->error('请先填写基本信息，然后通过查看详情信息进行添加岗位等信息');
-                }
+        	$arr=I('post.');  
+                           
 
-                if($arr['did']==1){
-                        $this->error('请选择部门！');
-                }
-                if($arr['sid']<=1){
-                        $this->error('请选择岗位！');
-                }
-                //如果获得了uid说明是编辑修改信息
-                if($arr['uid']){
-                    //判断是否为普通岗
-                    $findst=M('station')->where('sid='.$arr['sid'])->find();
-                    if($findst['isstaff']==1 && $arr['panduan']==1){
-                        $arr['caozuorenid']=$denguid;
-                        $resul=M('dss')->add($arr);
-                        if($resul){
-                            $this->success('用户编辑成功！',U('add?id='.$arr['uid']));                    
-                        } else {
-                            $this->error('用户编辑失败',U('add?id='.$arr['uid']));
+                //作用修改(开始2).修改基本信息
+                
+            if($arr['uid']){//如果存在工号，说明是修改
+
+                //用于查询数据对比是否进行了更改
+                $findd=M('Member')->where('uid='.$arr['uid'])->find();
+                if($findd){
+                    $ew=congruent($findd,$arr); 
+                    if($ew!=21){
+                        $this->jibenyanzheng($arr);
+                        $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
+                        if(!$updat){
+                            
+                            $this->error('用户编辑失败！',U('add?id='.$arr['gonghao']));
                         } 
 
-                    }
+                    }else{             
+         
+                        //如果获得了uid说明是编辑修改信息
+                        if($arr['uid']){
+                            //判断是否为普通岗
+                            $findst=M('station')->where('sid='.$arr['sid'])->find();
+                            if($findst['isstaff']==1 && $arr['panduan']==1){
+                                $arr['caozuorenid']=$denguid;
+                                $resul=M('dss')->add($arr);
+                                if($resul){
+                                    $this->success('用户编辑成功！'.'//////',U('add?id='.$arr['uid']));                    
+                                } else {
+                                    $this->error('用户编辑失败',U('add?id='.$arr['uid']));
+                                } 
 
-                    if(!$arr['trysalary'] || !$arr['completionsalary']){
-                            $this->error('请输入薪资！');
-                    }
-                    if(!preg_match('/^(\d+(.)?\d+)$/',$arr['trysalary']) || !preg_match('/^(\d+(.)?\d+)$/',$arr['completionsalary'])){
-                        $this->error('薪资部分请输入数字！');
-                    }
-                    //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
-
-                    //获得员工项目原有的id是否还存在，
-                   $where=array('uid'=>$arr['uid'],'status'=>0);
-                   $sele=M('dss')->where($where)->select();
-                   $count=0;
-                   foreach($sele as $val){
-                        //如果不存在了说明该项目已经结束
-                        if(!in_array($val['dssid'],$arr['prid'])){
-                           $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',1);
-                           if($sta){
-                                $count += 1;
-                           }
-                        }                    
-                   }
-                   
-                    //根据获得的数组newdid的数量确定新增项目数量
-                   $num=count($arr['newdid']);
-                   $newarr=array();
-                   for($i=1;$i<=$num;$i++){
-                        $k=$i-1;
-                        $newarr[$k]['status']=0;
-                        $newarr[$k]['uid']=$arr['uid'];
-                        $newarr[$k]['did']=$arr['did'];
-                        $newarr[$k]['sid']=$arr['sid'];                        
-                        $newarr[$k]['projectid']= $arr['newdid'][$k];//获取新增对应项目的id
-                        $newarr[$k]['projectsalary']=$arr['newps1'][$k];//获取分摊的金额
-                        $newarr[$k]['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id                      
-                   }
-                   $newnum=0;
-                   foreach($newarr as $v){
-                        $ra=M('dss')->add($v);//进行添加操作
-                        if($ra){
-                            $newnum += 1;//每天加成功一次记录一次，用于后面的判断
-                        }
-                   }
-                   //查询员工现有的岗位项目薪资信息等
-                   $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
-
-                   //判断岗位或着部门发生变化时。
-                   if($num==0){//说明没有进行新增，然后判断部门或岗位是否发生变化
-                        if($dssnow[0]['sid']!=$arr['sid'] || $dssnow[0]['did']!=$arr['did']){
-                            M('dss')->where('uid='.$arr['uid'].' and status=0')->setField('status',1);
-                            if($dssnow){
-                                foreach($dssnow as $va){
-
-                                    $va['sid']=$arr['sid'];
-                                    $va['did']=$arr['did'];
-                                    $va['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id  
-                                    unset($va['dssid']);
-                                    M('dss')->add($va);                                
-                                }
-                            }else{
-                                M('dss')->add($arr);
                             }
+
                             
+                            //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
+
+                            //获得员工项目原有的id是否还存在，
+                           $where=array('uid'=>$arr['uid'],'status'=>0);
+                           $sele=M('dss')->where($where)->select();
+                           $count=0;
+                           foreach($sele as $val){
+                                //如果不存在了说明该项目已经结束
+                                if(!in_array($val['dssid'],$arr['prid'])){
+                                   $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',1);
+                                   if($sta){
+                                        $count += 1;
+                                   }
+                                }                    
+                           }
                            
-                        }
-                   }
-                   
+                            //根据获得的数组newdid的数量确定新增项目数量
+                           $num=count($arr['newdid']);
+                           $newarr=array();
+                           for($i=1;$i<=$num;$i++){
+                                $k=$i-1;
+                                $newarr[$k]['status']=0;
+                                $newarr[$k]['uid']=$arr['uid'];
+                                $newarr[$k]['did']=$arr['did'];
+                                $newarr[$k]['sid']=$arr['sid'];                        
+                                $newarr[$k]['projectid']= $arr['newdid'][$k];//获取新增对应项目的id
+                                $newarr[$k]['projectsalary']=$arr['newps1'][$k];//获取分摊的金额
+                                $newarr[$k]['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id                      
+                           }
+                           $newnum=0;
+                           foreach($newarr as $v){
+                                $ra=M('dss')->add($v);//进行添加操作
+                                if($ra){
+                                    $newnum += 1;//每天加成功一次记录一次，用于后面的判断
+                                }
+                           }
+                           //查询员工现有的岗位项目薪资信息等
+                           $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
 
-                   //修改薪资部分
-                  
-                   $where=array('uid'=>$arr['uid']);
-                   $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
+                           //判断岗位或着部门发生变化时。
+                           if($num==0){//说明没有进行新增，然后判断部门或岗位是否发生变化
+                                if($dssnow[0]['sid']!=$arr['sid'] || $dssnow[0]['did']!=$arr['did']){
+                                    $this->jibenyanzheng($arr);
+                                    M('dss')->where('uid='.$arr['uid'].' and status=0')->setField('status',1);
+                                    if($dssnow){
+                                        foreach($dssnow as $va){
 
-                   if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
+                                            $va['sid']=$arr['sid'];
+                                            $va['did']=$arr['did'];
+                                            $va['caozuorenid']=$denguid;//登陆者的id，也就是操作人的id  
+                                            unset($va['dssid']);
+                                            M('dss')->add($va);                                
+                                        }
+                                    }else{
+                                        M('dss')->add($arr);
+                                    }
+                                    
+                                   
+                                }
+                           }
+                           
 
-                     
+                           //修改薪资部分
+                          
+                           $where=array('uid'=>$arr['uid']);
+                           $salaryone=M('salarychange')->where($where)->order('uid desc')->find();
 
-                   }else{
-                    $arr['caozuorenid']=$denguid;
-                     $result=M('salarychange')->add($arr);
-                   }
-                  
-                   //如果$count的值等于项目的个数，说明操作成功
-                   if($num==$newnum || $result){
+                           if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
 
-                         $Appro = new ApproApi;
-                            $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
-                            if($res !=1)
-                            {
-                              
-                                $this->error($res);die;
-                            }
+                             
 
-                        $this->success('用户编辑成功！',U('index'));                    
-                    } else {
-                        $this->error('用户编辑失败',U('add?id='.$arr['uid']));
-                    } 
-                }                
-                
+                           }else{
+                                $this->xinziyanzheng($arr);
+                                $arr['caozuorenid']=$denguid;
+                                 $result=M('salarychange')->add($arr);
+                           }
+                          
+                           //如果$count的值等于项目的个数，说明操作成功
+                           if($num==$newnum || $result){
+
+                                 /*$Appro = new ApproApi;
+                                    $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
+                                    if($res !=1)
+                                    {
+                                      
+                                        $this->error($res);die;
+                                    }*/
+
+                                $this->success('用户编辑成功！',U('index'));                    
+                            } else {
+                                $this->error('用户编辑失败',U('add?id='.$arr['uid']));
+                            } 
+                        }                
+                        
+                    }                  
+                }
+            
             }
-        }
+        }           
+            
 
         $this->display();
     }

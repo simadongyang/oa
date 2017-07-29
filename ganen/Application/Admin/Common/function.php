@@ -460,7 +460,7 @@ function  mydown($uid){
 
 
     //先根据我的部门查询
-    $arrd=M('department')->where('did='.$myde['did'])->find();
+    $arrd=M('department')->where('did='.$myde['did'])->find();    
     
     $ar=M('department')->where('status>-1')->select();
     $darr=getTrees($ar,$arrd['did']);//查询该部门下的子部门
