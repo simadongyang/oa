@@ -134,7 +134,7 @@
 						<div class="field">
 							<label>所属岗位</label>
 							<div class="ui selection  dropdown" id="station">						
-								<input type="hidden" name="sid" disabled value="{$sel[0]['sid']}">
+								<input type="hidden" name="sid"  value="{$sel[0]['sid']}">
 								<i class="dropdown icon"></i>
 								<div class="default text"></div>
 								<div class="menu">							
@@ -222,9 +222,7 @@
 										<label>分摊工资</label>
 										<input type="text" name="ps{$k}"disabled  value="{$vos.projectsalary}" readonly/>
 									</div>
-									<div class="field field-icon">
-										<i class="minus square icon"></i>
-									</div>
+									
 								</div>
 							</if>
 						</volist>

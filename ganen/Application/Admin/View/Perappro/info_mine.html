@@ -157,16 +157,14 @@
 						<div class="fields fields-xm fields-hide">
 							<div class="field">
 								<label>所属项目</label>
-								<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
-								<input type="hidden" name="prid[]" value="{$vos.dssid}">
+								<input type="text" disabled name="p{$k}" value="{$vos.projectname}" readonly>
+								<input type="hidden" disabled name="prid[]" value="{$vos.dssid}">
 							</div>
 							<div class="field">
 								<label>分摊工资</label>
-								<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
+								<input type="text" disabled name="ps{$k}" value="{$vos.projectsalary}" readonly/>
 							</div>
-							<div class="field field-icon">
-								<i class="minus square icon"></i>
-							</div>
+							
 						</div>
 					</if>
 				</volist>

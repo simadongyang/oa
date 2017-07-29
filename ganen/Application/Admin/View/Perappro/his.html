@@ -32,7 +32,7 @@
 						</td>
 						<td>{$vo.name}</td>
 						<td>{$vo.reason}</td>
-						<td>{$vo.time}</td>
+						<td><?php echo date("Y-m-d H:i:s",$vo['time'])?></td>
 						<td><?php echo date("Y-m-d H:i:s",$vo['atime'])?></td>
 						<td>
 							    <if condition="($vo['status'] eq 1) "> 通过
