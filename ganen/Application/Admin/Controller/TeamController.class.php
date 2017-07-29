@@ -21,20 +21,30 @@ class TeamController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
-       
+        $pro = D('Project');
+        $count = $pro->count();
+        $page = new \Think\Page($count-1,10);  
+        $data = $pro->alias('p')
+        ->field('m.realname,p.*,d.dname')
+        ->where('p.status != -1')
+        ->join(' left join ganen_member m on p.charge = m.uid')
+        ->join(' left join ganen_department d on p.pro_id = d.did')
+        ->limit($page->firstRow.','.$page->listRows)
+        ->select();  
+            
+        $page->setConfig('first','首页');
+        $page->setConfig('last','末页');
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+        $page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show = $page->show();
 
-
-        $res=M('Project')
-          ->alias('p')
-          ->field('m.realname,p.*,d.dname')
-          ->where('p.status != -1')
-          ->join(' left join ganen_member m on p.charge = m.uid')
-          ->join(' left join ganen_department d on p.pro_id = d.did')
-          ->select();    
-        $this->assign('_list', $res);
+        $this->assign('_page',$show);  
+        $this->assign('_list', $data);
         $this->meta_title = '用户信息';
         $this->display();
     }
+    
     private function partment($did)
     {
         $data  = array();
@@ -60,6 +70,7 @@ class TeamController extends AdminController {
     {
      
        echo C('IS_APPRO');
+
       die;
        // $nid = 10;
        // echo '<pre>';

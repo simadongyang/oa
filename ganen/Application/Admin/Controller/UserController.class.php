@@ -147,25 +147,42 @@ class UserController extends AdminController {
         }else{
             $dssid = 1;
         }
-        //$names = array_column($msg, 'name');
-       // var_dump($ids);die;
+        //组装where 语句
         $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 '.' and d.dssid in '.$dssid;
-       /* $res=M('Dss')->alias('d')
-                    ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
-                    ->join('ganen_member m on d.uid = m.uid')
-                    ->where(" $sid and $pro $uids and m.status = 0 and m.isadopt = 1")
-                    ->select();*/
-       // $list   = $this->lists('Member', $map,'','',$field);
-       //var_dump($where);die;
-       $res=M('Dss')->alias('d')
+
+
+
+        $dss = D('Dss');
+        $res=$dss->alias('d')
+                    ->field('m.uid')
+                    ->join('left join ganen_member m on d.uid = m.uid')
+                    ->join('left join ganen_department p on p.did = d.did')
+                    ->join('left join ganen_station s on s.sid = d.sid')
+                    ->order('d.dssid desc')
+                    ->where($where);
+        //得到总数
+        $data = $res;
+        $count = count($data->select());
+        $page = new \Think\Page($count,15);  
+            
+        $page->setConfig('first','首页');
+        $page->setConfig('last','末页');
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+        $page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        $show = $page->show();
+
+       // 查找到匹配的信息
+       $res=$dss->alias('d')
                     ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('left join ganen_member m on d.uid = m.uid')
                     ->join('left join ganen_department p on p.did = d.did')
                     ->join('left join ganen_station s on s.sid = d.sid')
                     ->order('d.dssid desc')
-                    ->where($where)->select();
-        //echo '<pre>';
-        //var_dump($res);die;
+                    ->where($where)
+                    ->limit($page->firstRow.','.$page->listRows)
+                    ->select();
+
         //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0); 
@@ -174,7 +191,7 @@ class UserController extends AdminController {
 
         $list   = $this->lists('Member', $map,'','',$field);
         
-        
+        $this->assign('_page',$show);
         $this->assign('_list',$res);
         //根据获得的信息查询相关的信息
         $list=$this->memberlist($list);
