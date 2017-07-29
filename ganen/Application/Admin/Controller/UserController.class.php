@@ -456,10 +456,19 @@ public function xinziyanzheng($arr){
                             $sele=M('dss')->add($arr);
 
                             if($sele){
+                                //审批
+                                $Appro = new ApproApi;
+                                    $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
+                                    if($res !=1)
+                                    {
+                                      
+                                        $this->error($res);die;
+                                    }
+                                    
                                  $this->success('员工添加成功！',U('index'));die;                    
                             } else {
                                 M('ucenter_member')->where("username='%s'",$ad['username'])->delete();
-                                
+
                                 $this->error('员工添加失败！');die;
                             }               
                         }else{
@@ -571,7 +580,7 @@ public function xinziyanzheng($arr){
                                 $arr['caozuorenid']=$denguid;
                                 $resul=M('dss')->add($arr);
                                 if($resul){
-                                    $this->success('用户编辑成功！'.'//////',U('add?id='.$arr['uid']));                    
+                                    $this->success('用户编辑成功！',U('add?id='.$arr['uid']));                    
                                 } else {
                                     $this->error('用户编辑失败',U('add?id='.$arr['uid']));
                                 } 
@@ -659,13 +668,7 @@ public function xinziyanzheng($arr){
                            //如果$count的值等于项目的个数，说明操作成功
                            if($num==$newnum || $result){
 
-                                 $Appro = new ApproApi;
-                                    $res = json_decode($Appro->appr_arr($arr['uid'],$arr['dperson'])) ;
-                                    if($res !=1)
-                                    {
-                                      
-                                        $this->error($res);die;
-                                    }
+                                 
 
                                 $this->success('用户编辑成功！',U('index'));                    
                             } else {
