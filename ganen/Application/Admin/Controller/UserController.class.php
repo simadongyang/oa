@@ -9,7 +9,6 @@
 
 namespace Admin\Controller;
 use User\Api\UserApi;
-
 use Admin\Api\ApproApi;
 use Think\Controller;
 /**
@@ -81,14 +80,7 @@ class UserController extends AdminController {
         if($denguid != 1){
             $map['uid'] = array('in',$uids);
         }
-       // echo '<pre>';
-        //分类显示
-        //部门
-        //
-        //
-        //$ids = $this->partment('2');
-        //echo '<pre>';
-       //$did = 2;
+       
         function sima($did)
         {
              $res = M('Department')
@@ -460,8 +452,7 @@ public function xinziyanzheng($arr){
                         
                         $arr['realname']=$arr['username'];
                         $arr['uid']=$addone['id'];
-                        $arr['nickname']=$arr['username'];
-                        $arr['status']=1;
+                        $arr['nickname']=$arr['username'];                        
                         $user = $arr;
 
                         $add=M('Member')->add($user); 
