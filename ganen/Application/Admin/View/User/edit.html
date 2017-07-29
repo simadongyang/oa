@@ -145,7 +145,7 @@
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
 			</form>
-			<div class="salary ui form">
+			<!--<div class="salary ui form">
 				<div class="ui divider"></div>
 				<div class="fields">
 					<div class="field">
@@ -154,7 +154,7 @@
 				</div>
 				<button class="ui blue button" type="submit" >确 定</button>
 			</div>
-			<iframe src="{:U('User/salary')}" width="100%" height="300px" border="0" style="border: 0px; overflow: hidden;"></iframe>
+			<iframe src="{:U('User/salary')}" width="100%" height="300px" border="0" style="border: 0px; overflow: hidden;"></iframe>-->
 		</div>
 	</div>
 	<div class="ui modal small user-edit-modal">
@@ -165,7 +165,7 @@
 			<div class="ui form">
 				<div class="field">
 				<label>请输入你6位数的二级密码</label>
-				<input type="password" id="salaryPassword" placeholder="">
+				<input type="password" id="salaryPassword" autocomplete="off">
 				<p>密码错误</p>
 			</div>
 			</div>
