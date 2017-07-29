@@ -604,14 +604,23 @@ class PerapproController extends AdminController {
                             $newnum += 1;//每天加成功一次记录一次，用于后面的判断
                         }
                    }
-
-                  if($arr['did']==1){
+                  // $this->error($arr['sid'].'hahha');
+                /*  if($arr['did']==1){
                       $this->error('请选择部门！');
                   }
-                  if($arr['sid']<=1){
+                  if($arr['sid']==1){
                       $this->error('请选择岗位！');
                   }
-
+                  //修改岗位和部门信息
+                   $arr['realname']=$arr['username'];
+                    $arr['uid']=$addone['id'];
+                    $arr['nickname']=$arr['username'];                        
+                    $user = $arr;
+                    //添加员工基本信息
+                    $add=M('Member')->add($user); 
+                    if($add){                            
+                        //添加部门岗位信息                            
+                        $sele=M('dss')->add($arr);*/
                    //修改薪资部分
                   
                    $where=array('uid'=>$arr['uid']);
