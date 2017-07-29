@@ -450,17 +450,27 @@ public function xinziyanzheng($arr){
                         $arr['status']=1;
                         $user = $arr;
 
-                        $add=M('Member')->add($user); //222222222222222222
+                        $add=M('Member')->add($user); 
                         if($add){                            
                             //添加部门岗位信息                            
                             $sele=M('dss')->add($arr);
 
                             if($sele){
-                                 $this->success('员工添加成功！',U('index'));                    
+                                 $this->success('员工添加成功！',U('index'));die;                    
                             } else {
-                                $this->error('员工添加失败！');
+                                M('ucenter_member')->where("username='%s'",$ad['username'])->delete();
+                                
+                                $this->error('员工添加失败！');die;
                             }               
-                        }              
+                        }else{
+                            $re=M('ucenter_member')->where("username='%s'",$ad['username'])->delete();
+                            if($re){
+                                $this->error('员工添加失败！');die;
+                            }
+                             
+                        }             
+                    }else{
+                        $this->error('员工添加失败！');die;  
                     }
                 }
 
