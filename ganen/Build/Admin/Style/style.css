@@ -305,19 +305,19 @@ h3 {
       opacity: 0.2;
       filter: alpha(opacity=20); }
 
-.pages {
+.page {
   margin: 10px 0;
   *zoom: 1; }
-  .pages div {
+  .page div {
     border: 1px solid #CCCCCC;
     border-radius: 4px;
     display: inline-block; }
-    .pages div:before, .pages div:after {
+    .page div:before, .page div:after {
       display: table;
       content: ""; }
-    .pages div:after {
+    .page div:after {
       clear: both; }
-    .pages div a, .pages div span {
+    .page div a, .page div span {
       float: left;
       margin-left: -1px;
       padding: 0 14px;
@@ -325,15 +325,15 @@ h3 {
       line-height: 30px;
       color: #686868;
       border-right: 1px solid #CCCCCC; }
-    .pages div a:hover {
+    .page div a:hover {
       text-decoration: none;
       background: #E1E1E1; }
-    .pages div .current {
+    .page div .current {
       border-right: 1px solid #CCCCCC;
       color: #2185d0; }
-    .pages div .next, .pages div .prev {
+    .page div .next, .page div .prev {
       font-weight: bold; }
-    .pages div .rows {
+    .page div .rows {
       border-right: none; }
 
 #authManagerManagerGroup {
