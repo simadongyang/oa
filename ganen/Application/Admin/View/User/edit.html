@@ -71,7 +71,7 @@
 				<div class="fields">
 					<div class="field">
 						<label>毕业学校</label>
-						<input type="text" name="school" value="{$find.school}">
+						<input type="text" name="topeducation" value="{$find.school}">
 					</div>
 					<div class="field">
 						<label>最高学历</label>
@@ -139,66 +139,12 @@
 						</div>						
 					</div>
 				</div>
-				<if condition="C('IS_APPRO') neq 1">
-					<div class="ui divider"></div>
-					<div class="fields">
-						<div class="field">
-							<label>试用薪资</label>
-							<input type="text" name="trysalary" value="{$salarychange.trysalary}">
-						</div>
-						<div class="field">
-							<label>正式薪资</label>
-							<input type="text" name="completionsalary" value="{$salarychange.completionsalary}" />
-						</div>
-					</div>
-					<volist name="sel" id="vos" key="k">
-						<if condition="$vos.projectid neq 0">
-							<div class="fields fields-xm fields-hide">
-								<div class="field">
-									<label>所属项目</label>
-									<input type="text" name="p{$k}" value="{$vos.projectname}" readonly>
-									<input type="hidden" name="prid[]" value="{$vos.dssid}">
-								</div>
-								<div class="field">
-									<label>分摊工资</label>
-									<input type="text" name="ps{$k}" value="{$vos.projectsalary}" readonly/>
-								</div>
-								<div class="field field-icon">
-									<i class="minus square icon"></i>
-								</div>
-							</div>
-						</if>
-					</volist>
-					<input type="button" class="ui blue button add mb20 fields-hide" value="添加所属项目" />
-					<div class="fields fields-xm fields-hide">
-						<div class="field field-textarea">
-							<label>绩效考核</label>
-							<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
-						</div>
-					</div>
-				<else />
-					<div class="fields">
-						<div class="field">
-							<label>审批人<span class="check-tips">（请按照顺序添加审批人）</span></label>
-							<div class="ui search multiple selection dropdown field-textarea" id="searchUser">
-				                <input type="hidden" name="dperson" value="{$done.dperson}">
-				                <i class="dropdown icon"></i>
-				                <empty name="done.personname">
-				                	<div class="default text">输入姓名搜索</div>
-				                <else />
-				                	<div class="text">{$done.personname}</div>
-								</empty>
-				                <div class="menu"> </div>
-				            </div>
-						</div>
-					</div>
-				</if>
-				<input type="hidden" name="savestatus" value="基本信息">
 				<div class="form-item">
 					<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
 					<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 				</div>
 			</form>
+			<iframe src="{:U('salary',array('id'=>$find.uid))}"></iframe>
 		</div>
 	</div>
 </block>
@@ -209,32 +155,6 @@
 			$('.menu .item').tab();
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init').dropdown();
-			//添加项目
-			$(".button.add").click(function(){
-				var html = '<div class="fields fields-xm fields-hide">' + 
-								'<div class="field">' + 
-									'<label>所属项目</label>' + 
-									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
-					                    '<volist name="project" id="vo">' + 
-					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
-					                    '</volist>' + 
-					                '</select>' +
-								'</div>' + 
-								'<div class="field">' + 
-									'<label>分摊工资</label>' + 
-									'<input type="text" name="newps1[]" value="" />' + 
-								'</div>' + 
-								'<div class="field field-icon">' + 
-									'<i class="minus square icon"></i>' + 
-								'</div>' + 
-							'</div>';
-				$(this).before(html);
-				$('.dropdown-init').dropdown();
-			})
-			//删除项目
-			$(".form-horizontal").delegate(".minus.icon","click",function(){
-				$(this).closest(".fields").remove();
-			})
 			$(".form_datetime").datetimepicker({
 				format: 'yyyy-mm-dd',
 				language: "zh-CN",
@@ -250,27 +170,6 @@
 	            startView:4,
 	            autoclose: true,
 	        })
-	        //审批人
-	        $('#searchUser').dropdown({
-	            forceSelection: false,
-	            apiSettings: {
-	                cache: false,
-	                url: "__APP__/Admin/Uapi/membername/name/" + '{query}',
-	                onResponse:function(response){
-	                    var data = {
-	                        "success":true,
-	                        "results" : []
-	                    };
-	                    for(var i = 0; i < response.data.length; i++){
-	                        data.results.push({"name":response.data[i].realname,"value":response.data[i].uid})
-	                    }
-	                    return data;
-	                },
-	            },
-	            message: {
-	                noResults: '未找到搜索结果'
-	            }
-	        });
 		})
 	</script>
 </block>
