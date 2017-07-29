@@ -6,11 +6,8 @@
 html, body {
   font-size: 14;
   min-width: 1200px;
-  min-height: 600px;
-  height: inherit !important;
   color: #666666;
-  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB";
-  overflow-x: auto; }
+  font-family: "Helvetica Neue","Helvetica","Arial","Microsoft Yahei","PingFang SC","Hiragino Sans GB"; }
 
 body {
   padding-top: 50px;
@@ -115,6 +112,9 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.ui .header {
+  position: initial; }
+
 .ui.form .field > label {
   font-weight: normal; }
 
@@ -124,7 +124,7 @@ input {
 .ui.form .fields .field textarea.w204 {
   width: 204px; }
 
-.ui.form .disabled.field, .ui.form .disabled.fields, .ui.form .field :disabled {
+.ui.form .disabled.field, .ui.form .disabled.fields, .ui.form .field :disabled, .ui.form .disabled.dropdown, .ui.form .ui.dropdown .menu > .disabled.item {
   opacity: 1; }
 
 .main-title {
@@ -380,3 +380,11 @@ h3 {
 
 #userAdd .field-textarea {
   width: 512px; }
+
+.user-edit-modal {
+  width: 320px !important;
+  left: 50% !important;
+  margin-left: -160px !important; }
+  .user-edit-modal .content p {
+    margin-top: 5px;
+    color: crimson; }

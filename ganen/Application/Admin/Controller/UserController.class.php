@@ -159,9 +159,9 @@ class UserController extends AdminController {
        //var_dump($where);die;
        $res=M('Dss')->alias('d')
                     ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
-                    ->join('ganen_member m on d.uid = m.uid')
-                    ->join('ganen_department p on p.did = d.did')
-                    ->join('ganen_station s on s.sid = d.sid')
+                    ->join('left join ganen_member m on d.uid = m.uid')
+                    ->join('left join ganen_department p on p.did = d.did')
+                    ->join('left join ganen_station s on s.sid = d.sid')
                     ->order('d.dssid desc')
                     ->where($where)->select();
         //echo '<pre>';

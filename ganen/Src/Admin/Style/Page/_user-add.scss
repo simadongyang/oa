@@ -19,3 +19,14 @@
         width: 512px;
     }
 }
+.user-edit-modal{
+    width: 320px !important;
+    left: 50% !important;
+    margin-left: -160px !important;
+    .content{
+        p{
+            margin-top: 5px;
+            color: crimson;
+        }
+    }
+}
