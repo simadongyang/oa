@@ -514,6 +514,11 @@ function  mydown($uid){
     return $uids;
 
 }
+
+//加密操作
+function password_md5($str, $key = 'ThinkUCenter'){
+    return '' === $str ? '' : md5(sha1($str) . $key);
+}
 //二级密码的验证
 function password2($uid, $password){
         $map['uid']=$uid;        
@@ -521,8 +526,10 @@ function password2($uid, $password){
         /* 获取用户数据 */
         $user2 = $this->where($map)->find();
         if(is_array($user2) && $user2['status']==1){
+
+                       
             /* 验证用户密码 */
-            if(think_ucenter_md5($password, UC_AUTH_KEY) === $user2['password']){
+            if(password_md5($password, 'ThinkUCenter') === $user2['password']){
                 
                 return $user2['id']; //登录成功，返回用户ID
             } else {
@@ -531,5 +538,14 @@ function password2($uid, $password){
         } else {
             return -1; //用户不存在或被禁用
         }
+    }
+
+//设置查询薪资的唯一标示
+    function eqiu($uid){
+        // 查询员工邮箱
+        $find=M('ucenter_member')->where("id='%d'",$shuju['uid'])->find();
+        $email=$find['email']===''?'123456789@qq.com':$find['email'];
+        $biaoshi=md5(sha($email));
+        return $biaoshi;
     }
 

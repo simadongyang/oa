@@ -11,12 +11,13 @@ namespace User\Api;
 use User\Api\Api;
 use User\Model\UcenterMemberModel;
 
+
 class UserApi extends Api{
     /**
      * 构造方法，实例化操作模型
      */
     protected function _init(){
-        $this->model = new UcenterMemberModel();
+        $this->model = new UcenterMemberModel();       
     }
 
     /**
@@ -27,10 +28,11 @@ class UserApi extends Api{
      * @param  string $mobile   用户手机号码
      * @return integer          注册成功-用户信息，注册失败-错误编号
      */
-    public function register($username, $password){
-        return $this->model->register($username, $password);
+    public function register($username, $password,$email){
+        return $this->model->register($username, $password,$email);
     }
 
+   
     /**
      * 用户登录认证
      * @param  string  $username 用户名

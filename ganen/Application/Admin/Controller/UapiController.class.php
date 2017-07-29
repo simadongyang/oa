@@ -119,35 +119,65 @@ class UapiController extends AdminController {
     public function salary(){
 
         if(IS_POST){
-            $shuju=I('post.');
-            $p2 = password2($shuju['uid'],$shuju['password']);
-           // $p2=1;
-            if($p2>0){
-               // $arr['uid']=240;                 
-                $arr=array(
-                    'status'=>1,//成功
-                    'data'=>$shuju['uid'],
-                    'msg'=>''
-                    );             
-                die(json_encode($arr));
+            $shuju=I('post.');    
+            
+  
+            //获取查看薪资信息对应的权限的id
+            $where['name']='Admin/User/salary';
+            $where['status']=array('eq',1);
+            $auth_ruleid=M('auth_rule')->field('id')->where($where)->find();
 
-            }elseif($p2=='-2'){
-                $arr=array(
-                    'status'=>0,//失败
-                    'data'=>array(),
-                    'msg'=>'密码错误'
-                    );             
-                die(json_encode($arr));
-                    
+            //获取员工id所在的组
+            $userwhere['uid']=$shuju['uid');
+            $file=M('auth_group_access')->alias('ac')->join('ganen_auth_group as ag ON ag.id=ac.group_id')->field('ag.rules')->where($userwhere)->select();
+
+            foreach($file as $val){
+                //如果在数组中说明有查看薪资权限
+                if(in_array($auth_ruleid['id'],$val['rules'])){
+                    $result=ture;
+                }
+            }
+            if($result){
+
+                 $p2 = password2($shuju['uid'],$shuju['password']);                
+               
+                if($p2>0){
+
+                   //构造数组 
+                   $fan['uid']=$shuju['uid'];
+                   $fan['biaoshi']=eqiu($shuju['uid']);             
+                    $arr=array(
+                        'status'=>1,//成功
+                        'data'=>$fan,
+                        'msg'=>''
+                        );             
+                    die(json_encode($arr));
+
+                }elseif($p2=='-2'){
+                    $arr=array(
+                        'status'=>0,//失败
+                        'data'=>array(),
+                        'msg'=>'密码错误'
+                        );             
+                    die(json_encode($arr));
+                        
+                }else{
+                    $arr=array(
+                        'status'=>0,//失败
+                        'data'=>array(),
+                        'msg'=>'用户不存在或被禁用'
+                        );             
+                    die(json_encode($arr));
+                        
+                }
             }else{
                 $arr=array(
                     'status'=>0,//失败
                     'data'=>array(),
-                    'msg'=>'用户不存在或被禁用'
+                    'msg'=>'您没有查看权限'
                     );             
                 die(json_encode($arr));
-                    
-            }
+        }
         }
     }
 

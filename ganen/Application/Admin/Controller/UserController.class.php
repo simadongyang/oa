@@ -427,7 +427,7 @@ public function jibenyanzheng($arr){
 
 
     }
-    
+
     //传入部门信息 返回部门和岗位信息
     public function get_stat($depar)
     {
@@ -474,15 +474,21 @@ public function jibenyanzheng($arr){
             //添加员工信息
             if(!$arr['uid']){
                
-                $this->jibenyanzheng($arr);
+                //$this->jibenyanzheng($arr);
                
                 //获取身份证号码后4位
                 $hou4=substr($arr['IDnumber'],-4);
                 $ad['username']=$arr['username'].$hou4;                
                 $ad['password']=123456;
+                $ad['email']=rand(0,100000).rand(99,9999).'@qq.com';
                 //注册到员工中心，用于登录
-                $User   =   new UserApi();
-                $addone['id']=$User->register($ad['username'],$ad['password']);
+                $User   =   new UserApi();                
+                $addone['id']=$User->register($ad['username'],$ad['password'],$ad['email']);
+
+                //注册二级密码
+                $pass['password']=password_md5($ad['password']);                
+                $pass['uid']=$addone['id'];
+                M('secondary_password')->add($pass);       
 
                 //根据员工中心注册成功返回员工id
                 if($addone['id']>0){                   
@@ -650,8 +656,15 @@ public function jibenyanzheng($arr){
                 //查询项目情况
                 $where['status']=array('eq',0);
                 $where['uid']=$uid;
-                $projectslef=M('dss')->join('ganen_project on ganen_project.id=ganen_dss.projectid')->field('')->where($where)->order('dssid desc')->select();
-               // var_dump($projectslef);
+                $projectslef=M('dss')
+                ->alias('d')
+                ->join('ganen_project as p ON p.id=d.projectid')
+                ->field('p.name')
+                ->where($where)
+                ->order('dssid desc')
+                ->select();
+
+                var_dump($projectslef);
                 $this->assign('sel',$projectslef);
 
                 //查询薪资情况
@@ -663,30 +676,17 @@ public function jibenyanzheng($arr){
     //验证二级密码查看薪资
     public function salary(){
 
-        //if(IS_POST){
-            $uid=I('post.uid');
-            $uid=241;
-            $this->showselfsalary($uid);
-
-            //获取查看薪资信息对应的权限的id
-            $where['name']='Admin/User/salary';
-            $where['status']=array('eq',1);
-            $auth_ruleid=M('auth_rule')->field('id')->where($where)->find();
-
-            //获取员工id所在的组
-            $userwhere['uid']=$uid;
-            $file=M('auth_group_access')->alias('ac')->join('ganen_auth_group as ag ON ag.id=ac.group_id')->field('ag.rules')->where($userwhere)->select();
-
-            foreach($file as $val){
-                
-            }
-
-        //}
-
-            
+        
+            if($result){
+                $this->showselfsalary($uid);
+            }else{
+                 $this->error('您没有权限！',U('edit?id='.$arr['uid']));
+            }            
 
         $this->display();
     }
+
+    //编辑薪资信息
     public function salarychange(){
                                 //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
 
