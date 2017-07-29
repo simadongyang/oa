@@ -397,7 +397,7 @@ class UserController extends AdminController {
         //$department=tree($department);
         $department=getTrees($department);
         $depar = $this->get_stat($department);
-        $depar = json_encode($depar);
+//      $depar = json_encode($depar);
         $this->assign('department',$depar);
         
         //显示项目信息
