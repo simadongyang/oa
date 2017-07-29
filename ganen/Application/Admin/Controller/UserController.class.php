@@ -134,7 +134,7 @@ class UserController extends AdminController {
         }else{
             $sid = 1;
         }
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1';
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0';
        /* $res=M('Dss')->alias('d')
                     ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
                     ->join('ganen_member m on d.uid = m.uid')
@@ -397,6 +397,7 @@ class UserController extends AdminController {
         $department=M('department')->where('status>-1')->select();
         //$department=tree($department);
         $department=getTrees($department);
+        $department = $this->get_stat($department);
         $this->assign('department',$department);
         
         //显示项目信息
@@ -411,9 +412,42 @@ class UserController extends AdminController {
         $this->assign('station',$station);
 
 
+
+}
+    //传入部门信息 返回部门和岗位信息
+    public function get_stat($depar)
+    {
+        $arr = array();
+        if(empty($depar)) return 1;
+
+        foreach($depar as $k => $v)
+        {
+            $sid = $v['sid'];
+            if(!empty($sid))
+            {
+                //组建where 语句
+                $where = " sid in ( $sid ) and status > -1 ";
+                $stat = M('station')->field('sid,stationname')->where($where)->select();  
+                if(!empty($stat))
+                {
+                    foreach($stat as $key => $val)
+                    {
+                        $arr[$val['sid']] = $val['stationname'];
+                    }
+                    $depar[$k]['sid'] =  $arr;
+                }else{
+                    $depar[$k]['sid'] = 0;
+                }    
+            }else{
+
+                $depar[$k]['sid'] = 0;
+            }
+        }
+        return $depar;
     }
 
-    //添加操作
+
+
 
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
     	
