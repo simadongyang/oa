@@ -147,7 +147,6 @@ class UserController extends AdminController {
                     ->join('ganen_member m on d.uid = m.uid')
                     ->join('ganen_department p on p.did = d.did')
                     ->join('ganen_station s on s.sid = d.sid')
-                    ->group('d.uid')
                     ->order('m.uid desc')
                     ->where($where)->select();
        // echo '<pre>';
@@ -397,8 +396,9 @@ public function jibenyanzheng($arr){
         $department=M('department')->where('status>-1')->select();
         //$department=tree($department);
         $department=getTrees($department);
-        $department = $this->get_stat($department);
-        $this->assign('department',$department);
+        $depar = $this->get_stat($department);
+        $depar = json_encode($depar);
+        $this->assign('department',$depar);
         
         //显示项目信息
         $project=M('project')->where('status>-1')->select();
