@@ -133,20 +133,19 @@ class UserController extends AdminController {
         }else{
             $sid = 1;
         }
-        $where = $sid.' and '.$pro.' and '.$uids;
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1';
        /* $res=M('Dss')->alias('d')
                     ->field('d.uid,d.realname,d.sex,d.birthday,d.phone,d.iscompletion,d.entrytime,d.status')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->where(" $sid and $pro $uids and m.status = 0 and m.isadopt = 1")
                     ->select();*/
        // $list   = $this->lists('Member', $map,'','',$field);
-       //var_dump($where);die;
+      // var_dump($where);die;
        $res=M('Dss')->alias('d')
                     ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->join('ganen_department p on p.did = d.did')
                     ->join('ganen_station s on s.sid = d.sid')
-                    ->where('m.isadopt = 1')
                     ->group('d.uid')
                     ->order('m.uid desc')
                     ->where($where)->select();
