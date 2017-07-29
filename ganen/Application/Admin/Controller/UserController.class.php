@@ -149,11 +149,13 @@ class UserController extends AdminController {
        // $list   = $this->lists('Member', $map,'','',$field);
        //var_dump($where);die;
        $res=M('Dss')->alias('d')
-                    ->field('m.*,s.*,d.*,p.*')
+                    ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('ganen_member m on d.uid = m.uid')
                     ->join('ganen_department p on p.did = d.did')
                     ->join('ganen_station s on s.sid = d.sid')
+                    ->where('m.isadopt = 1')
                     ->group('d.uid')
+                    ->order('m.uid desc')
                     ->where($where)->select();
        // echo '<pre>';
         //var_dump($res);die;
