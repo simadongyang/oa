@@ -821,15 +821,7 @@ public function jibenyanzheng($arr){
                 $this->error('用户编辑失败！',U('salary?id='.$arr['uid']));
             }                           
         }
-    }                    
-                                     
-                
-            
-            
-                  
-            
-
-       
+    }  
     
 
     /*
@@ -904,6 +896,46 @@ public function jibenyanzheng($arr){
 
         $this->assign('find',$findone);
 
+        $this->display();
+    }
+
+
+    public function updatetwopassword(){
+        if(IS_POST){
+            $password   =   I('post.old');
+            empty($password) && $this->error('请输入原密码');
+
+            $data['password'] = I('post.password');
+            empty($data['password']) && $this->error('请输入新密码');
+            $match=preg_match_all('/^\d{6}$/', $data['password']);
+            if(!$match){
+                $this->error('密码必须是6位纯数字!');
+            }
+            $repassword = I('post.repassword');
+            empty($repassword) && $this->error('请输入确认密码');
+
+            if($data['password'] !== $repassword){
+                $this->error('您输入的新密码与确认密码不一致');
+            }
+            //核对数据库数据
+            $where['uid']=UID;
+            $where['password']=password_md5($password);
+            $where['status']=array('eq',1);
+            $find=M('secondary_password')->where($where)->find();
+            //如果核对成功
+            if($find){  
+                //进行修改操作                         
+                $res=M('secondary_password')->where('uid='.UID)->setField('password',password_md5($repassword));
+                if($res || password_md5($repassword)==$find['password']){
+                    $this->success('您已修改密码成功 ！');
+                }else{
+                    $this->error('密码修改失败 ！'); 
+                }
+            }else{
+               $this->error('原密码不正确'); 
+            }
+
+        }
         $this->display();
     }
     
