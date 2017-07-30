@@ -49,10 +49,14 @@
 
 <block name="script">
 	<script type="text/javascript">
+		$(function(){
 			var error = '{$error}';
 			if(error){
-				alert("请重新输入密码查看内容");
-				window.history.back(-1);
+				updateAlert("请重新输入密码查看内容");
+				setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    window.history.back(-1);
+                },1500);
 			}
 			$('.dropdown-init').dropdown();
 			//添加项目
@@ -81,6 +85,6 @@
 			$(".form-horizontal").delegate(".minus.icon","click",function(){
 				$(this).closest(".fields").remove();
 			})
-		</script>
-
+		})
+	</script>
 </block>
