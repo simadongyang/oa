@@ -196,7 +196,7 @@
 					if(data.status){
 						window.location.href = "__APP__/Admin/User/salary/uid/"+data.data.uid;
 					}else{
-						$("#errorMsg").html("密码错误或者权限不对");
+						$("#errorMsg").html(data.msg);
 					}
 				})
 			})

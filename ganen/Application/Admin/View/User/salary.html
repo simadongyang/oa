@@ -41,14 +41,25 @@
 			<input type="hidden" name="uid" value="{$sel[0]['uid']}">
 			<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 			<input type="hidden" name="did" value="{$sel[0]['did']}">			
-			
-			<button class="ui blue button submit-btn ajax-post" type="submit" id="submit" target-form="form-horizontal">确 定</button>
+
+			<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
+			<button class="ui blue button btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+
 		</form>
 
 </block>
 
 <block name="script">
 	<script type="text/javascript">
+		$(function(){
+			var error = '{$error}';
+			if(error){
+				updateAlert("请重新输入密码查看内容");
+				setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    window.history.back(-1);
+                },1500);
+			}
 			$('.dropdown-init').dropdown();
 			//添加项目
 			$(".button.add").click(function(){
@@ -76,6 +87,6 @@
 			$(".form-horizontal").delegate(".minus.icon","click",function(){
 				$(this).closest(".fields").remove();
 			})
-		</script>
-
+		})
+	</script>
 </block>
