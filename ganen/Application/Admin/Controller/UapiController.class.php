@@ -137,15 +137,18 @@ class UapiController extends AdminController {
                     $result=ture;
                 }
             }
+
+
             if($result){
 
-                 $p2 = password2($shuju['uid'],$shuju['password']);                
+                 $p2 = password2(UID,$shuju['password']);                
                
                 if($p2>0){
 
                    //构造数组 
-                   $fan['uid']=$shuju['uid'];
-                   $fan['biaoshi']=eqiu($shuju['uid']);             
+                   $fan['uid']=$shuju['uid'];                   
+                   $_SESSION['biao']=$shuju['uid'].'_'.time();
+                   $fan['biaoshi']=eqiu($_SESSION['biao']);             
                     $arr=array(
                         'status'=>1,//成功
                         'data'=>$fan,
@@ -177,7 +180,7 @@ class UapiController extends AdminController {
                     'msg'=>'您没有查看权限'
                     );             
                 die(json_encode($arr));
-        }
+            }
         }
     }
 
