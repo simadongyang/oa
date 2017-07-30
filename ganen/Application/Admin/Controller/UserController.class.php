@@ -149,9 +149,9 @@ class UserController extends AdminController {
             $dssid = "( $ids )";
         }else{
             $dssid = 1;
-        }
+        }        
         //组装where 语句
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and m.status > 0 ';//.' and d.dssid in '.$dssid;
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 '.' and d.dssid in '.$dssid;
 
 
 
@@ -177,7 +177,7 @@ class UserController extends AdminController {
 
        // 查找到匹配的信息
        $res=$dss->alias('d')
-                    ->field('m.uid,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
+                    ->field('m.uid,m.status as m_status,m.realname,m.sex,m.birthday,m.phone,m.iscompletion,m.entrytime,s.stationname,d.*,p.*')
                     ->join('left join ganen_member m on d.uid = m.uid')
                     ->join('left join ganen_department p on p.did = d.did')
                     ->join('left join ganen_station s on s.sid = d.sid')
@@ -193,7 +193,8 @@ class UserController extends AdminController {
             
 
         $list   = $this->lists('Member', $map,'','',$field);*/
-        
+      /*  echo '<pre>';
+        var_dump($res);*/
         $this->assign('_page',$show);
         $this->assign('_list',$res);
         //根据获得的信息查询相关的信息
@@ -617,31 +618,32 @@ public function jibenyanzheng($arr){
         
         if(IS_POST){
         	$arr=I('post.');                      
-
+            $this->jibenyanzheng($arr);
                 
              //获取基本信息新增   
             if($arr['uid']){//如果存在工号，说明是修改
-
+                $arr['realname']=$arr['username'];
                 //用于查询数据对比是否进行了更改
                 $findd=M('Member')->where('uid='.$arr['uid'])->find();
                 if($findd){
                     $ew=congruent($findd,$arr);                    
-                    if($ew!=21){
+                    if($ew!=22){
                        // $this->jibenyanzheng($arr);
                         $updat=M('Member')->where('uid='.$arr['uid'])->save($arr); 
                         if(!$updat){                            
                             $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
                         }else{
-                           $gangwei=ture;//岗位信息没有发生改变
+
+                           $jichange=ture;//基本信息改变成功
                         }
 
                     }else{
-                        $jieben=ture;//基本信息部分没有改变
+                        $jichange=false;//基本信息部分没有改变
                     }
 
-                    if($jiebn && $gangwei){
-                        $this->error('您未作出任何修改！',U('edit?id='.$arr['uid']));
-                    }else{
+                   /* if($jiebn && $gangwei){
+                        $this->error('您未作出任何修改！'.'88888',U('edit?id='.$arr['uid']));
+                    }else{*/
 
                        //判断部门岗位是否发生了变化
                         $findst=M('dss')->where("uid='%d'",$arr['uid'])->order('dssid desc')->find();
@@ -670,21 +672,28 @@ public function jibenyanzheng($arr){
                                if($resul){
                                     $countn += 1;
                                }
-
                             }
 
-                            if($countn==count($dssnow)){ 
+                            if($countn==count($dssnow)){
 
-                                $this->success('用户编辑成功！',U('index'));                               
+                                $gangchange=ture;                                                              
                                     
                             }else{
+                               
                                 $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));  
                             }                            
                             
                         }else{
-                            $this->error('您未作出任何修改！',U('edit?id='.$arr['uid']));
+                             $gangchange=0;                            
                         }
-                    }
+
+                        if(!$gangchange && !$jichange){
+                            $this->success('您未作出任何修改！'.$countn);
+                        }else{
+                            $this->success('用户编辑成功！',U('index')); 
+                        }
+
+                   // }
                 }
             }
         }

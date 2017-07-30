@@ -182,6 +182,7 @@
 	<script type="text/javascript">
 		$(function() {
 			var departmentJosn = <?php echo json_encode($department)?>;
+			console.log(departmentJosn);
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init,#sid').dropdown();
 			$("#department").dropdown({

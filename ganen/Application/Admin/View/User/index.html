@@ -65,6 +65,7 @@
 		<tbody>
 			<notempty name="_list">
 				<volist name="_list" id="vo">
+				<if condition="$vo.m_status gt '-1'">
 					<tr>
 						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
 						<td>{$vo.uid} </td>
@@ -94,6 +95,7 @@
 							<a href="{:U('User/changeStatus?method=deleteUser&id='.$vo['uid'])}" class="confirm ajax-get">删除</a>
 						</td>
 					</tr>
+					</if>
 				</volist>
 					<else/>
 					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
