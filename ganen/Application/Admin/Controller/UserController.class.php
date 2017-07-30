@@ -74,14 +74,15 @@ class UserController extends AdminController {
     public function index(){   
        
        
-        //查询审批通过且未被删除的员工
+       /* //查询审批通过且未被删除的员工
         $field='uid,realname,sex,birthday,phone,iscompletion,entrytime';
         $map['status']  =  array('egt',0);        
         $map['isadopt'] =array('eq',1);
         if($denguid != 1){
-            $map['uid'] = array('in',$uids);
+            $map['uid'] = array('in',$uids);//$uids ?
         }
-       
+       */
+       //将部门id重组
         function sima($did)
         {
              $res = M('Department')
@@ -90,7 +91,7 @@ class UserController extends AdminController {
                 ->join('ganen_department p on p.dpid = d.did ')
                 ->where("d.did = $did")
                 ->select();
-               
+             
             foreach($res as $k=>$v)
             {
                 $ids .= $v['p_did'].','.sima($v['p_did']);
@@ -99,9 +100,10 @@ class UserController extends AdminController {
             }
             return $ids;
          }
-        // var_dump(sima(2));
+         //var_dump(sima(2));
         //echo $ids;
         //var_dump($res);die;
+         //搜索部门
         $did = I('get.depar');
         if(!empty($did))
         {
@@ -116,6 +118,7 @@ class UserController extends AdminController {
        // $uids = 1;
         //echo $did;
         //var_dump($uids);die;
+        //搜索项目
         $pro = I('get.pro');
         //项目
         if(!empty($pro))
@@ -125,7 +128,7 @@ class UserController extends AdminController {
         }else{
             $pro = 1;
         }
-        //岗位
+        //搜索岗位
         $sid = I('get.stat');
         if(!empty($sid))
         {
@@ -148,7 +151,7 @@ class UserController extends AdminController {
             $dssid = 1;
         }
         //组装where 语句
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 '.' and d.dssid in '.$dssid;
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and m.status > 0 ';//.' and d.dssid in '.$dssid;
 
 
 
@@ -182,19 +185,19 @@ class UserController extends AdminController {
                     ->where($where)
                     ->limit($page->firstRow.','.$page->listRows)
                     ->select();
-
+//echo $dss->getLastSql();
         //查询审批通过且未被删除的员工
-        $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
+      /*  $field='uid,realname,sex,birthday,phone,iscompletion,entrytime,status';
         $map['status']  =   array('egt',0); 
         $map['isadopt']=array('eq',1);
             
 
-        $list   = $this->lists('Member', $map,'','',$field);
+        $list   = $this->lists('Member', $map,'','',$field);*/
         
         $this->assign('_page',$show);
         $this->assign('_list',$res);
         //根据获得的信息查询相关的信息
-        $list=$this->memberlist($list);
+       // $list=$this->memberlist($list);
 
         //显示所属部门信息
         $department=M('department')->where('status>-1')->select();
@@ -491,7 +494,7 @@ public function jibenyanzheng($arr){
             //添加员工信息
             if(!$arr['uid']){
                
-                //$this->jibenyanzheng($arr);
+                $this->jibenyanzheng($arr);
                
                 //获取身份证号码后4位
                 $hou4=substr($arr['IDnumber'],-4);
