@@ -524,7 +524,8 @@ function password2($uid, $password){
         $map['uid']=$uid;        
 
         /* 获取用户数据 */
-        $user2 = $this->where($map)->find();
+        $user2 =M('secondary_password')->where($map)->find();
+        
         if(is_array($user2) && $user2['status']==1){
 
                        
@@ -545,7 +546,7 @@ function password2($uid, $password){
         /*// 查询员工邮箱
         $find=M('ucenter_member')->where("id='%d'",$shuju['uid'])->find();
         $email=$find['email']===''?'123456789@qq.com':$find['email'];*/
-        $biaoshi=md5(sha($biao));
+        $biaoshi=md5($biao);
         return $biaoshi;
     }
 

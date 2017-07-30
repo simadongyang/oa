@@ -119,21 +119,24 @@ class UapiController extends AdminController {
     public function salary(){
 
         if(IS_POST){
-            $shuju=I('post.');    
+            $shuju=I('post.');
             
-  
+            //$shuju['uid']=240;
+            //$shuju['password']=123456;
             //获取查看薪资信息对应的权限的id
             $where['name']='Admin/User/salary';
             $where['status']=array('eq',1);
             $auth_ruleid=M('auth_rule')->field('id')->where($where)->find();
 
             //获取员工id所在的组
-            $userwhere['uid']=$shuju['uid');
+            $userwhere['uid']=UID;
+
             $file=M('auth_group_access')->alias('ac')->join('ganen_auth_group as ag ON ag.id=ac.group_id')->field('ag.rules')->where($userwhere)->select();
 
             foreach($file as $val){
                 //如果在数组中说明有查看薪资权限
-                if(in_array($auth_ruleid['id'],$val['rules'])){
+                
+                if(strpos($val['rules'],$auth_ruleid['id'])){
                     $result=ture;
                 }
             }
@@ -158,7 +161,7 @@ class UapiController extends AdminController {
 
                 }elseif($p2=='-2'){
                     $arr=array(
-                        'status'=>0,//失败
+                        'status'=>2,//失败
                         'data'=>array(),
                         'msg'=>'密码错误'
                         );             
@@ -166,7 +169,7 @@ class UapiController extends AdminController {
                         
                 }else{
                     $arr=array(
-                        'status'=>0,//失败
+                        'status'=>$p2,//失败
                         'data'=>array(),
                         'msg'=>'用户不存在或被禁用'
                         );             
@@ -175,12 +178,19 @@ class UapiController extends AdminController {
                 }
             }else{
                 $arr=array(
-                    'status'=>0,//失败
-                    'data'=>array(),
+                    'status'=>4,//失败
+                    'data'=>$file,
                     'msg'=>'您没有查看权限'
                     );             
                 die(json_encode($arr));
             }
+        }else{
+           $arr=array(
+                'status'=>5,//失败
+                'data'=>array(),
+                'msg'=>'您没有传值'
+                );             
+            die(json_encode($arr)); 
         }
     }
 

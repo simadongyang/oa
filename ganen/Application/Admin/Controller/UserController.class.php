@@ -782,7 +782,7 @@ public function jibenyanzheng($arr){
                 if($ew!=4){
                    // $this->jibenyanzheng($arr);
                     M('salarychange')->where($where)->setField('status',1);
-                    M('salarychange')->add($arr);
+                    $updat=M('salarychange')->add($arr);
                     if(!$updat){                            
                         $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
                     }else{
