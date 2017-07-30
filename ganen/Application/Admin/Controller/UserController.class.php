@@ -19,7 +19,7 @@ class UserController extends AdminController {
 
   
     //用于显示转化信息
-    public function memberlist($list){
+   /* public function memberlist($list){
         //根据获得的信息查询相关的信息
         foreach($list as &$v){
             //将数字转为文字
@@ -46,7 +46,7 @@ class UserController extends AdminController {
         }
 
         return $list;
-    }
+    }*/
      //递归得到pid
     private function partment($did)
     {
@@ -151,7 +151,7 @@ class UserController extends AdminController {
             $dssid = 1;
         }        
         //组装where 语句
-        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 '.' and d.dssid in '.$dssid;
+        $where = $sid.' and '.$pro.' and '.$uids.' and m.isadopt = 1 and s.status > 0 and m.status > -1 '.' and d.dssid in '.$dssid;
 
 
 
@@ -165,7 +165,7 @@ class UserController extends AdminController {
                     ->where($where);
         //得到总数
         $data = $res;
-        $count = count($data->select());
+        $count = count($data->select());       
         $page = new \Think\Page($count,15);  
             
         $page->setConfig('first','首页');

@@ -65,7 +65,7 @@
 		<tbody>
 			<notempty name="_list">
 				<volist name="_list" id="vo">
-				<if condition="$vo.m_status gt '-1'">
+				
 					<tr>
 						<td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
 						<td>{$vo.uid} </td>
@@ -75,7 +75,7 @@
     						<else /> 女
     						</if>
     					</td>
-						<td>{$vo.age}</td>
+						<td><?php echo date('Y-m-d')-$vo['birthday'];?></td>
 						<td>{$vo.phone}</td>
 						<td>{$vo.dname}</td>
 						<td>{$vo.stationname}</td>
@@ -87,7 +87,7 @@
 						<td>{$vo.entrytime}</td>
 						<td>
 							<a href="{:U('User/edit?id='.$vo['uid'])}">查看详情</a>
-							<eq name="vo.status" value="1">
+							<eq name="vo.m_status" value="1">
 								<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 								<else/>
 								<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
@@ -95,7 +95,7 @@
 							<a href="{:U('User/changeStatus?method=deleteUser&id='.$vo['uid'])}" class="confirm ajax-get">删除</a>
 						</td>
 					</tr>
-					</if>
+					
 				</volist>
 					<else/>
 					<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
