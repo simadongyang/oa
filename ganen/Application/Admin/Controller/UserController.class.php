@@ -443,11 +443,13 @@ public function jibenyanzheng($arr){
         $station=M('station')->where('status>-1')->select();        
         //构造新数组       
         $station=stationtrees($station);  
-
+  //      echo '<pre>';
+//var_dump($depar);
         $this->assign('station',$station);
 
 
     }
+
 
     //传入部门信息 返回部门和岗位信息
     public function get_stat($depar)
@@ -462,14 +464,16 @@ public function jibenyanzheng($arr){
             {
                 //组建where 语句
                 $where = " sid in ( $sid ) and status > -1 ";
-                $stat = M('station')->field('sid,stationname')->where($where)->select();  
+                $stat = M('station')->field('sid,stationname')->where($where)->select();
+                
                 if(!empty($stat))
                 {
                     foreach($stat as $key => $val)
                     {
-                        $arr[$val['sid']] = $val['stationname'];
+                        $arr[$val['sid']] = $val['stationname'];//构建一维数组
                     }
-                    $depar[$k]['sid'] =  $arr;
+                    $depar[$k]['sid'] =  $arr;//构建三维数组
+                    $arr=array();
                 }else{
                     $depar[$k]['sid'] = 0;
                 }    
@@ -485,9 +489,11 @@ public function jibenyanzheng($arr){
 
 
     public function add($username = '', $password = '', $repassword = '',$criticalname='', $email = ''){
+
     	
         //显示部门岗位选项
-        $this->dps();    	
+        $this->dps(); 
+
 
         //添加员工信息
         if(IS_POST){
