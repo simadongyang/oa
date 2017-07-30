@@ -191,7 +191,7 @@
 					$("#errorMsg").html("密码错误");
 					return;
 				}
-				$.post("__APP__/Admin/Uapi/salary",{uid:uid,password:password},function(data){
+				$.post("__APP__/Admin/User/verify",{uid:uid,password:password},function(data){
 					var data = $.parseJSON(data);
 					if(data.status){
 						window.location.href = "__APP__/Admin/User/salary/uid/"+data.data.uid;
@@ -215,6 +215,7 @@
 				for (var i = 0; i < departmentJosn.length; i++) {
 					if(did == departmentJosn[i].did){
 						if(departmentJosn[i].sid){
+							alert(i);
 							var html = '';
 							for(var j in departmentJosn[i].sid){
 								html += '<div class="item" data-value="'+j+'">'+departmentJosn[i].sid[j]+'</div>';

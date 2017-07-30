@@ -117,6 +117,12 @@ class UapiController extends AdminController {
     //核对查看薪资二级密码，返回值
 
     public function salary(){
+    	$arr=array(
+            'status'=>1,//成功
+            'data'=>1,
+            'msg'=>''
+            );             
+        die(json_encode($arr));
 
         if(IS_POST){
             $shuju=I('post.');
