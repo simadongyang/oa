@@ -45,7 +45,7 @@
 			<div class="field">
 				<label>部门下属岗位<span class="check-tips">（可多选）</span></label>
 				<div class="ui multiple selection dropdown">
-	                <input type="hidden" name="sid" value="{$done['sid']}">
+	                <input type="hidden" name="sid" value="{$done.sid}">
 	                <i class="dropdown icon"></i>
                 	<div class="default text"></div>
 	                <div class="menu">
@@ -60,11 +60,11 @@
 			<div class="field">
 				<label>是否属于项目部门</label>
 				<div class="ui radio checkbox mr15">
-					<input type="radio" name="is_pro" value="1" tabindex="0" class="hidden" <if condition="$sone.isstaff eq 1"> checked="" </if>>
+					<input type="radio" name="is_pro" value="1" tabindex="0" class="hidden" <if condition="$done.is_pro eq 1"> checked="" </if>>
 					<label>是</label>
 				</div>
 				<div class="ui radio checkbox mr15">
-					<input type="radio" name="is_pro" value="0" tabindex="0" class="hidden" <if condition="$sone.isstaff neq 1"> checked="" </if>>
+					<input type="radio" name="is_pro" value="0" tabindex="0" class="hidden" <if condition="$done.is_pro neq 1"> checked="" </if>>
 					<label>否</label>
 				</div>
 			</div>
