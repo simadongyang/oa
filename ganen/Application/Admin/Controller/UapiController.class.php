@@ -161,7 +161,7 @@ class UapiController extends AdminController {
 
                 }elseif($p2=='-2'){
                     $arr=array(
-                        'status'=>2,//失败
+                        'status'=>0,//失败
                         'data'=>array(),
                         'msg'=>'密码错误'
                         );             
@@ -169,7 +169,7 @@ class UapiController extends AdminController {
                         
                 }else{
                     $arr=array(
-                        'status'=>$p2,//失败
+                        'status'=>0,//失败
                         'data'=>array(),
                         'msg'=>'用户不存在或被禁用'
                         );             
@@ -178,7 +178,7 @@ class UapiController extends AdminController {
                 }
             }else{
                 $arr=array(
-                    'status'=>4,//失败
+                    'status'=>0,//失败
                     'data'=>$file,
                     'msg'=>'您没有查看权限'
                     );             
@@ -186,7 +186,7 @@ class UapiController extends AdminController {
             }
         }else{
            $arr=array(
-                'status'=>5,//失败
+                'status'=>0,//失败
                 'data'=>array(),
                 'msg'=>'您没有传值'
                 );             

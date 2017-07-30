@@ -784,14 +784,18 @@ public function jibenyanzheng($arr){
                     M('salarychange')->where($where)->setField('status',1);
                     $updat=M('salarychange')->add($arr);
                     if(!$updat){                            
-                        $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));
+                        $this->error('用户编辑失败！',U('salary?id='.$arr['uid']));
                     }else{
-                       $gangwei=ture;//岗位信息没有发生改变
+                       $gangwei=ture;//薪资变化成功
                     }
                 }
             }else{
-
+                $updat=M('salarychange')->add($arr);
+                if($updat){
+                    $xinzi=ture;
+                }
             }
+            
 
                            
             if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
