@@ -917,13 +917,16 @@ public function jibenyanzheng($arr){
             if($data['password'] !== $repassword){
                 $this->error('您输入的新密码与确认密码不一致');
             }
+            //核对数据库数据
             $where['uid']=UID;
             $where['password']=password_md5($password);
             $where['status']=array('eq',1);
             $find=M('secondary_password')->where($where)->find();
-            if($find){
+            //如果核对成功
+            if($find){  
+                //进行修改操作                         
                 $res=M('secondary_password')->where('uid='.UID)->setField('password',password_md5($repassword));
-                if($res){
+                if($res || password_md5($repassword)==$find['password']){
                     $this->success('您已修改密码成功 ！');
                 }else{
                     $this->error('密码修改失败 ！'); 
