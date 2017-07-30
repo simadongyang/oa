@@ -714,20 +714,24 @@ public function jibenyanzheng($arr){
     //验证二级密码查看薪资
     public function salary(){
             if(IS_GET){
-                $uid=I('get.uid');
-                $biaonow=I('get.biaoshi');
-                $biaoold=eqiu($_SESSION['biao']);
+                $uid=I('get.uid');         
+                
 
-                if($uid && $biaonow==$biaoold){
+                if($uid && $uid==$_SESSION['biao']){
                     $this->showselfsalary($uid);
+                   
                 }else{
-                     $this->error('您没有权限！',U('edit?id='.$arr['uid']));
+                     $this->assign('error',1);
                 } 
-            } 
+            }else{
+                $this->assign('error',1);
+            }  
+             $this->display();
             //$uid=240;
-            //$this->showselfsalary($uid);        
+            //$this->showselfsalary($uid);
 
-        $this->display();
+            
+       
     }
 
     //编辑薪资信息
@@ -795,7 +799,7 @@ public function jibenyanzheng($arr){
                     $xinzi=ture;
                 }
             }
-            
+
 
                            
             if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){

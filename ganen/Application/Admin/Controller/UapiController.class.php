@@ -150,8 +150,7 @@ class UapiController extends AdminController {
 
                    //构造数组 
                    $fan['uid']=$shuju['uid'];                   
-                   $_SESSION['biao']=$shuju['uid'].'_'.time();
-                   $fan['biaoshi']=eqiu($_SESSION['biao']);             
+                   $_SESSION['biao']=$shuju['uid'];                               
                     $arr=array(
                         'status'=>1,//成功
                         'data'=>$fan,

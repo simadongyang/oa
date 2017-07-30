@@ -194,9 +194,9 @@
 				$.post("__APP__/Admin/Uapi/salary",{uid:uid,password:password},function(data){
 					var data = $.parseJSON(data);
 					if(data.status){
-						window.location.href = "__APP__/Admin/Uapi/salary/uid/"+data.data.uid+"/biaoshi/"+data.data.biaoshi;
+						window.location.href = "__APP__/Admin/User/salary/uid/"+data.data.uid;
 					}else{
-						$("#errorMsg").html("返回失败,密码错误或者权限不对或者接口有问题");
+						$("#errorMsg").html("密码错误或者权限不对");
 					}
 				})
 			})

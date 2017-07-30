@@ -17,9 +17,7 @@
 					<div class="fields fields-xm fields-hide">
 						<div class="field">
 							<label>所属项目</label>
-							<input type="text" name="p{$k}" value="{$vos.name 
-
-}" readonly>
+							<input type="text" name="p{$k}" value="{$vos.name}" readonly>
 							<input type="hidden" name="prid[]" value="{$vos.dssid}">
 						</div>
 						<div class="field">
@@ -41,7 +39,7 @@
 			</div>
 			<input type="hidden" name="uid" value="{$sel[0]['uid']}">
 			<input type="hidden" name="sid" value="{$sel[0]['sid']}">
-			<input type="hidden" name="did" value="{$sel[0]['did']}">
+			<input type="hidden" name="did" value="{$sel[0]['did']}">			
 			<input type="submit" value="提交">
 			<button class="ui blue button submit-btn ajax-post" type="submit" id="submit" target-form="form-horizontal">确 定</button>
 		</form>
@@ -58,11 +56,7 @@
 									'<label>所属项目</label>' + 
 									'<select class="ui dropdown dropdown-init" name="newdid[]">' + 
 					                    '<volist name="project" id="vo">' + 
-					                    	'<option value="{$vo.id 
-
-}">{$vo.name 
-
-}</option>' + 
+					                    	'<option value="{$vo.id}">{$vo.name}</option>' + 
 					                    '</volist>' + 
 					                '</select>' +
 								'</div>' + 
