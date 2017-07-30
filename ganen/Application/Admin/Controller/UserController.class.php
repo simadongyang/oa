@@ -418,7 +418,7 @@ public function jibenyanzheng($arr){
     //薪资信息验证
     public function xinziyanzheng($arr){
 
-        if(!$arr['trysalary'] || !$arr['completionsalary']){
+        if($arr['trysalary']==0 || $arr['completionsalary']==0){
             $this->error('请输入薪资！');
         }
         if(!preg_match('/^(\d+(.)?\d+)$/',$arr['trysalary']) || !preg_match('/^(\d+(.)?\d+)$/',$arr['completionsalary'])){
@@ -647,59 +647,56 @@ public function jibenyanzheng($arr){
                         $jichange=false;//基本信息部分没有改变
                     }
 
-                   /* if($jiebn && $gangwei){
-                        $this->error('您未作出任何修改！'.'88888',U('edit?id='.$arr['uid']));
-                    }else{*/
+                   
 
-                       //判断部门岗位是否发生了变化
-                        $findst=M('dss')->where("uid='%d'",$arr['uid'])->order('dssid desc')->find();
-                        $ds['sid']=$arr['sid'];
-                        $ds['uid']=$arr['uid'];
-                        $ds['did']=$arr['did'];
-                        $st=congruent($findst,$ds); 
-                        if($st!=3){
-                           // $this->jibenyanzheng($arr);
-                            //如果员工岗位发生变化，需要将变化前的所在项目信息全部复制一边
-                            //查询员工现有的岗位项目薪资信息等
-                            $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
+                   //判断部门岗位是否发生了变化
+                    $findst=M('dss')->where("uid='%d'",$arr['uid'])->order('dssid desc')->find();
+                    $ds['sid']=$arr['sid'];
+                    $ds['uid']=$arr['uid'];
+                    $ds['did']=$arr['did'];
+                    $st=congruent($findst,$ds); 
+                    if($st!=3){
+                       
+                        //如果员工岗位发生变化，需要将变化前的所在项目信息全部复制一边
+                        //查询员工现有的岗位信息等
+                        $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
 
-                            
+                        if($dssnow){
                             //修改原有项目信息状态
                             M('dss')->where('uid='.$arr['uid'].' and status=0')->setField('status',1);
-                            
-                            $countn=0;
-                            foreach($dssnow as $value){
-                                $value['sid']=$arr['sid'];
-                                $value['did']=$arr['did'];
-                                $value['uid']=$arr['uid'];
-                                $value['caozuorenid']=UID;
-                                unset($value['dssid']);                             
-                               $resul=M('dss')->add($value);                 
-                               if($resul){
-                                    $countn += 1;
-                               }
-                            }
-
-                            if($countn==count($dssnow)){
-
-                                $gangchange=ture;                                                              
-                                    
-                            }else{
-                               
-                                $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));  
-                            }                            
-                            
-                        }else{
-                             $gangchange=0;                            
+                        }
+                        $countn=0;
+                        foreach($dssnow as $value){
+                            $value['sid']=$arr['sid'];
+                            $value['did']=$arr['did'];
+                            $value['uid']=$arr['uid'];
+                            $value['caozuorenid']=UID;
+                            unset($value['dssid']);                             
+                           $resul=M('dss')->add($value);                 
+                           if($resul){
+                                $countn += 1;
+                           }
                         }
 
-                        if(!$gangchange && !$jichange){
-                            $this->success('您未作出任何修改！'.$countn);
-                        }else{
-                            $this->success('用户编辑成功！',U('index')); 
-                        }
+                        if($countn==count($dssnow)){
 
-                   // }
+                            $gangchange=ture;                                                              
+                                
+                        }else{
+                           
+                            $this->error('用户编辑失败！',U('edit?id='.$arr['uid']));  
+                        }                            
+                        
+                    }else{
+                         $gangchange=0;                            
+                    }
+
+                    if(!$gangchange && !$jichange){
+                        $this->success('您未作出任何修改！'.$countn);
+                    }else{
+                        $this->success('用户编辑成功！',U('index')); 
+                    }
+                 
                 }
             }
         }
@@ -761,22 +758,32 @@ public function jibenyanzheng($arr){
     public function salarychange(){
         if(IS_POST){
             $arr=I('post.');
-
+            $this->xinziyanzheng($arr);
             //项目减少
             //根据获的数组prid的中对应的值去查询是否进行了删除，值就是dssid
            //获得员工项目原有的id是否还存在，
            $where=array('uid'=>$arr['uid'],'status'=>0);
-           $sele=M('dss')->where($where)->select();
+           $sele=M('dss')->where($where)->order('dssid desc')->select();
            $count=0;
-           foreach($sele as $val){
-                //如果不存在了说明该项目已经结束
-                if(!in_array($val['dssid'],$arr['prid'])){
-                   $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',1);
-                   if($sta){
-                        $count += 1;
-                   }
-                }                    
-           }                 
+           if($sele[0]['projectid']){
+               foreach($sele as $val){
+                    //如果不存在了说明该项目已经结束
+                    if(!in_array($val['dssid'],$arr['prid'])){
+                       $sta= M('dss')->where('dssid='.$val['dssid'])->setField('status',1);
+                       if($sta){
+                            $count += 1;
+                       }
+                    }                    
+               }
+
+               //如果项目全部删除时（即没有获得项目数组是空），需要添加一条记录
+               if(empty($arr['prid'])){
+                    $arr['status']=0;
+                    $arr['caozuorenid']=UID;
+                   M('dss')->add($arr);
+                   unset($arr['status']); 
+               } 
+           }                
 
         //项目增加
         //根据获得的数组newdid的数量确定新增项目数量
