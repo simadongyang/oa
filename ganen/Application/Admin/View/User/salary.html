@@ -37,7 +37,8 @@
 					<textarea name="jixiao" rows="3">{$salarychange.jixiao}</textarea>
 				</div>
 			</div>
-			<input type="hidden" name="uid" value="{$sel[0]['uid']}">
+
+			<input type="hidden" name="uid" <if condition="$sel[0]['uid'] neq ''">value="{$sel[0]['uid']}"<else/>value="{$adduid}"</if>>
 			<input type="hidden" name="sid" value="{$sel[0]['sid']}">
 			<input type="hidden" name="did" value="{$sel[0]['did']}">			
 			<button class="ui blue button submit-btn ajax-post mr20" type="submit" id="submit" target-form="form-horizontal">确 定</button>
