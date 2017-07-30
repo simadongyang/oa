@@ -541,11 +541,11 @@ function password2($uid, $password){
     }
 
 //设置查询薪资的唯一标示
-    function eqiu($uid){
-        // 查询员工邮箱
+    function eqiu($biao){
+        /*// 查询员工邮箱
         $find=M('ucenter_member')->where("id='%d'",$shuju['uid'])->find();
-        $email=$find['email']===''?'123456789@qq.com':$find['email'];
-        $biaoshi=md5(sha($email));
+        $email=$find['email']===''?'123456789@qq.com':$find['email'];*/
+        $biaoshi=md5(sha($biao));
         return $biaoshi;
     }
 
