@@ -185,14 +185,16 @@
 				$('.ui.modal').modal('show');
 			})
 			$("#salaryPost").click(function(){
+				var uid = {$find.uid};
 				var password = $("#salaryPassword").val();
 				if(password.length != 6){
 					$("#errorMsg").html("密码错误");
 					return;
 				}
-				$.post("__APP__/Admin/Uapi/salary",{uid:"{$find.uid}",password:password},function(data){
+				$.post("__APP__/Admin/Uapi/salary",{uid:uid,password:password},function(data){
+					var data = $.parseJSON(data);
 					if(data.status){
-						$("#errorMsg").html("登录成功");
+						window.location.href = "__APP__/Admin/Uapi/salary/uid/"+data.data.uid+"/biaoshi/"+data.data.biaoshi;
 					}else{
 						$("#errorMsg").html("返回失败,密码错误或者权限不对或者接口有问题");
 					}
