@@ -651,8 +651,11 @@ public function jibenyanzheng($arr){
                             //如果员工岗位发生变化，需要将变化前的所在项目信息全部复制一边
                             //查询员工现有的岗位项目薪资信息等
                             $dssnow=M('dss')->where('uid='.$arr['uid'].' and status=0')->select();
+
+                            
                             //修改原有项目信息状态
                             M('dss')->where('uid='.$arr['uid'].' and status=0')->setField('status',1);
+                            
                             $countn=0;
                             foreach($dssnow as $value){
                                 $value['sid']=$arr['sid'];
@@ -693,16 +696,21 @@ public function jibenyanzheng($arr){
                 //查询项目情况
                 $where['d.status']=array('eq',0);
                 $where['uid']=$uid;
+                $find=M('dss')->where('uid='.$uid.' and status=0')->order('dssid desc')->find();
+                if($find['projectid']){              
 
-                $projectslef=M('dss')
-                ->alias('d')
-                ->join('ganen_project as p ON p.id=d.projectid')
-                ->field('p.name,d.projectsalary,d.projectid,d.dssid,d.uid,d.sid,d.did')
-                ->where($where)
-                ->order('d.dssid desc')
-                ->select();
+                    $projectslef=M('dss')
+                    ->alias('d')
+                    ->join('ganen_project as p ON p.id=d.projectid')
+                    ->field('p.name,d.projectsalary,d.projectid,d.dssid,d.uid,d.sid,d.did')
+                    ->where($where)
+                    ->order('d.dssid desc')
+                    ->select();
+                }else{
+                    $projectslef[]=$find;
+                }
                 //echo '<pre>';
-                //var_dump($projectslef);
+                //var_dump($find);
                 $this->assign('sel',$projectslef);
 
                 //查询薪资情况
@@ -719,6 +727,7 @@ public function jibenyanzheng($arr){
 
                 if($uid && $uid==$_SESSION['biao']){
                     $this->showselfsalary($uid);
+                    $this->assign('adduid',$uid);
                    
                 }else{
                      $this->assign('error',1);
@@ -727,11 +736,7 @@ public function jibenyanzheng($arr){
                 $this->assign('error',1);
             }  
              $this->display();
-            //$uid=240;
-            //$this->showselfsalary($uid);
-
             
-       
     }
 
     //编辑薪资信息
@@ -781,74 +786,42 @@ public function jibenyanzheng($arr){
             //查看现有薪资            
             $where=array('uid'=>$arr['uid'],'status'=>array('eq',0));
             $salaryone=M('salarychange')->where($where)->order('said desc')->find();
+            $arr['caozuorenid']=UID;
             if($salaryone){
                 $ew=congruent($salaryone,$arr);
-                if($ew!=4){
+                if($ew!=5){
                    // $this->jibenyanzheng($arr);
                     M('salarychange')->where($where)->setField('status',1);
                     $updat=M('salarychange')->add($arr);
                     if(!$updat){                            
-                        $this->error('用户编辑失败！',U('salary?id='.$arr['uid']));
+                        $gangwei=0;//薪资变化失败
                     }else{
                        $gangwei=ture;//薪资变化成功
                     }
+                }else{
+                    $weibian=ture;
                 }
             }else{
+                
                 $updat=M('salarychange')->add($arr);
                 if($updat){
                     $xinzi=ture;
+                }else{
+                    $xinzi=0;
                 }
             }
 
-
-                           
-            if($salaryone['trysalary']==$arr['trysalary'] && $salaryone['completionsalary']==$arr['completionsalary'] && $salaryone['jixiao']==$arr['jixiao']){
-
-                 
-
-               }else{
-                    $this->xinziyanzheng($arr);
-                    $arr['caozuorenid']=$denguid;
-                     $result=M('salarychange')->add($arr);
-               }
-              
-               //如果$count的值等于项目的个数，说明操作成功
-               if($num==$newnum || $result){
-
-                     
-
-                    $this->success('用户编辑成功！'.$ew,U('index'));                    
-                } else {
-                    $this->error('用户编辑失败',U('add?id='.$arr['uid']));
-                } 
-        
-
-           
-
-            $this->success('用户编辑成功！'.$arr['uid']);  
-
+            if($newnum==0 && $count==0 && $weibian){
+                $this->error('您未作出任何修改！',U('index'));
+            }
+            if($xinzi || $gangwei || $newnum || $count){
+                 $this->success('用户编辑成功！',U('index')); 
+                
+            }else{
+                $this->error('用户编辑失败！',U('salary?id='.$arr['uid']));
+            }                           
         }
-                                
-
-
-                           
-
-                        
-                    
-
-
-
-
-
-                            
-                            
-                            
-                           
-
-                          
-                                       
-            //$this->display();
-     }                    
+    }                    
                                      
                 
             
