@@ -201,6 +201,7 @@
 				})
 			})
 			var departmentJosn = <?php echo json_encode($department)?>;
+			console.log(departmentJosn);
 			$('.ui.radio.checkbox').checkbox();
 			$('.dropdown-init,#sid').dropdown();
 			$("#department").dropdown({
@@ -215,7 +216,6 @@
 				for (var i = 0; i < departmentJosn.length; i++) {
 					if(did == departmentJosn[i].did){
 						if(departmentJosn[i].sid){
-							alert(i);
 							var html = '';
 							for(var j in departmentJosn[i].sid){
 								html += '<div class="item" data-value="'+j+'">'+departmentJosn[i].sid[j]+'</div>';
