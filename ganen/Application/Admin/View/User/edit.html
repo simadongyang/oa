@@ -166,7 +166,7 @@
 				<div class="field">
 				<label>请输入你6位数的二级密码</label>
 				<input type="password" id="salaryPassword" autocomplete="off">
-				<p>密码错误</p>
+				<p id="errorMsg"></p>
 			</div>
 			</div>
 		</div>
@@ -187,13 +187,14 @@
 			$("#salaryPost").click(function(){
 				var password = $("#salaryPassword").val();
 				if(password.length != 6){
+					$("#errorMsg").html("密码错误");
 					return;
 				}
 				$.post("__APP__/Admin/Uapi/salary",{uid:"{$find.uid}",password:password},function(data){
 					if(data.status){
-						alert("返回成功");
+						$("#errorMsg").html("登录成功");
 					}else{
-						alert("返回失败,密码错误或者权限不对或者接口有问题");
+						$("#errorMsg").html("返回失败,密码错误或者权限不对或者接口有问题");
 					}
 				})
 			})
