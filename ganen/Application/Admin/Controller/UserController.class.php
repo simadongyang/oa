@@ -616,7 +616,15 @@ public function jibenyanzheng($arr){
         } 
         
 
-        //查询登录用户能否他人查看薪资
+        //是否有权限显示查看薪资
+       /* $rule=$this->rule();
+
+        echo $rule;
+        if(UID==1){
+            $rule=1;
+        }
+        $this->assign('rule',$rule);*/
+
         
         $denguid=UID;
         $deng=M('Member')->where('uid='.$denguid)->find();
@@ -963,14 +971,10 @@ public function jibenyanzheng($arr){
         }
         $this->display();
     }
-    //验证密码
-	public function verify(){
-        if(IS_POST){
-            $shuju=I('post.');
-            
-            //$shuju['uid']=240;
-            //$shuju['password']=123456;
-            //获取查看薪资信息对应的权限的id
+
+    //查看薪资权限的获取
+    public function rule(){
+        //获取查看薪资信息对应的权限的id
             $where['name']='Admin/User/salary';
             $where['status']=array('eq',1);
             $auth_ruleid=M('auth_rule')->field('id')->where($where)->find();
@@ -984,10 +988,22 @@ public function jibenyanzheng($arr){
                 //如果在数组中说明有查看薪资权限
                 
                 if(strpos($val['rules'],$auth_ruleid['id'])){
-                    $result=ture;
+                    return 1;
+                }else{
+                    return 0;
                 }
             }
 
+    }
+    //验证密码
+	public function verify(){
+        if(IS_POST){
+            $shuju=I('post.');
+            
+            //$shuju['uid']=240;
+            //$shuju['password']=123456;
+            
+            $result=$this->rule();
 
             if($result){
 
