@@ -899,7 +899,7 @@ public function jibenyanzheng($arr){
         $this->display();
     }
 
-
+    //修改二级密码
     public function updatetwopassword(){
         if(IS_POST){
             $password   =   I('post.old');
